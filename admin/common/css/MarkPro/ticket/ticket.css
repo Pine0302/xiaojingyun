@@ -1,0 +1,32 @@
+.CP_table_chanpina:hover{background:#ececec;}
+
+.merchant_remark {display:block;width:190px !important;height:40px !important;border:solid 1px #e3e3e3;padding:5px 5px;}
+.textarea:disabled {background-color:rgb(235,235,228);}
+.change_remark {margin-left:82px;margin-top:10px;}
+.batchFinish {width:100%;height:100%;position:fixed;background:#000;top:0;opacity:0.5;display:none;}
+.wx_loading_icon {position:absolute;top:25%;left:44%;margin-left:-16px;width:60px;height:60px;border:2px solid #fff;border-radius:60px;-webkit-animation:gif 1s infinite linear;animation:gif 1s infinite linear;clip:rect(0 auto 30px 0);}
+@keyframes gif {0% {transform:rotate(0deg);}
+100% {transform:rotate(360deg);}
+}
+@-webkit-keyframes gif {0% {-webkit-transform:rotate(0deg);}
+100% {-webkit-transform:rotate(360deg);}
+}
+.wait_div {/* background:#ffffff;*/position:fixed;z-index:9999999;left:45%;width:10%;height:155px;border-radius:5px;top:37%;display:none;}
+.wait {position:absolute;color:#fff;left:42%;top:70%;}
+.all_checkbox {float:left;margin-top:8px;margin-left:5px;}
+
+.wxshouquan{margin-left: 20px;}
+.wxshouquanp1{font-size: 14px;color: #646464;padding-top: 25px;padding-left: 20px;}
+.wxshouquand1{margin: 35px 0 0 0;}
+.wxshouquans1{font-size: 14px;color: #646464;display: inline-block;vertical-align: middle;}
+.wxshouquans2{font-weight: 600;font-size: 16px;color: #646464;display: inline-block;vertical-align: middle;margin-left: 20px;}
+.wxshouquans3{font-size: 15px;color: #ffffff;display: inline-block;vertical-align: middle;margin-left: 40px;width: 110px;height: 45px;background-color: #06a7e1;cursor: pointer;line-height: 45px;text-align: center;}
+.wxshouquand2{margin: 40px 0 80px 0;font-size: 13px;color: #adadad;line-height: 20px;}
+
+#BgDiv2 {font-size: 14px;color: #646464;background-color:#000000;position:absolute;z-index:99;left:0;top:0;display:none;width:100%;height:100%;opacity:0.5;filter:alpha(opacity=50);-moz-opacity:0.5;}
+.alertbox{z-index:99;position: absolute;top: 300px;left: calc(50% - 275px);width: 550px;background-color: #ffffff;}
+.alerttitle{height: 50px;line-height: 50px;text-align: center;background-color: #d8d8d8;position: relative;}
+.alertcha{position: absolute;top: 15px;right: 15px;}
+.alerttext{margin: 40px;text-align: center;}
+.alertbtn{margin: 0 auto;padding-bottom: 40px;display: flex;}
+.alertbtn1{text-align: center;display: inline-block;vertical-align: middle;line-height: 45px;height: 45px;background-color: #06a7e1;color: #ffffff;margin: 0 auto;font-size: 14px;width: 130px;cursor: pointer;}

@@ -1,0 +1,409 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/css2.css" media="all">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/shop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<style type="text/css">
+a:hover{text-decoration: none;}   
+.button_blue{cursor: pointer;margin-left: 10px;font-size: 14px;line-height: 30px;background-color: #06a7e1;padding-left: 15px;padding-right: 15px;border-radius: 3px 3px 3px 3px;margin-top:20px;color: #fff;}
+.button_blue:hover{background:#0e98c9;}
+.name{  margin-top: 10px;height: 30px;line-height: 30px;font-size: 13px;text-align: left;font-weight: bolder;margin-left: 19px;}
+.button_box{width: 296px;display: block;text-align: right;}
+.button_box .WSY_button{border-radius:2px;border:none;}    
+.delivery-button{padding: 3px 15px;background-color: #06a7e1;color: #fff;border-radius: 2px;cursor:pointer;}
+.product-box{width:95%;margin-top: 15px;padding: 15px;border: 1px #ccc solid;display:none;}
+.header-left{float:left;}
+.header-right{float:right;}
+.search-box{height: 22px;line-height: 22px;} 
+.delivery_time{margin: 5px 35px;}
+.delivery_time input{margin: 0 20px;}
+.delivery_limit_box{margin: 15px 35px;position: relative;} 
+.delivery_font{font-size: 15px;font-weight: bold;width:140px;text-align:right;display:inline-block;}
+.delivery_limit_box input[type=text]{margin: 0 20px;}
+.selected-date-content{display: block;margin-left: 30px;margin-top: 10px;}
+.page-box1{margin-left:30px;}
+.page-box1,.page-box2{margin-top:15px;margin-left: 70px;}
+.show-data-num{margin:0 20px;}
+.page-box1 input,.page-box2 input{width:30px;text-align:center;}
+.show-data-num-btn{margin-right:30px;}
+.current-page{margin: 0 20px;}
+.go-page-btn{margin-left:15px;}
+#to-page-num1,#to-page-num2{margin-left:20px;}
+.relation_table th,.list_table th{text-align:center;}
+.activity_title{width:100%;border-bottom:1px #DEDBDB solid;padding: 3px 0 3px 20px;margin-top: 15px;}
+.activity_title_span{padding: 5px 10px;background-color: #DEDBDB;}
+.operation-button{height: 50px;line-height: 50px;text-align: center;}
+.back-button,.close-float-table{padding:5px 40px;;background-color:#ADABAB;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+.save-button,.add-selected-product{padding:5px 40px;;background-color:#06a7e1;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+.float-table{position: fixed;top: 0;height: 100%;width: 100%;background-color: #fff;overflow: scroll;z-index: 10;}
+.float-table-title-box{text-align: center;background-color: #E0E0E0;height: 40px;line-height: 40px;}
+.float-table-title{font-size: 18px;font-weight: bold;}
+.selected-table td,.selected-table input{font-size: 12px !important;}
+table#WSY_t1 td{word-wrap: break-word;text-align:center;}
+.product-name{width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.curr_return1{
+    float: left;
+}
+.curr_return2{
+    float: left;
+    margin-left: 50px;
+}
+.curr_return3{
+    float: left;
+    width: 20px;
+}
+.curr_return4{
+    float: left;
+}
+.curr_return5{
+    float: left;
+    width: 50px;
+}
+.curr_return6{
+    float: left;
+}
+</style>
+</head>
+<body>
+<div>  
+    <div class="WSY_content">
+		<div class="WSY_columnbox" style="min-height: 100px;">
+			<div class="WSY_column_header">
+				<div class="WSY_columnnav">
+					<a <?php if($search_class == 0){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list">活动管理</a>
+					<a <?php if($search_class == 1){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=product_sales_statistics">销量统计</a>
+					<a <?php if($search_class == 2){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list">用户管理</a>
+					<a <?php if($search_class == 3){echo 'class="white1"';} ?> href="/weixinpl/back_newshops/Order/order/order.php?customer_id=<?php echo passport_encrypt($customer_id)?>&from_page=<?php echo $from_page;?>&f2c_id=<?php echo $f2c_id;?>&orgin_type=5">订单管理</a>
+				</div>
+			</div>
+		<div class="activity_title">
+			<span class="activity_title_span">限时活动设置</span>
+		</div>
+	<div class="r_con_wrap">
+		<div style="margin-top:20px">
+			<label class="delivery_font">活动标题：</label>
+			<input type="text" name="title" id="title" onkeyup = "ValidateValue(this)" value="<?php echo $result[0]['title'];?>" /><span>50个字符内，不填默认活动编号为活动名</span>
+		</div>
+		<div style="margin-top:20px">
+			<label class="delivery_font">活动开始时间：</label>
+			<input type="text" id="time_start" name="time_start" value="<?php echo $result[0]['time_start'];?>" placeholder="年-月-日" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"  readonly />
+		</div>
+
+		<div style="margin-top:20px">
+			<label class="delivery_font">活动结束时间：</label>
+			<input type="text" id="time_end" name="time_end" value="<?php echo $result[0]['time_end'];?>" placeholder="年-月-日" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" readonly />
+		</div>
+		<div style="margin-top:20px">
+			<label class="delivery_font">是否立即发布：</label>
+			<label><input name="is_auto" id="is_auto" type="radio" <?php if($result[0]['is_auto'] == '1'){ ?>checked<?php } ?> value="1" />是</label> 
+			<label><input name="is_auto" id="is_auto" type="radio" <?php if($result[0]['is_auto'] == '0' || $result[0]['is_auto'] == ""){ ?>checked <?php } ?>value="0" />否</label>
+		</div>
+		<div style="margin-top:20px">
+			<label class="delivery_font" style="float: left;">时间显示设置：</label>
+			 <div class="WSY_remind_main">       
+					<span style="margin-left:135px;display: inline-block;position:absolute;"><img src="/weixinpl/back_newshops/Common/images/Base/help.png" id="openCurrency"></span>
+                    <dl class="WSY_remind_dl02"> 
+                        <dt>显示开关：</dt>
+                        <dd>
+                           <?php if($result[0]['is_display_time']=='1' || $result[0]['is_display_time']==""){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li onclick="if_display_time(0)" class="WSY_bot"  style="left: 0px;"></li>
+                                    <span onclick="if_display_time(1)" class="WSY_bot2"  style="display: none; left: 0px;"></span>
+                                </ul>
+                            <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="if_display_time(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span  onclick="if_display_time(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>						
+                            <?php } ?>
+                            <input type="hidden" name="if_display_time" id="if_display_time" value="<?php echo $result[0]['is_display_time']?>" />
+							
+                        </dd>
+                    </dl> 
+					<?php if($result[0]['is_display_time']=='1' || $result[0]['is_display_time']==""){ ?> <div id="time_set" style="margin-top: 20px;">
+					<?php }else{ ?>
+						<div id="time_set" style="display:none;margin-top: 20px;">
+					<?php } ?>
+					 <?php if($result[0]['display_time_count_down']=='1' || $result[0]['display_time_count_down']==""){ ?>
+						<label style="margin-left:150px;"><input name="display_time_count_down" type="checkbox" checked value="1" />倒数样式</label> 
+					<?php }else{ ?>
+						<label style="margin-left:150px;"><input name="display_time_count_down" type="checkbox" value="0" />倒数样式</label> 
+					<?php } ?>
+					<?php if($result[0]['display_time_range']=='1' || $result[0]['display_time_range']==""){ ?>
+						<label style="margin-left:50px;"><input name="display_time_range" type="checkbox" checked value="1" />时间范围</label> 
+					<?php }else{ ?>
+						<label style="margin-left:50px;"><input name="display_time_range" type="checkbox" value="0" />时间范围</label> 
+					<?php } ?>
+					</div>
+			</div>
+			
+		</div>
+		<?php if($is_open_return == "1"){ ?>
+		<div style="margin-top:20px;">
+                <label class="delivery_font" style="float: left;">售后设置：</label>
+                <div class="WSY_remind_main">            
+                    <dl class="WSY_remind_dl02"> 
+                        <dt>退款开关：</dt>
+                        <dd>
+                           <?php if($result[0]['is_refund']=='1' || $result[0]['is_refund']==""){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li onclick="if_refund(0)" class="WSY_bot"  style="left: 0px;"></li>
+                                    <span onclick="if_refund(1)" class="WSY_bot2"  style="display: none; left: 0px;"></span>
+                                </ul>
+                            <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="if_refund(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span  onclick="if_refund(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>						
+                            <?php } ?>
+                            <input type="hidden" name="if_refund" id="if_refund" value="<?php echo $result[0]['is_refund']?>" />
+                        </dd>
+                    </dl> 
+					<dl class="WSY_remind_dl02" style="margin-left: 140px;"> 
+                        <dt>退货开关：</dt>
+                        <dd>
+                           <?php if($result[0]['is_return_good']=='1' || $result[0]['is_return_good']==""){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li  onclick="if_return_pro(0)" class="WSY_bot"  style="left: 0px;"></li>
+                                    <span onclick="if_return_pro(1)" class="WSY_bot2"  style="display: none; left: 0px;"></span>
+                                </ul>
+                            <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="if_return_pro(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span onclick="if_return_pro(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>						
+                            <?php } ?>
+                            <input type="hidden" name="if_return_pro" id="if_return_pro" value="<?php echo $result[0]['is_return_good']?>" />
+                        </dd>
+                    </dl> 
+
+                    <dl class="WSY_remind_dl03" style="margin-left: 140px;"> 
+                        <dt>换货开关：</dt>
+                        <dd>
+                           <?php if($result[0]['is_exchange']=='1'|| $result[0]['is_exchange']==""){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li onclick="change_pro(0)" class="WSY_bot"  style="left: 0px;"></li>
+                                    <span onclick="change_pro(1)" class="WSY_bot2"  style="display: none; left: 0px;"></span>
+                                </ul>
+                            <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="change_pro(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span onclick="change_pro(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>						
+                            <?php } ?>
+                            <input type="hidden" name="change_pro" id="change_pro" value="<?php echo $result[0]['is_exchange']?>" />
+                        </dd>
+                    </dl>   			
+                </div>
+		</div> 
+		<?php } ?>
+		
+	</div>
+	<div class="operation-button">
+		<span class="back-button">返回</span>
+		<?php
+			if($result[0]['isout']== 0 || $result[0]['isout']==''){
+		?>
+		<span class="save-button">保存</span>
+		<?php
+			}
+		?>
+	</div>
+</div>
+</div>
+
+<script charset="utf-8" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Common/js/Base/basicdesign/ToolTip.js"></script>
+
+<script>
+var customer_id = '<?php echo $customer_id;?>';
+var customer_id_en = '<?php echo passport_encrypt((string)$customer_id); ?>';
+var activity_id	= '<?php echo $activity_id; ?>';
+
+//返回
+$('.back-button').click(function(){
+	history.go(-1);
+});
+
+/* 抢购产品提示 */
+$('#openCurrency').on('click', function(){
+	layer.tips('同时选择两个，则默认当活动时间剩余2天，含2天，使用倒数样式;超过2天使用时间范围样式','#openCurrency');
+});
+
+function ValidateValue(textbox)
+{
+	 var IllegalString = "\ `~@#;,.!#$%^&*()+{}|\\:\"<>?-=/,\'";
+	 var textboxvalue = textbox.value;
+	 var index = textboxvalue.length - 1;
+	 
+	 var s = textbox.value.charAt(index);
+	 
+	 if(IllegalString.indexOf(s)>=0)
+	 {
+		s = textboxvalue.substring(0,index);
+		textbox.value = s;
+	 }
+}
+
+//保存
+$('.save-button').click(function(){
+	var title         			= $('#title').val();
+	var time_start    			= $('#time_start').val();
+	var time_end   	 			= $('#time_end').val();
+	var is_auto       			= $('input:radio[name="is_auto"]:checked').val();
+	var if_refund     			= $('#if_refund').val();
+	var if_return_pro 			= $('#if_return_pro').val();
+	var if_display_time 		= $('#if_display_time').val();
+	var display_time_count_down = $('input[name="display_time_count_down"]:checked').val();
+	var display_time_range 		= $('input[name="display_time_range"]:checked').val();
+	var change_pro      		= $('#change_pro').val();
+	if(title.length>50){
+		alert('标题不能超过50个字符，请重新输入');
+		return false;
+	}
+	if(time_start == ""){
+		alert('活动开始时间不能为空');
+		return false;
+	}
+	if(time_end == ""){
+		alert('活动结束时间不能为空');
+		return false;
+	}
+	if(time_end < time_start){
+		alert('活动结束时间不能小于开始时间');
+		return false;
+	}
+	if(if_display_time == 1){
+		if(display_time_count_down == null && display_time_range == null){
+			alert('若开启时间提示，时间样式不能为空');
+			return false;
+		}
+	}
+	if(display_time_count_down == null){
+		display_time_count_down = 0;
+	}
+	if(display_time_range == null){
+		display_time_range = 0;
+	}
+	if(activity_id>0){
+		$.ajax({
+			url: '/mshop/admin/index.php?m=restricted_purchase&a=update_activity',
+			dataType: 'json',
+			type: 'post',
+			data: {
+				activity_id:activity_id,
+				title:title,
+				time_start:time_start,
+				time_end:time_end,
+				is_auto:is_auto,
+				if_refund:if_refund,
+				if_return_pro:if_return_pro,
+				if_display_time:if_display_time,
+				display_time_count_down:display_time_count_down,
+				display_time_range:display_time_range,
+				change_pro:change_pro
+			},
+			success: function(res){
+			//	var obj = eval('(' + res + ')');
+				if( res.errcode == '0' ){
+					alert(res.errmsg);
+					window.location = "/mshop/admin/index?m=restricted_purchase&a=get_activity_list";
+				}else{
+					alert(res.errmsg);
+				}
+			}
+		});
+	}else{
+		$.ajax({
+			url: '/mshop/admin/index.php?m=restricted_purchase&a=create_activity',
+			dataType: 'json',
+			type: 'post',
+			data: {
+				title:title,
+				time_start:time_start,
+				time_end:time_end,
+				is_auto:is_auto,
+				if_refund:if_refund,
+				if_return_pro:if_return_pro,
+				if_display_time:if_display_time,
+				display_time_count_down:display_time_count_down,
+				display_time_range:display_time_range,
+				change_pro:change_pro
+			},
+			success: function(res){
+			//	var obj = eval('(' + res + ')');
+				if( res.errcode == '0' ){
+					alert(res.errmsg);
+					window.location = "/mshop/admin/index?m=restricted_purchase&a=get_activity_list";
+				}else{
+					alert(res.errmsg);
+				}
+			}
+		});
+	}
+	
+});
+
+//正整数
+function clearInt(obj){
+	if(obj.value.length==1){obj.value=obj.value.replace(/[^1-9]/g,'')}else{obj.value=obj.value.replace(/\D/g,'')}
+}
+function clearInt2(obj){
+	obj.value=obj.value.replace(/[^1-9]/g,'');
+	if(obj.value !=''){
+		if(obj.value<1){
+			obj.value=1;
+		}else if(obj.value>5){
+			obj.value=5;
+		}
+	}
+	
+}
+//两位小数
+function clearFloat(obj){
+	obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+	obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字而不是
+	obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+	obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+	obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
+}
+
+function change_pro(obj){
+	$("#change_pro").val(obj);
+}
+function if_refund(obj){
+	$("#if_refund").val(obj);
+}
+function if_return_pro(obj){
+	$("#if_return_pro").val(obj);
+}
+function if_display_time(obj){
+	if(obj == 1){
+		$('#time_set').css('display','block'); 
+	}else{
+		$('#time_set').css('display','none');
+	}
+	$("#if_display_time").val(obj);
+}
+</script>
+
+</body>
+</html>

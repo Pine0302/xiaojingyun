@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>大转盘用户统计列表</title>
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/js/layer/V2_1/skin/layer.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Product/product.css"><!--内容CSS配色·蓝色-->
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+
+	<style type="text/css">
+		.form-btn{width:auto!important;padding:0 10px!important;cursor:pointer;color:#fff!important;border:0!important;}
+		.form-add-btn{display:inline-block;line-height:24px;border-radius:3px;}
+		.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+	</style>
+</head>
+<body>
+	<!--内容框架开始-->
+	<div class="WSY_content" id="WSY_content_height">
+	    <!--列表内容大框开始-->
+		<div class="WSY_columnbox">	
+			<div class="WSY_column_header">
+				<?php 
+					$head = 4;
+					include("action_head.html");
+				?>
+			</div>
+		    <!--产品管理代码开始-->
+		    <div class="WSY_data">
+		    	<div class="WSY_agentsbox">
+					<form class="search" id="ac_frm" style="display:block" method="get" action="/mshop/admin/index.php?m=slyder_adventures&a=action_user_statis">
+						<input type="hidden" id="m" name="m" value="slyder_adventures">
+						<input type="hidden" id="a" name="a" value="action_user_statis">
+						<input type="hidden" id="user_id" name="user_id" value="<?php echo $data['user_id'] ?>">
+						<ul class="WSY_search_q">
+							<li>活动编码：<input type="text" name="slyder_id" id="slyder_id" value="<?php if($data['slyder_id']!=""){echo $data['slyder_id'];}?>" class="form_input"></li>
+							<li>活动名称：<input type="text" name="title" id="title" value="<?php if($data['title']!=""){echo $data['title'];}?>" class="form_input"></li>
+							<li>奖项选择：
+								<select name="award_level" id="award_level">
+									<option value="-1">--请选择--</option>
+									<option value="1" <?php if($data['award_level']==1){?>selected<?php } ?>>一等奖</option>	
+									<option value="2" <?php if($data['award_level']==2){?>selected<?php } ?>>二等奖</option>
+									<option value="3" <?php if($data['award_level']==3){?>selected<?php } ?>>三等奖</option>
+									<option value="4" <?php if($data['award_level']==4){?>selected<?php } ?>>四等奖</option>
+									<option value="5" <?php if($data['award_level']==5){?>selected<?php } ?>>五等奖</option>
+									<option value="6" <?php if($data['award_level']==6){?>selected<?php } ?>>六等奖</option>
+									<option value="7" <?php if($data['award_level']==7){?>selected<?php } ?>>七等奖</option>
+									<option value="8" <?php if($data['award_level']==8){?>selected<?php } ?>>八等奖</option>
+									<option value="9" <?php if($data['award_level']==9){?>selected<?php } ?>>九等奖</option>
+									<option value="10" <?php if($data['award_level']==10){?>selected<?php } ?>>十等奖</option>
+									<option value="11" <?php if($data['award_level']==11){?>selected<?php } ?>>十一等奖</option>
+									<option value="12" <?php if($data['award_level']==12){?>selected<?php } ?>>十二等奖</option>
+								</select>
+							</li>
+							<li>抽奖时间：
+								<input class="form_input" type="text" id="create_time" name="create_time" value="<?php if($data['create_time']!=-1){echo $data['create_time'];}?>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px" />
+								-
+								<input class="form_input" type="text" id="create_time_end" name="create_time_end" value="<?php if($data['create_time_end']!=-1){echo $data['create_time_end'];}?>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px" />
+							</li>	
+							<li>状态：
+								<select name="status" id="status">
+									<option value="-1" <?php if($data['status']==-1){ ?>selected<?php } ?> >--请选择--</option>
+									<option value="0" <?php if($data['status']=='0'){ ?>selected<?php } ?>>待领取</option>	
+									<option value="1" <?php if($data['status']==1){ ?>selected<?php } ?>>已领取</option>
+									<option value="2" <?php if($data['status']==2){ ?>selected<?php } ?>>已失效</option>
+								</select>
+							</li>
+<!-- 							<li>用户姓名：<input type="text" name="name" id="name" value="<?php echo $data['name']?>" class="form_input"></li>
+							<li>用户电话：<input type="text" name="phone" id="phone" value="<?php echo $data['phone']?>" class="form_input"></li> -->
+							<li><input type="submit" class="WSY-skin-bg form-btn"  value="搜索" ></li>
+							<li><a class="WSY-skin-bg form-btn form-add-btn" onclick="jump_url('<?php echo $customer_id ?>',1);">导出</a></li>
+						</ul> 
+					</form>
+
+		            <table width="97%" class="WSY_table" id="WSY_t1">
+						<thead class="WSY_table_header">
+							<th width="10%" nowrap="nowrap"align="center">活动编码</th>
+							<th width="15%" nowrap="nowrap"align="center">活动名称</th>
+							<th width="8%" nowrap="nowrap"align="center">获得奖项</th>
+							<th width="8%" nowrap="nowrap"align="center">奖品</th>
+							<th width="8%" nowrap="nowrap"align="center">抽奖时间</th>
+							<th width="10%" nowrap="nowrap"align="center">姓名</th>
+							<th width="25%" nowrap="nowrap"align="center">电话</th>
+							<th width="10%" nowrap="nowrap"align="center">地址</th>
+							<th width="15%" nowrap="nowrap"align="center">状态</th>
+							<th width="15%" nowrap="nowrap"align="center">操作</th>
+						</thead>
+						<tbody class="tbody-main">
+							<?php foreach ($data2 as $key => $row) { 
+								$status = $row['status'] ;
+								switch($status){
+									case "0":
+										$status_str = "待领取";
+										break;
+									case "1":
+										$status_str = "已领取";
+										break;
+									case "2":
+										$status_str = "已失效";
+										break;
+									default:
+										$status_str = "无";
+										break;
+								}	
+								$award_level = $row['award_level'] ;
+								switch($award_level){
+									case "1":
+										$award_level = "一等奖";
+										break;
+									case "2":
+										$award_level = "二等奖";
+										break;
+									case "3":
+										$award_level = "三等奖";
+										break;
+									case "4":
+										$award_level = "四等奖";
+										break;
+									case "5":
+										$award_level = "五等奖";
+										break;
+									case "6":
+										$award_level = "六等奖";
+										break;
+									case "7":
+										$award_level = "七等奖";
+										break;
+									case "8":
+										$award_level = "八等奖";
+										break;
+									case "9":
+										$award_level = "九等奖";
+										break;
+									case "10":
+										$award_level = "十等奖";
+										break;
+									case "11":
+										$award_level = "十一等奖";
+										break;
+									case "12":
+										$award_level = "十二等奖";
+										break;
+									default:
+										$award_level = "无奖";
+										break;
+								}							
+								?>
+								<tr>
+									<td style="text-align:center;"><?php echo $row['slyder_id'] ?></td>
+									<td style="text-align:center;"><?php echo $row['title'] ?></td>
+									<td style="text-align:center;"><?php echo $award_level ?></td>
+									<td style="text-align:center;"><?php echo $row['award_name']?:"无奖品" ?></td>
+									<td style="text-align:center;"><?php echo $row['create_time'] ?></td>
+									<td style="text-align:center;"><?php echo $user_arr['name'] ?></td>
+									<td style="text-align:center;"><?php echo $user_arr['phone'] ?></td>
+									<td style="text-align:center;"><?php if($row['user_address']){echo $row['user_address']['location_p'].$row['user_address']['location_c'].$row['user_address']['location_a'].$row['user_address']['address'];}else{echo "无";} ?></td>
+									<td style="text-align:center;"><?php echo $status_str ?></td>
+									<td style="text-align:center;">
+										<?php if($row['type']!="1"){?>
+										<button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $row['order_batchcode']?>',2);">查看订单</button>
+										<?php }?>
+									</td>
+								</tr>
+							
+							<?php }	?>							
+						</tbody>
+						
+					</table>
+				</div>
+		        <!--翻页开始-->
+		        <div class="WSY_page">
+		        	
+		        </div>
+		        <!--翻页结束-->
+		    </div>
+		    <!--产品管理代码结束-->
+		</div>
+		<div style="width:100%;height:20px;"></div>
+	</div>
+	<!--内容框架结束-->
+</body>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script><!--添加时间插件-->
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript">
+var customer_id=<?php echo $data['customer_id'] ?>;
+var user_id=<?php echo $data['user_id'] ?>;
+var data3 = "";	
+var slyder_id =$("#slyder_id").val();
+var title = $("#title").val();
+var award_level = $("#award_level").val();
+var status = $("#status").val();
+var create_time = $("#create_time").val();
+var create_time_end = $("#create_time_end").val();
+if (slyder_id!="") {
+	data3 += "/slyder_id/"+slyder_id;
+}
+if (title!="") {
+	data3 += "/title/"+title;
+}
+if (award_level!="-1") {
+	data3 += "/award_level/"+award_level;
+}
+if (create_time!="") {
+	data3 += "/create_time/"+create_time;
+}
+if (create_time_end!="") {
+	data3 += "/create_time_end/"+create_time_end;
+}
+if (status!="-1") {
+	data3 += "/status/"+status;
+}
+<!-- 分页 start -->
+var pagenum = <?php echo $pageNum ?>;//当前页
+var count =<?php echo $pageCount ?>;//总页数	
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+	pageCount:count,
+	current:pagenum,
+	backFn:function(p){
+	var url="/mshop/admin/index.php?m=slyder_adventures&a=action_user_statis&pagenum="+p+"&user_id="+user_id;	
+
+	location.href = url;
+   }
+});
+
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a>count) || isNaN(a)){
+		layer.alert('没有下一页了');
+		return false;
+	}else{
+		var url="/mshop/admin/index.php?m=slyder_adventures&a=action_user_statis&pagenum="+a+"&user_id="+user_id;	
+		location.href = url;
+	}
+}
+<!-- 分页 end -->
+
+
+function jump_url(id,type){
+	//type : 1-导出  2-查看订单  3-关联订单
+	// console.log(data2);
+	var url = "";
+	if(type==1){
+		url = "/weixin/plat/app/index.php/Excel/excel_action_user_statis/customer_id/"+customer_id+"/user_id/"+user_id+data3;
+	}else if(type==2){
+		url = "/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&search_batchcode="+id;
+	}else if(type==3){
+		url = "/weixinpl/back_newshops/Order/order/order.php?customer_id="+id;
+	}
+	location.href = url;
+}
+</script>		
+</html>

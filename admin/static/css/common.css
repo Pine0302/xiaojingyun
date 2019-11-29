@@ -1,0 +1,19 @@
+/* Body、顶部界面开始*/
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+img{max-width: 100%;border:none;}
+a{text-decoration: none;color: black;}
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;-webkit-text-size-adjust:none;}
+input[type='text'],input[type='number'],input[type='password'],input[type='reset'],input[type='submit'],input[type='button'],input[type='tel'],button,textarea{-webkit-appearance:none; border-radius:0; border:none;} /*去掉苹果的默认UI来渲染按钮*/
+ol,ul {list-style: none;} 
+h1,h2,h3,h4,h5,h6 {font-weight: normal;} 
+textarea{overflow:auto;resize:none;} 
+/*媒体查询自适应字体*/
+	@media screen and (min-width: 320px) {
+			html{font-size: 10px;}
+		}
+	@media screen and (min-width: 375px) {
+			html{font-size: 11px;}
+		}
+	@media screen and (min-width: 413px) {
+			html{font-size: 12px;}
+		}

@@ -1,0 +1,10 @@
+.lot_operate {
+    width: 70px;
+    height: 27px;
+    background: #2eade8;
+    border-radius: 2px;
+    color: #fff;
+    margin-left: 40px;
+    margin-top: 19px;
+    cursor: pointer;
+}

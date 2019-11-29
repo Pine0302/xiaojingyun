@@ -1,0 +1,27 @@
+/* CSS Responsive */
+
+/*响应式属性*/
+
+
+/*WSY_menu 菜单*/
+.WSY_menu{width:107%;overflow:auto;height:640px;}
+@media screen and (max-width:1800px){
+	.WSY_menu{width:110%;}
+}
+/*响应式 到一定的高度时适应屏幕分辨率大小*/
+@media screen and (max-height:870px){
+	.WSY_menu{height:560px;}
+}
+
+@media screen and (max-height:850px){
+	.WSY_menu{height:500px;}
+}
+@media screen and (max-height:790px){
+	.WSY_menu{height:420px;}
+}
+@media screen and (max-height:710px){
+	.WSY_menu{height:350px;}
+}
+@media screen and (max-height:640px){
+	.WSY_menu{height:280px;}
+}

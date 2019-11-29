@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>统计</title>
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/content.css">
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/contentblue.css">
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/content.css">
+	<link type="text/css" rel="stylesheet" rev="stylesheet" href="/mshop/admin/static/css/inside.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/product.css"><!--内容CSS配色·蓝色-->
+	<script type="text/javascript" src="/mshop/admin/static/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/mshop/admin/static/js/jscolor.js"></script><!--拾色器js-->
+	<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+	<script type="text/javascript" src="/mshop/admin/static/js/inside.js"></script>
+	<script type="text/javascript" src="/mshop/admin/static/js/get.js"></script>
+	<script type="text/javascript" src="/mshop/admin/static/js/jquery.percentageloader.0.2.js"></script>
+	<style>
+		.aright {
+			margin-right:5px!important;;
+		}
+		.left{
+			margin-top: 10px;
+			padding-left: 20px;
+			font-size: 14px;
+			color: #2eade8;
+			background-image: url(/addons/common/images_V6.0/table_icon/icon01.png);
+			background-repeat: no-repeat;
+			background-position: left 0%;
+			margin-left: 20px;
+		}
+		#caozuo a img{
+			width: 18px;
+			height: 18px;
+			vertical-align: baseline;
+		}
+		#caozuo{
+			height: 80px;
+			padding-top: 20px !important;
+			padding-bottom: 20px !important;
+
+		}
+		.WSY_table a{
+			color:#06a7e1;
+		}
+		.headimgurl{
+			width: 15%;
+			border-radius: 50%;
+			vertical-align: middle;
+			margin:10px 0;
+		}
+		.user_name{
+			margin-left: 5%;
+			display: inline-block;
+			width: 70%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			vertical-align: middle;
+			text-align: left;
+		}
+		.operation-btn{
+			display: inline-block;
+			padding: 5px 10px;
+			color: #fff;
+			background-color: #03A103;
+			cursor: pointer;
+		}
+		.WSY_bottonliss2{
+			float: right !important;
+			color: red;
+			font-size: 20px;
+		}
+		.sum{
+			color: blue;
+			font-size: 20px;
+			display: inline-block;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		/*导出异步加载*/
+		#topLoader{width:256px;height:256px;margin-bottom:32px;position:absolute;width:400px;left:50%;top:50%;margin-left:-200px;height:auto;z-index:100;padding:1px;}
+		#per_container{width:500px;padding:10px;margin-left:auto;margin-right:auto;}
+		#BgDiv{background-color:#e3e3e3;position:absolute;z-index:99;left:0;top:0;display:none;width:100%;height:1000px;opacity:0.5;filter:alpha(opacity=50);-moz-opacity:0.5;}
+		
+		.head_img{
+			width: 50px;
+			height: auto;
+			padding: 5px;
+		}
+		
+		.sel_class{
+			color: #8282fd;
+		}
+		
+		.word{
+			line-height: 22px;
+		}
+
+	</style>
+</head>
+<body>
+
+<div id="BgDiv"></div>
+<div id="per_container">
+	<div style="display:none" id="topLoader"></div>
+</div>
+
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+	<!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+		<!--头部导航start-->
+		<?php require('header.html');?>
+		<!--头部导航end-->
+		<div class="WSY_data">
+			<div class="WSY_agentsbox">
+				<form class="search" id="search_form">
+					<div class="WSY_search_q search" id="search_form" style="background-color:#fff;border:0px;">
+						<li>订单号： <input type=text name="search_batchcode" id="search_batchcode" value="" style="width:150px;" /></li>
+						<li>下单时间： <input type=text name="search_starttime" id="search_starttime" style="width:150px;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'search_endtime\')}',autoPickDate:false});" /> - <input type=text name="search_endtime" id="search_endtime" style="width:150px;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'search_starttime\')}',autoPickDate:false});" /></li>
+						<li class="WSY_bottonliss"><input style="padding-right:0" type="button" class="search_btn"  onclick="" value="搜索"></li>
+						
+						<li class='word sel_class' data_type='today'>今日</li>
+						<li class='word' data_type='yesterday'>昨日</li>
+						<li class='word' data_type='week'>最近7日</li>
+						<li class='word' data_type='month'>最近30日</li>
+						
+					
+						<li class="WSY_bottonliss">
+							<input type="button" onclick="queue_export();" value="导出" style="cursor:pointer;">
+						</li>
+
+						<li class="WSY_bottonliss2">总共<span class="sum"></span>元</li>
+					</div>
+				</form>
+				<table width="97%" class="WSY_table" id="WSY_t1" >
+					<thead class="WSY_table_header">
+						<th width="15%" nowrap="nowrap">订单号</th>
+						<th width="10%" nowrap="nowrap">用户ID</th>
+						<th width="10%" nowrap="nowrap">用户名称</th>
+						<th width="10%" nowrap="nowrap">用户头像</th>
+						<th width="10%" nowrap="nowrap">奖励金额</th>
+						<th width="7%" nowrap="nowrap">处理状态</th>
+						<th width="7%" nowrap="nowrap">执行日志</th>
+						<th width="15%" nowrap="nowrap">备注</th>
+						<th width="8%" nowrap="nowrap">创建时间</th>
+						<th width="5%" nowrap="nowrap" class="last">操作</th>
+					</thead>
+				</table>
+			</div>
+			<!--翻页开始-->
+			<div class="WSY_page">
+			</div>
+			<!--翻页结束-->
+		</div>
+	</div>
+	<div style="width:100%;height:20px;"></div>
+</div>
+<!--内容框架结束-->
+<script src="/mshop/admin/static/js/fenye/jquery.page1.js"></script>
+<script src="/mshop/admin/static/js/common_function.js"></script>
+<!--<script src="/addons/view/voice_online/common/js/back_init.js"></script>-->
+<script src="../../../common/js/floatBox.js"></script>
+
+<script>
+    var customer_id_en = $.getUrlParam('customer_id');
+    var type = $.getUrlParam('type')?$.getUrlParam('type'):0;
+
+    /*搜索参数数组说明：
+    searchParam的key值对应起搜索的ID
+    */
+    var searchParam =new Array();
+    searchParam['search_batchcode'] = [1,''];
+    searchParam['search_starttime'] = [1,''];
+    searchParam['search_endtime'] = [1,''];
+	searchParam['extend'] = [{
+							type:type,
+							data_type:'today',
+							}];
+    var tableobj = {
+        url:'/mshop/admin/index.php?m=HyOrder_reward&a=admin_get_poll',				//异步请求链接
+        countUrl:'/mshop/admin/index.php?m=HyOrder_reward&a=admin_get_poll',			//页码统计链接
+        is_count:1,					//是否统计数量
+        pageNum:20,					//每页数据数量
+        clearData:function(){		//清除数据函数
+            $('.apply_room_info').remove();
+        },
+        searchParam:searchParam ,	//搜索参数数组
+        callbackfunc:callbackfunc,	//获取数据后回调函数
+    }
+    $(function(){ tableinit.main(); })
+
+    //回调函数
+    function callbackfunc(res) {
+        var html = '';
+		console.log(res);
+		var sum = 0;
+        for( i in res ) {
+
+            html += '<tr class="apply_room_info">';
+            html += '	<td>'+res[i]['batchcode']+'</td>';
+            html += '	<td>'+res[i]['user_id']+'</td>';
+            html += '	<td>'+res[i]['weixin_name']+'</td>';
+            html += '	<td><img class="head_img" src="'+res[i]['weixin_headimgurl']+'"/></td>';
+            var money = res[i]['money']==null?0:res[i]['money']
+            html += '	<td>'+ money + '</td>';
+            var type_str = '';
+			if( res[i]['status'] == 1 ) {
+                type_str = '已处理';
+            }else if( res[i]['status'] == -1 ) {
+                type_str = '不处理';
+            }else{
+                type_str = '待处理';
+			}
+			var remark = res[i]['remark']?res[i]['remark']:'';
+            html += '<td>'+type_str+'</td>';
+            //html += '<td>'+res[i]['run_num']+'</td>';
+            //html += '	<td><a href="/mshop/admin/index.php?m=HyOrder_reward&a=poll_log&batchcode='+res[i]['batchcode']+'">查看操作日志</a></td>';
+            html += '	<td><a href="/mshop/admin/index.php?m=HyOrder_reward&a=poll_log&batchcode='+res[i]['batchcode']+'">'+res[i]['run_num']+'</a></td>';
+            html += '<td>'+remark+'</td>';
+            html += '<td>'+res[i]['createtime']+'</td>';
+
+			var img_src='/addons/view/voice_online/common/images/admin_icon1.png';
+            if(res[i]['status'] == 1){
+                html += '	<td><img src='+img_src+' style="width:23px;margin:0 5px;cursor:pointer;" onclick="showOrder(\''+res[i]['batchcode']+'\')" title="查看订单奖励明细"/></td>';
+            }else{
+                html += '	<td><img src='+img_src+' style="width:23px;margin:0 5px;cursor:pointer;" onclick="showLog(\''+res[i]['batchcode']+'\')" title="查看订单处理日志"/></td>';
+            }
+
+            html += '</tr>';
+
+            var _money = res[i]['money']
+            if(!res[i]['money']){
+                _money = 0;
+			}
+            sum += parseFloat(_money)  ;
+        }
+        $('.sum').text(sum);
+        $('.WSY_table_header').after(html);
+    }
+
+    //查看详情
+    function showLog(batchcode) {
+        window.location.href = '/mshop/admin/index.php?m=HyOrder_reward&a=poll_log&customer_id='+customer_id_en+'&batchcode='+batchcode;
+    }
+    function showOrder(batchcode) {
+        window.location.href = '/mshop/admin/index.php?m=HyOrder_reward&a=poll_order&customer_id='+customer_id_en+'&batchcode='+batchcode;
+    }
+
+
+    // 导出操作
+    function queue_export(){
+
+       		var search_batchcode = $('#search_batchcode').val();
+       		var search_starttime = $('#search_starttime').val();
+       		var search_endtime = $('#search_endtime').val();
+			var data_type = $('.sel_class').attr('data_type');
+            var url='/mshop/admin/index.php?m=excel&a=order_reward_poll&type='+type+'&search_batchcode='+search_batchcode+'&search_starttime='+search_starttime+'&search_endtime='+search_endtime+'&data_type='+data_type;
+
+            location.href = url;
+
+
+
+    }
+	
+	//点击时间类型搜索
+	$('.word').click(function(){
+	
+		//清除搜索数据
+		$('#search_batchcode').val('');
+       	$('#search_starttime').val('');
+       	$('#search_endtime').val('');
+
+		$('.word').removeClass('sel_class');
+		$(this).addClass('sel_class');
+		var data_type = $(this).attr('data_type');
+		tableobj.searchParam.extend[0]['data_type'] = data_type;
+		//console.log(tableobj.searchParam.extend);
+		tableinit.searchForm();
+	
+	});
+	
+	$('.search_btn').click(function(){
+	
+		tableobj.searchParam.extend[0]['data_type'] = '';
+		$('.word').removeClass('sel_class');
+		tableinit.searchForm();
+	});
+	
+	
+
+
+
+</script>
+</body>
+</html>

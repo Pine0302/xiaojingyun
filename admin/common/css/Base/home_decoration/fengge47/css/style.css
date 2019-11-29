@@ -1,0 +1,48 @@
+/* Body、顶部界面开始*/
+*{margin: 0;padding: 0;}
+img{max-width: 100%;border:none;}
+a{text-decoration: none;color: black;}
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;-webkit-text-size-adjust:none;}
+input[type='text'],input[type='number'],input[type='password'],input[type='reset'],input[type='submit'],input[type='button'],input[type='tel'],button,textarea{-webkit-appearance:none;border-radius: 0;border:1px solid #ddd;} /*去掉苹果的默认UI来渲染按钮*/
+.clear{clear: both; display: block; height: 0; overflow: hidden; visibility: hidden; width: 0;}
+ol,ul {list-style: none;}  
+h1,h2,h3,h4,h5,h6 {font-weight: normal;}   
+/* 样式*/
+.search-box{height: 36px;width: 100%;background-size: 100% 100%;position: relative;}
+.search-layer{position: absolute;height:24px;top: 5px;right: 5px;width:50%;border-radius: 3px;text-indent: 3px;z-index:99;}
+.search-input{position: absolute;height:24px;top: 0px;left:0;width:100%;border-radius: 3px;text-indent: 3px;}
+.search-button{position: absolute;right: 0;width: 24px;height:20px;top: 3px;background:url('../images/search-button.png');background-size: 100% 100%;border:0 none;}
+.scroll-img{width: 100%;height:150px;}
+.content-box{margin:0 auto;width: 94%;margin-top: 10px;text-align: center;}
+.content-box .icon-box{width: 25%;float: left;margin-bottom: 8px;overflow: hidden;}
+.content-box .icon-box img{width: 36px;height:36px;}
+.content-box .icon-box p{font-size: 12px;text-overflow:clip;white-space:nowrap;}
+.img-box{height: 130px;width: 100%;}
+.img-box .left-img{height: 130px;width: 42%;padding-right: 1px;float: left;box-sizing:border-box;}
+.img-box .right-top-img{height: 65px;width: 58%;float: left;padding-bottom: 1px;box-sizing:border-box;}
+.img-box .right-bottom-img{height: 65px;width: 58%;float: left;box-sizing:border-box;}
+.product-box .title{height: 22px;float: left;margin-top: 3px;}
+.product-box .more{color:#ff5b86;font-size: 13px;float: right;line-height: 24px;}
+.product-box .banner{display: block;height: 120px;width: 100%;}
+.product-box .left-product{width: 50%;float: left;box-sizing:border-box;height: 160px;border-bottom: 1px solid #c9c9c9;border-right: 1px solid #c9c9c9;}
+.product-box .right-product{width: 50%;float: left;box-sizing:border-box;height: 160px;border-bottom: 1px solid #c9c9c9;}
+.product-box .three-product{width: 33.33%;float: left;box-sizing:border-box;height: 120px;border-bottom: 1px solid #c9c9c9;}
+.product-box .three-product.border-right{border-right: 1px solid #c9c9c9;}
+.w50-img{width: 50%;display: block;float: left;box-sizing:border-box;padding-bottom: 1px;height: 160px;}
+.w50-img:nth-child(odd){padding-right: 1px;}
+.w100-img{width: 100%;height: 62px;display: block;}
+/*.footer{position: fixed;bottom: 0px;left: 0px;width: 100%;height: 45px;background:#ff5b86;}*/ /*default 改*/
+.footer{bottom: 0px;left: 0px;width: 320px;height: 45px;background:#ff5b86;}
+.footer .footer-box{margin:0 auto;width: 92%;height: 45px;}
+.footer .footer-box .weidian{width: 25%;height: 35px;float: left;text-align: center;margin-top: 5px;}
+.footer .footer-box .weidian img{width: 20px;height: 20px;}
+.footer .footer-box .weidian p{font-size: 12px;color: #fff;}
+.footer .footer-box .weidian.active p{color:#64b83c;white-space:nowrap;text-overflow:clip;overflow: hidden;}
+.clear-fix{width: 100%;height: 45px;}  
+
+
+/*backcommon*/
+.left-img img {height:130px;}
+.right-bottom-img img,.right-top-img img{height:65px;}
+.icon-box .div_typename,.weidian .div_typename{height:20px;}
+.weidian .div_typename{color:#fff!important;}

@@ -1,0 +1,287 @@
+<?php
+$head= 0 ;//头部文件
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+        <?php if(!empty($param['user_id'])){?>
+           活动明细
+        <?php }else{?>
+           活动管理
+        <?php }?>
+        </title>
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/js/layer/V2_1/skin/layer.css">
+        <link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+        <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+    </head>
+
+    <body>
+        <!--内容框架开始-->
+        <div class="WSY_content">
+            <!--列表内容大框开始-->
+            <div class="WSY_columnbox">
+                <!--列表头部切换开始-->
+                <?php
+                    include($_SERVER['DOCUMENT_ROOT']."/mshop/admin/view/share_gifts/head.html"); 
+                ?>
+                <!--列表头部切换结束-->
+
+                <div class="WSY_data">
+                    <!--列表按钮开始-->
+                    <div class="WSY_list" id="WSY_list">
+                        <div class="WSY_left" >
+                             <a>
+                             <?php if(!empty($param['user_id'])){?>
+                               用户参与过的活动列表
+                            <?php }else{?>
+                               活动管理列表
+                            <?php }?>
+                             </a>
+                            <a style="display:inline-block;" class="WSY_input01">
+                                <span>活动编号：<input type="text" name="act_id" id="act_id" value="<?php if($param['act_id'] > 0){ echo $param['act_id'];} ?>"></span>
+                                <span>活动标题：<input type="text" name="name" id="name" value="<?php echo $param['name']; ?>"></span>
+                                <span>
+                                    状态筛选：
+                                    <select name="status" id="status">
+                                        <option value="0">--请选择--</option>
+                                        <option value="1" <?php if($param['status']==1){ ?>selected <?php } ?>>待启用</option>
+                                        <option value="2" <?php if($param['status']==2){ ?>selected <?php } ?>>已启用</option>
+                                        <option value="3" <?php if($param['status']==3){ ?>selected <?php } ?>>已结束</option>
+                                    </select>
+                                </span>
+                                <span>
+                                    创建时间：
+                                    <input class="date_picker" value="<?php echo $param['begin_time'];?>" type="text" name="begin_time" id="begin_time" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+                                    &nbsp;&nbsp;-&nbsp;&nbsp;
+                                    <input class="date_picker" value="<?php echo $param['end_time'];?>" type="text" name="end_time" id="end_time" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+                                </span>
+                            
+                                <span><button class="WSY_search_01" onclick="searchAct();">搜索</button></span>
+                              <span id="result_num" style="color:red;">搜索结果：<?php echo $allCount; ?>条结果</span>
+                                <span style="display:inline-block;">
+                                   <a style="display:inline-block;background:#06a7e1;padding:0px 13px;color:#FFF;border-radius:3px;" href="/mshop/admin/index.php?m=share_gifts&a=activity_add&customer_id=<?php echo $customer_id_en; ?>">添加</a>
+                                </span>
+                            </a>
+
+
+                        </div>
+                        <?php if(!empty($param['user_id'])){?>
+                            <ul class="WSY_righticon">
+                                <li class="WSY_inputicon"><a href="/mshop/admin/index.php?m=share_gifts&a=activity_user_statistic&customer_id=<?php echo $customer_id_en;?>" >返回</a></li>
+                            </ul>
+                        <?php }?>
+                        
+                        <br class="WSY_clearfloat">
+                    </div>
+                    <!--列表按钮结束-->
+                    <!--表格开始-->
+                    <table width="97%" class="WSY_table WSY_t2" id="WSY_t1">
+                        <thead class="WSY_table_header">
+                            <th width="10%">活动编号</th>
+                            <th width="10%">活动标题</th>
+                            <th width="10%">活动创建时间</th>
+                            <th width="10%">活动开始时间</th>
+                            <th width="10%">活动结束时间</th>
+                            <th width="10%">活动状态</th>
+                            <?php if(empty($param['user_id'])){?><th width="10%">操作</th><?php }?>
+                        </thead>
+                            <?php  if(!empty($act_infos)){
+                                foreach($act_infos as $k=>$v){
+                            ?>
+
+                                <tr class="WSY_q1">
+                                    <td align="center" style="text-align:center;"><?php echo $v['id']; ?></td>
+                                    <td align="center" style="text-align:center;"><?php echo $v['name']; ?></td>
+                                    <td align="center" style="text-align:center;"><?php echo $v['createtime']; ?></td>
+                                    <td align="center" style="text-align:center;"><?php echo $v['begin_time']; ?></td>
+                                    <td align="center" style="text-align:center;"><?php echo $v['end_time']; ?></td>
+                                    <td align="center" style="text-align:center;">
+                                      <?php if(!empty($v['status'])){
+                                         switch($v['status']){
+                                            case 1:
+                                                echo "待启用";
+                                            break;
+                                            case 2:                                                
+                                                if(strtotime($v['begin_time']) < strtotime(date('Y-m-d'.'00:00:00',time())) && strtotime($v['end_time']) >= strtotime(date('Y-m-d'.'00:00:00',time()))){
+                                                   echo "进行中";
+                                                }elseif(strtotime($v['end_time']) < strtotime(date('Y-m-d'.'00:00:00',time()))){
+                                                   echo "已结束";
+                                                }else{
+                                                   echo "已启用";
+                                                }                                                
+                                            break;
+                                            case 3:
+                                                 echo "已结束";
+                                            break;
+                                            default:
+                                                 echo "未知";
+                                            break;
+                                         }
+                                      }else{
+                                         echo "未知";
+                                      }
+
+                                      ?>
+                                    </td>
+                                    <?php if(empty($param['user_id'])){?>
+                                    <td class="WSY_t4" style="text-align:center;">
+                                        <?php if($v['status'] == 1 || ($v['status'] == 2 && strtotime($v['end_time']) >= strtotime(date('Y-m-d'.'00:00:00',time())))){?>
+                                            <a href="/mshop/admin/index.php?m=share_gifts&a=activity_add&customer_id=<?php echo $customer_id_en;?>&act_id=<?php echo $v['id'];?>" class="btn WSY_bottonliss WSY-skin-bg" style="cursor:pointer;color:white;" onclick="">编辑</a>
+                                        <?php }?>
+                                        <?php if($v['status'] == 1){?>
+                                            <a href="javascript:void(0);" class="btn WSY_bottonliss WSY-skin-bg" style="cursor:pointer;color:white;" onclick="operate_activity('start',<?php echo $v['id'];?>)">启用</a>
+                                        <?php }?>
+                                        <?php if($v['status'] == 2 && (strtotime($v['end_time']) >= strtotime(date('Y-m-d'.'00:00:00',time())))){?>
+                                            <a href="javascript:void(0);" class="btn WSY_bottonliss WSY-skin-bg" style="cursor:pointer;color:white;" onclick="operate_activity('end',<?php echo $v['id'];?>)">终止</a>
+                                        <?php }?>
+                                        <?php if($v['status'] == 3 || ($v['status'] == 2 && strtotime($v['end_time']) < strtotime(date('Y-m-d'.'00:00:00',time())))){?>
+                                            <a href="/mshop/admin/index.php?m=share_gifts&a=activity_detail&customer_id=<?php echo $customer_id_en;?>&act_id=<?php echo $v['id'];?>" class="btn WSY_bottonliss WSY-skin-bg" style="cursor:pointer;color:white;" onclick="">查看</a>
+                                        <?php }?>
+                                        <?php if($v['status'] == 1 || $v['status'] == 3 || ($v['status'] == 2 && strtotime($v['end_time']) < strtotime(date('Y-m-d'.'00:00:00',time())))){?>
+                                            <a href="javascript:void(0);" class="btn WSY_bottonliss WSY-skin-bg" style="cursor:pointer;color:white;" onclick="operate_activity('del',<?php echo $v['id'];?>)">删除</a>
+                                        <?php }?>
+                                    </td>
+                                    <?php }?>
+                                </tr>
+                        <?php }}?>
+                    </table>
+                    <!--表格结束-->
+        
+                    <!--翻页开始-->
+                    <div class="WSY_page"></div>
+                    <!--翻页结束-->
+                </div>
+            </div>
+            <div style="width:100%;height:20px;"></div>
+        </div>
+
+        <script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+        <script>
+            var pagenum = <?php echo $pageNum ?>;//当前页
+            var count   = <?php echo $pageCount ?>;//总页数
+            
+            var act_id      = document.getElementById("act_id").value;
+            var name        = document.getElementById("name").value;
+            var status      = document.getElementById("status").value;
+            var begin_time  = document.getElementById("begin_time").value;   
+            var end_time    = document.getElementById("end_time").value;  
+            
+            var search_url = "";
+            if(act_id !="" && act_id >0){
+               search_url += "&act_id="+act_id;
+            }
+            if(name !="" && name !=null){
+               search_url += "&name="+name;
+            }
+            if(status !="" && status >0){
+               search_url += "&status="+status;
+            }
+            if(begin_time !="" && begin_time !=null){
+               search_url += "&begin_time="+begin_time;
+            }
+            if(end_time !="" && end_time !=null){
+               search_url += "&end_time="+end_time;
+            }
+            search_url += "&user_id=<?php echo $param['user_id'];?>";
+            //pageCount：总页数
+            //current：当前页
+            $(".WSY_page").createPage({
+                pageCount:count,
+                current:pagenum,
+                backFn:function(p){
+                var url="/mshop/admin/index.php?m=share_gifts&a=activity&customer_id=<?php echo $customer_id_en;?>&pagenum="+p+search_url;
+
+                location.href = url;
+               }
+            });
+
+            function jumppage(){
+                var a=parseInt($("#WSY_jump_page").val());
+                if((a<1) || (a>count) || isNaN(a)){
+                    layer.alert('没有下一页了');
+                    return false;
+                }else{
+                     var url="/mshop/admin/index.php?m=share_gifts&a=activity&customer_id=<?php echo $customer_id_en;?>&pagenum="+a+search_url;
+                    location.href = url;
+                }
+            }
+        </script>
+        <script>
+            //页面跳转
+            function searchAct(){
+                var act_id      = document.getElementById("act_id").value;
+                var name        = document.getElementById("name").value;
+                var status      = document.getElementById("status").value;
+                var begin_time  = document.getElementById("begin_time").value;   
+                var end_time    = document.getElementById("end_time").value;   
+                
+                if (isNaN(act_id)) { 
+            　　　　layer.alert('活动编号必须为数字');
+            　　　　return;
+            　　} 
+
+                document.location= "/mshop/admin/index.php?m=share_gifts&a=activity&customer_id=<?php echo $customer_id_en;?>&act_id="+act_id+"&name="+name+"&status="+status+"&begin_time="+begin_time+"&end_time="+end_time+"&user_id=<?php echo $param['user_id'];?>";
+            }
+          
+           //启动活动
+           function operate_activity(op,act_id){
+                var msg = "";
+                switch(op){
+                    case "start":
+                       msg = "是否启动该活动";
+                    break;
+                    case "end":
+                       msg = "是否终止该活动";
+                    break;
+                    case "del":
+                       msg = "是否删除该活动";
+                    break;
+
+                }
+                layer.confirm(msg, 
+                    {
+                        title: false,
+                        skin:'blue-skin',
+                        shift:6,
+                        btn: ['确定','取消']
+                    },function(confirm){
+                        $.ajax({
+                            url: "/mshop/admin/index.php?m=share_gifts&a=activity_operation&customer_id=<?php echo $customer_id_en;?>",
+                            dataType: 'json',
+                            type: 'post',
+                            data: {
+                                op:op,
+                                act_id:act_id
+                            },
+                            success: function(res){   
+                                var errcode = res.errcode;
+                                var errmsg  = res.errmsg;
+
+                                if(errcode > 0){
+                                   if(errcode == 1){
+                                     layer.alert("成功", function(){location.reload();});
+                                   }else if(errcode == 2){
+                                     layer.alert("活动时间超时", function(){location.reload();});
+                                   }else if(errcode == 3){
+                                     layer.alert(errmsg, function(){location.reload();});
+                                   }
+                                }else{
+                                    layer.alert("操作失败");
+                                }
+                            }
+                        });
+                    }
+                )
+           }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,231 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/css2.css" media="all">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/shop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<title>活动优先级管理</title>
+<style type="text/css">
+a:hover{text-decoration: none;}   
+.button_blue{cursor: pointer;margin-left: 10px;font-size: 14px;line-height: 30px;background-color: #06a7e1;padding-left: 15px;padding-right: 15px;border-radius: 3px 3px 3px 3px;margin-top:20px;color: #fff;}
+.button_blue:hover{background:#0e98c9;}
+.name{  margin-top: 10px;height: 30px;line-height: 30px;font-size: 13px;text-align: left;font-weight: bolder;margin-left: 19px;}
+.button_box{width: 296px;display: block;text-align: right;}
+.button_box .WSY_button{border-radius:2px;border:none;}    
+.delivery-button{padding: 3px 15px;background-color: #06a7e1;color: #fff;border-radius: 2px;cursor:pointer;}
+.product-box{width:95%;margin-top: 15px;padding: 15px;border: 1px #ccc solid;display:none;}
+.header-left{float:left;}
+.header-right{float:right;}
+.search-box{height: 22px;line-height: 22px;} 
+.delivery_time{margin: 5px 35px;}
+.delivery_time input{margin: 0 20px;}
+.delivery_limit_box{margin: 15px 35px;position: relative;} 
+.delivery_font{font-size: 15px;font-weight: bold;width:140px;text-align:right;display:inline-block;}
+.delivery_limit_box input[type=text]{margin: 0 20px;}
+.selected-date-content{display: block;margin-left: 30px;margin-top: 10px;}
+.page-box1{margin-left:30px;}
+.page-box1,.page-box2{margin-top:15px;margin-left: 70px;}
+.show-data-num{margin:0 20px;}
+.page-box1 input,.page-box2 input{width:30px;text-align:center;}
+.show-data-num-btn{margin-right:30px;}
+.current-page{margin: 0 20px;}
+.go-page-btn{margin-left:15px;}
+#to-page-num1,#to-page-num2{margin-left:20px;}
+.relation_table th,.list_table th{text-align:center;}
+.activity_title{width:100%;border-bottom:1px #DEDBDB solid;padding: 3px 0 3px 20px;margin-top: 15px;}
+.activity_title_span{padding: 5px 10px;background-color: #DEDBDB;}
+.operation-button{height: 50px;line-height: 50px;text-align: center;}
+.back-button,.close-float-table{padding:5px 40px;;background-color:#ADABAB;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+.save-button,.add-selected-product{padding:5px 40px;;background-color:#06a7e1;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+.float-table{position: fixed;top: 0;height: 100%;width: 100%;background-color: #fff;overflow: scroll;}
+.float-table-title-box{text-align: center;background-color: #E0E0E0;height: 40px;line-height: 40px;}
+.float-table-title{font-size: 18px;font-weight: bold;}
+.selected-table td,.selected-table input{font-size: 12px !important;}
+table#WSY_t1 td{word-wrap: break-word;text-align:center;}
+.product-name{width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.curr_return1{
+    float: left;
+}
+.curr_return2{
+    float: left;
+    margin-left: 50px;
+}
+.curr_return3{
+    float: left;
+    width: 20px;
+}
+.curr_return4{
+    float: left;
+}
+.curr_return5{
+    float: left;
+    width: 50px;
+}
+.curr_return6{
+    float: left;
+}
+.red_tips{
+	display: block;
+	color:red;
+}
+</style>
+</head>
+<body>
+<div>  
+    <div class="WSY_content">
+		<div class="WSY_columnbox" style="min-height: 100px;">
+			<div class="WSY_column_header">
+				<div class="WSY_columnnav">
+					<a class="white1" href="javascript:;">活动优先级管理</a>
+				</div>
+			</div>
+			<div class="r_con_wrap">
+				<div style="margin-top:20px">
+					<span class="red_tips">提示：</span>
+					<span class="red_tips">1、重叠的活动时间，不同活动类型，都含有同一个产品，看优先级数值最大的优先显示在前端；</span>
+					<span class="red_tips">2、活动开始时间倒数，也是根据优先级显示</span>
+					<span class="red_tips">3、活动专区不受该设置影响</span>
+				</div>
+				<div style="margin-top:20px">
+					<label class="delivery_font">开始时间倒数设置：</label>
+					<span>提前</span>&nbsp;<input type="text" style="width:70px" name="count_down" id="count_down" value="<?php echo $priority_arr[0]['count_down'];?>" data-beforeval=<?php echo $priority_arr[0]['count_down'];?> onblur="changeSet(1,-1,this)" />&nbsp;<span>天，开始倒数</span>
+				</div>
+				
+				<!--表格开始-->
+				<div class="WSY_data" id="type1">
+					<table class="WSY_t2"  width="30%" id="WSY_t1" style="border: 1px solid #D8D8D8;border-collapse: collapse;margin-top: 10px;">
+						<thead class="WSY_table_header">
+							<tr style="border:none">
+								<th width="2%">序号</th>
+								<th width="20%">活动类型</th>
+								<th width="6%">优先级排序</th>
+		
+							</tr>
+						</thead>
+						<tbody>
+						<?php
+							foreach($priority_arr as $key => $val){
+						?>
+							<tr class="product_list" style="<?php if($val['status']==0){ ?>display:none;<?php } ?>border:1px solid #D8D8D8">
+								<td><?php echo $key+1; ?></td>
+								<td>
+								<?php 
+									switch($val['activity_type']){
+										case 'collage':
+											echo '拼团活动';
+										break;
+										case 'integral':
+											echo '积分管理';
+										break;
+										case 'restricted':
+											echo '限时活动';
+										break;
+										case 'bargain':
+											echo '砍价活动';
+										break;
+										case 'crowdfund':
+											echo '众筹活动';
+										break;
+										default:
+											echo '未知';
+										break;
+									}
+								 ?>
+								</td>
+								<td><input type="text" style="width:70px;float:left;" name="sort_<?php echo $val['id']; ?>" id="sort_<?php echo $val['id']; ?>" value="<?php echo $val['sort'];?>" data-beforeval="<?php echo $val['sort'];?>" onblur="changeSet(2,<?php echo $val['id']; ?>,this)" /></td>
+							</tr>
+						<?PHP } ?> 
+						
+						</tbody>
+						
+						</table>
+				</div>
+				<!-- 表格结束 -->	
+			</div>
+
+		</div>
+	</div>
+</div>	
+
+<script charset="utf-8" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script charset="utf-8" src="/weixinpl/common/utility.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script>
+var customer_id = <?php echo $customer_id; ?>;
+function changeSet(type,id,e){
+//type:1:更新开始时间倒数 2:更新排序
+	clearNoNum(e,1);
+	var value=e.value.trim();
+	var a=$(e);
+	var before_val = a.data('beforeval');
+	//alert(value+'=='+before_val);
+	if(value == before_val){
+		return;
+	}else if(!value){
+		alert('不能为空');
+		a.val(before_val);
+		return;
+	}else if(isNaN(value)){
+		alert('输入错误,只能输入数字');
+		a.val(before_val);
+		return;
+	}else if( (value >5 || value < 1) && type ==2){
+		alert('输入错误,排序只能输入1~5');
+		a.val(before_val);
+		return;
+	}else if( (value < 0) && type ==1){
+		alert('输入错误,天数不能小于0');
+		a.val(before_val);
+		return;
+	}else{
+		a.after('<img id="ajax_deal" class="ajax_deal" src="/weixinpl/back_newshops/Common/images/Product/loading/ajax_small.gif" />');	
+		$.ajax({
+			url:'/mshop/admin/index.php?m=activity_set&a=update_activity_set&customer_id='+customer_id,
+			dataType:'json',
+			type:'GET',
+			data:{'type':type,'id':id,'val':value},
+			success:function(json){
+			
+				if(json.errcode==0){
+					$('#ajax_deal').attr('src',"/weixinpl/back_newshops/Common/images/Product/loading/s_success.png");
+					setTimeout(function(){
+						$('#ajax_deal').remove();
+						e.value=value;
+						a.data("beforeval",value);
+					},500);			
+				
+				}else{
+					$('#ajax_deal').attr('src',"/weixinpl/back_newshops/Common/images/Product/loading/s_error.png");
+					setTimeout(function(){
+						$('#ajax_deal').remove();
+						a.val(before_val);
+					},500);			
+				}
+
+				
+			},
+			error:function(err){
+				$('#ajax_deal').attr('src',"/weixinpl/back_newshops/Common/images/Product/loading/s_error.png");
+				setTimeout(function(){
+					$('#ajax_deal').remove();
+					
+				},500);		
+			}
+
+		})
+
+	}
+
+}
+</script>
+
+</body>
+</html>

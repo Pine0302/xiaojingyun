@@ -1,0 +1,32 @@
+.classify-box{height:20px;border-bottom:solid 1px #e1e1e1;padding:12px 0;}
+.classify-list{width:80.33%;float:left;overflow-x:scroll;overflow-y:hidden;height:20px;box-sizing:border-box;margin:0 1.5%;}
+.classify-list a{font-size:1.3rem;float:left;padding:0 10px;line-height:20px;color:#a0a0a0;}
+.classify-list a.active{font-size:1.5rem;color:#31c27c;}
+.classify-search{width:15.66%;float:right;height:20px;vertical-align:middle;text-align:center;border-left:solid 1px #f0f0f0;}
+.classify-search img{width:18px;height:18px;vertical-align:middle;}
+.list-top{padding:0 15px;border-bottom:solid 1px #e1e1e1;font-size:1.3rem;line-height:40px;}
+.list-title{float:left;color:#a0a0a0;}
+.list-screen{float:right;color:#333;}
+.list-screen img{width:13px;margin-right:4px;margin-top:-2px;}
+.list-centent{padding:0 5px;}
+.list-box{margin-top:5px;}
+.list-box a{display:block;position:relative;}
+.list-box a >img{width:100px;height:75px;position:absolute;left:0;top:0;}
+.list-box a .list-text{height:80px;position:relative;margin-left:110px;zoom:1;display:-webkit-box;box-sizing:border-box;padding:5px 0;border-bottom:solid 1px #e1e1e1;}
+.list-box a .list-text .title{overflow: hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;height:35px;font-size:1.3rem;color:#333;line-height:1.5rem;width:80%;position:relative;padding:3px 0;}
+.list-box a .list-text .fufei{position:absolute;top:7px;right:10px;color:#f5cd19;border:solid 1px #f5cd19;padding:1px 2px;border-radius:3px;font-size:1rem;}
+.list-box a .list-text .small{position:absolute;bottom:10px;width:100%;left:0;}
+.list-box a .list-text .small img{height:15px;margin:-3px 3px 0 0;}
+.list-box a .list-text .small .time{font-size:1.1rem;color:#c1c1c1;}
+.list-box a .list-text .small .state{font-size:1.2rem;float:right;margin-right:10px;}
+.green{color:#31c27c;}
+.yellow{color:#f5cd19;}
+.red{color:#ff6868;}
+.shaixuanbox{position: relative; width: 100%;background:#fff;padding:0 5%;box-sizing:border-box;margin-bottom: 10px;border-bottom: 1px solid #e1e1e1;}
+.shaixuanlist{display: none;position: absolute;top: 40px;left: 0;z-index: 10; width: 100%;background:#fff;font-size: 1.4rem;color: #333;}
+.shaixuanlist li{height: 35px;line-height: 35px;padding-left: 5%;}
+.shaixuanlist .shaixuanlist_select{color:#31c27c;background:#f6fffb; }
+.chkall{float: left;height: 40px;line-height: 40px; font-size: 1.3rem;color: #888;}
+.sxright{float: right;line-height: 40px;}
+.clear{clear: both;}
+.sxtu{width: 5%;margin: 13px 2% 0 0;}

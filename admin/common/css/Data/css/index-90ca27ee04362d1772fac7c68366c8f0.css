@@ -1,0 +1,105 @@
+#settings-page .message-box {
+	padding: 0px; border: 1px solid rgb(221, 221, 221); border-image: none;
+}
+#settings-page .message-box h1 {
+	margin: 0px; padding: 0px 0px 0px 8px; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#settings-page .message-box h2 {
+	padding-left: 8px; font-weight: bold;
+}
+#settings-page .message-box div {
+	padding-left: 8px;
+}
+#settings-page .message-box th {
+	text-align: center;
+}
+#settings-page .message-box ul {
+	padding-left: 15px;
+}
+#settings-page .message-box a.tab-change {
+	cursor: pointer;
+}
+#settings-page .fee-settings-box {
+	width: 640px;
+}
+#settings-page .sales-fee-settings-box {
+	width: 640px;
+}
+#settings-page .fee-settings-box .btn-group {
+	margin-top: 16px; margin-bottom: 5px;
+}
+#settings-page .sales-fee-settings-box .btn-group {
+	margin-top: 16px; margin-bottom: 5px;
+}
+#settings-page .fee-settings-box .field-editor {
+	border-width: medium medium 1px; border-style: none none solid; border-color: currentColor currentColor rgb(221, 221, 221); padding: 0px 3px; border-image: none; width: 48px;
+}
+#settings-page .fee-settings-box .field-cat-editor {
+	border-width: medium medium 1px; border-style: none none solid; border-color: currentColor currentColor rgb(221, 221, 221); padding: 0px 3px; border-image: none; width: 48px;
+}
+#settings-page .sales-fee-settings-box .field-editor {
+	border-width: medium medium 1px; border-style: none none solid; border-color: currentColor currentColor rgb(221, 221, 221); padding: 0px 3px; border-image: none; width: 48px;
+}
+#settings-page .sales-fee-settings-box .field-cat-editor {
+	border-width: medium medium 1px; border-style: none none solid; border-color: currentColor currentColor rgb(221, 221, 221); padding: 0px 3px; border-image: none; width: 48px;
+}
+#settings-page .fee-settings-box .field-editor:focus {
+	background-color: transparent;
+}
+#settings-page .fee-settings-box .field-cat-editor:focus {
+	background-color: transparent;
+}
+#settings-page .sales-fee-settings-box .field-editor:focus {
+	background-color: transparent;
+}
+#settings-page .sales-fee-settings-box .field-cat-editor:focus {
+	background-color: transparent;
+}
+#settings-page .fee-settings-box .table-box {
+	border: 1px solid rgb(221, 221, 221); border-image: none;
+}
+#settings-page .fee-settings-box .sales-table-box {
+	border: 1px solid rgb(221, 221, 221); border-image: none;
+}
+#settings-page .sales-fee-settings-box .table-box {
+	border: 1px solid rgb(221, 221, 221); border-image: none;
+}
+#settings-page .sales-fee-settings-box .sales-table-box {
+	border: 1px solid rgb(221, 221, 221); border-image: none;
+}
+#settings-page .fee-settings-box .table-box tr {
+	height: 40px;
+}
+#settings-page .fee-settings-box .sales-table-box tr {
+	height: 40px;
+}
+#settings-page .sales-fee-settings-box .table-box tr {
+	height: 40px;
+}
+#settings-page .sales-fee-settings-box .sales-table-box tr {
+	height: 40px;
+}
+#settings-page .fee-settings-box .table-box td {
+	width: 64px;
+}
+#settings-page .fee-settings-box .sales-table-box td {
+	width: 64px;
+}
+#settings-page .sales-fee-settings-box .table-box td {
+	width: 64px;
+}
+#settings-page .sales-fee-settings-box .sales-table-box td {
+	width: 64px;
+}
+#settings-page .upgrade-box {
+	line-height: 2em;
+}
+#settings-page .upgrade-box #upgrade_amount {
+	border-width: medium medium 1px; border-style: none none solid; border-color: currentColor currentColor rgb(221, 221, 221); padding: 5px; border-image: none; width: 48px; line-height: 1em;
+}
+#settings-page .upgrade-box #upgrade_amount:focus {
+	
+}
+#settings-page .upgrade-box .btn-save {
+	margin-left: 560px;
+}

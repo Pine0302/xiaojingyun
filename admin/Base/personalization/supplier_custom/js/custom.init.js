@@ -1,0 +1,238 @@
+$(function(){
+	//增加模块
+	$(".j-diy-addModule").click(function() {
+		var type=$(this).data('type');
+		  //默认数据
+		  var moduleDate={
+		  		id:getId(),//模块ID 
+		  		type:type,//模块类型
+		  		sort:0, //排序
+		  		content:null,//模块内容
+		  		//fixed_link:fixedlink,//固定分类
+		  		cat_arr:catarr//产品分
+		  		//img_info:imginfo,//图文
+		  		//city_food:cityfood,//城市商圈
+				//cityarea_food:cityarea_food,//商圈美食
+				//is_cityarea_caterer:is_cityarea_caterer,//城市商圈（美食），渠道开关
+				//is_cityarea:is_cityarea//城市商圈，渠道开关
+		  };
+		   //根据模块类型设置默认值
+		   switch(type){
+		   		//搜索栏
+		   		case 1:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"请输入搜索关键字",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:"#fff",
+					dataset:[
+		   					{mod_sort:null,link:"#",title:"图片",pic:'images/logo.png',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]	
+		   			};
+		   			break;
+		   		//图片广告
+		   		case 2:
+                moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:null,
+                    dataset:[
+		   					{mod_sort:1,link:"#",title:"图片",pic:'images/img1.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]
+                }
+                break;
+		   		//分类图标
+		   		case 3:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:null,
+		   				dataset:[
+		   					{mod_sort:1,link:"#",title:"图标一",pic:'images/icon01.png',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:2,link:"#",title:"图标二",pic:'images/icon01.png',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:3,link:"#",title:"图标三",pic:'images/icon01.png',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:4,link:"#",title:"图标四",pic:'images/icon01.png',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]
+		   			}
+		   			break;
+		   		//橱窗二图
+		   		case 9:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:null,
+		   				dataset:[
+		   					{mod_sort:1,link:"#",title:"图片一",pic:'images/img2.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:2,link:"#",title:"图片二",pic:'images/img3.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   				]
+		   			}
+		   			break;
+		   		//橱窗三图
+		   		case 4:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:null,
+		   				dataset:[
+		   					{mod_sort:1,link:"#",title:"图片一",pic:'images/img2.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:2,link:"#",title:"图片二",pic:'images/img3.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:3,link:"#",title:"图片三",pic:'images/img4.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]
+		   			}
+		   			break;
+		   			//橱窗（四图）
+		   		case 8:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:null,
+		   				dataset:[
+		   					{mod_sort:1,link:"#",title:"图片一",pic:'images/img4.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:2,link:"#",title:"图片二",pic:'images/img2.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:3,link:"#",title:"图片三",pic:'images/img3.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:4,link:"#",title:"图片四",pic:'images/img4.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]
+		   			}
+		   			break;
+		   		//分类产品
+		   		case 5:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:0,
+		   				pro_numshow:2,
+		   				show_sale:1,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:null,
+					dataset:[
+		   					{mod_sort:null,link:"#",title:null,pic:null,color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]	
+		   			}
+		   			break;
+		   		//底部菜单
+		   		case 6:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:1,
+		   				video_link:null,
+		   				bg_color:null,
+		   				dataset:[
+		   					{mod_sort:1,link:"#",title:"菜单一",pic:'images/i1.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:2,link:"#",title:"菜单二",pic:'images/i1.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:3,link:"#",title:"菜单三",pic:'images/i1.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""},
+		   					{mod_sort:4,link:"#",title:"菜单四",pic:'images/i1.jpg',color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]
+		   			}
+		   			break;
+					//分割线
+		   		case 7:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:null,
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:null,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null, 
+		   				show_sale:null,
+		   				foot_position:null,
+		   				video_link:null,
+		   				bg_color:null,
+		   				dataset:[
+		   					{mod_sort:1,link:"#",title:"分割线",pic:"images/line.jpg",color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   					
+		   				]
+		   			}
+		   			break;
+		   			//视频
+		   		case 10:
+		   			moduleDate.content={
+                    	css_type:1,
+		   				placeholder:"",
+		   				padding:0,
+		   				margin:null,
+		   				pro_title_show:1,
+		   				pro_title_twoline:null,
+		   				pro_numshow:null,
+		   				show_sale:null,
+		   				foot_position:1,
+		   				video_link:null,
+		   				bg_color:null,
+		   				dataset:[
+		   					{mod_sort:null,link:"#",title:null,pic:null,color:'#000',foreign_id:'',detail_id:'',link_type:'',select_value:"",detail_value:'',detail_name:""}
+		   				]
+		   			}
+		   			break;
+		   }
+		   custom_add(moduleDate);
+		});
+/*get ID*/
+getId = function() {
+        var date = new Date();
+        return "" + date.getFullYear() + parseInt(date.getMonth() + 1) + date.getDate() + date.getHours() + date.getMinutes() + date.getSeconds() + date.getMilliseconds();
+    };
+    $(".WSY_homeleft_middle").sortable({
+        	placeholder: "drag-highlight",
+        	stop: function(event,ui) {
+            custom_repositionCtrl(ui.item, $(".type-ctrl-item[data-origin='item']")); //重置ctrl的位置
+        }
+    	}).disableSelection();
+});

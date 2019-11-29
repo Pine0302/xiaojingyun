@@ -1,0 +1,20 @@
+define('wd.shop.global',function(require,exports,module){"use strict";var $=require("../../../../../../../../weixinpl/back_newshops/Common/css/Base/home_decoration/beijing/js/{jquery}"),_lazyload=require('lazyload'),_load=require('loadscript'),_scroll=require("wd.scroll"),_url=require("url");exports.init=function(){if(!window._SHOP_DATA){window._SHOP_DATA={};}
+updateLink();headerMoudle();slider();loadImage();goBack();}
+function headerMoudle(){var $area=$('#wd-service-authentic'),$head=$('#wd-service-authentic-head'),actClass=$area.attr('data-class');$head.click(function(){$area.toggleClass(actClass);});}
+function slider(){$.each($('div[data-tag=module-slider]'),function(i,item){var dom={lists:$(item).find('[data-tag=slider-list]'),listWarp:$(item).find('[data-tag=slider-warp]'),page:$(item).find('[data-tag=slider-page]'),pageItem:null,items:null},sliderLen=0,pageHtml=[],opt={startSlide:0,callback:function(pos){if(sliderLen==2){pos=pos%2;}
+dom.pageItem.removeClass('cur');dom.pageItem.eq(pos).addClass('cur');}};dom.items=dom.lists.children();$.each(dom.items||[],function(ii,item){pageHtml.push('<li></li>');});if(1==dom.items.size()){dom.page.hide();}
+dom.page.html(pageHtml.join(''));sliderLen=dom.lists.children().length;dom.pageItem=dom.page.children();dom.pageItem.eq(opt.startSlide).addClass('cur');_scroll.init(dom.listWarp.get(0),opt);});}
+function loadImage(){_lazyload('div[data-lazyload=true] img').lazyload({threshold:300,skip_invisible:false});}
+function dsr(){var uin=window._SHOP_DATA.shopUin||0,url='//party.paipai.com/cgi-bin/v2/sellercredit_cgi?uin='+uin;_load.loadScript(url);}
+function headDsr(datas){var point=0,width=0,dom={rate:$('#shop-header-dsr [data-filter=rate]'),point:$('#shop-header-dsr [data-filter=point]')};datas=datas||[];$.each(datas,function(i,data){point+=parseFloat(data.shopRate)||0;});point=point/(datas.length||1);width=point/5*100;dom.rate.animate({width:width+'%'},1e3);dom.point.text(point.toFixed(1));}
+window._callbackDSR=function(json){if('0'!=json.errCode){return false;}
+headDsr(json.lists);$('div[data-tag=shop-info-dsr]').each(function(i){var _this=$(this),dom={describe:_this.find('[data-tag=describe]'),service:_this.find('[data-tag="service"]'),sendGoods:_this.find('[data-tag=sendGoods]')};$.each(json.lists,function(ii,items){var outHtml='',shopRate=roundFloat(items.shopRate,1);if(shopRate==0){outHtml='';}else{if(shopRate==0){outHtml='';}else{outHtml=shopRate+' '+getTradeInfo(items)+'同行 ';if(parseFloat(items.shopStar)){outHtml+=parseFloat(items.shopStar*100).toFixed(1)+'%';}}}
+dom[items.type].text(outHtml||'暂无');});});function roundFloat(num,fixed){fixed=fixed||0;return(Math.round(num*Math.pow(10,fixed))/Math.pow(10,fixed)).toFixed(fixed)||num.toFixed(fixed);}
+function getTradeInfo(items){var title='持平',shopRate=parseFloat(items.shopRate),tradeRate=parseFloat(items.tradeRate);if(shopRate>tradeRate){title='高于';}else if(shopRate<tradeRate){title='低于';}
+return title;}}
+function goBack(){if(document.referrer){$('[data-tag=go-back]').show().click(function(){if(!document.referrer){document.location.href=_SHOP_DATA.domain+_SHOP_DATA.shopUin;}else{location.href=document.referrer;}});}else{$('#shop-header nav h2').css("textAlign","left").css("marginLeft","10px");}
+return false;}
+function updateLink(){var bid="";var m=/[\?&]bid=([^&]*)/.exec(location.href);var alist=document.getElementsByTagName("a");if(!m){for(var i=0,a=alist.length;i<a;i++){href=alist[i].getAttribute("href");if(!href)continue;href=href.replace(/\?bid=[^&#]*/g,"?").replace(/&bid=[^&#]*/g,"");href=href.replace(/(\?&)+/g,"?");alist[i].setAttribute("href",href);}
+return false;}else{bid=m[1];}
+if(!bid)return false;var href="",hashParam="",index=0;for(var i=0,a=alist.length;i<a;i++){href=alist[i].getAttribute("href");if(!href)continue;index=href.indexOf("#");hashParam=index<0?"":href.slice(index);href=index<0?href:href.slice(0,index);href=href.replace(/\?bid=[^&#]*/g,"?").replace(/&bid=[^&#]*/g,"");href=href.replace(/(\?&)+/g,"?");href+=/\?/.test(href)?"&bid="+bid:"?bid="+bid;href+=hashParam;alist[i].setAttribute("href",href);}}});
+/*  |xGv00|cd90fd30916af082f199891db44cce2e */

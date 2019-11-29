@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>广州蓝狮网络科技有限公司</title>
+<link href="global.css" rel="stylesheet" type="text/css">
+<link href="main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+<style type="text/css" media="screen">#HomeFileUploadUploader {visibility:hidden}#HomeFileUpload_0Uploader {visibility:hidden}#HomeFileUpload_1Uploader {visibility:hidden}#HomeFileUpload_2Uploader {visibility:hidden}#HomeFileUpload_3Uploader {visibility:hidden}#HomeFileUpload_4Uploader {visibility:hidden}</style></head>
+
+<body>
+<!--[if lte IE 9]><script type='text/javascript' src='http://static.ptweixin.com/js/plugin/jquery/jquery.watermark-1.3.js'></script>
+<![endif]-->
+<style type="text/css">body,html{background:url(http://static.ptweixin.com/member/images/main/main-bg.jpg) left top fixed no-repeat;}</style>
+<div id="iframe_page">
+	<div class="iframe_content">
+			<link href="shop.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/shop.js"></script>
+	<div class="r_nav">
+	   <ul>
+			<li class=""><a href="http://www.ptweixin.com/member/?m=shop&a=index">基本设置</a></li>
+			<li class=""><a href="http://www.ptweixin.com/member/?m=shop&a=skin">风格设置</a></li>
+			<li class="cur"><a href="saved_resource.htm">首页设置</a></li>
+			<li class=""><a href="http://www.ptweixin.com/member/?m=shop&a=products">产品管理</a></li>
+			<li class=""><a href="http://www.ptweixin.com/member/?m=shop&a=shopping">支付方式管理</a></li>
+			<li class=""><a href="http://www.ptweixin.com/member/?m=shop&a=orders">订单管理</a></li>
+	   </ul>
+	</div>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="operamasks-ui.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/lean-modal.min.js"></script>
+<script type="text/javascript" src="../js/operamasks-ui.min.js"></script>
+<link href="index.css" rel="stylesheet" type="text/css">
+<script language="javascript">var shop_skin_data=[{"PId":"6486","SId":"6","MemberId":"175","ContentsType":"0","Title":"","ImgPath":"\/api\/shop\/skin\/005\/images\/logo.jpg","Url":null,"Postion":"t01","Width":"300","Height":"80","NeedLink":"1"},{"PId":"6487","SId":"6","MemberId":"175","ContentsType":"1","Title":"[\"\"]","ImgPath":"[\"\\\/api\\\/shop\\\/skin\\\/005\\\/images\\\/banner.jpg\"]","Url":"[\"\"]","Postion":"t02","Width":"640","Height":"320","NeedLink":"1"},{"PId":"6488","SId":"6","MemberId":"175","ContentsType":"0","Title":"","ImgPath":"\/api\/shop\/skin\/005\/images\/ad-0.jpg","Url":null,"Postion":"t03","Width":"200","Height":"150","NeedLink":"1"},{"PId":"6489","SId":"6","MemberId":"175","ContentsType":"0","Title":"","ImgPath":"\/api\/shop\/skin\/005\/images\/ad-1.jpg","Url":null,"Postion":"t04","Width":"200","Height":"150","NeedLink":"1"},{"PId":"6490","SId":"6","MemberId":"175","ContentsType":"0","Title":"","ImgPath":"\/api\/shop\/skin\/005\/images\/ad-2.jpg","Url":null,"Postion":"t05","Width":"200","Height":"150","NeedLink":"1"},{"PId":"6491","SId":"6","MemberId":"175","ContentsType":"0","Title":"","ImgPath":"\/api\/shop\/skin\/005\/images\/ad-3.jpg","Url":null,"Postion":"t06","Width":"400","Height":"400","NeedLink":"1"}];</script>
+<script language="javascript">$(document).ready(shop_obj.home_init);</script>
+<div id="home" class="r_con_wrap">
+	<div class="m_lefter"><script type="text/javascript">
+var skin_index_init=function(){
+	$('#shop_skin_index .menu .nav a.category').click(function(){
+		if($('#category').height()>$(window).height()){
+			$('html, body, #cover_layer').css({
+				height:$('#category').height(),
+				width:$(window).width(),
+				overflow:'hidden'
+			});
+		}else{
+			$('#category, #cover_layer').css('height', $(window).height());
+			$('html, body').css({
+				height:$(window).height(),
+				overflow:'hidden'
+			});
+		}
+		
+		$('#cover_layer').show();
+		$('#category').animate({left:'0%'}, 500);
+		$('#shop_page_contents').animate({margin:'0 -70% 0 70%'}, 500);
+		window.scrollTo(0);
+		
+		return false;
+	});
+}
+</script>
+<div id="shop_skin_index">
+    <div class="header">
+    	<div class="shop_skin_index_list logo" rel="edit-t01" no="0">
+        	<div class="img"><img src="../images/logo.jpg"></div><div class="mod" style="display: none;">&nbsp;</div>
+        </div>
+        <div class="login"><a href="http://www.ptweixin.com/member/?m=shop&a=home#" style="cursor: default; text-decoration: none;">会员中心</a></div>
+        <div class="clear"></div>
+        <div class="search">
+            <form action="http://www.ptweixin.com/member/products/" method="get">
+                <input type="text" name="Keyword" class="input" value="" placeholder="输入商品名称...">
+                <input type="submit" class="submit" value=" ">
+            </form>
+        </div>
+    </div>
+    <div class="shop_skin_index_list banner" rel="edit-t02" no="1">
+        <div class="img"><img src="banner.jpg"></div><div class="mod" style="display: none;">&nbsp;</div>
+    </div>
+    <div class="menu">
+    	<ul class="nav">
+        	<li>
+            	<a href="http://www.ptweixin.com/member/?m=shop&a=home#" class="category" style="cursor: default; text-decoration: none;">
+                	<div class="img"></div>
+                    <div class="name">全部分类</div>
+                </a>
+            </li>
+        	<li>
+            	<a href="http://www.ptweixin.com/member/?m=shop&a=home#" style="cursor: default; text-decoration: none;">
+                	<div class="img"></div>
+                    <div class="name">新品上市</div>
+                </a>
+            </li>
+        	<li>
+            	<a href="http://www.ptweixin.com/member/?m=shop&a=home#" style="cursor: default; text-decoration: none;">
+                	<div class="img"></div>
+                    <div class="name">热卖产品</div>
+                </a>
+            </li>
+        	<li>
+            	<a href="http://www.ptweixin.com/member/?m=shop&a=home#" style="cursor: default; text-decoration: none;">
+                	<div class="img"></div>
+                    <div class="name">购物车</div>
+                </a>
+            </li>
+        </ul>
+        <div class="blank9"></div>
+        <ul class="ad">
+        	<li><div class="shop_skin_index_list" rel="edit-t03" no="2"><div class="img"><img src="../images/ad-0.jpg"></div><div class="mod" style="display: none;">&nbsp;</div></div></li>
+        	<li><div class="shop_skin_index_list" rel="edit-t04" no="3"><div class="img"><img src="../images/ad-1.jpg"></div><div class="mod" style="display: none;">&nbsp;</div></div></li>
+        	<li><div class="shop_skin_index_list" rel="edit-t05" no="4"><div class="img"><img src="../images/ad-2.jpg"></div><div class="mod" style="display: none;">&nbsp;</div></div></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <div class="line"></div>
+        <div class="box">
+        <div class="shop_skin_index_list ad" rel="edit-t06" no="5"><div class="img"><img src="../images/ad-3.jpg"></div><div class="mod" style="display: none;">&nbsp;</div><div id="SetHomeCurrentBox" style="height: 190px; width: 193px;"></div></div>
+        <div class="ad_r">
+        	            	<div class="item">
+                	<a href="http://www.ptweixin.com/member/?m=shop&a=home#" style="cursor: default; text-decoration: none;">
+                        <div class="img"><img src=""></div>
+                        <div class="name">aa</div>
+                    </a>
+                </div>
+                    </div>
+        <div class="clear"></div>
+                            </div>
+</div></div>
+	<div class="m_righter">
+		<form id="home_form">
+			<div id="setbanner" style="display: none;">
+								<div class="item">
+					<div class="rows">
+						<div class="b_l">
+							<strong>图片(1)</strong><span class="tips">大图建议尺寸：<label>640*320</label>px</span><a href="http://www.ptweixin.com/member/?m=shop&a=home#shop_home_img_del" value="0"><img src="del.gif" align="absmiddle"></a><br>
+							<div class="blank6"></div>
+							<div><input name="FileUpload" id="HomeFileUpload_0" type="file" style="display: none;" width="120" height="30"><object type="application/x-shockwave-flash" data="http://www.ptweixin.com/member/static/swf/fileupload.swf?r=0.4348285445012152" width="120" height="30" id="HomeFileUpload_0Uploader" style="visibility: visible;"><param name="quality" value="high"><param name="wmode" value="opaque"><param name="allowScriptAccess" value="sameDomain"><param name="flashvars" value="omFileUploadID=HomeFileUpload_0&amp;pagepath=/member/&amp;buttonText=%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6&amp;action=./&amp;folder=&amp;actionData=PHPSESSID%3Dptp8cgepj86v3e0jcr2ojrk6p4%26%2520CNZZDATA1000137483%3D1686458844-1386495286-http%2525253A%2525252F%2525252Fwww.ptweixin.com%25257C1389187729%26do_action%3Daction.file_upload&amp;width=120&amp;height=30&amp;wmode=opaque&amp;method=post&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;fileDesc=Image Files&amp;fileExt=*.jpg;*.png;*.gif;*.jpeg;*.bmp&amp;autoUpload=true&amp;sizeLimit=204800&amp;fileDataName=Filedata"></object><div id="HomeFileUpload_0Queue" class="om-fileupload-queue"></div></div>
+						</div>
+						<div class="b_r"><a href="../images/banner.jpg" target="_blank"><img src="../images/banner.jpg"></a></div>
+						<input type="hidden" name="ImgPathList[]" value="/api/shop/skin/005/images/banner.jpg">
+					</div>
+					<div class="blank9"></div>
+					<div class="rows url_select" style="display: block;">
+						<div class="u_l">链接页面</div>
+						<div class="u_r"><select name="UrlList[]"><option value="" selected="selected">--请选择--</option><optgroup label="---------------系统业务模块---------------"></optgroup><option value="web/">微官网</option><option value="shop/">微商城</option><option value="tuan/">微团购</option><option value="survey/">微调研</option><option value="albums/">微相册</option><option value="panoramic/">360°全景图</option><option value="microbar/">微吧</option><option value="card/">会员卡</option><option value="stores/">LBS门店定位</option><option value="reserve/">在线预约</option><option value="scratch/">刮刮卡</option><option value="fruit/">水果达人</option><option value="turntable/">欢乐大转盘</option><option value="app_estate/">微房产</option><option value="app_car/">微汽车</option><optgroup label="---------------微官网二级页面---------------"></optgroup><option value="web/column/965/">企业介绍</option><option value="web/column/article/2571/">&nbsp;&nbsp;├介绍公司</option><option value="web/column/967/">新闻</option><option value="web/column/article/5768/">&nbsp;&nbsp;├bbbxxxx</option><option value="web/column/968/">联系</option><option value="web/column/1816/">大厅介绍</option><option value="web/lbs/" $selected="">一键导航(LBS)</option><optgroup label="-----------微商城产品分类页面-----------"></optgroup><option value="shop/products/881/">衣服</option><option value="shop/products/882/">鞋子</option><option value="shop/products/883/">包包</option><option value="shop/products/884/">饰品</option><optgroup label="-----------行业方案功能页面-----------"></optgroup><option value="app_catering/shop/">微餐饮在线订餐</option><option value="app_catering/reserve/">微餐饮预约订座</option><option value="app_hotels/">微酒店客房预订</option><option value="app_medical/">微医疗预约挂号</option><option value="app_car/">微汽车首页</option><optgroup label="------------------自定义URL------------------"></optgroup><option value="http://www.baidu.com">hahahaha（http://www.baidu.com）</option></select></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+								<div class="item">
+					<div class="rows">
+						<div class="b_l">
+							<strong>图片(2)</strong><span class="tips">大图建议尺寸：<label>640*320</label>px</span><a href="http://www.ptweixin.com/member/?m=shop&a=home#shop_home_img_del" value="1"><img src="del.gif" align="absmiddle"></a><br>
+							<div class="blank6"></div>
+							<div><input name="FileUpload" id="HomeFileUpload_1" type="file" style="display: none;" width="120" height="30"><object type="application/x-shockwave-flash" data="http://www.ptweixin.com/member/static/swf/fileupload.swf?r=0.8116663359105587" width="120" height="30" id="HomeFileUpload_1Uploader" style="visibility: visible;"><param name="quality" value="high"><param name="wmode" value="opaque"><param name="allowScriptAccess" value="sameDomain"><param name="flashvars" value="omFileUploadID=HomeFileUpload_1&amp;pagepath=/member/&amp;buttonText=%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6&amp;action=./&amp;folder=&amp;actionData=PHPSESSID%3Dptp8cgepj86v3e0jcr2ojrk6p4%26%2520CNZZDATA1000137483%3D1686458844-1386495286-http%2525253A%2525252F%2525252Fwww.ptweixin.com%25257C1389187729%26do_action%3Daction.file_upload&amp;width=120&amp;height=30&amp;wmode=opaque&amp;method=post&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;fileDesc=Image Files&amp;fileExt=*.jpg;*.png;*.gif;*.jpeg;*.bmp&amp;autoUpload=true&amp;sizeLimit=204800&amp;fileDataName=Filedata"></object><div id="HomeFileUpload_1Queue" class="om-fileupload-queue"></div></div>
+						</div>
+						<div class="b_r"></div>
+						<input type="hidden" name="ImgPathList[]" value="">
+					</div>
+					<div class="blank9"></div>
+					<div class="rows url_select" style="display: block;">
+						<div class="u_l">链接页面</div>
+						<div class="u_r"><select name="UrlList[]"><option value="">--请选择--</option><optgroup label="---------------系统业务模块---------------"></optgroup><option value="web/">微官网</option><option value="shop/">微商城</option><option value="tuan/">微团购</option><option value="survey/">微调研</option><option value="albums/">微相册</option><option value="panoramic/">360°全景图</option><option value="microbar/">微吧</option><option value="card/">会员卡</option><option value="stores/">LBS门店定位</option><option value="reserve/">在线预约</option><option value="scratch/">刮刮卡</option><option value="fruit/">水果达人</option><option value="turntable/">欢乐大转盘</option><option value="app_estate/">微房产</option><option value="app_car/">微汽车</option><optgroup label="---------------微官网二级页面---------------"></optgroup><option value="web/column/965/">企业介绍</option><option value="web/column/article/2571/">&nbsp;&nbsp;├介绍公司</option><option value="web/column/967/">新闻</option><option value="web/column/article/5768/">&nbsp;&nbsp;├bbbxxxx</option><option value="web/column/968/">联系</option><option value="web/column/1816/">大厅介绍</option><option value="web/lbs/" $selected="">一键导航(LBS)</option><optgroup label="-----------微商城产品分类页面-----------"></optgroup><option value="shop/products/881/">衣服</option><option value="shop/products/882/">鞋子</option><option value="shop/products/883/">包包</option><option value="shop/products/884/">饰品</option><optgroup label="-----------行业方案功能页面-----------"></optgroup><option value="app_catering/shop/">微餐饮在线订餐</option><option value="app_catering/reserve/">微餐饮预约订座</option><option value="app_hotels/">微酒店客房预订</option><option value="app_medical/">微医疗预约挂号</option><option value="app_car/">微汽车首页</option><optgroup label="------------------自定义URL------------------"></optgroup><option value="http://www.baidu.com">hahahaha（http://www.baidu.com）</option></select></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+								<div class="item">
+					<div class="rows">
+						<div class="b_l">
+							<strong>图片(3)</strong><span class="tips">大图建议尺寸：<label>640*320</label>px</span><a href="http://www.ptweixin.com/member/?m=shop&a=home#shop_home_img_del" value="2"><img src="del.gif" align="absmiddle"></a><br>
+							<div class="blank6"></div>
+							<div><input name="FileUpload" id="HomeFileUpload_2" type="file" style="display: none;" width="120" height="30"><object type="application/x-shockwave-flash" data="http://www.ptweixin.com/member/static/swf/fileupload.swf?r=0.22108721686527133" width="120" height="30" id="HomeFileUpload_2Uploader" style="visibility: visible;"><param name="quality" value="high"><param name="wmode" value="opaque"><param name="allowScriptAccess" value="sameDomain"><param name="flashvars" value="omFileUploadID=HomeFileUpload_2&amp;pagepath=/member/&amp;buttonText=%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6&amp;action=./&amp;folder=&amp;actionData=PHPSESSID%3Dptp8cgepj86v3e0jcr2ojrk6p4%26%2520CNZZDATA1000137483%3D1686458844-1386495286-http%2525253A%2525252F%2525252Fwww.ptweixin.com%25257C1389187729%26do_action%3Daction.file_upload&amp;width=120&amp;height=30&amp;wmode=opaque&amp;method=post&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;fileDesc=Image Files&amp;fileExt=*.jpg;*.png;*.gif;*.jpeg;*.bmp&amp;autoUpload=true&amp;sizeLimit=204800&amp;fileDataName=Filedata"></object><div id="HomeFileUpload_2Queue" class="om-fileupload-queue"></div></div>
+						</div>
+						<div class="b_r"></div>
+						<input type="hidden" name="ImgPathList[]" value="">
+					</div>
+					<div class="blank9"></div>
+					<div class="rows url_select" style="display: block;">
+						<div class="u_l">链接页面</div>
+						<div class="u_r"><select name="UrlList[]"><option value="">--请选择--</option><optgroup label="---------------系统业务模块---------------"></optgroup><option value="web/">微官网</option><option value="shop/">微商城</option><option value="tuan/">微团购</option><option value="survey/">微调研</option><option value="albums/">微相册</option><option value="panoramic/">360°全景图</option><option value="microbar/">微吧</option><option value="card/">会员卡</option><option value="stores/">LBS门店定位</option><option value="reserve/">在线预约</option><option value="scratch/">刮刮卡</option><option value="fruit/">水果达人</option><option value="turntable/">欢乐大转盘</option><option value="app_estate/">微房产</option><option value="app_car/">微汽车</option><optgroup label="---------------微官网二级页面---------------"></optgroup><option value="web/column/965/">企业介绍</option><option value="web/column/article/2571/">&nbsp;&nbsp;├介绍公司</option><option value="web/column/967/">新闻</option><option value="web/column/article/5768/">&nbsp;&nbsp;├bbbxxxx</option><option value="web/column/968/">联系</option><option value="web/column/1816/">大厅介绍</option><option value="web/lbs/" $selected="">一键导航(LBS)</option><optgroup label="-----------微商城产品分类页面-----------"></optgroup><option value="shop/products/881/">衣服</option><option value="shop/products/882/">鞋子</option><option value="shop/products/883/">包包</option><option value="shop/products/884/">饰品</option><optgroup label="-----------行业方案功能页面-----------"></optgroup><option value="app_catering/shop/">微餐饮在线订餐</option><option value="app_catering/reserve/">微餐饮预约订座</option><option value="app_hotels/">微酒店客房预订</option><option value="app_medical/">微医疗预约挂号</option><option value="app_car/">微汽车首页</option><optgroup label="------------------自定义URL------------------"></optgroup><option value="http://www.baidu.com">hahahaha（http://www.baidu.com）</option></select></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+								<div class="item">
+					<div class="rows">
+						<div class="b_l">
+							<strong>图片(4)</strong><span class="tips">大图建议尺寸：<label>640*320</label>px</span>
+							<a href="http://www.ptweixin.com/member/?m=shop&a=home#shop_home_img_del" value="3"><img src="del.gif" align="absmiddle"></a><br>
+							<div class="blank6"></div>
+							<div><input name="FileUpload" id="HomeFileUpload_3" type="file" style="display: none;" width="120" height="30"><object type="application/x-shockwave-flash" data="http://www.ptweixin.com/member/static/swf/fileupload.swf?r=0.5475025109481066" width="120" height="30" id="HomeFileUpload_3Uploader" style="visibility: visible;"><param name="quality" value="high"><param name="wmode" value="opaque"><param name="allowScriptAccess" value="sameDomain"><param name="flashvars" value="omFileUploadID=HomeFileUpload_3&amp;pagepath=/member/&amp;buttonText=%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6&amp;action=./&amp;folder=&amp;actionData=PHPSESSID%3Dptp8cgepj86v3e0jcr2ojrk6p4%26%2520CNZZDATA1000137483%3D1686458844-1386495286-http%2525253A%2525252F%2525252Fwww.ptweixin.com%25257C1389187729%26do_action%3Daction.file_upload&amp;width=120&amp;height=30&amp;wmode=opaque&amp;method=post&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;fileDesc=Image Files&amp;fileExt=*.jpg;*.png;*.gif;*.jpeg;*.bmp&amp;autoUpload=true&amp;sizeLimit=204800&amp;fileDataName=Filedata"></object><div id="HomeFileUpload_3Queue" class="om-fileupload-queue"></div></div>
+						</div>
+						<div class="b_r"></div>
+						<input type="hidden" name="ImgPathList[]" value="">
+					</div>
+					<div class="blank9"></div>
+					<div class="rows url_select" style="display: block;">
+						<div class="u_l">链接页面</div>
+						<div class="u_r"><select name="UrlList[]"><option value="">--请选择--</option><optgroup label="---------------系统业务模块---------------"></optgroup><option value="web/">微官网</option><option value="shop/">微商城</option><option value="tuan/">微团购</option><option value="survey/">微调研</option><option value="albums/">微相册</option><option value="panoramic/">360°全景图</option><option value="microbar/">微吧</option><option value="card/">会员卡</option><option value="stores/">LBS门店定位</option><option value="reserve/">在线预约</option><option value="scratch/">刮刮卡</option><option value="fruit/">水果达人</option><option value="turntable/">欢乐大转盘</option><option value="app_estate/">微房产</option><option value="app_car/">微汽车</option><optgroup label="---------------微官网二级页面---------------"></optgroup><option value="web/column/965/">企业介绍</option><option value="web/column/article/2571/">&nbsp;&nbsp;├介绍公司</option><option value="web/column/967/">新闻</option><option value="web/column/article/5768/">&nbsp;&nbsp;├bbbxxxx</option><option value="web/column/968/">联系</option><option value="web/column/1816/">大厅介绍</option><option value="web/lbs/" $selected="">一键导航(LBS)</option><optgroup label="-----------微商城产品分类页面-----------"></optgroup><option value="shop/products/881/">衣服</option><option value="shop/products/882/">鞋子</option><option value="shop/products/883/">包包</option><option value="shop/products/884/">饰品</option><optgroup label="-----------行业方案功能页面-----------"></optgroup><option value="app_catering/shop/">微餐饮在线订餐</option><option value="app_catering/reserve/">微餐饮预约订座</option><option value="app_hotels/">微酒店客房预订</option><option value="app_medical/">微医疗预约挂号</option><option value="app_car/">微汽车首页</option><optgroup label="------------------自定义URL------------------"></optgroup><option value="http://www.baidu.com">hahahaha（http://www.baidu.com）</option></select></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+								<div class="item">
+					<div class="rows">
+						<div class="b_l">
+							<strong>图片(5)</strong><span class="tips">大图建议尺寸：<label>640*320</label>px</span>
+							<a href="http://www.ptweixin.com/member/?m=shop&a=home#shop_home_img_del" value="4">
+							<img src="del.gif" align="absmiddle"></a><br>
+							<div class="blank6"></div>
+							<div><input name="FileUpload" id="HomeFileUpload_4" type="file" style="display: none;" width="120" height="30"><object type="application/x-shockwave-flash" data="http://www.ptweixin.com/member/static/swf/fileupload.swf?r=0.1341629638336599" width="120" height="30" id="HomeFileUpload_4Uploader" style="visibility: visible;"><param name="quality" value="high"><param name="wmode" value="opaque"><param name="allowScriptAccess" value="sameDomain"><param name="flashvars" value="omFileUploadID=HomeFileUpload_4&amp;pagepath=/member/&amp;buttonText=%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6&amp;action=./&amp;folder=&amp;actionData=PHPSESSID%3Dptp8cgepj86v3e0jcr2ojrk6p4%26%2520CNZZDATA1000137483%3D1686458844-1386495286-http%2525253A%2525252F%2525252Fwww.ptweixin.com%25257C1389187729%26do_action%3Daction.file_upload&amp;width=120&amp;height=30&amp;wmode=opaque&amp;method=post&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;fileDesc=Image Files&amp;fileExt=*.jpg;*.png;*.gif;*.jpeg;*.bmp&amp;autoUpload=true&amp;sizeLimit=204800&amp;fileDataName=Filedata"></object><div id="HomeFileUpload_4Queue" class="om-fileupload-queue"></div></div>
+						</div>
+						<div class="b_r"></div>
+						<input type="hidden" name="ImgPathList[]" value="">
+					</div>
+					<div class="blank9"></div>
+					<div class="rows url_select" style="display: block;">
+						<div class="u_l">链接页面</div>
+						<div class="u_r"><select name="UrlList[]"><option value="">--请选择--</option><optgroup label="---------------系统业务模块---------------"></optgroup><option value="web/">微官网</option><option value="shop/">微商城</option><option value="tuan/">微团购</option><option value="survey/">微调研</option><option value="albums/">微相册</option><option value="panoramic/">360°全景图</option><option value="microbar/">微吧</option><option value="card/">会员卡</option><option value="stores/">LBS门店定位</option><option value="reserve/">在线预约</option><option value="scratch/">刮刮卡</option><option value="fruit/">水果达人</option><option value="turntable/">欢乐大转盘</option><option value="app_estate/">微房产</option><option value="app_car/">微汽车</option><optgroup label="---------------微官网二级页面---------------"></optgroup><option value="web/column/965/">企业介绍</option><option value="web/column/article/2571/">&nbsp;&nbsp;├介绍公司</option><option value="web/column/967/">新闻</option><option value="web/column/article/5768/">&nbsp;&nbsp;├bbbxxxx</option><option value="web/column/968/">联系</option><option value="web/column/1816/">大厅介绍</option><option value="web/lbs/" $selected="">一键导航(LBS)</option><optgroup label="-----------微商城产品分类页面-----------"></optgroup><option value="shop/products/881/">衣服</option><option value="shop/products/882/">鞋子</option><option value="shop/products/883/">包包</option><option value="shop/products/884/">饰品</option><optgroup label="-----------行业方案功能页面-----------"></optgroup><option value="app_catering/shop/">微餐饮在线订餐</option><option value="app_catering/reserve/">微餐饮预约订座</option><option value="app_hotels/">微酒店客房预订</option><option value="app_medical/">微医疗预约挂号</option><option value="app_car/">微汽车首页</option><optgroup label="------------------自定义URL------------------"></optgroup><option value="http://www.baidu.com">hahahaha（http://www.baidu.com）</option></select></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+							</div>
+			<div id="setimages" style="display: block;">
+				<div class="item">
+					<div value="title" style="display: none;">
+						<span class="fc_red">*</span> 标题<br>
+						<div class="input"><input name="Title" value="" type="text"></div>
+						<div class="blank20"></div>
+					</div>
+					<div value="images">
+						<span class="fc_red">*</span> 图片<span class="tips">大图建议尺寸：<label>400*400</label>px</span><br>
+						<div class="blank6"></div>
+						<div><input name="FileUpload" id="HomeFileUpload" type="file" style="display: none;" width="120" height="30"><object type="application/x-shockwave-flash" data="http://www.ptweixin.com/member/static/swf/fileupload.swf?r=0.6637752936221659" width="120" height="30" id="HomeFileUploadUploader" style="visibility: visible;"><param name="quality" value="high"><param name="wmode" value="opaque"><param name="allowScriptAccess" value="sameDomain"><param name="flashvars" value="omFileUploadID=HomeFileUpload&amp;pagepath=/member/&amp;buttonText=%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6&amp;action=./&amp;folder=&amp;actionData=PHPSESSID%3Dptp8cgepj86v3e0jcr2ojrk6p4%26%2520CNZZDATA1000137483%3D1686458844-1386495286-http%2525253A%2525252F%2525252Fwww.ptweixin.com%25257C1389187729%26do_action%3Daction.file_upload&amp;width=120&amp;height=30&amp;wmode=opaque&amp;method=post&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;fileDesc=Image Files&amp;fileExt=*.jpg;*.png;*.gif;*.jpeg;*.bmp&amp;autoUpload=true&amp;sizeLimit=204800&amp;fileDataName=Filedata"></object><div id="HomeFileUploadQueue" class="om-fileupload-queue"></div></div>
+						<div class="blank20"></div>
+					</div>
+					<div class="url_select" style="display: block;">
+						<span class="fc_red">*</span> 链接页面<br>
+						<div class="input"><select name="Url"><option value="" selected="selected">--请选择--</option></select></div>
+					</div>
+					<input type="hidden" name="ImgPath" value="/api/shop/skin/005/images/ad-3.jpg">
+				</div>
+			</div>
+			<div class="button"><input type="submit" class="btn_green" name="submit_button" value="提交保存"></div>
+			<input type="hidden" name="PId" value="6491">
+			<input type="hidden" name="SId" value="6">
+			<input type="hidden" name="ContentsType" value="0">
+			<input type="hidden" name="no" value="5">
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="home_mod_tips" class="lean-modal pop_win">
+	<div class="h">首页设置<a class="modal_close" href="http://www.ptweixin.com/member/?m=shop&a=home#"></a></div>
+	<div class="tips">首页设置成功</div>
+</div>	</div>
+<div>
+<div style="display:none;"><script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000137483'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000137483' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1000137483"><a href="http://www.cnzz.com/stat/website.php?web_id=1000137483" target="_blank" title="站长统计">站长统计</a></span><script src="z_stat.php" type="text/javascript"></script><script src="core.php" charset="utf-8" type="text/javascript"></script></div>
+
+</div></div></body></html>

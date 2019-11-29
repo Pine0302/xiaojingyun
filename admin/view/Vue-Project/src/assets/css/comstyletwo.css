@@ -1,0 +1,85 @@
+.WSY_remind_dl02 {
+	margin: 26px 0;
+}
+.WSY_remind_dl02 dt {
+	line-height: 24px;
+	width: 200px;
+	font-weight: normal;
+	font-size: 14px;
+	text-align: right;
+	display: inline-block;
+	vertical-align: top;
+}
+.WSY_remind_dl02 dd {
+	line-height: 24px;
+	font-weight: normal;
+	font-size: 14px;
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: top;
+}
+.WSY_remind_dl02 input[type="text"] {
+	width: 200px;
+	height: 24px;
+	border: 1px solid #dddddd;
+	border-radius: 2px;
+	box-sizing: border-box;
+	padding: 0 0;
+	padding-left: 5px;
+}
+.WSY_remind_dl02 dd .WSY_dd_div {
+	margin-bottom: 15px;
+}
+.WSY_remind_dl02 dd .WSY_dd_div .WSY_dd_div_left {
+	width: 150px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.WSY_remind_dl02 dd .WSY_dd_div .WSY_dd_div_left input[type="radio"], .WSY_remind_dl02 dd .WSY_dd_div .WSY_dd_div_left span {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 0;
+}
+.WSY_remind_dl02 dd .margind {
+	margin: 0 10px;
+}
+.WSY_remind_dl02 dd .WSY_small_ipt {
+	width: 60px;
+}
+.WSY_remind_dl02 dd .WSY_des_span {
+	margin-left: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.submit_div {
+	text-align: center;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+.el-switch.is-checked .el-switch__core {
+	border-color: rgb(255, 113, 112);
+	background-color: rgb(255, 113, 112);
+}
+.avatar-uploader .el-upload {
+	border: 1px dashed #d9d9d9;
+	border-radius: 6px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+	border-color: #20a0ff;
+}
+.avatar-uploader-icon {
+	font-size: 28px;
+	color: #8c939d;
+	width: 178px;
+	height: 178px;
+	line-height: 178px;
+	text-align: center;
+}
+.avatar {
+	width: 178px;
+	height: 178px;
+	display: block;
+}

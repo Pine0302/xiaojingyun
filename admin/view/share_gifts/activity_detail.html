@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>活动管理详情</title>
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/js/layer/V2_1/skin/layer.css">
+        <link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+        <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+    </head>
+<body>
+<div class="div_new_content">
+	<div class="WSY_content">
+		<div class="WSY_columnbox WSY_list" style="overflow:auto;">
+	
+			<div class="WSY_column_header">
+				<div class="WSY_columnnav">
+					<a class="white1">活动详情</a> 
+				</div>
+			</div>
+			<div class="WSY_remind_main" style="margin-left:100px;">
+						<dl class="WSY_remind_dl02">											
+							<div>
+								<dt>活动标题：</dt>
+								<dt style="color:#666666;">
+									<?php echo $activity_info['name'];?>
+								</dt>						
+							</div>
+						</dl>
+						<dl class="WSY_remind_dl02">
+							<div>
+								<dt>活动状态：</dt>
+								<dt style="color:#666666;">
+									 <?php if(!empty($activity_info['status'])){
+                                         switch($activity_info['status']){
+                                            case 1:
+                                                echo "待启用";
+                                            break;
+                                            case 2:                                                
+                                                if(strtotime($activity_info['begin_time']) < strtotime(date('Y-m-d'.'00:00:00',time())) && strtotime($activity_info['end_time']) >= strtotime(date('Y-m-d'.'00:00:00',time()))){
+                                                   echo "进行中";
+                                                }elseif(strtotime($activity_info['end_time']) < strtotime(date('Y-m-d'.'00:00:00',time()))){
+                                                   echo "已结束";
+                                                }else{
+                                                   echo "已启用";
+                                                }                                                
+                                            break;
+                                            case 3:
+                                                 echo "已结束";
+                                            break;
+                                            default:
+                                                 echo "未知";
+                                            break;
+                                         }
+                                      }else{
+                                         echo "未知";
+                                      }
+                                      ?>
+								</dt>						
+							</div>
+						</dl>
+						<dl class="WSY_remind_dl02">	
+							<div>
+								<dt>活动起始时间：</dt>
+								<dt style="color:#666666;">
+									<?php echo $activity_info['begin_time'];?>
+								</dt>						
+							</div>
+						</dl>
+						<dl class="WSY_remind_dl02">
+							<div>
+								<dt>活动结束时间：</dt>
+								<dt style="color:#666666;">
+									<?php echo $activity_info['end_time'];?>
+								</dt>
+							</div>
+						</dl>
+							                       
+                        <dl class="WSY_remind_dl02">
+							<div>
+								<dt>是否开启公众号：</dt>
+								<dt style="color:#666666;">
+									<?php 
+									if((int)$activity_info['is_subscription'] == 1){
+                                        echo "开启";
+									}else{
+									    echo "不开启";
+									}
+
+									?>
+								</dt>
+							</div>
+						</dl>								
+						<dl class="WSY_remind_dl02">
+							<div>
+								<dt>是否开启手机号：</dt>
+								<dt style="color:#666666;">
+									<?php 
+									if((int)$activity_info['is_bind_phone'] == 1){
+                                        echo "开启";
+									}else{
+									    echo "不开启";
+									}
+
+									?>
+								</dt>
+							</div>
+						</dl>
+						<?php if((int)$activity_info['share_is_coupon'] == 1){ ?>
+						<dl class="WSY_remind_dl02">
+							<div>
+								<dt>优惠券活动起始时间：</dt>
+								<dt style="color:#666666;">
+									<?php echo date("Y-m-d",$activity_info['coupon_begin_time_int']);?>
+								</dt>						
+							</div>
+						</dl>
+						<dl class="WSY_remind_dl02">
+							<div>
+								<dt>优惠券活动结束时间：</dt>
+								<dt style="color:#666666;">
+									<?php echo date("Y-m-d",$activity_info['coupon_end_time_int']);?>
+								</dt>						
+							</div>
+						</dl>
+						<?php }?>
+						<?php if((int)$activity_info['share_is_red_envelopes'] == 1){ ?>
+						<dl class="WSY_remind_dl02">
+							<div>
+								<dt>红包活动起始时间：</dt>
+								<dt style="color:#666666;">
+									<?php echo date("Y-m-d",$activity_info['red_envelopes_begin_time_int']);?>
+								</dt>						
+							</div>
+						</dl>
+						<dl class="WSY_remind_dl02">
+							<div>
+								<dt>红包活动结束时间：</dt>
+								<dt style="color:#666666;">
+									<?php echo date("Y-m-d",$activity_info['red_envelopes_end_time_int']);?>
+								</dt>						
+							</div>
+						</dl>
+						<?php }?>
+						<div class="WSY_text_input">
+					        <input type="button" class="WSY_button" value="返回" onclick="javascript:history.go(-1);" style="cursor:pointer;"/>
+					    </div>								
+			</div>	
+		</div>
+	</div>
+ <div style="width:100%;height:20px;">
+ </div>
+</div>
+</body>
+</html>
+

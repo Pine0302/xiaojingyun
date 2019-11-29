@@ -1,0 +1,88 @@
+
+batchcode======='35731415618596451650'
+op======='send'
+json=======array (
+  'status' => 0,
+  'msg' => '编号：35731415618596451650，发货成功',
+  'time' => '2019-06-30 10:57:09',
+  'deliverySetting' => '2',
+)
+json2=======array (
+  'status' => 0,
+  'msg' => '编号：35731415618596451650，发货成功',
+  'time' => '2019-06-30 10:57:09',
+  'deliverySetting' => '2',
+)
+
+batchcode======='33192415618046483280'
+op======='send'
+json=======array (
+  'status' => 0,
+  'msg' => '编号：33192415618046483280，发货成功',
+  'time' => '2019-06-30 10:57:37',
+  'deliverySetting' => '2',
+)
+json2=======array (
+  'status' => 0,
+  'msg' => '编号：33192415618046483280，发货成功',
+  'time' => '2019-06-30 10:57:37',
+  'deliverySetting' => '2',
+)
+
+batchcode======='35086015602587303670'
+op======='goodRefund'
+json=======array (
+  'is_collageActivities' => '0',
+  'status' => 0,
+  'line' => 1032,
+  'msg' => '编号：35086015602587303670，退款成功',
+)
+json2=======array (
+  'is_collageActivities' => '0',
+  'status' => 0,
+  'line' => 1032,
+  'msg' => '编号：35086015602587303670，退款成功',
+)
+
+batchcode======='36797315617182451580'
+op======='goodRefund'
+json=======array (
+  'is_collageActivities' => '0',
+  'status' => 0,
+  'line' => 1032,
+  'msg' => '编号：36797315617182451580，退款成功',
+)
+json2=======array (
+  'is_collageActivities' => '0',
+  'status' => 0,
+  'line' => 1032,
+  'msg' => '编号：36797315617182451580，退款成功',
+)
+
+batchcode======='36797315617182451580'
+op======='confirm'
+json=======array (
+  'status' => 0,
+  'line' => 820,
+  'msg' => '编号：36797315617182451580，确认完成',
+)
+json2=======array (
+  'status' => 0,
+  'line' => 820,
+  'msg' => '编号：36797315617182451580，确认完成',
+)
+
+batchcode======='36505015618040552930'
+op======='send'
+json=======array (
+  'status' => 0,
+  'msg' => '编号：36505015618040552930，发货成功',
+  'time' => '2019-06-30 14:59:09',
+  'deliverySetting' => '2',
+)
+json2=======array (
+  'status' => 0,
+  'msg' => '编号：36505015618040552930，发货成功',
+  'time' => '2019-06-30 14:59:09',
+  'deliverySetting' => '2',
+)

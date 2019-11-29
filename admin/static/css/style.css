@@ -1,0 +1,1108 @@
+/* Body、顶部界面开始*/
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  border: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: none;
+}
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='reset'],
+input[type='submit'],
+input[type='button'],
+input[type='tel'],
+button,
+textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: none;
+}
+/*去掉苹果的默认UI来渲染按钮*/
+ol,
+ul {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+textarea {
+  overflow: auto;
+  resize: none;
+}
+/*媒体查询自适应字体*/
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media screen and (min-width: 413px) {
+  html {
+    font-size: 12px;
+  }
+}
+.clear:after {
+  position: relative;
+  content: '';
+  clear: both;
+  display: block;
+}
+.box-sizing {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  overflow: scroll;
+  background-color: #f6f6f6;
+  position: relative;
+}
+/*推广员管理*/
+.promoter .promoter_list {
+  margin-bottom: 10px;
+  background-color: #FFF;
+}
+.promoter .promoter_list .pep_infor {
+  padding: 15px 3.6%;
+  font-size: 0;
+}
+.promoter .promoter_list .pep_infor .img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 75%;
+}
+.promoter .promoter_list .pep_infor .img img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.promoter .promoter_list .pep_infor .img .text {
+  display: inline-block;
+  vertical-align: top;
+}
+.promoter .promoter_list .pep_infor .img .text p {
+  font-size: 1.4rem;
+  color: #333333;
+  vertical-align: middle;
+  width: 40%;
+  line-height: 2.1rem;
+}
+.promoter .promoter_list .pep_infor .img .text span {
+  font-size: 1.1rem;
+  color: #707070;
+  line-height: 1.6rem;
+  margin-top: 5px;
+}
+.promoter .promoter_list .pep_infor .operate {
+  display: inline-block;
+  width: 25%;
+  vertical-align: middle;
+  text-align: right;
+}
+.promoter .promoter_list .pep_infor .operate a {
+  display: inline-block;
+  text-align: center;
+  width: 50px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  color: #FFF;
+  background-color: #31c27c;
+}
+.promoter .promoter_list .pep_infor .operate a.a1 {
+  background-color: #f5cd19;
+  margin-bottom: 10px;
+}
+.promoter .promoter_list .pep_infor .operate a.a2 {
+  background-color: #ff6868;
+}
+.promoter .promoter_list .data_infor {
+  border-top: solid 1px #f6f6f6;
+  border-bottom: solid 1px #f6f6f6;
+  padding: 10px 0 12px;
+  overflow: hidden;
+}
+.promoter .promoter_list .data_infor div {
+  width: 33.333333333333336%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  float: left;
+  text-align: center;
+  border-right: solid 1px #e1e1e1;
+}
+.promoter .promoter_list .data_infor div:last-child {
+  border: none;
+}
+.promoter .promoter_list .data_infor div p {
+  font-size: 1.8rem;
+  color: #31c27c;
+  line-height: 2.2rem;
+}
+.promoter .promoter_list .data_infor div span {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  display: block;
+  margin-top: 8px;
+  color: #8c8c8c;
+}
+.promoter .promoter_list .go {
+  text-align: center;
+  height: 30px;
+}
+.promoter .promoter_list .go a {
+  color: #333333;
+  line-height: 30px;
+  font-size: 1.2rem;
+}
+.promoter .promoter_list .go a img {
+  height: 13px;
+  vertical-align: middle;
+}
+/*推广员管理结束*/
+/*底部操作按钮*/
+.bottom_menu {
+  position: absolute;
+  width: 100%;
+  padding-bottom: 13px;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 0;
+}
+.bottom_menu a {
+  display: inline-block;
+  background-color: #31c27c;
+  font-size: 1.5rem;
+  color: #FFF;
+}
+.bottom_menu a.dual {
+  width: 41.7%;
+  line-height: 44px;
+  border-radius: 22px;
+  margin: 0 3%;
+}
+.bottom_menu a.odd {
+  width: 77.8%;
+  line-height: 39px;
+  border-radius: 19px;
+}
+/*话题编辑*/
+.topic_edit ul li {
+  border-bottom: solid 1px #f6f6f6;
+  background-color: #FFF;
+  padding: 11px 2.8%;
+  overflow: hidden;
+}
+.topic_edit ul li .li_left {
+  float: left;
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+  color: #333333;
+  vertical-align: middle;
+}
+.topic_edit ul li .li_left span {
+  display: block;
+  font-size: 1.1rem;
+  color: #a1a1a1;
+  line-height: 1.1rem;
+}
+.topic_edit ul li .li_right {
+  float: right;
+  font-size: 1.2rem;
+  color: #888888;
+}
+.topic_edit ul li .li_right input[type=text] {
+  background: transparent;
+  line-height: 2.3rem;
+  text-align: right;
+  color: #888888;
+  outline: none;
+}
+.topic_edit ul li .li_right input[type=file] {
+  display: none;
+}
+.topic_edit ul li .li_right .label {
+  display: block;
+  width: 75px;
+  height: 53px;
+}
+.topic_edit ul li .li_right .label img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.topic_edit ul li .li_right.jiantou_bg {
+  padding-right: 20px;
+  background-image: url("../img/promoter_go.png");
+  background-repeat: no-repeat;
+  background-size: auto 14px;
+  background-position: right center;
+}
+.topic_edit ul li.jiabin {
+  margin: 10px 0;
+}
+.topic_edit ul li.jiabin .li_left {
+  line-height: 40px;
+}
+.topic_edit ul li.jiabin .li_right img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+/*话题简介弹框*/
+.topic_edit .edit_alert {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.topic_edit .edit_alert .topic_jianjie {
+  width: 84%;
+  height: 272px;
+  position: relative;
+  top: 50%;
+  margin: -136px auto 0;
+  background-color: #FFF;
+  border-radius: 2px;
+}
+.topic_edit .edit_alert .topic_jianjie h6 {
+  color: #888888;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 45px;
+}
+.topic_edit .edit_alert .topic_jianjie textarea {
+  padding: 0 6.3%;
+  font-size: 1.3rem;
+  color: #c1c1c1;
+  width: 87.4%;
+  height: 150px;
+  line-height: 2rem;
+}
+.topic_edit .edit_alert .topic_jianjie .topic_jianjie_menu {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  left: 0;
+  bottom: 0;
+}
+.topic_edit .edit_alert .topic_jianjie .topic_jianjie_menu a {
+  width: 50%;
+  display: block;
+  float: left;
+  line-height: 44px;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.topic_edit .edit_alert .topic_jianjie .topic_jianjie_menu a.queding {
+  color: #FFF;
+  background-color: #31c27c;
+}
+.topic_edit .edit_alert .topic_jianjie .topic_jianjie_menu a.quxiao {
+  color: #888888;
+  background-color: #f1f1f1;
+}
+/*弹框结束*/
+/*选择分类弹框*/
+.topic_edit .chose_fenlei {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 272px;
+  left: 0;
+  bottom: 0;
+  background-color: #FFF;
+  z-index: 10;
+} /*选择分类弹框结束*/
+.topic_edit .chose_fenlei h6 {
+  font-size: 1.5rem;
+  color: #383838;
+  line-height: 45px;
+  text-align: center;
+  position: relative;
+}
+.topic_edit .chose_fenlei h6 .close {
+  position: absolute;
+  width: 10px;
+  right: 4.2%;
+  top: 17.5px;
+}
+.topic_edit .chose_fenlei .chose_fenlei_list {
+  overflow: hidden;
+  padding: 1.6%;
+}
+.topic_edit .chose_fenlei .chose_fenlei_list span {
+  display: block;
+  float: left;
+  width: 22%;
+  margin: 7.5px 1.1%;
+  line-height: 30px;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #353535;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+}
+.topic_edit .chose_fenlei .chose_fenlei_list span.active {
+  background-color: #31c37c;
+  color: #FFF;
+}
+/*话题编辑结束*/
+/*话题设置*/
+.topic_set {
+  background-color: #FFF;
+}
+.topic_set h6 {
+  font-size: 1.3rem;
+  line-height: 1.9rem;
+  padding: 15px 4.2%;
+  color: #333333;
+}
+.topic_set .tab_nav {
+  overflow: hidden;
+  padding-bottom: 21px;
+  border-bottom: solid 1px #f5f5f5;
+}
+.topic_set .tab_nav .nav {
+  width: 33.333333333333336%;
+  float: left;
+  text-align: center;
+}
+.topic_set .tab_nav .nav .img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  margin: 12px auto;
+  background-size: 31px 28px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.topic_set .tab_nav .nav .img[data-num='0'] {
+  background-image: url("../img/topic_set1.png");
+}
+.topic_set .tab_nav .nav .img[data-num='1'] {
+  background-image: url("../img/topic_set2.png");
+}
+.topic_set .tab_nav .nav .img[data-num='2'] {
+  background-image: url("../img/topic_set3.png");
+}
+.topic_set .tab_nav .nav .img.active[data-num='0'] {
+  background-color: #31c27c;
+}
+.topic_set .tab_nav .nav .img.active[data-num='1'] {
+  background-color: #f64a45;
+}
+.topic_set .tab_nav .nav .img.active[data-num='2'] {
+  background-color: #f6b545;
+}
+.topic_set .tab_nav .nav p {
+  font-size: 1.3rem;
+  color: #666666;
+}
+.topic_set .tab_infor .tab {
+  height: 57px;
+  display: none;
+  font-size: 1.3rem;
+}
+.topic_set .tab_infor .tab:first-child {
+  display: block;
+}
+.topic_set .tab_infor .tab.open {
+  text-align: center;
+  color: #333333;
+  line-height: 57px;
+}
+.topic_set .tab_infor .tab .text_div {
+  width: 91.6%;
+  height: 39px;
+  border: solid 1px #e2e2e2;
+  margin: 8px auto;
+  padding: 0 9px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.topic_set .tab_infor .tab .text_div span {
+  color: #343434;
+  line-height: 39px;
+  margin-right: 18px;
+}
+.topic_set .tab_infor .tab .text_div span.yuan {
+  float: right;
+  margin-right: 0;
+  margin-left: 10px;
+}
+.topic_set .tab_infor .tab .text_div input {
+  background: transparent;
+  color: #cacaca;
+  font-size: 1.3rem;
+  line-height: 39px;
+  width: 70%;
+  outline: none;
+}
+.topic_set .tab_infor .tab .text_div input.money {
+  width: 30%;
+  float: right;
+  text-align: right;
+}
+/*选择直播分类*/
+.topic_set .fenlei {
+  padding: 0 4.2%;
+  font-size: 0;
+} /*选择直播分类结束*/
+.topic_set .fenlei span {
+  display: inline-block;
+  width: 15%;
+  height: 23px;
+  background-color: #FFF;
+  color: #333333;
+  font-size: 1.2rem;
+  line-height: 23px;
+  margin: 0 8px 8px 0;
+  text-align: center;
+  border-radius: 2px;
+}
+.topic_set .fenlei span.active {
+  background-color: #31c27c;
+  color: #FFF;
+}
+/*话题设置结束*/
+/*禁言用户管理/推荐人*/
+.gag_manage {
+  background-color: #FFF;
+}
+.gag_manage ul li {
+  border-bottom: solid 1px #f6f6f6;
+  width: 94.4%;
+  height: 45px;
+  margin: 0 auto;
+  padding: 10px 0;
+  font-size: 1.2rem;
+}
+.gag_manage ul li img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 11px;
+  vertical-align: middle;
+}
+.gag_manage ul li p {
+  display: inline-block;
+  line-height: 45px;
+  vertical-align: middle;
+  color: #333333;
+}
+.gag_manage ul li a {
+  display: block;
+  float: right;
+  text-align: center;
+  color: #FFF;
+  background-color: #31c27d;
+  width: 80px;
+  height: 25px;
+  margin: 10px 0;
+  border-radius: 12px;
+  line-height: 25px;
+}
+/*新建话题*/
+.new_topic ul li {
+  padding: 11px 2.8%;
+  border-bottom: solid 1px #f6f6f6;
+  background-color: #FFF;
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+  color: #333333;
+}
+.new_topic ul li.time {
+  margin: 10px 0;
+  padding-right: 6%;
+  background-image: url("../img/promoter_go.png");
+  background-repeat: no-repeat;
+  background-size: auto 14px;
+  background-position: right 4.2% center;
+}
+.new_topic ul li.moshi span {
+  display: inline-block;
+  text-align: center;
+  width: 41.6%;
+  height: 65px;
+  background-color: #c1c1c1;
+  color: #FFF;
+  margin: 10px 5.5% 10px 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding-top: 10px;
+  border-radius: 3px;
+}
+.new_topic ul li.moshi span.active {
+  background-color: #31c27c;
+}
+.new_topic ul li.moshi span p {
+  font-size: 1.5rem;
+}
+.new_topic ul li.moshi span p.p1 {
+  font-size: 1.1rem;
+}
+.new_topic ul li.upimg span {
+  color: #a2a2a2;
+}
+.new_topic ul li.upimg label {
+  display: block;
+  width: 250px;
+  height: 104px;
+  background-image: url("../img/upimg_bg.png");
+  background-size: 100% 100%;
+  margin: 10px 0;
+}
+.new_topic ul li.upimg label img {
+  width: 100%;
+  height: 100%;
+}
+.new_topic ul li.upimg input[type=file] {
+  display: none;
+}
+/*新建话题结束*/
+/*用户管理*/
+.user_manage {
+  background-color: #FFF;
+}
+.user_manage ul li {
+  background-image: url("../img/promoter_go.png");
+  background-position: right 4.2% center;
+  background-size: auto 14px;
+  background-repeat: no-repeat;
+  padding: 8px 4.2%;
+  border-bottom: solid 1px #f6f6f6;
+}
+.user_manage ul li p {
+  padding-left: 35px;
+  line-height: 35px;
+  font-size: 1.4rem;
+  display: inline-block;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: auto 19px;
+}
+.user_manage ul li p.gag {
+  background-image: url("../img/user_topic_bg1.png");
+}
+.user_manage ul li p.promoter {
+  background-image: url("../img/user_topic_bg2.png");
+}
+.user_manage ul li a {
+  display: block;
+  float: right;
+  padding-right: 10px;
+}
+.user_manage ul li a img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+/*用户管理结束*/
+/*直播间*/
+.live_room .banner {
+  width: 100%;
+  height: 150px;
+  background-image: url("../img/live_room_banner.jpg");
+  background-size: 100% 100%;
+}
+.live_room .live_room_infor {
+  overflow: hidden;
+  padding: 8px 0;
+  background-color: #FFF;
+}
+.live_room .live_room_infor .pic {
+  width: 18%;
+  float: left;
+  text-align: center;
+}
+.live_room .live_room_infor .pic img {
+  width: 69.3%;
+  border-radius: 50%;
+}
+.live_room .live_room_infor .text {
+  width: 64.8%;
+  float: left;
+}
+.live_room .live_room_infor .text p {
+  font-size: 1.3rem;
+  color: #333333;
+  line-height: 2.1rem;
+}
+.live_room .live_room_infor .text span {
+  padding-left: 20px;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  color: #888888;
+  background-image: url("../img/renshu.png");
+  background-repeat: no-repeat;
+  background-size: 14px auto;
+  background-position: left center;
+}
+.live_room .live_room_infor .guanzhu {
+  width: 17.2%;
+  float: right;
+  text-align: center;
+  padding-top: 12px;
+}
+.live_room .live_room_infor .guanzhu a {
+  display: inline-block;
+  width: 45px;
+  border: solid 1px #31c27c;
+  color: #31c27c;
+  line-height: 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+.live_room .live_room_nav {
+  overflow: hidden;
+  text-align: center;
+  background-color: #FFFFFF;
+  margin-top: 10px;
+  border-bottom: solid 1px #e1e1e1;
+}
+.live_room .live_room_nav span {
+  display: block;
+  width: 50%;
+  float: left;
+  font-size: 1.5rem;
+  line-height: 45px;
+  color: #c1c1c1;
+}
+.live_room .live_room_nav span.active {
+  color: #31c27c;
+}
+.live_room .live_room_tab {
+  background-color: #FFF;
+}
+.live_room .live_room_tab .mytopic {
+  width: 100%;
+  background: #fff;
+  padding-top: 5px;
+}
+.live_room .live_room_tab .mytopic .topiclist {
+  margin-top: 5px;
+  position: relative;
+}
+.live_room .live_room_tab .mytopic .topiclist:after {
+  position: relative;
+  content: '';
+  clear: both;
+  display: block;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicleft {
+  float: left;
+  width: 28%;
+  margin: 0 3% 3px 2%;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright {
+  float: right;
+  width: 67%;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .tp {
+  margin-top: 5px;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone {
+  width: 100%;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone:after {
+  position: relative;
+  content: '';
+  clear: both;
+  display: block;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .topiconeleft {
+  float: left;
+  width: 80%;
+  font-size: 1.3rem;
+  color: #333;
+  line-height: 18px;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .topiconeright {
+  float: left;
+  width: 20%;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .topiconeright span {
+  display: inline-block;
+  color: #f5cd19;
+  border: 1px solid #f5cd19;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .date {
+  float: left;
+  font-size: 1.1rem;
+  color: #c1c1c1;
+  margin: 10px 0;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .livedate {
+  float: right;
+  margin-right: 5%;
+  font-size: 1.2rem;
+  color: #31c27c;
+  margin-top: 7px;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .livedate_3 {
+  float: right;
+  margin: 7px 5% 0 5%;
+  position: relative;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .livedate_3 img {
+  width: 16px;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .livedate_3 .delete {
+  display: none;
+  position: absolute;
+  width: 40px;
+  height: 25px;
+  margin-left: -20px;
+  text-align: center;
+  color: #FFF;
+  z-index: 10;
+  left: 50%;
+  top: 20px;
+  font-size: 1.2rem;
+  line-height: 28px;
+  background-image: url(../img/delete_bg.png);
+  background-size: 100% 100%;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .livedate01 {
+  float: right;
+  margin-right: 5%;
+  font-size: 1.2rem;
+  color: #f5cd19;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .livedate img,
+.live_room .live_room_tab .mytopic .topiclist .topicright .topicone .livedate01 img {
+  width: 15px;
+  margin-right: 5px;
+}
+.live_room .live_room_tab .mytopic .topiclist .topicline {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 67%;
+  height: 1px;
+  background: #e1e1e1;
+}
+.live_room .live_room_tab .live_room_jianjie {
+  padding: 5px 4.2%;
+}
+.live_room .live_room_tab .live_room_jianjie h6 {
+  font-size: 1.3rem;
+  color: #333333;
+  line-height: 3.3rem;
+  margin-top: 5px;
+}
+.live_room .live_room_tab .live_room_jianjie p {
+  color: #888888;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+}
+.live_room .live_room_tab .live_room_jianjie p.p1 {
+  font-size: 1.2rem;
+  line-height: 1.9rem;
+}
+.fix-fenxiang {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  display: block;
+  line-height: 45px;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: #31c27c;
+  color: #FFF;
+}
+/*直播间结束*/
+/*我的直播页*/
+.my_liveRoom .jj_banner {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+.my_liveRoom .jj_fansbox {
+  width: 100%;
+  background: #fff;
+  padding: 5px 0;
+}
+.my_liveRoom .jj_fansbox .jjp01 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-left: 2%;
+}
+.my_liveRoom .jj_fansbox .jj_fansnums {
+  overflow: hidden;
+}
+.my_liveRoom .jj_fansbox .jj_fansnums .jj_date {
+  float: left;
+  font-size: 1.1rem;
+  color: #888;
+  margin-top: 5px;
+  margin-left: 2%;
+}
+.my_liveRoom .jj_fansbox .jj_fansnums .fansnum {
+  float: right;
+  margin-right: 2%;
+  margin-top: 5px;
+  font-size: 1.2rem;
+  color: #888;
+}
+.my_liveRoom .jj_fansbox .jj_fansnums .fansnum img {
+  width: 20%;
+  margin-right: 5%;
+}
+.my_liveRoom .jj_livebox {
+  background: #fff;
+  margin-top: 10px;
+}
+.my_liveRoom .jj_livebox .jjp02 {
+  font-size: 1.3rem;
+  color: #333;
+  padding: 5px 5% 7px;
+}
+.my_liveRoom .jj_livebox .jjp03 {
+  font-size: 1.2rem;
+  color: #888;
+  padding-left: 5%;
+  margin-bottom: 3px;
+}
+.my_liveRoom .jj_livebox .zbjj {
+  margin: 0 5% 5px;
+  font-size: 1.1rem;
+  color: #888;
+  line-height: 20px;
+}
+.my_liveRoom .jj_livebox .zbgy {
+  margin: 0 5%;
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+  color: #888;
+  line-height: 20px;
+}
+.my_liveRoom .livemake {
+  background: #fff;
+  margin-top: 10px;
+}
+.my_liveRoom .livemake .carebox {
+  border-bottom: 1px solid #f1f1f1;
+  overflow: hidden;
+  padding: 0 5%;
+}
+.my_liveRoom .livemake .carebox .livepic {
+  float: left;
+  width: 25px;
+  margin: 10px 0;
+}
+.my_liveRoom .livemake .carebox .jjp04 {
+  float: left;
+  font-size: 1.3rem;
+  color: #333;
+  margin-top: 15px;
+  margin-left: 1%;
+}
+.my_liveRoom .livemake .perple {
+  position: relative;
+  overflow: hidden;
+  padding: 15px 0 10px;
+}
+.my_liveRoom .livemake .perple li {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+.my_liveRoom .livemake .perple li .jjp05 {
+  font-size: 1.8rem;
+  color: #31c27c;
+  margin-bottom: 2px;
+}
+.my_liveRoom .livemake .perple li .jjp06 {
+  font-size: 1.2rem;
+  color: #666;
+}
+.my_liveRoom .livemake .perple .midline {
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  background: #e1e1e1;
+  width: 1px;
+  height: 40px;
+}
+.my_liveRoom .jj_buttom {
+  overflow: hidden;
+  margin-top: 30px;
+  text-align: center;
+}
+.my_liveRoom .jj_buttom a {
+  display: block;
+  float: left;
+  width: 50%;
+  line-height: 45px;
+  font-size: 1.5rem;
+}
+.my_liveRoom .jj_buttom a.enterlive {
+  background: #31c27c;
+  color: #fff;
+}
+.my_liveRoom .jj_buttom a.bianji {
+  background-color: #e1e1e1;
+  color: #888888;
+}
+/*我的直播页结束*/
+/*直播间管理*/
+.liveRoom_man .liveRoom_infor {
+  background-color: #FFF;
+  padding: 15px 4.2%;
+  border-bottom: solid 1px #f6f6f6;
+}
+.liveRoom_man .liveRoom_infor img {
+  display: inline-block;
+  width: 16%;
+  border-radius: 50%;
+  margin-right: 4.2%;
+  vertical-align: middle;
+}
+.liveRoom_man .liveRoom_infor p {
+  display: inline-block;
+  width: 70%;
+  font-size: 1.5rem;
+  color: #333333;
+}
+.liveRoom_man .shuju {
+  padding: 10px 0;
+  overflow: hidden;
+  background-color: #FFF;
+}
+.liveRoom_man .shuju li {
+  width: 49%;
+  float: left;
+  text-align: center;
+}
+.liveRoom_man .shuju li p {
+  color: #31c27c;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  margin-bottom: 10px;
+}
+.liveRoom_man .shuju li span {
+  color: #8c8c8c;
+  font-size: 1.2rem;
+}
+.liveRoom_man .shuju li:first-child {
+  border-right: solid 1px #e1e1e1;
+}
+.liveRoom_man .liveRoom_manage {
+  background-color: #FFF;
+}
+.liveRoom_man .liveRoom_manage h6 {
+  padding: 0 4.2%;
+  font-size: 1.3rem;
+  color: #c1c1c1;
+  line-height: 3.5rem;
+}
+.liveRoom_man .liveRoom_manage ul {
+  overflow: hidden;
+}
+.liveRoom_man .liveRoom_manage ul li {
+  width: 33.333333333333336%;
+  float: left;
+  padding: 10px 0;
+}
+.liveRoom_man .liveRoom_manage ul li img {
+  display: block;
+  width: 44.4%;
+  margin: 8px auto;
+}
+.liveRoom_man .liveRoom_manage ul li p {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #666666;
+  line-height: 2.3rem;
+}
+.add_topic {
+  padding: 18px 0;
+} /*直播间管理结束*/
+.add_topic a {
+  display: block;
+  width: 54.7%;
+  line-height: 39px;
+  color: #FFF;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #31c27c;
+  border-radius: 19px;
+  font-size: 1.5rem;
+}
+.add_topic a img {
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+/*# sourceMappingURL=style.css.map */

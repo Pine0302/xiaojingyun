@@ -1,0 +1,210 @@
+<?php
+$head= 1 ;//头部文件
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>活动统计</title>
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+        <link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+        <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+    </head>
+<style type="text/css">
+    .table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+    </style>
+    <body>
+        <!--内容框架开始-->
+        <div class="WSY_content">
+            <!--列表内容大框开始-->
+            <div class="WSY_columnbox">
+                <!--列表头部切换开始-->
+                <?php
+                    include($_SERVER['DOCUMENT_ROOT']."/mshop/admin/view/share_gifts/head.html"); 
+                ?>
+                <!--列表头部切换结束-->
+
+                <div class="WSY_data">
+                    <!--列表按钮开始-->
+                    <div class="WSY_list" id="WSY_list">
+                        <div class="WSY_left" >
+                            <a>活动统计</a>
+                            <form class="search" id="ac_frm" style="display:block" method="get" action="/mshop/admin/index.php?m=share_gifts&a=activity_statistic">
+
+                                 <input type="hidden" id="m" name="m" value="share_gifts">
+                                <input type="hidden" id="a" name="a" value="activity_statistic">
+                            <a class="WSY_input01">
+                                <span>活动编号：<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="id" id="id" value="<?php if($data['id']!=""){echo $data['id'];}?>"></span>
+                                <span>活动标题：<input type="text" name="name" id="name" value="<?php if($data['b.name']!=""){echo $data['b.name'];}?>"></span>
+                                <span>
+                                    <select name="status" id="status">
+                                        <option value="0">-- 状态 --</option>
+                                        <option value="1" <?php if($data['b.status']==1){?>selected<?php }?>>待启用</option>
+                                        <option value="2" <?php if($data['b.status']==2){?>selected<?php }?>>已启用</option>
+                                        <option value="3" <?php if($data['b.status']==3){?>selected<?php }?>>已结束</option>
+                                    </select>
+                                </span>
+                                <span>
+                                    活动时间：
+                                    <input class="date_picker" type="text" name="begin_time" id="begin_time" value="<?php if($data['begin_time']!=""){echo $data['begin_time'];}?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+                                    &nbsp;&nbsp;-&nbsp;&nbsp;
+                                    <input class="date_picker" type="text" name="end_time" id="end_time" value="<?php if($data['end_time']!=""){echo $data['end_time'];}?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+                                </span>
+                            
+                                <span><button class="WSY_search_01" onclick="searchtitle();">搜索</button></span>
+                                <span id="result_num" style="color:red;">搜索结果：<?php echo $res['activity_count']; ?>条结果</span>
+                            </a>
+
+                            </form>
+                        </div>
+
+                        <ul class="WSY_righticon">
+                            <li class="WSY_inputicon"><a href="javascript:void(1);" onClick="goExcel();">导出</a></li>
+                        </ul>
+                        <br class="WSY_clearfloat">
+                    </div>
+                    <!--列表按钮结束-->
+                    <!--表格开始-->
+                    <table width="97%" class="WSY_table WSY_t2" id="WSY_t1">
+                        <thead class="WSY_table_header">
+                            <th width="10%">活动编号</th>
+                            <th width="10%">活动标题</th>
+                            <th width="10%">活动时间</th>
+                            <th width="10%">活动状态</th>
+                            <th width="10%">分享总数</th>
+                            <th width="10%">分享人数</th>
+                            <th width="10%">邀请人数</th>
+                            <th width="10%">活动所派优惠券数量</th>
+                            <th width="10%">活动所派红包总额</th>
+                            <th width="10%">操作</th>
+                        </thead>
+                                                        <?php foreach ($info as $key => $row) {                                 
+                                ?>
+                            <tr class="WSY_q1">
+                                <td align="center"><?php echo $row['activity_id']?></td>
+                                <td align="center"><?php echo $row['name']?></td>
+                                <td align="center"><?php echo $row['begin_time']?> 至 <?php echo $row['end_time']?></td>
+                                <td align="center">                                     
+                                    <?php echo $status[$row['status']]?></td>
+                                <td align="center"><?php echo $row['total_share_num']?></td>
+                                <td align="center"><?php echo $row['total_share_people']?></td>
+                                <td align="center"><?php echo $row['new_fans_num']?></td>
+                                <td align="center"><?php echo $row['distribute_coupon_num']?></td>
+                                <td align="center"><?php echo $row['distribute_red_envelopes_value']?></td>
+                                <td align="center"><button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $row['activity_id']?>',1);">查看</button></td>
+                            </tr>
+                        <?php }?>
+                    </table>
+                    <!--表格结束-->
+        
+                    <!--翻页开始-->
+                    <div class="WSY_page"></div>
+                    <!--翻页结束-->
+                </div>
+            </div>
+            <div style="width:100%;height:20px;"></div>
+        </div>
+        <script src="../../weixinpl/js/fenye/jquery.page1.js"></script>
+        <script>
+var title = $("#title").val();
+var begin_time = $("#begin_time").val();
+var end_time = $("#end_time").val();
+var status = $("#status").val();
+var id = $("#id").val();
+var data = "";
+var data2 = "";
+if(title!=""){
+    data += "&title="+title;
+    data2 += "/title/"+title;
+}
+if(id!=""){
+    data += "&id="+id;
+    data2 += "/id/"+id;
+}
+if(status!=-1){
+    data += "&status="+status;
+    data2 += "/status/"+status;
+}
+if(begin_time!=""){
+    data += "&begin_time="+begin_time;
+    data2 += "/begin_time/"+begin_time;
+}
+if(end_time!=""){
+    data += "&end_time="+end_time;
+    data2 += "/end_time/"+end_time;
+}
+<!-- 分页 start -->
+var pagenum = <?php echo $pageNum ?>;//当前页
+var count =<?php echo $pageCount ?>;//总页数   
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+    pageCount:count,
+    current:pagenum,
+    backFn:function(p){
+    var url="/mshop/admin/index.php?m=share_gifts&a=activity_statistic&pagenum="+p+data;   
+
+    location.href = url;
+   }
+});
+
+function jumppage(){
+    var a=parseInt($("#WSY_jump_page").val());
+    if((a<1) || (a>count) || isNaN(a)){
+        layer.alert('没有下一页了');
+        return false;
+    }else{
+        console.log(data);
+        var url="/mshop/admin/index.php?m=share_gifts&a=activity_statistic&pagenum="+a+data;   
+        location.href = url;
+    }
+}
+<!-- 分页 end -->
+//启用
+        </script>
+        <script>
+            // function jumppage(){
+            //     var a=parseInt($("#WSY_jump_page").val());
+            //     if((a<1) || (a==pagenum) || (a>count) || isNaN(a)){
+            //         return false;
+            //     }else{
+            //         gopage(a);
+            //     }
+            // }
+            function searchtitle(){
+                gopage(1);
+            }
+            function gopage(a){
+                var search_num         = document.getElementById("search_num").value;
+                var search_name        = document.getElementById("search_name").value;
+                var search_phone       = document.getElementById("search_phone").value;
+                var search_sign        = document.getElementById("search_sign").value;   
+                var search_sales_name  = document.getElementById("search_sales_name").value;   
+                document.location= "annualparty_user.php?pagenum="+a+"&annualparty_id=<?php echo $annualparty_id; ?>&customer_id=<?php echo $customer_id_en; ?>&search_type=<?php echo $search_type; ?>"+"&search_num="+search_num+"&search_name="+search_name+"&search_phone="+search_phone+"&search_sign="+search_sign+"&search_sales_name="+search_sales_name;
+            }
+function jump_url(activity_id,type){
+    //type : 1-查看，编辑 
+    var url = "";
+    if(type==1){
+        url = "/mshop/admin/index.php?m=share_gifts&a=activity_statistictdetail&customer_id=<?php echo $customer_id_en; ?>&activity_id="+activity_id;
+    }
+    location.href = url;
+}
+
+function goExcel(){
+    var id = $("#id").val();
+    var name = $("#name").val();
+    var begin_time = $("#begin_time").val();
+    var end_time = $("#end_time").val();
+    var status = $("#status").val();
+    window.location.href='/mshop/admin/index.php?m=excel&a=share_gifts&id='+id+'&name='+name+'&begin_time='+begin_time+'&end_time='+end_time+'&status='+status;
+}
+
+        </script>
+    </body>
+</html>

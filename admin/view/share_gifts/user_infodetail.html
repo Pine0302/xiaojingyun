@@ -1,0 +1,167 @@
+<?php
+$head= 1 ;//头部文件
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>粉丝记录</title>
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+        <link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+        <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+    </head>
+
+    <body>
+        <!--内容框架开始-->
+        <div class="WSY_content">
+            <!--列表内容大框开始-->
+            <div class="WSY_columnbox">
+                <!--列表头部切换开始-->
+                <div class="WSY_column_header">
+                    <div class="WSY_columnnav">
+                        <a class="white1">粉丝记录</a>        
+                   </div>
+                </div>
+<script>
+var head = <?php echo $head; ?>;
+$(".WSY_columnnav").find("a").eq(head).addClass('white1');
+</script>
+                <!--列表头部切换结束-->
+
+                <div class="WSY_data">
+                    <!--列表按钮开始-->
+                    <div class="WSY_list" id="WSY_list">
+                        <div class="WSY_left" >
+                            <a>粉丝记录</a>
+                            <form class="search" id="ac_frm" style="display:block" method="get" action="/mshop/admin/index.php?m=share_gifts&a=user_infodetail">
+
+                                 <input type="hidden" id="m" name="m" value="share_gifts">
+                                <input type="hidden" id="a" name="a" value="user_infodetail">
+                                <input type="hidden" name="share_user_id" id="share_user_id" value="<?php echo $data['share_user_id'];?>">
+                            <a class="WSY_input01">
+                                <span>用户名：<input type="text" name="weixin_name" id="weixin_name" value="<?php if($data['weixin_name']!=""){echo $data['weixin_name'];}?>"></span>
+                                <span>用户编号：<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="user_id" id="user_id" value="<?php if($data['user_id']!=""){echo $data['user_id'];}?>"></span>
+                
+                            
+                                <span><button class="WSY_search_01" onclick="searchtitle();">搜索</button></span>
+                                <span id="result_num" style="color:red;">搜索结果：<?php echo $res['activity_count']; ?>条结果</span>
+                            </a>
+
+                            </form>
+                        </div>
+
+                        <ul class="WSY_righticon">
+                            <li class="WSY_inputicon"><a href="javascript:void(1);" onClick="goExcel();">导出</a></li>
+                            <li class="WSY_inputicon"><a href="javascript:window.history.back(-1);" >返回</a></li>
+                        </ul>
+                        <br class="WSY_clearfloat">
+                    </div>
+                    <!--列表按钮结束-->
+                    <!--表格开始-->
+                    <table width="97%" class="WSY_table WSY_t2" id="WSY_t1">
+                        <thead class="WSY_table_header">
+                            <th width="10%">用户微信头像</th>
+                            <th width="10%">用户编号</th>
+                            <th width="10%">用户名</th>
+                        </thead>
+                                                        <?php foreach ($info as $key => $row) {                                 
+                                ?>
+                            <tr class="WSY_q1">
+                                <td align="center"><img src="<?php echo $row['weixin_headimgurl']; ?>" alt="" width="50px" height="50px" style="margin-left:70px;"></td>
+                                <td align="center"><?php echo $row['user_id']; ?></td>
+                                <td align="center"><?php echo $row['weixin_name']; ?></td>
+                            </tr>
+                        <?php }?>
+                    </table>
+                    <!--表格结束-->
+        
+                    <!--翻页开始-->
+                    <div class="WSY_page"></div>
+                    <!--翻页结束-->
+                </div>
+            </div>
+            <div style="width:100%;height:20px;"></div>
+        </div>
+
+        <script src="../../weixinpl/js/fenye/jquery.page1.js"></script>
+        <script>
+var weixin_name = $("#weixin_name").val();
+var share_user_id = $("#share_user_id").val();
+var user_id = $("#user_id").val();
+var data = "";
+var data2 = "";
+if(weixin_name!=""){
+    data += "&weixin_name="+weixin_name;
+    data2 += "/weixin_name/"+weixin_name;
+}
+if(share_user_id!=""){
+    data += "&share_user_id="+share_user_id;
+    data2 += "/share_user_id/"+share_user_id;
+}
+if(user_id!=""){
+    data += "&user_id="+user_id;
+    data2 += "/user_id/"+user_id;
+}
+<!-- 分页 start -->
+var pagenum = <?php echo $pageNum ?>;//当前页
+var count =<?php echo $pageCount ?>;//总页数   
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+    pageCount:count,
+    current:pagenum,
+    backFn:function(p){
+    var url="/mshop/admin/index.php?m=share_gifts&a=user_infodetail&pagenum="+p+data;   
+
+    location.href = url;
+   }
+});
+
+function jumppage(){
+    var a=parseInt($("#WSY_jump_page").val());
+    if((a<1) || (a>count) || isNaN(a)){
+        layer.alert('没有下一页了');
+        return false;
+    }else{
+        var url="/mshop/admin/index.php?m=share_gifts&a=user_infodetail&pagenum="+a+data;   
+        location.href = url;
+    }
+}
+function goExcel(){
+    var weixin_name     = $("#weixin_name").val();
+    var user_id         = $("#user_id").val();
+    var share_user_id   = $("#share_user_id").val();
+    window.location.href='/mshop/admin/index.php?m=excel&a=user_infodetail&user_id='+user_id+'&weixin_name='+weixin_name+'&share_user_id='+share_user_id;
+}
+<!-- 分页 end -->
+//启用
+        </script>
+        <script>
+            // function jumppage(){
+            //     var a=parseInt($("#WSY_jump_page").val());
+            //     if((a<1) || (a==pagenum) || (a>count) || isNaN(a)){
+            //         return false;
+            //     }else{
+            //         gopage(a);
+            //     }
+            // }
+            function searchtitle(){
+                gopage(1);
+            }
+            function gopage(a){
+                var search_num         = document.getElementById("search_num").value;
+                var search_name        = document.getElementById("search_name").value;
+                var search_phone       = document.getElementById("search_phone").value;
+                var search_sign        = document.getElementById("search_sign").value;   
+                var search_sales_name  = document.getElementById("search_sales_name").value;   
+                document.location= "annualparty_user.php?pagenum="+a+"&annualparty_id=<?php echo $annualparty_id; ?>&customer_id=<?php echo $customer_id_en; ?>&search_type=<?php echo $search_type; ?>"+"&search_num="+search_num+"&search_name="+search_name+"&search_phone="+search_phone+"&search_sign="+search_sign+"&search_sales_name="+search_sales_name;
+            }
+
+
+        </script>
+    </body>
+</html>

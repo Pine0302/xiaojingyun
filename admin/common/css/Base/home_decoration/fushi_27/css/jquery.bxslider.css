@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+
+.bx-wrapper {position: relative;padding: 0;*zoom: 1;}
+.bx-wrapper .bx-pager,.bx-wrapper .bx-controls-auto {position: absolute;width: 100%;bottom:-2px;}
+.bx-wrapper .bx-pager {text-align: center;font-size: .85em;	font-family: Arial;font-weight: bold;color: #666;padding-top: -20px;}
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {display: inline-block;*zoom: 1;*display: inline;}
+.bx-wrapper .bx-pager.bx-default-pager a {background:#666;text-indent: -9999px;display: block;width: 8px;height: 8px;margin: 2px 4px;outline: 0;border-radius: 5px;}
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active {background: #D50E14;}
+.bx-wrapper .bx-prev:hover {background-position: 0 0;}
+.bx-wrapper .bx-next:hover {background-position: -43px 0;}
+.bx-wrapper .bx-controls-direction a {position: absolute;outline: 0;width: 32px;height: 32px;text-indent: -9999px;z-index: 9999;}
+.bx-wrapper .bx-controls-direction a.disabled {display: none;}
+.bx-wrapper .bx-controls-auto {text-align: center;}
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active {background-position: -86px 0;}
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {text-align: left;width: 80%;}
+.index_flash {border-radius: 3px;background: #F1F1F1;  margin-left:2px ; margin-right:2px; position:relative;margin-bottom: 2px;}
+.index_flash ul{margin:0px auto;}
+.index_flash img {display: block;margin: 0px auto ;width: 100%;max-width: 640px;}
+.index_flash_ad{border-radius: 3px;background: #F1F1F1;  margin-left:2px ; margin-right:2px;position:relative;}
+.index_flash_ad ul{margin:0px auto;}
+.index_flash_ad img {display: block;margin: 0px auto ;width: 100%;max-width: 640px;}
+
+
+
+
+
+footer{width:100%;margin:0 auto;height:60px;}
+.footer{ bottom: 0;
+    position: fixed;
+    width: 100%;}
+footer ul li{ max-width:100%; }	
+footer ul li a{display:block;/*max-width:56px;*/margin:0 auto;color:#FFFFFF}
+footer ul li img{max-width:40px; max-height:40px; width: 100%;margin:0 auto;display:block;}
+footer ul li a.cur{color:#F82C62;}
+footer ul li:last-child{padding-right:0;}
+footer ul li span{display:block;width:100%;text-align:center;padding:1px 0 2px 0;font-size:1em;}
+@media screen and (max-width:640px){
+    footer ul li span{font-size:1em;}
+	}
+@media screen and (max-width:550px){
+    footer ul li span{font-size:1em;}
+	}
+@media screen and (max-width:480px){
+    footer ul li span{font-size:0.8em;}
+	}	
+@media screen and (max-width:320px){
+    footer ul li span{font-size:0.7em;}
+	}
+footer ul{width:100%;height:100%;background-color:#510201;margin:0 auto;padding-top:4px;}
+footer ul li{float:left;width:25.00%;}
+.clearfix:after{content:"";height:0;visibility:hidden;display:block;clear:both;}
+
+
+.main{
+    background-image: url("http://www.cnsoma.com/themes/m_maxred2/images/MaxRed_bj.jpg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 0 auto;
+   /* max-width: 640px;
+    min-width: 320px;*/
+    width: 100%;
+	height: 100%;
+}
+
+
+li {list-style-type: none;}a {color: #333;text-decoration: none;cursor: pointer;}body,ul,li,p,div,img {margin: 0;padding: 0;border: 0;font-family: "微软雅黑";}body {color: #333;font-family: Helvetica, Arial, sans-serif;font-size: 100%;background: #F1F1F1; position: relative;}
+.music_txt {padding:6px;position:relative;margin:8px 4px;font-size:90%; border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px; border:1px solid #ccc;background:#F6F6F6;word-wrap: break-word;word-break: normal; -moz-box-shadow: 0px 0px 6px #D9D9D9;   -webkit-box-shadow: 0px 0px 6px #D9D9D9; box-shadow: 0px 0px 6px #D9D9D9; }.music_txt p {line-height:150%;}
+a.btn_reg {background: #D50E14;text-align:center;font-size: 92%;display:block;border-radius:10px;height:22px;line-height:22px;margin:10px 6px;color:#fff;}
+.clear {clear:both;}.price {color:#900;}.org {color:#919191;font-size: 76%; margin-top: 10px;}.div_bnt{width: 96%; margin:6px auto;text-align:center;}
+
+
+.music_img { width:76px; height:76px;overflow:hidden; text-align:center; margin:0px auto; position:relative; }
+.gh{max-width:72px; max-height:72px; width:72px; height:72px; overflow:hidden; position:absolute; left:0; }
+.wenzi{ width:40px; height:40px; z-index:999; position:absolute; top:15px; left:15px; }
+
+.sharp1{ width:37px; height:32px; z-index:9999; position:absolute; right:0; top:-5px;}
+.sharp2{ width:37px; height:32px; z-index:9999; position:absolute; left:0; top:-5px;}
+.sharp3{ width:37px; height:32px; z-index:9999; position:absolute; right:0px; top:0px;}
+
+
+
+
+
+.products_img { width:104px; height:104px;overflow:hidden; text-align:center; margin:0px auto; }
+.products_img  img{max-width:100px; max-height:100px; width:100px; height:100px; overflow:hidden;margin:2px auto; }
+
+
+.img_td{margin: 0px auto;text-align: center; font-size: 90%}
+
+
+.music_div { bottom: 80px;
+
+    position: fixed;
+    width: 100%;}
+.music_div table{ width:100%;}
+
+.lef{margin-left:3px;margin-bottom:5px ;}.widthspan { width: 90px; height:28px;line-height:28px;text-align:center;border-radius:2px; margin:0 auto; border:1px solid #ccc; background: #fff; display:-moz-inline-box; display:inline-block;}
+a.btn_login{height:32px;line-height:32px; float: left;margin-left:16px; color:#fff;background: #3C8EE0;display:block;border-radius:3px;font-weight:bold;width:45%;text-align:center;}a.btn_login3{height:32px;line-height:32px; float: left;margin-left:6px; color:#fff;background: #FF4400;display:block;border-radius:3px;font-weight:bold;width:45%;text-align:center;}
+.music_list li, .music_list a {display:block;line-height:40px;height:40px;font-size: 92%}.music_list li a {padding-left:10px; text-decoration:none; color:#000;}
+.music_ico{font-size:110%;background:url("http://www.cnsoma.com/themes/m_maxred2/css/images/ico.png") no-repeat right center;color:#000;overflow:hidden;}.music_ico1{font-size:110%;background:url("http://www.cnsoma.com/themes/m_maxred2/css/images/ico.png") no-repeat right center;color:#000;overflow:hidden;  border-top:1px solid #ccc;}
+.music_list ul{border-radius:3px;margin:6px; border:1px solid #ccc;background:#F6F6F6;word-wrap: break-word;word-break: normal;-moz-box-shadow: 0px 0px 6px #D9D9D9; -webkit-box-shadow: 0px 0px 6px #D9D9D9; box-shadow: 0px 0px 6px #D9D9D9;}
+.user_center li{ position:relative;padding-left:35px; text-shadow: 0 1px 0 #fff;}span.card_call,.card_sms{ display:block; height:20px; width:23px; position:absolute; }span.card_call{background:url("http://www.cnsoma.com/themes/m_maxred2/css/images/phone.png") no-repeat;left:10px; top:10px;}span.card_sms{background:url("http://www.cnsoma.com/themes/m_maxred2/css/images/messege.png") no-repeat;left:10px; top:10px;}
+.left_text { color: #231815; float:left; overflow:hidden;width:60%;margin-left:8px; margin-top:6px; font-size: 92%;}.left_text1 { margin-top:20px;}
+.music_list2 ul {margin:0px 1px;border-top:1px solid #ccc;border-bottom:1px solid #ccc; background:#F1F1F1;word-wrap: break-word;word-break: normal;-moz-box-shadow: 0px 0px 6px #D9D9D9;  -webkit-box-shadow: 0px 0px 6px #D9D9D9; box-shadow: 0px 0px 6px #D9D9D9;}.music_list2 li{display:block;height:71px;line-height:25px;}.music_list2 li a { text-decoration:none; }
+.music_img2 {background-repeat : no-repeat;width:86px; height:62px;overflow:hidden;  background:#F6F6F6;  text-align:center; float:left;margin-bottom:5px;margin-top:4px;margin-left:5px;}.music_img2  img{max-width:86px; max-height:62px; width:86px; height:62px;overflow:hidden;}
+.butMould_div{line-height:25px;text-shadow: 0 1px 0 #FFF;position:relative;margin:2px 4px; margin-bottom:6px; border:1px solid #ccc;background:#F6F6F6;word-wrap: break-word;word-break: normal;border-top:0px; text-align:center;border-radius:8px;-moz-box-shadow: 0px 0px 6px #D9D9D9; -webkit-box-shadow: 0px 0px 6px #D9D9D9; box-shadow: 0px 0px 6px #D9D9D9;}
+.mould_butimg { width:100px; height:40px;overflow:hidden; text-align:center; margin:0px auto;background: #F1F1F1; }.mould_butimg  img{max-width:90px; max-height:38px; width:90px; height:38px; overflow:hidden;margin:0px auto; }
+.butMould_flash {background: #F1F1F1; position:relative;height:100%; }.butMould_flash img {margin: 0px auto ;width: 100%;max-height: 36px;}
+

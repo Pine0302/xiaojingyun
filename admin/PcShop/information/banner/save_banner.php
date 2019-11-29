@@ -1,0 +1,101 @@
+<?php
+header("Content-type: text/html; charset=utf-8"); 
+require('../../../../../weixinpl/config.php');
+require('../../../../../weixinpl/customer_id_decrypt.php'); //导入文件,获取customer_id_en[加密的customer_id]以及customer_id[已解密]
+require('../../../../../weixinpl/back_init.php');
+require('../../../../../weixinpl/common/utility.php');
+$link = mysql_connect(DB_HOST,DB_USER,DB_PWD);
+mysql_select_db(DB_NAME) or die('Could not select database');
+require('../../../../../weixinpl/proxy_info.php');
+
+$uptypes=array('image/jpg', //上传文件类型列表
+'image/jpeg',
+'image/png',
+'image/pjpeg',
+'image/gif',
+'image/bmp',
+'image/x-png');
+$max_file_size=1000000; //上传文件大小限制, 单位BYTE
+
+$destination_folder = "../../../../".Base_Upload."package/";
+if(!file_exists($destination_folder)){
+	mkdir($destination_folder,0777,true);
+}
+
+$imgpreview=1; //是否生成预览图(1为生成,0为不生成);
+$imgpreviewsize=1/1; //缩略图比例
+$destination = "";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+	if (!is_uploaded_file($_FILES["upfile"]["tmp_name"]))
+	//是否存在文件
+	{
+		$save_destination = $configutil->splash_new($_POST['imgurl']);
+	}else{
+		$file = $_FILES["upfile"];
+		if($max_file_size < $file["size"])
+		//检查文件大小
+		{
+			echo "<font color='red'>文件太大！</font>";
+			exit;
+		}
+		if(!in_array($file["type"], $uptypes))
+		//检查文件类型
+		{
+		  echo "<font color='red'>不能上传此类型文件！</font>";
+		  exit;
+		}
+		if(!file_exists($destination_folder)){
+		   mkdir($destination_folder);
+		  
+		}
+
+		$filename=$file["tmp_name"];
+		$image_size = getimagesize($filename);
+		$pinfo=pathinfo($file["name"]);
+		$ftype=$pinfo["extension"];
+		$destination = $destination_folder.time().".".$ftype;
+		$overwrite=true;
+		if (file_exists($destination) && $overwrite != true)
+		{
+			echo "<font color='red'>同名文件已经存在了！</a>";
+			exit;
+		}
+		if(!_move_uploaded_file ($filename, $destination))
+		{
+			echo $filename."<br/>";
+			echo $_FILES['userfile']['error']."<br/>";
+			echo $destination."<br/>";
+			echo "<font color='red'>移动文件出错！</a>";
+			exit;  
+		}
+		$pinfo=pathinfo($destination);
+		$fname=$pinfo["basename"];
+		
+		$save_destination = str_replace("../","",$destination);
+//		$save_destination = "/weixinpl/".$save_destination;
+		$save_destination = "/mshop/".$save_destination;
+	}
+}
+
+$keyid = passport_decrypt($configutil->splash_new($_POST["keyid"]));
+
+$imglink = '';
+if( !empty($_POST['imglink']) ){
+	$imglink = $configutil->splash_new($_POST["imglink"]);
+}
+$sort = 0;
+if( !empty($_POST['sort']) ){
+	$sort = $configutil->splash_new($_POST["sort"]);
+}
+
+if( $keyid > 0 ){
+    $sql = "update pcshop_package_banners set banner_imgurl='".$save_destination."',banner_url='".$imglink."',sort=".$sort." where id=".$keyid;
+} else {
+    $sql = "insert into pcshop_package_banners(customer_id,banner_imgurl,banner_url,sort,isvalid,createtime) values (".$customer_id.",'".$save_destination."','".$imglink."',".$sort.",true,now())";
+}
+_mysql_query($sql);
+
+echo "<script>location.href='package_banner.php?customer_id=".$customer_id_en."&pagenum=".$pagenum."';</script>";
+?>

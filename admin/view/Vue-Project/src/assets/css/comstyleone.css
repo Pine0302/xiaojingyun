@@ -1,0 +1,114 @@
+.WSY_search_q {
+  display: block!important;
+  text-align: left;
+}
+.WSY_search_q .WSY_text_input input {
+  width: 170px;
+}
+.WSY_small_btn {
+  height: 26px;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #06a7e1;
+  border: #06a7e1 1px solid;
+  border-radius: 2px;
+  line-height: 26px;
+  padding: 0 15px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 30px;
+}
+.WSY_table {
+  table-layout: fixed;
+  empty-cells: show;
+  border-collapse: collapse;
+  margin-left: 18px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.WSY_table_header {
+  background-color: #06a7e1;
+}
+.WSY_table_header th {
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 30px;
+}
+.WSY_table td {
+  border: 1px solid #d8d8d8;
+  padding: 0 1em 0;
+  line-height: 25px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+}
+.WSY_t4 a {
+  float: none;
+  display: inline-block;
+}
+.WSY_t4 a img {
+  width: 20px;
+  height: 20px;
+  margin-top: 15px;
+}
+.WSY_search_div {
+  font-size: 14px;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.WSY_search_div .WSY_iptbox {
+  display: inline-block;
+  margin-right: 20px;
+}
+.WSY_search_div .WSY_iptbox span {
+  margin-right: 10px;
+}
+.WSY_search_div .WSY_iptbox input {
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 2px;
+  padding: 0 5px;
+}
+.WSY_select_box {
+  display: inline-block;
+  vertical-align: middle;
+}
+.WSY_select_box span {
+  display: inline-block;
+  margin-right: 10px;
+}
+.WSY_select_box .WSY_elselect .el-input input {
+  display: inline-block;
+  height: 26px;
+  box-sizing: border-box;
+  line-height: 26px;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 2px;
+  padding: 0 5px;
+}
+.WSY_table {
+  text-align: center;
+}
+.date_search {
+  margin-right: 25px;
+}
+.date_search, .date_search .com_date {
+  display: inline-block;
+}
+.date_search .com_date .demonstration {
+  margin-right: 15px;
+}
+.date_search .com_date input {
+  height: 26px;
+}
+.el-select-dropdown__item {
+  font-size: 14px;
+}
+.el-pagination {
+  margin: 30px 0;
+}

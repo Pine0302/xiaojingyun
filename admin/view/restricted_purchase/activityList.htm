@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>活动管理列表</title>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+</head>
+<style>
+.operation-btn{display:inline-block;padding:0 15px;color:#fff;border-radius:3px;cursor:pointer;height:30px;line-height:30px;}
+.WSY_list{width:97%;margin-left:18px;}
+.header-left{float:left;}
+.header-left span,.header-left input,.header-left select{vertical-align:middle;}
+a:hover{text-decoration: none!important;}
+table#WSY_t1 td{text-align: center;}
+.CP_table_chanpina_six img {
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+}
+</style>
+<body>
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+
+       <!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+    <div class="WSY_column_header">
+        	<div class="WSY_columnnav">
+				<a <?php if($search_class == 0){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list">活动管理</a>
+				<a <?php if($search_class == 1){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=product_sales_statistics">销量统计</a>
+				<a <?php if($search_class == 2){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list">用户管理</a>
+				<a <?php if($search_class == 3){echo 'class="white1"';} ?> href="/weixinpl/back_newshops/Order/order/order.php?customer_id=<?php echo passport_encrypt($customer_id)?>&from_page=<?php echo $from_page;?>&f2c_id=<?php echo $f2c_id;?>&orgin_type=5">订单管理</a>
+			</div>
+	</div>
+    <div class="WSY_data">
+    	<div class="WSY_list" style="margin-top:15px;">
+			<div class="header-left">
+				<span>活动编号：</span><input type="text" class="search-box" id="search_activity_id" value="<?php echo $activity_id;?>" onkeyup="clearInt(this)" />
+				<span>活动标题：</span><input type="text" class="search-box" id="search_title" value="<?php echo $title;?>" onkeyup="ValidateValue(this)" />
+				<span>状态：</span>
+				<select id="search_isout">
+					<option value="-1" <?php if($isout==-1){echo 'selected';}?>>全部</option>
+					<option value="0" <?php if($isout==0){echo 'selected';}?>>待发布</option>
+					<option value="1" <?php if($isout==1){echo 'selected';}?>>已发布</option>
+					<option value="2" <?php if($isout==2){echo 'selected';}?>>进行中</option>
+					<option value="3" <?php if($isout==3){echo 'selected';}?>>已结束</option>
+					<option value="4" <?php if($isout==4){echo 'selected';}?>>终止</option>
+				</select>
+				<span class="operation-btn WSY-skin-bg" id="search-button" style="margin-left:15px;">搜索</span>
+				<span class="operation-btn WSY-skin-bg" id="export-button" onclick="exportExcel();" style="margin-left:15px;">导出</span>
+				<span class="operation-btn WSY-skin-bg" id="add-button" onclick="javascript:location.href='/mshop/admin/index.php?m=restricted_purchase&a=create_activity_list'" style="margin-left:15px;">添加活动</span>
+			</div>
+    </div>
+			<table width="97%" class="WSY_table" id="WSY_t1">
+				<thead class="WSY_table_header">
+					<th width="7%">活动ID</th>
+					<th width="10%">活动标题</th>
+					<th width="25%">活动时间</th>
+					<th width="10%">活动状态</th>
+					<th width="10%">是否立即发布</th>
+					<th width="10%">产品总数</th>
+					<th width="15%">操作</th>
+				</thead>
+				<?php
+					foreach($result['activity_list'] as $v){
+				?>
+				<tr>
+					<td><?php echo $v['id']; ?></td>
+					<td><?php echo $v['title']; ?></td>
+					<td><?php echo $v['time_start']."至".$v['time_end']; ?></td>
+					<td><?php echo $v['out_str']; ?></td>
+					<td><?php echo $v['auto_str']; ?></td>
+					<td><?php echo $v['product_count']; ?></td>
+					<td class="CP_table_chanpina_six" style="text-align:left;">
+					<?php 
+						if( $v['isout'] == 0){
+					?>
+						<a title="编辑活动详情" onclick="edit('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon05.png" /></a>
+						<a title="发布" onclick="release('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon23.png" /></a>
+						<a title="删除" onclick="del('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon04.png" /></a>
+						<a title="查看明细" onclick="show('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon73.png" /></a>
+						<a title="管理活动产品" onclick="check('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon44.png" /></a>
+					<?php
+						}else if( $v['isout'] == 1 ){
+							if(time()<strtotime($v['time_start'])){
+					?>
+								<a title="查看活动详情" onclick="edit('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon11.png" /></a>
+								<a title="删除" onclick="del('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon04.png" /></a>
+								<a title="查看明细" onclick="show('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon73.png" /></a>
+								<a title="管理活动产品" onclick="check('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon44.png" /></a>
+					<?php 
+								
+							}else if(time()<strtotime($v['time_end']) && time() >= strtotime($v['time_start'])){
+					?>
+								<a title="查看活动详情" onclick="edit('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon11.png" /></a>
+								<a title="终止" onclick="stop('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon26.png" /></a>
+								<a title="查看明细" onclick="show('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon73.png" /></a>
+								<a title="管理活动产品" onclick="check('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon44.png" /></a>
+					<?php
+							}else if(time()>=strtotime($v['time_end'])){
+					?>
+								<a title="查看活动详情" onclick="edit('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon11.png" /></a>
+								<a title="删除" onclick="del('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon04.png" /></a>
+								<a title="查看明细" onclick="show('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon73.png" /></a>
+					<?php
+							}
+					
+						}else if( $v['isout'] == 2 ){
+					?>
+								<a title="查看活动详情" onclick="edit('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon11.png" /></a>
+								<a title="删除" onclick="del('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon04.png" /></a>
+								<a title="查看明细" onclick="show('<?php echo $v['id'];?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon73.png" /></a>
+					<?php
+						}
+					?>
+					</td>
+				</tr>
+				<?php }?>
+			</table>
+    	</div>
+        <!--翻页开始-->
+        <div class="WSY_page">
+        	
+        </div>
+        <!--翻页结束-->
+    </div>
+</div>
+<!--内容框架结束-->
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script>
+var customer_id = '<?php echo $data['customer_id'];?>';
+var search_activity_id = '<?php echo $activity_id;?>';
+var search_title = '<?php echo $title;?>';
+var search_isout = '<?php echo $isout;?>';
+
+
+  var pagenum = <?php echo $result['pagenum']; ?>;
+  var count =   <?php echo $result['page']; ?>;//总页数
+  	//pageCount：总页数
+	//current：当前页
+	$(".WSY_page").createPage({
+        pageCount:count,
+        current:pagenum,
+        backFn:function(p){
+			var url = "/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list&pagenum="+p+"&customer_id=<?php echo $data['customer_id']; ?>";
+			if( search_activity_id != '' && search_activity_id > 0 ){
+				url += '&search_activity_id='+search_activity_id;
+			}
+			if( search_title != '' ){
+				url += '&search_title='+search_title;
+			}
+			if( search_isout >= 0 ){
+				url += '&search_isout='+search_isout;
+			}
+			document.location= url;
+	   }
+    });
+</script>
+
+<script>
+  var pagenum = <?php echo $result['pagenum']; ?>;
+  var page =   <?php echo $result['page']; ?>;//总页数
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a==pagenum) || isNaN(a)){
+		return false;
+	}else{
+		var url = "/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list&pagenum="+a+"&customer_id=<?php echo $data['customer_id']; ?>";
+		if( search_activity_id != '' && search_activity_id > 0 ){
+			url += '&search_activity_id='+search_activity_id;
+		}
+		if( search_title != '' ){
+			url += '&search_title='+search_title;
+		}
+		if( search_isout >= 0 ){
+			url += '&search_isout='+search_isout;
+		}
+		document.location= url;
+	}
+}
+</script>
+<script>
+//导出
+function exportExcel(){
+	var url='/weixin/plat/app/index.php/Excel/restricted_purchase_activity/customer_id/<?php echo $data['customer_id']; ?>';
+	
+	if( search_activity_id != '' && search_activity_id > 0 ){
+		url += '/search_activity_id/'+search_activity_id;
+	}
+	if( search_title != '' ){
+		url += '/search_title/'+search_title;
+	}
+	if( search_isout >= 0 ){
+		url += '/search_isout/'+search_isout;
+	}
+	
+	document.location = url;
+}
+
+//输入框按回车键触发搜索
+$('.header-left').find('input').on('keydown',function(){
+	if( event.keyCode == 13 ){
+		$('#search-button').click();
+	}
+});
+
+//搜索
+$('#search-button').click(function(){
+	var search_activity_id = $('#search_activity_id').val();
+	var search_title = $('#search_title').val();
+	var search_isout = $('#search_isout').val();
+	
+	var url = "/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list";
+	if( search_activity_id != '' && search_activity_id > 0 ){
+			url += '&search_activity_id='+search_activity_id;
+	}
+	if( search_title != '' ){
+		url += '&search_title='+search_title;
+	}
+	if( search_isout >= 0 ){
+		url += '&search_isout='+search_isout;
+	}
+	document.location= url;
+});
+//编辑
+function edit(id){
+	window.location.href = "/mshop/admin/index?m=restricted_purchase&a=activity_detail&activity_id="+id;
+}
+//产品活动列表
+function check(id){
+	window.location.href = "/mshop/admin/index?m=restricted_purchase&a=activity_product_list&activity_id="+id;
+}
+//查看产品明细
+function show(id){
+	window.location.href = "/mshop/admin/index?m=restricted_purchase&a=activity_sales_statistics&activity_id="+id;
+}
+
+//输入框过滤特殊字符 用法：<input type="text" onkeyup="ValidateValue(this)" />
+function ValidateValue(textbox)
+{
+	 var IllegalString = "\ `~@#;,.!#$%^&*()+{}|\\:\"<>?-=/,\'";
+	 var textboxvalue = textbox.value;
+	 var index = textboxvalue.length - 1;
+	 
+	 var s = textbox.value.charAt(index);
+	 
+	 if(IllegalString.indexOf(s)>=0)
+	 {
+		s = textboxvalue.substring(0,index);
+		textbox.value = s;
+	 }
+}
+
+//发布
+function release(activity_id){
+	if( !confirm('发布成功后，活动正式生效，是否发布？') ){
+		return;
+	}
+	$.ajax({
+		url: '/mshop/admin/index.php?m=restricted_purchase&a=change_activity',
+		dataType: 'json',
+		type: 'post',
+		data: {
+			op : 'publish',
+			activity_id : activity_id
+		},
+		success: function(res){
+		//	var obj = eval('(' + res + ')');
+			if( res.errcode == '0' ){
+				alert(res.errmsg);
+				window.location.reload();
+			}else{
+				alert(res.errmsg);
+			}
+		}
+	});
+}
+//终止
+function stop(activity_id){
+	if( !confirm('终止后，用户不可再发起限购活动，已进行中的限购活动不影响，是否终止？') ){
+		return;
+	}
+	$.ajax({
+		url: '/mshop/admin/index.php?m=restricted_purchase&a=change_activity',
+		dataType: 'json',
+		type: 'post',
+		data: {
+			op : 'stop',
+			activity_id : activity_id
+		},
+		success: function(res){
+			if( res.errcode == '0' ){
+				alert(res.errmsg);
+				window.location.reload();
+			}else{
+				alert(res.errmsg);
+			}
+		}
+	});
+}
+
+//删除
+function del(activity_id){
+	if( !confirm('是否删除活动，避免造成不良影响？') ){
+		return;
+	}
+	$.ajax({
+		url: '/mshop/admin/index.php?m=restricted_purchase&a=change_activity',
+		dataType: 'json',
+		type: 'post',
+		data: {
+			op : 'del',
+			activity_id : activity_id
+		},
+		success: function(res){
+			if( res.errcode == '0' ){
+				alert(res.errmsg);
+				window.location.reload();
+			}else{
+				alert(res.errmsg);
+			}
+		}
+	});
+}
+
+//正整数
+function clearInt(obj){
+	if(obj.value.length==1){obj.value=obj.value.replace(/[^1-9]/g,'')}else{obj.value=obj.value.replace(/\D/g,'')}
+}
+</script>
+<?php
+	mysql_close($link);
+?>
+</body>
+</html>

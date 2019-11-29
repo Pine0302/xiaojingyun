@@ -1,0 +1,75 @@
+
+.WSY_remind_dl02 dt{
+	font-size:14px;
+	text-align:right;
+	width:100px;
+	font-weight: normal;
+	line-height: 24px;
+}
+.WSY_remind_dl02 input{
+	width: 100px;
+	height: 24px;
+	border-radius: 2px;
+	text-align: center;
+	margin-right: 5px;
+	margin-left: 10px;
+	border: solid 1px #dadada;
+}
+.margin_dd{
+	margin-top:5px;
+	margin-bottom:5px;
+	/*overflow:hidden;*/
+}
+.margin_divbox{
+	overflow:hidden;
+	background:#f1f1f1;
+	margin-top: 25px;
+	display: block;
+	padding: 5px 0px;
+}
+.margin_div{
+	display:block;
+	float:left;
+}
+.margin_div p{
+	margin:10px 10px;
+	float: left;
+}
+.biaoti{
+	display:block;
+	margin-top:-5px;
+}
+em{
+	font-style:normal;
+	width:80px;
+	text-align:right; 
+	display: block;
+	float: left;
+	line-height:24px;
+}
+element.style {
+}
+.submit_div {
+	margin-left:25%;
+	margin-bottom: 20px;
+}
+.submit_div input {
+	float: none;
+}
+
+.remind_float{
+	display:block;
+	float:left;
+}
+
+.WSY_margin_divbox{
+	overflow:hidden;
+	width: 410px;
+	padding: 10px 10px;
+	background: #f1f1f1;
+}
+.WSY_margin_divbox dd{
+	display:blovk;
+	float:left;
+
+}

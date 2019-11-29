@@ -1,0 +1,102 @@
+  ul li{
+      list-style: none;
+  }
+  .WSY_columnbox{
+    min-height: 655px;
+  }
+.WSY_bottonliss{
+    width: 60px;
+    height: 30px;
+    background-color: #06a7e1;
+    border: #06a7e1 1px solid;
+    border-radius: 2px;
+    padding: 0px;
+    color: #fff;
+    cursor: pointer;
+   }
+.el-form-item__label{
+    text-align: left!important;
+}
+.el-table__header-wrapper thead div,.el-table th{
+    background-color: #06a7e1;
+    color:#fff;
+    border:none;
+    text-align: center;
+}
+.el-table tr{
+    text-align: center;
+}
+.el-switch--wide .el-switch__label.el-switch__label--left span {
+    left: 15px;
+} 
+.el-switch--wide .el-switch__label.el-switch__label--right span {
+    right: 15px;
+}
+.el-pagination{
+  text-align: right;
+  margin-right: 30px!important;
+}
+.WSY_columnbox .el-form .el-input__inner{
+  height: 26px!important;
+  border: 1px solid #ccc!important;
+  width: 150px;
+  border-radius: 0;
+}
+.el-select-dropdown__item{
+    color: #000!important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+.blue{
+    background-color:#06a7e1!important;color:white!important;    border: #06a7e1 1px solid!important;
+}
+.WSY_table_header.blue{background: #06a7e1;}
+.el-pager li.active.blue {
+    border-color: #06a7e1;
+    background-color: #06a7e1;
+}
+.Green{
+    background-color:#32b16c!important;color:white!important;    border: #32b16c 1px solid!important;
+}
+.WSY_table_header.Green{background: #32b16c;}
+.el-pager li.active.Green {
+    border-color: #32b16c;
+    background-color: #32b16c;
+}
+.bgreen{
+    background-color:#20b3a4!important;color:white!important; border: #20b3a4 1px solid!important;
+}
+.WSY_table_header.bgreen{background: #20b3a4;}
+.el-pager li.active.bgreen {
+    border-color: #20b3a4;
+    background-color: #20b3a4;
+}
+.GGreen{
+    background-color:#146e3c!important;color:white!important;    border: #146e3c 1px solid!important;
+}
+.WSY_table_header.GGreen{background: #146e3c;}
+.el-pager li.active.GGreen {
+    border-color: #146e3c;
+    background-color: #146e3c;
+}
+.purple{
+    background-color:#987cc9!important;color:white!important;    border: #987cc9 1px solid!important;
+}
+.WSY_table_header.purple{background: #987cc9;}
+.el-pager li.active.purple {
+    border-color: #987cc9;
+    background-color: #987cc9;
+}
+.Orange{
+    background-color:#ff8430!important;color:white!important;    border: #ff8430 1px solid!important;
+}
+.WSY_table_header.Orange{background: #ff8430;}
+.el-pager li.active.Orange {
+    border-color: #ff8430;
+    background-color: #ff8430;
+}

@@ -1,0 +1,82 @@
+.WSY_remind_dl02 input {
+	border: 1px solid #DCDCDC;
+    border-radius: 2px;
+    width: 220px;
+    height: 24px;
+  /*   background-color: #F4F4F4; */
+	padding-left: 8px;
+}
+/*.WSY_list .WSY_addto a {
+    cursor: pointer;
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 24px;
+    background-color: #06a7e1;
+    border: solid 1px #06a7e1;
+    color: #fff;
+    border-radius: 2px;
+    display: block;
+    float: left;
+    margin-left: 20px;
+    margin-top: 5px;
+} */
+.WSY_t5 span {
+    display: block;
+    margin-top: 6px;
+} 
+#cke_editor1 {
+    margin-left: 20px;
+    margin-right: 20px;
+}    
+input#search_batchcode ,#search_user_id , #search_name, #search_phone, #search_status{
+	border: 1px solid #ccc;
+    border-radius: 2px; 
+    width: 220px;
+    height: 24px;
+    /*background-color: #F4F4F4;*/
+	margin-left: 10px;
+	padding-left: 8px;
+}
+/*input.search_btn{
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 24px;
+    background-color: #06a7e1;
+    border: solid 1px #06a7e1;
+    color: #fff;
+    border-radius: 2px;
+	margin-left: 15px;
+}*/
+.btn1 img { 
+    width: 18px;
+}
+input#begintime, #endtime{
+	border: 1px solid #ccc;
+    border-radius: 2px; 
+    width: 10%;
+    height: 24px;
+    /*background-color: #F4F4F4;*/
+	padding-left: 8px;
+}
+.search {
+    margin-top: 18px;
+    margin-left: 18px;
+}
+.WSY_remind_main{ 
+	margin-bottom:18px;
+}
+a {
+    color: #06A7E1;
+}
+ .icon-comment{ 
+   display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../../../../../pic/icon/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    background-position: -240px -120px;
+	}

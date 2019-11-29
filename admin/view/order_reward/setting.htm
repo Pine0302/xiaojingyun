@@ -1,0 +1,265 @@
+<?php
+header("Content-type: text/html; charset=utf-8");
+
+ $theme = 'blue';
+?>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+<style type="text/css">
+.WSY_t6 input{width:200px;display:inline-block;margin:0;border:solid 1px #ccc;height:24px;border-radius:2px;padding-left:5px;margin-right:5px}
+.WSY_t6 span{display:inline-block;margin-top:6px}
+.WSY_table_little{text-align:left;text-indent:1em}
+.table{width:640px;table-layout:fixed;empty-cells:show;border-collapse:collapse;margin-left:18px;margin-top:30px}
+.table_header{background-color:#06a7e1}
+.table tr{font-size:12px;color:#323232;font-family:Helvetica,"Microsoft YaHei",Arial,Helvetica,sans-serif}
+.table th{color:#fff;line-height:30px}
+.table td{border:1px solid #d8d8d8;padding:0 1em 0;text-overflow:ellipsis;overflow:hidden;text-align:left!important}
+.table td input{width:130px;display:inline-block;margin:0;border:solid 1px #ccc;height:24px;border-radius:2px;padding-left:5px;margin-right:5px}
+.WSY_t6 input{border:1px solid #ccc;border-radius:2px;display:inline-block;height:24px;margin:0 2px 0 0;padding-left:5px;width:135px}
+.WSY_t7 input{border:1px solid #ccc;border-radius:2px;display:inline-block;height:24px;margin:0 2px 0 0;padding-left:1px;width:105px}
+.WSY_textboxF h1{width:100px;float:left;padding:10px;cursor:pointer}
+.sel{background-color:rgba(135,135,140,.18)}
+.condition_type span{width:98px}
+.condition_type input,.reward_percent input{width:60px}
+.conditon_bit{width:12px!important}
+.reward{
+	width:100% !important;
+}
+.submit_div{
+	margin-left: 25%;
+	margin-bottom: 20px;
+}
+.submit_div input {
+    float: none;
+}
+</style>
+<title>订单奖励设置</title>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+</head>
+<body>
+<div class="WSY_content">
+	<div class="WSY_columnbox">
+
+		<!--头部导航start-->
+		<?php require('header.html');?>	
+		<!--头部导航end-->
+
+		<div class="WSY_data">
+			<!--列表按钮开始-->
+	        <div class="WSY_list">
+	        	<li class="WSY_left">
+	        		<a style="display: inline-block;">订单奖励设置</a>
+	        		<span style="margin-left:10px;display: inline-block;"></span>
+	        	</li>
+	        </div>
+
+	        <form  enctype="multipart/form-data" method="post" id="upform" name="upform">
+		        <!--开关-->
+				<div class="WSY_remind_main">
+					<dl class="WSY_remind_dl02" style="margin-top:24px;">
+						<dt style="line-height:20px;" class="WSY_left">开启订单奖励：</dt>
+						<dd>
+							<?php if($isopen==1){ ?>
+							<ul style="background-color: rgb(255, 113, 112);">
+								<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 27px;">开</p>
+								<li onclick="change_isopen(0)" class="WSY_bot" style="left: 0px;"></li>
+								<span onclick="change_isopen(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+							</ul>
+							<?php }else{ ?>
+							<ul style="background-color: rgb(203, 210, 216);">
+								<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 13px;">关</p>
+								<li onclick="change_isopen(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+								<span onclick="change_isopen(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+							</ul>
+							<?php } ?>
+						</dd>
+						<input type="hidden" name="isopen" id="isopen" value="0" />
+					</dl>
+					<dl class="WSY_remind_dl02">
+						<dt class="">奖励方式：</dt>
+						<dd>
+							<span class="left_span">
+								<input type="radio" class="type" name="type"   value="1"
+									     checked onclick="sel_type(1)" >返购物币 &nbsp;&nbsp;&nbsp;
+								<input type="radio" class="type" name="type"   value="2"
+                                       onclick="sel_type(2)" >返零钱
+							</span>
+
+						</dd>
+                        <input type="hidden" name="type" id="type" value="1" />
+					</dl>
+					<dl class="WSY_remind_dl02">
+						<dt class="">奖励设置：（单位：元）</dt>
+					</dl>
+					<table width="33%" class="WSY_table" id="WSY_t1" style="width: 640px;margin-top:30px;">
+						<thead class="WSY_table_header">
+						<tr>
+							<?php
+							for($i=1;$i<$res['reward_level']+1;$i++){
+
+						?>
+							<th width="20%" style="color:#fff">等级<?php echo $i?></th>
+
+							<?php
+							}
+						?>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+
+						</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</form>
+	    </div>
+		<div class="submit_div">
+			<input type="button" class="WSY_button" value="提交" onclick="submitV(this);" style="cursor:pointer;">
+		</div>
+		
+	</div>
+</div> 
+
+<script type="text/javascript" src="/weixinpl/back_newshops/Common/js/Base/basicdesign/ToolTip.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script>
+var customer_id='<?php echo $customer_id?>';
+var issell = '<?php echo $res["issell"]?>';
+var reward_level = '<?php echo $res["reward_level"]?>';
+var id = -1;
+
+get_data();
+
+function change_isopen(obj)
+{
+    if(!issell){
+        alert('奖励模式未开启分销，请开启后再选择');
+        return false;
+    }
+	$("#isopen").val(obj);
+}
+
+function sel_type(obj) {
+    $("#type").val(obj);
+}
+
+function clearNoNum(obj)
+{
+    //先把非数字的都替换掉，除了数字和.
+    obj.value = obj.value.replace(/[^\d.]/g,"");
+    //必须保证第一个为数字而不是.
+    obj.value = obj.value.replace(/^\./g,"");
+    //保证只有出现一个.而没有多个.
+    obj.value = obj.value.replace(/\.{2,}/g,".");
+    //保证.只出现一次，而不能出现两次以上
+    obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+    //只能输入两个小数
+    //obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
+}
+
+
+function submitV(e)
+{
+
+    var isopen = $('#isopen').val();
+    var type = $('#type').val();
+    var arr = {}
+    $('.reward').each(function (i,v) {
+        arr[i] = $(this).val();
+    })
+    var data = {};
+    data.isopen = isopen;
+    data.type = type;
+    data.json = arr;
+    var data = JSON.stringify(data);
+    $.ajax({
+        url: '/mshop/admin/index.php?m=HyOrder_reward&a=admin_save' ,
+        type: "POST",
+        dataType: "JSON",
+        data: {data: data},
+        async: true,
+        success: function (res) {
+            console.log(res); //统一加个输出，方便调试
+            if (res.errcode == 0) {
+                alert('保存成功')
+            } else {
+
+            }
+        },
+        error: function (err) {
+            console.log(err); //统一加个输出，方便调试
+
+            return;
+        }
+
+    })
+
+
+}
+
+function get_data() {
+
+    var data = {};
+    var data = JSON.stringify(data);
+    $.ajax({
+        url: '/mshop/admin/index.php?m=HyOrder_reward&a=admin_get',
+        type: "POST",
+        dataType: "JSON",
+        data: {data:data},
+        async: true,
+        success: function (res) {
+            console.log(res); //统一加个输出，方便调试
+            if(res.errcode == 0){
+                var get_data = res.data;
+                id = get_data.id;
+                if(get_data.isopen == 1){
+                    $(".WSY_bot2").trigger("click");
+				}else{
+                    $(".WSY_bot").trigger("click");
+				}
+                $("#type").val(get_data.type);
+                $('input[name=type][value='+get_data.type+']').prop('checked','checked')
+                var json = JSON.parse(get_data.json);
+                for(var i=0;i<(parseInt(reward_level));i++){
+                    var value = 0;
+                    if(json[i] >=0){
+                        value = json[i];
+                    }
+                    html += '<td class="WSY_t7">';
+                    html += '   <input name="number"  class="reward"  placeholder="" value="'+value+'" onkeyup="clearNoNum(this)"  onafterpaste="clearNoNum(this)"  >';
+                    html += '</td>';
+
+                }
+                $('tr').eq(1).html(html);
+            }else{
+                var html = '';
+                for(var i=1;i<(parseInt(reward_level)+1);i++){
+                    html += '<td class="WSY_t7">';
+                    html += '   <input name="number"  class="reward"  placeholder="" value="0" onkeyup="clearNoNum(this)"  onafterpaste="clearNoNum(this)"  >';
+                    html += '</td>';
+                }
+                $('tr').eq(1).html(html);
+            }
+        },
+        error: function (err) {
+            console.log(err); //统一加个输出，方便调试
+
+            return ;
+        }
+    })
+}
+
+
+</script>
+
+</body>
+</html>

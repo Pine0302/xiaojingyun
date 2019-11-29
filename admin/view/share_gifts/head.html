@@ -1,0 +1,18 @@
+<!--列表头部切换开始-->
+<div class="WSY_column_header">
+    <div class="WSY_columnnav">
+        <?php if(!empty($param['user_id'])){?>
+           <a href="/mshop/admin/index.php?m=share_gifts&a=activity&customer_id=<?php echo $customer_id_en; ?>&user_id=<?php echo $param['user_id'];?>">活动明细</a>
+        <?php }else{?>
+           <a href="/mshop/admin/index.php?m=share_gifts&a=activity&customer_id=<?php echo $customer_id_en; ?>">活动管理</a>
+	       <a href="/mshop/admin/index.php?m=share_gifts&a=activity_statistic&customer_id=<?php echo $customer_id_en; ?>">活动统计</a>          
+	       <a href="/mshop/admin/index.php?m=share_gifts&a=activity_user_statistic&customer_id=<?php echo $customer_id_en; ?>">用户统计</a> 
+        <?php }?>
+            
+    </div>
+</div>
+<script>
+var head = <?php echo $head; ?>;
+$(".WSY_columnnav").find("a").eq(head).addClass('white1');
+</script>
+<!--列表头部切换结束-->

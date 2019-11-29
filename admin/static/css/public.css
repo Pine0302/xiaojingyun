@@ -1,0 +1,17 @@
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+img{max-width: 100%;border: none;vertical-align:middle;}
+a{text-decoration:none;color: black;}
+body{font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;-webkit-text-size-adjust: none;background-color:#efeff4;}
+input[type='text'],input[type='number'],input[type='password'],input[type='reset'],input[type='submit'],input[type='button'],input[type='tel'],button,textarea{-webkit-appearance:none;border-radius:0;border:none;}
+ol,ul{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+textarea{overflow:auto;resize:none;}
+
+/* WebKit browsers */ 
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#999;}
+/* Mozilla Firefox 4 to 18 */ 
+input:-moz-placeholder,textarea:-moz-placeholder{color:#999;}
+/* Mozilla Firefox 19+ */  
+input::-moz-placeholder,textarea::-moz-placeholder{color:#999;}   
+/* Internet Explorer 10+ */
+input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#999;} 

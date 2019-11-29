@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>活动管理</title>
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/mshop/web/static/css/swiper.min.css">
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+	<style type="text/css">
+		.award-main{overflow:hidden;margin:25px 38px;border-radius:5px;border:solid 1px #d8d8d8;}
+		.award-nav{font-size:0;height:55px;background-color:#fafafa;border-bottom:solid 1px #d8d8d8;padding:0 10px;}
+		.award-nav a{display:inline-block;vertical-align:top;margin:0 0 -1px 0;line-height:55px;border-bottom:solid 1px rgba(0,0,0,0);font-size:14px;color:#646464;padding:0 15px;}
+		.award-content{padding:0 10px;}
+		.rotate{-ms-transform:rotate(180deg);-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+		.award-swiper{max-width:880px;padding:0 30px 0 40px;position:relative;display:inline-block;margin:30px 0;}
+		.swiper-next,.swiper-prev{background:none;border:0;position:absolute;top:11px;outline:none;}
+		.swiper-next{right:0;}
+		.swiper-prev{left:0;}
+		.swiper-slide{width:100px;height:46px;text-align:center;line-height:46px;background-color:#f5f6fa;cursor:pointer;}
+		.swiper-slide .name{box-sizing:border-box;padding:0 10px;font-size:14px;color:#646464;}
+		.swiper-slide .del-tab{position:absolute;width:8px;height:8px;background-image:url(/mshop/web/static/images/slyder_adventures/icon-del.png);background-repeat:no-repeat;top:4px;right:4px;z-index:5;}
+		.swiper-slide.WSY-skin-bg .name{color:#fff;}
+		.swiper-slide.WSY-skin-bg .del-tab{background-image:url(/mshop/web/static/images/slyder_adventures/icon-del-w.png);}
+		.add-slide{font-size:40px;color:#979797;}
+		.label-box{vertical-align:middle;display:inline-block;margin:0 20px 0 0;font-size:14px;}
+		.label-box input{vertical-align:middle;margin:0 5px 0 0;}
+		.remarks{display:inline-block;height:26px;color:red;box-sizing:border-box;padding:8px 0 0 0;vertical-align:middle;margin:0 0 0 10px;}
+		.award-list{margin:0 50px 20px 50px;}
+		.award-tab{display:none;}
+		.award-tab.active{display:block;}
+		.award-tab .ipt{height:26px;box-sizing:border-box;padding:0 10px;border:solid 1px #dddddd;font-size:14px;vertical-align:top;color:#000;}
+		.award-tab .ipt[disabled]{color:#646464;}
+		.award-tab .list{font-size:0;margin:15px 0 0 0;}
+		.award-left,.award-right{display:inline-block;vertical-align:top;font-size:14px;color:#646464;}
+		.award-left{line-height:26px;min-width:100px;}
+		.award-right{min-width:500px;}
+		.choice-name{display:inline-block;line-height:26px;vertical-align:top;font-size:14px;color:#646464;}
+		.choice-box{display:inline-block;height:26px;font-size:0;}
+		.choice-box .ipt{min-width:150px;}
+		.choice-box .btn{border:0;height:26px;min-width:73px;font-size:14px;color:#fff;border-radius:0;margin:0 0 0 10px;vertical-align:top;line-height:1;}
+		.award-ipt{min-width:177px;}
+		.careful{display:inline-block;width:22px;height:22px;text-align:center;line-height:22px;background-color:#e74c3c;color:#fff;border-radius:50%;margin:0 0 0 10px;cursor:pointer;}
+		.up-img-box{position:relative;width:111px;height:111px;border:dashed 1px #ddd;cursor:pointer;}
+		.up-img-box #up-img{width:100%;height:100%;}
+		.up-img-box .files{position:absolute;width:100%;height:100%;top:0;left:0;opacity:0;}
+		.footer-button{margin:30px 0 30px 50px;}
+		.footer-button .btn{height:40px;min-width:120px;border-radius:2px;cursor:pointer;color:#fff;font-size:16px;margin:0 10px;background-color:#999;}
+	</style>
+</head>
+<body>
+	<div class="WSY_content">
+		<div class="WSY_columnbox">
+			<?php 
+				$head = 1;
+				include("action_head.html");
+			?>
+
+			<div class="WSY_data">
+                <div class="award-main">
+					<div class="award-nav">
+						<a href="/mshop/admin/index.php?m=slyder_adventures&a=action_edit&customer_id=<?php echo $customer_id_en; ?>&slyder_id=<?php echo $slyder_id; ?>">活动设置</a>
+						<a href="javascript:;" class="WSY-skin-color WSY-skin-bd">奖项设置</a>
+					</div>
+					<div class="award-content">
+						<!-- 切换奖项begin -->
+						<?php if(!empty($list)){ ?>
+						<div class="award-swiper">
+							<button type="button" class="swiper-next"><img src="/mshop/web/static/images/slyder_adventures/swiper-btn.png" class="rotate"/></button>
+							<button type="button" class="swiper-prev"><img src="/mshop/web/static/images/slyder_adventures/swiper-btn.png" /></button>
+							<div class="swiper-container">
+						        <div class="swiper-wrapper">
+									<?php 
+										foreach($list as $k=>$v){
+											
+									?>
+						            <div class="swiper-slide <?php if($k==0){ ?>swiper-slide-active WSY-skin-bg<?php }else if($k==1){ ?> swiper-slide-next <?php } ?>">
+							            <div class="name" onclick="switch_tab(this);"><?php echo "奖项".$this->select_num($k+1); ?></div>
+										<?php if($status < 1){ ?>
+							            <div class="del-tab" onclick="del_tab(this);" data-award_id="<?php echo $v["id"]; ?>" ></div>
+										<?php } ?>
+						            </div>
+									<?php }  ?>
+										
+									<?php if($status < 1){ ?>
+						            <div class="swiper-slide add-slide" onclick="add_slide(this);" >+</div>
+									<?php } ?>
+						        </div>
+						        <!-- Add Scrollbar -->
+						        <div class="swiper-scrollbar"></div>
+						    </div>
+						</div>
+						<?php } ?>
+						<!-- 切换奖项end -->
+
+						<!-- 奖项列表start -->
+						<div class="award-list">
+							<?php 
+							if(empty($list)){
+								echo '<a style="display:block;padding: 10px 10px;">未添加奖项！</a>';
+							}else{
+								foreach($list as $k=>$v){
+									
+							?>
+							<form data-index="<?php echo $k; ?>" class="award-form" >
+								<input type="hidden" name="id" value="<?php echo $v["id"]; ?>" />
+								<div class="award-tab <?php if($k==0){ ?>active<?php } ?>">
+									<div class="list">
+										<div class="award-left">奖品类型：</div>
+										<div class="award-right">
+											<label class="label-box"><input type="radio" name="award_type" value="1" <?php if($v["award_type"]==1){echo "checked";} ?> onclick="sel_type(this,1)" <?php if($status == 1) { echo 'disabled';}?> />优惠券</label>
+											<label class="label-box"><input type="radio" name="award_type" value="2" <?php if($v["award_type"]==2){echo "checked";} ?> onclick="sel_type(this,2)" <?php if($status == 1) { echo 'disabled';}?>  />商品</label>
+											<span class="remarks">*&nbsp;(大转盘无法关联虚拟产品)</span>
+										</div>	
+									</div>
+									<?php if($v["award_type"]==1){ ?>
+									<div class="list award-type-l">
+										<div class="award-left">优惠券：</div>
+										<div class="award-right">
+											<div class="choice-box">
+												<input type="text" name="name" id="name" class="ipt" value="<?php echo htmlspecialchars($v["name"]); ?>" disabled="disabled" />
+												<input type="hidden" class="coupon-id-input" name="coupon_id" id="coupon_id" value="<?php echo $v["coupon_id"]; ?>" />
+												<button type="button" class="btn WSY-skin-bg" onclick="showCoupon(this)" <?php if($status == 1) { echo 'disabled';}?>  >可选择</button>
+												<span class="remarks">*</span>
+											</div>
+											
+										</div>	
+									</div>
+									<?php }else if($v["award_type"]==2){ ?>
+									<div class="list award-type-l">
+										<div class="award-left">奖品名称：</div>
+										<div class="award-right">
+											<div class="choice-box">
+												<input type="text" name="name" id="name" class="ipt" value="<?php echo htmlspecialchars($v["name"]); ?>" <?php if($status == 1) { echo 'disabled';}?>  />
+												<button type="button" class="btn WSY-skin-bg" onclick="showProduct(this)" <?php if($status == 1) { echo 'disabled';}?> >可选择</button>
+												<span class="remarks">*</span>
+											</div>
+										</div>	
+									</div>
+									<?php } ?>
+									<div class="list">
+										<div class="award-left">奖项等级：</div>
+										<div class="award-right">
+											<?php echo $this->select_num($k+1)."等奖"; ?>
+											<input type="hidden" name="award_level" id="award_level" class="award-ipt ipt" value="<?php echo $k+1; ?>" />
+										</div>	
+									</div>
+
+									<div class="list">
+										<div class="award-left">数量：</div>
+										<div class="award-right">
+											<input type="number" name="num" id="num" class="award-ipt ipt" value="<?php echo $v["num"]; ?>" onkeyup="formatNum(this,3);" <?php if($status == 1) { echo 'disabled';}?> />
+											<span class="remarks">*</span>
+										</div>	
+									</div>
+
+									<div class="list express-price-l" style="<?php if($v["award_type"]==1){ ?>display:none;<?php } ?>">
+										<div class="award-left">运费：</div>
+										<div class="award-right">
+											<input type="number" name="express_price" id="express_price" class="award-ipt ipt" value="<?php echo $v["express_price"]; ?>" onkeyup="formatNum(this,3);" value="0" <?php if($status == 1) { echo 'disabled';}?> />
+											<span class="remarks">*</span>
+										</div>	
+									</div>
+
+									<div class="list">
+										<div class="award-left">中奖概率：</div>
+										<div class="award-right">
+											<input type="text" name="probability" id="probability" class="ipt" style="width:70px;" value="<?php echo $v["probability"]; ?>" onkeyup="formatNum(this,3);" <?php if($status == 1) { echo 'disabled';}?> /> ‱
+											<span class="careful">？</span>
+											<span class="remarks">*</span>
+										</div>	
+									</div>
+
+									<div class="list">
+										<div class="award-left">每天发奖量：</div>
+										<div class="award-right">
+											<input type="text" name="num_limit_day" id="num_limit_day" class="ipt" style="width:70px;" value="<?php echo $v["num_limit_day"]; ?>" onblur="formatNum(this,2);" <?php if($status == 1) { echo 'disabled';}?> />
+											<span class="" >（-1为不限制）</span>
+											<span class="remarks" >*</span>
+										</div>	
+									</div>
+
+									<div class="list img-l">
+										<div class="award-left">奖品图片：</div>
+										<div class="award-right">
+											<div class="up-img-box">
+												<input type="hidden" name="img" id="img" class="hide-input" value="<?php echo $v["img"]; ?>" />
+												
+												<img src="<?php if(empty($v["img"])){echo "/mshop/web/static/images/slyder_adventures/up_img.jpg";}else{echo $v["img"];} ?>" id="up-img" name="up-img" />
+												<input type="file" id="files" class="files" onchange="uploadimg(this);" <?php if($status == 1) { echo 'disabled';}?> />
+											</div>
+										</div>	
+									</div>
+								</div>
+							</form>
+							<?php }
+								}	?>
+							<!-- 奖项列表end -->
+						</div>
+					</div>
+					<div class="footer-button">
+						<?php if($status == '0'){ ?>
+						<button class="btn WSY-skin-bg" id="save-btn" >保存</button>
+						<?php } ?>
+						<a class="btn WSY-skin-bg" style="height:28px;min-width:100px;line-height:1.8;" href="/mshop/admin/index.php?m=slyder_adventures&a=action_list&customer_id=<?php echo $customer_id_en; ?>">取消</a>
+					</div>
+                </div>
+            </div>
+            
+            <div style="width:100%;height:20px;"></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/mshop/web/static/js/swiper.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+	<script type="text/javascript">
+		var status        = '<?php echo $status ?>';
+		var slyder_id     = <?php echo $slyder_id; ?>;
+		var customer_id   = <?php echo $customer_id; ?>;
+		var customer_id_en= '<?php echo $customer_id_en; ?>';
+		
+		var swiper = new Swiper('.swiper-container', {
+	        scrollbar: '.swiper-scrollbar',
+	        scrollbarHide: true,
+	        slidesPerView: 'auto',
+	        centeredSlides: false,
+	        spaceBetween: 10,
+	        grabCursor: true,
+	        observer:true,
+	        nextButton: '.swiper-next',
+       		prevButton: '.swiper-prev'
+	    });
+		
+		$(function() {
+			/*初始化优惠券输入框*/
+			$('.coupon-id-input').each(function(item,obj){
+				var cId = $(obj).val();
+				if(cId>0 && status=='0'){
+					$(obj).parent().find("#name").attr("disabled",false);
+				}
+			});
+		});
+		
+		/*添加奖项*/
+	    function add_slide(obj){
+	    	var len = $('.swiper-container').find('.swiper-slide').length;
+	 		if(len >= 13){
+	 			layer.alert("最多添加十二个奖项");
+				return false;
+	 		}
+				
+			$('.swiper-container .swiper-slide').removeClass('WSY-skin-bg');
+	    	var str = '<div class="swiper-slide WSY-skin-bg">';
+	    		str += '<div class="name" onclick="switch_tab(this);"></div>';
+	    		str += '<div class="del-tab" onclick="del_tab(this);"></div>';
+	    		str += '</div>';
+	    	$(obj).before(str);
+	    	var html = tab_html();
+	    	$('.award-list .award-tab').removeClass('active');
+	    	$('.award-list').append(html);
+
+	    	slide_sort();
+	    }
+	    /*删除奖项*/
+	    function del_tab(obj){
+	    	var box = $(obj).parent('.swiper-slide');
+			var award_id = $(obj).data("award_id");
+	    	var index = box.index();
+	    	var len = $('.swiper-container').find('.swiper-slide').length;
+	    	layer.confirm('确定要删除吗？', 
+				{
+					title: false,
+					skin:'blue-skin',
+					shift:6,
+		  			btn: ['删除','取消']
+		  		},function(i){
+					if(award_id > 0){
+						var postUrl = "/mshop/admin/index.php?m=slyder_adventures&a=award_del&customer_id="+customer_id_en;
+						$.post(postUrl,{'award_id':award_id,'slyder_id':slyder_id},function(res){
+							var res = JSON.parse(res);
+							if(res.errcode==0){
+								
+							}else{
+								layer.alert(res.errmsg, {icon: 5},function(index){
+									  layer.close(index);
+								});
+							}
+						})
+					}
+						
+		  			if(box.hasClass('WSY-skin-bg')){
+		  				if(box.nextAll('.swiper-slide').length > 1){
+		  					box.next('.swiper-slide').addClass('WSY-skin-bg');
+		  					$('.award-list .award-tab').eq(index + 1).addClass('active');
+		  				}else{
+		  					box.prev('.swiper-slide').addClass('WSY-skin-bg');
+		  					$('.award-list .award-tab').eq(index - 1).addClass('active');
+		  				}
+		  			}
+		  			if(len <= 2){
+		  				layer.alert("最少要有一个奖项");
+						return false;
+		  			}
+				    box.remove();
+			    	$('.award-list .award-tab').eq(index).remove();
+					$('.award-list .award-form').eq(index).remove();
+			    	slide_sort();
+			    	layer.close(i);
+				}
+			);
+	    }
+	    /*切换奖项*/
+	    function switch_tab(obj){
+	    	$('.swiper-container .swiper-slide').removeClass('WSY-skin-bg');
+	    	var box = $(obj).parent('.swiper-slide');
+	    	box.addClass('WSY-skin-bg');
+	    	var index = box.index();
+	    	//console.log(index);
+	    	$('.award-list .award-tab').removeClass('active').eq(index).addClass('active');
+	    }
+	    /*重新排序*/
+	    function slide_sort(){
+	    	var sort = '';
+	    	$('.swiper-container .swiper-slide').each(function(item,obj){
+	    		sort = sel_num(item);
+				$(obj).find('.name').html('奖项'+sort);
+	    	});
+			
+			$('.award-list .award-form').each(function(item,obj){
+				sort = sel_num(item);
+				var award_level = item+1;
+				var award_level_str = sort+"等奖";
+				$(obj).data("index",item);
+				$(obj).find('.award-level-l .award-right').html(award_level_str+
+				'<input type="hidden" name="award_level" id="award_level" class="award-ipt ipt" value="'+award_level+'">');
+			});
+	    }
+	    /*上传图片*/
+	    function uploadimg(evt) {
+		    if (window.File && window.FileReader && window.FileList && window.Blob) {
+		        currfile = evt;
+		        var files = evt.files;//直接传入file对象，evt.target改成evt
+		        var file;
+		        file = files[0];
+		        if (!file.type.match('image.*')) {
+					layer.msg("请上传正确的图片格式。", {icon: 5,time:1500,shade: 0.1});
+		            return;
+		        }
+		        reader = new FileReader();
+		        reader.onload = (function (tFile) {
+		            return function (evt) {
+		                dataURL = evt.target.result;
+		                var def_icon = document.getElementById("up-img");
+
+		            }
+		        }(file));
+		        reader.readAsDataURL(file);
+		        sendFile = file;
+				
+				var formdata = new FormData();
+				formdata.append("imgFile", file);
+				var upURL = '/mshop/admin/index.php?m=slyder_adventures&a=save_pic&customer_id=<?php echo $customer_id_en; ?>';
+				jQuery.ajax({
+					url : upURL,
+					type : 'post',
+					data : formdata,
+					cache : false,
+					contentType : false,
+					processData : false,
+					dataType : "json",
+					success : function(res) {
+						if(res.errcode == 0){
+							$(evt).parent().find('#up-img').attr("src",res.errmsg);
+							$(evt).parent().find('#img').val(res.errmsg);
+						}else{
+							layer.alert(res.errmsg, {icon: 5},function(index){
+									  layer.close(index);
+							});
+						}
+					}
+				});
+				
+		    }else {
+				layer.msg("该浏览器不支持文件管理。", {icon: 5,time:1500,shade: 0.1});
+		    }
+		}
+
+		function sel_num(item){
+			switch(item)
+				{
+				case 0:
+					sort = '一';
+					break;
+				case 1:
+					sort = '二';
+					break;
+				case 2:
+					sort = '三';
+					break;
+				case 3:
+					sort = '四';
+					break;
+				case 4:
+					sort = '五';
+					break;
+				case 5:
+					sort = '六';
+					break;
+				case 6:
+					sort = '七';
+					break;
+				case 7:
+					sort = '八';
+					break;
+				case 8:
+					sort = '九';
+					break;
+				case 9:
+					sort = '十';
+					break;
+				case 10:
+					sort = '十一';
+					break;
+				case 11:
+					sort = '十二';
+					break;
+				case 12:
+					sort = '十三';
+					break;
+				case 13:
+					sort = '十四';
+					break;
+				case 14:
+					sort = '十五';
+					break;
+				case 15:
+					sort = '十六';
+					break;
+				default:
+					sort = '未知';
+					break;
+				}
+			return sort;
+		}
+		/*问号提示*/
+		var care_tip;
+		$('.careful').hover(
+			function(){
+				care_tip = layer.tips('输入0-10000的整数，如输入1，表示中奖概率万分之一，如输入0，则永远不会抽中该奖。所有奖项概率之和等于10000‱', this,{
+					time: 0
+				});
+			},function(){
+				layer.close(care_tip);
+			}
+		);
+
+		/*表单代码*/
+		function tab_html(){
+			var html  = '<form class="award-form">';
+				html += '<div class="award-tab active">';
+
+				html += '<div class="list">';
+				html +=	'<div class="award-left">奖品类型：</div>';			
+				html +=	'<div class="award-right">';		
+				html +=	'<label class="label-box"><input type="radio" name="award_type" value="1" checked onclick="sel_type(this,1)" >优惠券</label>';		
+				html +=	'<label class="label-box"><input type="radio" name="award_type" value="2" onclick="sel_type(this,2)" >商品</label>';			
+				html +=	'<span class="remarks">*</span>';			
+				html +=	'</div></div>';
+
+				html +=	'<div class="list award-type-l">';	
+				html += '<div class="award-left">优惠券：</div>';
+				html +=	'<div class="award-right">';								
+				html +=	'<div class="choice-box">';					
+				html +=	'<input type="text" name="name" id="name" class="ipt" value="" disabled="disabled" >';					
+				html +=	'<input type="hidden" class="coupon-id-input" name="coupon_id" id="coupon_id" class="ipt" value="-1">';					
+				html +=	'<button type="button" class="btn WSY-skin-bg" onclick="showCoupon(this)" >可选择</button>';					
+				html +=	'<span class="remarks">*</span>';						
+				html +=	'</div></div></div>';	
+
+				html +=	'<div class="list award-level-l">';						
+				html +=	'<div class="award-left">奖项等级：</div>';					
+				html += '<div class="award-right">';
+				html +=	'一等奖';			
+				html +=	'<input type="hidden" name="award_level" id="award_level" class="award-ipt ipt" value="1">';						
+				html +=	'</div></div>';
+
+				html +=	'<div class="list">';					
+				html +=	'<div class="award-left">数量：</div>';					
+				html +=	'<div class="award-right">';				
+				html +=	'<input type="number" name="num" id="num" class="award-ipt ipt" value="" onkeyup="formatNum(this,3);" >';			
+				html += '<span class="remarks">*</span>';
+				html += '</div></div>';	
+
+				html += '<div class="list express-price-l" style="display:none;">';					
+				html += '<div class="award-left">运费：</div>';					
+				html += '<div class="award-right">';						
+				html += '<input type="number" name="express_price" id="express_price" class="award-ipt ipt" value="0" onkeyup="formatNum(this,3);" >';						
+				html += '<span class="remarks">*</span>';						
+				html += '</div></div>';	
+
+				html += '<div class="list">';
+				html += '<div class="award-left">中奖概率：</div>';				
+				html += '<div class="award-right">';					
+				html += '<input type="text" name="probability" id="probability" class="ipt" style="width:70px;" onkeyup="formatNum(this,3);" > ‱ ';					
+				html += '<span class="careful">？</span>';						
+				html += '<span class="remarks">*</span>';						
+				html += '</div></div>';
+
+				html += '<div class="list">';				
+				html += '<div class="award-left">每天发奖量：</div>';
+				html += '<div class="award-right">';				
+				html += '<input type="text" name="num_limit_day" id="num_limit_day" class="ipt" style="width:70px;" onblur="formatNum(this,2);" >';					
+				html += '<span class="">（-1为不限制）</span>';					
+				html += '<span class="remarks">*</span>';					
+				html += '</div></div>';	
+
+				html += '<div class="list img-l">';						
+				html += '<div class="award-left">奖品图片：</div>';						
+				html += '<div class="award-right">';						
+				html += '<div class="up-img-box">';				
+				html += '<img src="/mshop/web/static/images/slyder_adventures/up_img.jpg" id="up-img">';
+				html += '<input type="file" id="files" class="files" onchange="uploadimg(this);">';				
+				html += '<input type="hidden" name="img" id="img" class="hide-input">';					
+				html += '</div></div>';
+				html += '</div>';
+				
+				html += '</div>';
+				html += '</form>';
+
+			return html;
+		}
+		
+		function sel_type(obj,t){
+			var html = '';		
+										
+			if(t==1){
+				html += '<div class="award-left">优惠劵：</div>';
+				html += '<div class="award-right">';
+				html += '<div class="choice-box">';
+				html += '<input type="text" name="name" id="name" class="ipt" value="" disabled="disabled" />';
+				html += '<input type="hidden" class="coupon-id-input" name="coupon_id" id="coupon_id" value="-1" />';
+				html += '<button type="button" class="btn WSY-skin-bg" onclick="showCoupon(this)">可选择</button>';
+				html += '<span class="remarks">*</span>';
+				html += '</div>';
+				html += '</div>';
+				
+				//隐藏运费
+				$(obj).closest(".award-tab").find("#express_price").val(0);
+				$(obj).closest(".award-tab").find(".express-price-l").hide();
+
+			}else if(t==2){
+				html += '<div class="award-left">奖品名称：</div>';
+				html += '<div class="award-right">';
+				html += '<div class="choice-box">';
+				html += '<input type="text" name="name" id="name" class="ipt" value="" />';
+				html += '<button type="button" class="btn WSY-skin-bg" onclick="showProduct(this)">可选择</button>';
+				html += '<span class="remarks">*</span>';
+				html += '</div>';
+				html += '</div>';
+				
+				//显示运费
+				$(obj).closest(".award-tab").find("#express_price").val(0);
+				$(obj).closest(".award-tab").find(".express-price-l").show();
+
+			}
+			$(obj).closest(".award-tab").find(".award-type-l").html(html);
+		}
+		
+		function formatNum(obj,type){
+			var thisval = $(obj).val();
+			if( type == 1 ){			//可输入-1的非0正整数
+				if( thisval != -1 ){
+					obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+					obj.value = obj.value.replace(/\./g,""); 
+				}
+				if( thisval == 0 ){
+					obj.value = "";
+				}
+			}else if( type == 2 ){	//可输入-1的正整数
+				if( thisval != -1 ){
+					obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+					obj.value = obj.value.replace(/\./g,""); 
+				}
+			}else if( type == 3 ){			//纯数字
+				obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+				obj.value = obj.value.replace(/\./g,""); 
+			}else if( type == 4 ){		//纯数字+2位小数
+				obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+				obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字而不是
+				obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+				obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+				obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
+			}else if( type == 5 ){        //纯数字+4位小数
+				obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+				obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字而不是
+				obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+				obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+				obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d\d\d).*$/,'$1$2.$3'); //只能输入四个小数
+			}
+		}
+
+		var that;//标签选择
+		//选择优惠劵
+		function showCoupon(obj){
+			that = obj;
+			layer.open({
+				  type: 2,
+				  area: ['1500px', '720px'],
+				  fixed: false, //不固定
+				  maxmin: true,
+				  resize:true,
+				  title: '选择优惠券',
+				  content: '/mshop/admin/index.php?m=slyder_adventures&a=coupon_list&customer_id='+customer_id_en,
+			});
+		}
+		//选择优惠券回调函数
+		//[int] coupon_id 优惠券编码 [string] coupon_title 优惠券名称
+		function showCouponCallback(coupon_id,coupon_title){
+			$(that).parent().find("#name").attr("disabled",false);
+			$(that).parent().find("#name").val(coupon_title);
+			$(that).parent().find("#coupon_id").val(coupon_id);
+		}
+		//选择产品
+		function showProduct(obj){
+			that = obj;
+			layer.open({
+				  type: 2,
+				  area: ['1500px', '720px'],
+				  fixed: false, //不固定
+				  maxmin: true,
+				  resize:true,
+				  title: '选择产品',
+				  content: '/mshop/admin/index.php?m=slyder_adventures&a=product_list&customer_id='+customer_id_en,
+			});
+		}
+		//选择产品回调函数
+		function showProductCallback(p_id,p_name,p_img){
+			$(that).parent().find("#name").val(p_name);
+			if( p_img != "" ){
+				$(that).closest(".award-tab").find("#img").val(p_img);
+				$(that).closest(".award-tab").find('#up-img').attr("src",p_img);
+			}
+		}
+		
+		//提交保存---start
+		$('#save-btn').click(function(){
+			if($(this).hasClass('disabled')){
+				return false;
+			}
+			var postUrl = "/mshop/admin/index.php?m=slyder_adventures&a=award_save&customer_id="+customer_id_en;
+			var dataJson = [];
+			$('.award-form').each(function(index, element) {
+					dataJson.push($(this).serializeArray());
+			});
+			$(this).addClass('disabled').text('保存中...');
+			//console.log(dataJson);
+			//console.log(JSON.stringify(dataJson));
+			//提交数组字符串 php解析后进行保存
+			$.post(postUrl,{'dataStr':JSON.stringify(dataJson),'slyder_id':slyder_id},function(res){
+				$('#save-btn').removeClass('disabled').text('保存');
+				var res = JSON.parse(res);
+				if(res.errcode==0){
+					layer.alert("保存成功", {icon: 6},function(index){
+						  layer.close(index);
+						  window.location.href="/mshop/admin/index.php?m=slyder_adventures&a=action_list&customer_id=<?php echo $customer_id_en; ?>";
+					});
+				}else{
+					layer.alert(res.errmsg, {icon: 5},function(index){
+						  layer.close(index);
+					});
+				}
+			})
+			return false;
+		});
+		//提交保存---end
+	</script>
+</body>
+</html>

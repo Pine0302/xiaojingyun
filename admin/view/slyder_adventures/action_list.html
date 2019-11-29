@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>大转盘活动信息列表</title>
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/js/layer/V2_1/skin/layer.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Product/product.css"><!--内容CSS配色·蓝色-->
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+
+	<style type="text/css">
+		.form-btn{width:auto!important;padding:0 10px!important;cursor:pointer;color:#fff!important;border:0!important;}
+		.form-add-btn{display:inline-block;line-height:24px;border-radius:3px;}
+		.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+	</style>
+</head>
+<body>
+	<!--内容框架开始-->
+	<div class="WSY_content" id="WSY_content_height">
+	    <!--列表内容大框开始-->
+		<div class="WSY_columnbox">	
+			<div class="WSY_column_header">
+				<?php 
+					$head = 1;
+					include("action_head.html");
+				?>
+			</div>
+		    <!--产品管理代码开始-->
+		    <div class="WSY_data">
+		    	<div class="WSY_agentsbox">
+					<form class="search" id="ac_frm" style="display:block" method="get" action="/mshop/admin/index.php?m=slyder_adventures&a=action_list">
+						<input type="hidden" id="m" name="m" value="slyder_adventures">
+						<input type="hidden" id="a" name="a" value="action_list">
+						<ul class="WSY_search_q">
+							<li>活动名称：<input type="text" name="title" id="title" value="<?php if($data['title']!=""){echo $data['title'];}?>" class="form_input"></li>
+							<li>开始时间：
+								<input class="form_input" type="text" id="begin_time" name="begin_time" value="<?php if($data['begin_time']!=-1){echo $data['begin_time'];}?>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px" />
+							</li>
+							<li>结束时间：
+								<input class="form_input" type="text" id="end_time" name="end_time" value="<?php if($data['end_time']!=-1){echo $data['end_time'];}?>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px"/>
+							</li>
+							<li>活动状态：
+								<select name="status" id="status">
+									<option value="-1">--请选择--</option>
+									<option value="0" <?php if($data['status']=='0'){?>selected<?php }?>>停用</option>	
+									<option value="1" <?php if($data['status']==1){?>selected<?php }?>>启用</option>
+									<option value="2" <?php if($data['status']==2){?>selected<?php }?>>进行中</option>
+									<option value="3" <?php if($data['status']==3){?>selected<?php }?>>已结束</option>
+								</select>
+							</li>
+							<li>发放方式：
+								<select name="auto_receive_rewards" id="auto_receive_rewards">
+									<option value="-1">--请选择--</option>
+									<option value="0" <?php if($data['auto_receive_rewards']=='0'){?>selected<?php }?>>手动发布</option>	
+									<option value="1" <?php if($data['auto_receive_rewards']==1  ){?>selected<?php }?>>自动发布</option>
+								</select>
+							</li>
+							<li><input type="submit" class="WSY-skin-bg form-btn"  value="搜索" ></li>
+							<li><a class="WSY-skin-bg form-btn form-add-btn" onclick="jump_url('<?php echo $customer_id ?>',4);">导出</a></li>
+							<li><a class="WSY-skin-bg form-btn form-add-btn" onclick="jump_url('<?php echo $data['customer_id'] ?>',3);">添加活动</a></li>
+						</ul> 
+					</form>
+
+		            <table width="97%" class="WSY_table" id="WSY_t1">
+						<thead class="WSY_table_header">
+							<th width="5%" nowrap="nowrap"align="center">ID</th>
+							<th width="10%" nowrap="nowrap"align="center">活动名称</th>
+							<th width="15%" nowrap="nowrap"align="center">发放方式</th>
+							<th width="15%" nowrap="nowrap"align="center">开始时间</th>
+							<th width="15%" nowrap="nowrap"align="center">结束时间</th>
+							<th width="10%" nowrap="nowrap"align="center">状态</th>
+							<th width="30%" nowrap="nowrap"align="center">操作</th>
+						</thead>
+						<tbody class="tbody-main">
+							<?php foreach ($data2 as $key => $row) { 								
+								?>
+								<tr>
+									<td style="text-align:center;"><?php echo $row['id']?></td>
+									<td style="text-align:center;"><?php echo $row['title']?></td>
+									<td style="text-align:center;"><?php if($row['auto_receive_rewards']==0){echo "手动发放";}else{echo "自动发放";} ?></td>
+									<td style="text-align:center;"><?php echo $row['begin_time']?></td>
+									<td style="text-align:center;"><?php echo $row['end_time']?></td>
+									<td style="text-align:center;">
+									<?php 
+									if( $row['status'] == 1 ){
+										if( $row['end_time']>date('Y-m-d H:i:s') && date('Y-m-d H:i:s')>$row['begin_time'] ){
+											echo "进行中";
+										}else if( date('Y-m-d H:i:s')<$row['begin_time'] ){
+											echo "启用";
+										}else{
+											echo "已结束";
+										}
+									}else{
+										echo "停用";
+									}
+									?>
+									</td>
+									<td style="text-align:center;">
+										<?php if($row['status']=='0'){?>
+										<button class="table-btn WSY-skin-bg action_enable" data-id="<?php echo $row['id']?>" >启用</button>
+										<?php }?>
+										
+										<?php if($row['status']==0){?>
+										<button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $row['id']?>',1);">编辑</button>
+										<?php }else{?>
+										<button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $row['id']?>',1);">查看</button>
+										<?php }?>
+										
+										<?php if($row['status']==1 && $row['end_time']>date('Y-m-d H:i:s')){?>
+										<button class="table-btn WSY-skin-bg action_disable" data-id="<?php echo $row['id']?>">停用</button>
+										<?php }?>
+										
+										<?php if($row['status']!=1){?>
+										<button class="table-btn WSY-skin-bg action_del" data-id="<?php echo $row['id']?>" >删除</button>
+										<?php }?>
+										
+										<button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $row['id']?>',2);">中奖名单</button>
+									</td>
+								</tr>
+							
+							<?php }?>							
+						</tbody>
+						
+					</table>
+				</div>
+		        <!--翻页开始-->
+		        <div class="WSY_page">
+		        	
+		        </div>
+		        <!--翻页结束-->
+		    </div>
+		    <!--产品管理代码结束-->
+		</div>
+		<div style="width:100%;height:20px;"></div>
+	</div>
+	<!--内容框架结束-->
+</body>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script><!--添加时间插件-->
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript">
+var id = $("#id").val();
+var title = $("#title").val();
+var begin_time = $("#begin_time").val();
+var end_time = $("#end_time").val();
+var status = $("#status").val();
+var auto_receive_rewards = $("#auto_receive_rewards").val();
+var data = "";
+var data2 = "";
+if(id!=""){	
+	data += "&id="+id;
+	data2 += "/id/"+id;
+}
+if(title!=""){
+	data += "&title="+title;
+	data2 += "/title/"+title;
+}
+if(begin_time!=""){
+	data += "&begin_time="+begin_time;
+	data2 += "/begin_time/"+begin_time;
+}
+if(end_time!=""){
+	data += "&end_time="+end_time;
+	data2 += "/end_time/"+end_time;
+}
+if(status!=-1){
+	data += "&status="+status;
+	data2 += "/status/"+status;
+}
+if(auto_receive_rewards!=-1){
+	data += "&auto_receive_rewards="+auto_receive_rewards;
+	data2 += "/auto_receive_rewards/"+auto_receive_rewards;
+}
+
+
+<!-- 分页 start -->
+var pagenum = <?php echo $pageNum ?>;//当前页
+var count =<?php echo $pageCount ?>;//总页数	
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+	pageCount:count,
+	current:pagenum,
+	backFn:function(p){
+	var url="/mshop/admin/index.php?m=slyder_adventures&a=action_list&pagenum="+p+data;	
+
+	location.href = url;
+   }
+});
+
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a>count) || isNaN(a)){
+		layer.alert('没有下一页了');
+		return false;
+	}else{
+		var url="/mshop/admin/index.php?m=slyder_adventures&a=action_list&pagenum="+a+data;	
+		location.href = url;
+	}
+}
+<!-- 分页 end -->
+
+
+//启用
+$(".action_enable").live('click',function(){
+	var $button   = $(this);
+	var action_id = $(this).data('id');
+	operate_action(action_id,1,$button);	
+});
+//启用 End
+
+//停用
+$(".action_disable").live('click',function(){
+	var $button   = $(this);
+	var action_id = $(this).data('id');
+	operate_action(action_id,3,$button);	
+});
+//停用 End
+
+//删除
+$(".action_del").live('click',function(){
+	var action_id = $(this).data('id');
+	operate_action(action_id,2,'');	
+});
+//删除 End
+
+
+function operate_action(id,type,button){
+	//type：1启用 2删除 3停用
+	var url = "";
+	var remark = "";
+	if(type==1){
+		url = '/mshop/admin/index.php?m=slyder_adventures&a=action_enable';
+		remark = "启用活动后不可恢复，继续吗";
+	}else if(type==2){
+		url = '/mshop/admin/index.php?m=slyder_adventures&a=action_del';
+		remark = "删除活动后不可恢复，继续吗";
+	}else if(type==3){
+		url = '/mshop/admin/index.php?m=slyder_adventures&a=action_disable';
+		remark = "停用活动后不可恢复，继续吗";
+	}
+
+	layer.confirm(remark, {
+		title:'警告',
+		btn: ['确认','取消']
+	}, function(confirm){
+		layer.close(confirm);	
+		
+		$.ajax({
+			url: url,
+			dataType: 'json',
+			type: 'post',
+			data: {
+				id:id,
+				type:1
+			},
+			success: function(res){		
+				if( res.errcode == 0 ){										
+					if(type==1){
+						button.parent("td").prev().html('启用');
+						$td = button.parent("td");	
+						$td.html("");	
+						html = '<button class="table-btn WSY-skin-bg" onclick="jump_url(\''+id+'\',1);">查看</button>&nbsp;';
+						html += '<button class="table-btn WSY-skin-bg action_disable" data-id="'+id+'">停用</button>&nbsp;';
+						html += '<button class="table-btn WSY-skin-bg" onclick="jump_url(\''+id+'\',2);">中奖名单</button>';
+						$td.append(html);
+						// layer.alert(res.errmsg);
+						//document.location.reload();
+					}else if(type==3){
+						button.parent("td").prev().html('停用');	
+						$td = button.parent("td");	
+						$td.html("");	
+						html = '<button class="table-btn WSY-skin-bg action_enable" data-id="'+id+'">启用</button>&nbsp;';
+						html += '<button class="table-btn WSY-skin-bg" onclick="jump_url(\''+id+'\',1);">编辑</button>&nbsp;';
+						html += '<button class="table-btn WSY-skin-bg action_del" data-id="'+id+'">删除</button>&nbsp;';
+						html += '<button class="table-btn WSY-skin-bg" onclick="jump_url(\''+id+'\',2);">中奖名单</button>';
+						$td.append(html);	
+						//document.location.reload();				
+					}else if(type==2){
+						document.location.reload();
+					}					
+					layer.alert(res.errmsg);
+					//document.location.reload();
+					//window.location = "/mshop/admin/index?m=exchange&a=exchange_activity_list";
+				}else if (res.errcode == 41802){
+					layer.alert("无法启动活动，活动时间与 ["+res.action[0].title+"] 冲突！",{title:'错误',icon:2});
+					// document.location.reload();
+				}else{
+					layer.alert(res.errmsg);
+				}
+			}
+		});
+	}, function(){
+		layer.msg('已取消', {
+			time: 4000,
+			btn: ['确认'],
+			icon:1
+		});
+	});
+
+	
+}
+
+function jump_url(id,type){
+	//type : 1-查看，编辑  2-中奖名单  3-添加活动 4-导出
+	var url = "";
+	if(type==1){
+		url = "/mshop/admin/index.php?m=slyder_adventures&a=action_edit&slyder_id="+id;
+	}else if(type==2){
+		url = "/mshop/admin/index.php?m=slyder_adventures&a=name_list&slyder_id="+id;
+	}else if(type==3){
+		url = "/mshop/admin/index.php?m=slyder_adventures&a=action_edit";
+	}else if(type==4){
+		url = "/weixin/plat/app/index.php/Excel/excel_action_list/customer_id/"+id+data2;
+	}
+	location.href = url;
+}
+
+</script>	
+</html>

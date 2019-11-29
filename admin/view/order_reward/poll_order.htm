@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>查看订单奖励明细</title>
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/content.css">
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/contentblue.css">
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/content.css">
+	<link type="text/css" rel="stylesheet" rev="stylesheet" href="/mshop/admin/static/css/inside.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/mshop/admin/static/css/product.css"><!--内容CSS配色·蓝色-->
+	<script type="text/javascript" src="/mshop/admin/static/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/mshop/admin/static/js/jscolor.js"></script><!--拾色器js-->
+	<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+	<script type="text/javascript" src="/mshop/admin/static/js/inside.js"></script>
+	<script type="text/javascript" src="/mshop/admin/static/js/get.js"></script>
+	<style>
+		.aright {
+			margin-right:5px!important;;
+		}
+		.left{
+			margin-top: 10px;
+			padding-left: 20px;
+			font-size: 14px;
+			color: #2eade8;
+			background-image: url(/addons/common/images_V6.0/table_icon/icon01.png);
+			background-repeat: no-repeat;
+			background-position: left 0%;
+			margin-left: 20px;
+		}
+		#caozuo a img{
+			width: 18px;
+			height: 18px;
+			vertical-align: baseline;
+		}
+		#caozuo{
+			height: 80px;
+			padding-top: 20px !important;
+			padding-bottom: 20px !important;
+
+		}
+		.WSY_table a{
+			color:#06a7e1;
+		}
+		.headimgurl{
+			width: 15%;
+			border-radius: 50%;
+			vertical-align: middle;
+			margin:10px 0;
+		}
+		.user_name{
+			margin-left: 5%;
+			display: inline-block;
+			width: 70%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			vertical-align: middle;
+			text-align: left;
+		}
+		.operation-btn{
+			display: inline-block;
+			padding: 5px 10px;
+			color: #fff;
+			background-color: #03A103;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+	<!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+		<!--头部导航start-->
+		<div class="WSY_column_header">
+			<div class="WSY_columnnav">
+				<a class="white1" href="javascript:history.go(-1)">返回</a>			
+			</div>	
+		</div>
+		<!--头部导航end-->
+		<div class="WSY_data">
+			<div class="WSY_agentsbox">
+				<form class="search" id="search_form">
+					<div class="WSY_search_q search" id="search_form" style="background-color:#fff;border:0px;">
+						<!--<li>订单号： <input type=text name="search_batchcode" id="search_batchcode" value="" style="width:150px;" /></li>-->
+						<!--<li>申请时间： <input type=text name="search_starttime" id="search_starttime" style="width:150px;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'search_endtime\')}',autoPickDate:false});" /> - <input type=text name="search_endtime" id="search_endtime" style="width:150px;" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'search_starttime\')}',autoPickDate:false});" /></li>-->
+						<!--<li class="WSY_bottonliss"><input style="padding-right:0" type="button" class="search_btn"  onclick="tableinit.searchForm();" value="搜索"></li>-->
+					</div>
+				</form>
+				<table width="97%" class="WSY_table" id="WSY_t1" >
+					<thead class="WSY_table_header">
+					<th width="5%" nowrap="nowrap">id</th>
+					<th width="15%" nowrap="nowrap">订单号</th>
+					<th width="7%" nowrap="nowrap">用户ID</th>
+					<th width="7%" nowrap="nowrap">微信名称</th>
+					<th width="7%" nowrap="nowrap">奖励金额</th>
+					<th width="10%" nowrap="nowrap">等级</th>
+					<!--<th width="15%" nowrap="nowrap">奖励方式</th>-->
+					<th width="8%" nowrap="nowrap">备注</th>
+					<th width="8%" nowrap="nowrap">创建时间</th>
+			 
+					</thead>
+				</table>
+			</div>
+			<!--翻页开始-->
+			<div class="WSY_page">
+			</div>
+			<!--翻页结束-->
+		</div>
+	</div>
+	<div style="width:100%;height:20px;"></div>
+</div>
+<!--内容框架结束-->
+<script src="/mshop/admin/static/js/fenye/jquery.page1.js"></script>
+<script src="/mshop/admin/static/js/common_function.js"></script>
+<!--<script src="/addons/view/voice_online/common/js/back_init.js"></script>-->
+<script>
+    var customer_id_en = $.getUrlParam('customer_id');
+    var batchcode = $.getUrlParam('batchcode');
+
+    /*搜索参数数组说明：
+    searchParam的key值对应起搜索的ID
+    */
+    var searchParam =new Array();
+    searchParam['extend'] = [{search_batchcode:batchcode}];
+    var tableobj = {
+        url:'/mshop/admin/index.php?m=HyOrder_reward&a=admin_get_poll_order',				//异步请求链接
+        countUrl:'/mshop/admin/index.php?m=HyOrder_reward&a=admin_get_poll_order',			//页码统计链接
+        is_count:1,					//是否统计数量
+        pageNum:20,					//每页数据数量
+        clearData:function(){		//清除数据函数
+            $('.apply_room_info').remove();
+        },
+        searchParam:searchParam ,	//搜索参数数组
+        callbackfunc:callbackfunc,	//获取数据后回调函数
+    }
+    $(function(){ tableinit.main(); })
+
+    //回调函数
+    function callbackfunc(res) {
+        var html = '';
+		console.log(res);
+        for( i in res ) {
+
+            html += '<tr class="apply_room_info">';
+            html += '	<td>'+res[i]['id']+'</td>';
+            html += '	<td>'+res[i]['batchcode']+'</td>';
+            html += '	<td>'+res[i]['user_id']+'</td>';
+            html += '	<td>'+res[i]['weixin_name']+'</td>';
+            html += '	<td>'+res[i]['reward']+'</td>';
+            html += '	<td>'+res[i]['level']+'</td>';
+            /*if(res[i]['type'] == 1){
+                html += '	<td><a href="/weixinpl/back_newshops/Base/pay_currency/pay_currency_log.php?promoter='+res[i]['user_id']+'">查看</a>购物币</td>';
+			}else if((res[i]['type'] == 2)){
+                html += '	<td><a href="/weixinpl/back_newshops/Base/moneybag/recharge_log.php?promoter='+res[i]['user_id']+'">查看</a>零钱</td>';
+			}else{
+                html += '	<td>无</td>';
+			}*/
+            html += '	<td>'+res[i]['remark']+'</td>';
+            html += '	<td>'+res[i]['createtime']+'</td>';
+
+             
+
+            html += '</tr>';
+        }
+        $('.WSY_table_header').after(html);
+    }
+
+    //查看详情
+    function showDetail(room_id) {
+        window.location.href = '/addons/view/voice_online/admin/apply_room_list_detail.html?customer_id='+customer_id_en+'&room_id='+room_id;
+    }
+
+</script>
+</body>
+</html>

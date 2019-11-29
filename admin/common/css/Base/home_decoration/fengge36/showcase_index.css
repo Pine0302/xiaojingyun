@@ -1,0 +1,62 @@
+
+.sc-goods-list.pic .goods-card.small-pic .info .goods-title {
+	height: 32px;
+	overflow: hidden
+}
+
+.sc-goods-list.pic .goods-card.small-pic .info .goods-price-taobao {
+	display: none
+}
+
+.custom-search {
+	margin: 10px
+}
+
+.custom-search form {
+	margin: 0;
+	position: relative;
+	border: 1px solid #C0C0C0;
+	background: #fff;
+	border-radius: 5px
+}
+
+.custom-search form .custom-search-input {
+	margin: 0;
+	padding: 0 10px 0 40px;
+	-webkit-appearance: none;
+	border-radius: 0;
+	height: 35px;
+	width: 100%;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	border-radius: 5px;
+	box-shadow: 0 0 0 0
+}
+
+.custom-search-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: none;
+	height: 35px;
+	line-height: 35px;
+	width: 37px;
+	padding: 0;
+	color: #fff;
+	font-size: 14px;
+	text-indent: -9999px;
+	background: #fff url('http://kdt-static.qiniudn.com/v2/image/wap/search_icon.png') center center no-repeat;
+	background-size: 16px 16px;
+	border-radius: 5px 0 0 5px
+}
+
+.custom-richtext img {
+	background: none;
+	max-width: 100% !important;
+	min-height: 1px;
+	width: auto !important;
+	height: auto !important;
+	vertical-align: middle
+}

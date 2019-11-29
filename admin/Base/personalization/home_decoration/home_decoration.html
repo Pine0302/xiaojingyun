@@ -1,0 +1,988 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="../../../Common/css/Base/home_decoration/m-style.css">
+<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/content<?php echo $theme; ?>.css">
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentGreen.css">--><!--内容CSS配色·绿色-->
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentOrange.css">--><!--内容CSS配色·橙色-->
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentbgreen.css">--><!--内容CSS配色·蓝绿-->
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentGGreen.css">--><!--内容CSS配色·草绿-->
+
+<script type="text/javascript" src="../../../../common/js_V6.0/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../common/js_V6.0/jscolor.js"></script><!--拾色器js-->
+<script>
+// The instanceReady event is fired, when an instance of CKEditor has finished
+// its initialization.
+/*CKEDITOR.on( 'instanceReady', function( ev ) {
+	// Show the editor name and description in the browser status bar.
+	document.getElementById( 'eMessage' ).innerHTML = 'Instance <code>' + ev.editor.name + '<\/code> loaded.';
+
+	// Show this sample buttons.
+	document.getElementById( 'eButtons' ).style.display = 'block';
+});
+
+function InsertHTML() {
+	// Get the editor instance that we want to interact with.
+	var editor = CKEDITOR.instances.editor1;
+	var value = document.getElementById( 'htmlArea' ).value;
+
+	// Check the active editing mode.
+	if ( editor.mode == 'wysiwyg' )
+	{
+		// Insert HTML code.
+		// //docs.ckeditor.com/#!/api/CKEDITOR.editor-method-insertHtml
+		editor.insertHtml( value );
+	}
+	else
+		alert( 'You must be in WYSIWYG mode!' );
+}
+
+function InsertText() {
+	// Get the editor instance that we want to interact with.
+	var editor = CKEDITOR.instances.editor1;
+	var value = document.getElementById( 'txtArea' ).value;
+
+	// Check the active editing mode.
+	if ( editor.mode == 'wysiwyg' )
+	{
+		// Insert as plain text.
+		// //docs.ckeditor.com/#!/api/CKEDITOR.editor-method-insertText
+		editor.insertText( value );
+	}
+	else
+		alert( 'You must be in WYSIWYG mode!' );
+}
+
+function SetContents() {
+	// Get the editor instance that we want to interact with.
+	var editor = CKEDITOR.instances.editor1;
+	var value = document.getElementById( 'htmlArea' ).value;
+
+	// Set editor contents (replace current contents).
+	// //docs.ckeditor.com/#!/api/CKEDITOR.editor-method-setData
+	editor.setData( value );
+}
+
+function GetContents() {
+	// Get the editor instance that you want to interact with.
+	var editor = CKEDITOR.instances.editor1;
+
+	// Get editor contents
+	// //docs.ckeditor.com/#!/api/CKEDITOR.editor-method-getData
+	alert( editor.getData() );
+}
+
+function ExecuteCommand( commandName ) {
+	// Get the editor instance that we want to interact with.
+	var editor = CKEDITOR.instances.editor1;
+
+	// Check the active editing mode.
+	if ( editor.mode == 'wysiwyg' )
+	{
+		// Execute the command.
+		// //docs.ckeditor.com/#!/api/CKEDITOR.editor-method-execCommand
+		editor.execCommand( commandName );
+	}
+	else
+		alert( 'You must be in WYSIWYG mode!' );
+}
+
+function CheckDirty() {
+	// Get the editor instance that we want to interact with.
+	var editor = CKEDITOR.instances.editor1;
+	// Checks whether the current editor contents present changes when compared
+	// to the contents loaded into the editor at startup
+	// //docs.ckeditor.com/#!/api/CKEDITOR.editor-method-checkDirty
+	alert( editor.checkDirty() );
+}
+
+function ResetDirty() {
+	// Get the editor instance that we want to interact with.
+	var editor = CKEDITOR.instances.editor1;
+	// Resets the "dirty state" of the editor (see CheckDirty())
+	// //docs.ckeditor.com/#!/api/CKEDITOR.editor-method-resetDirty
+	editor.resetDirty();
+	alert( 'The "IsDirty" status has been reset' );
+}
+
+function Focus() {
+	CKEDITOR.instances.editor1.focus();
+}
+
+function onFocus() {
+	document.getElementById( 'eMessage' ).innerHTML = '<b>' + this.name + ' is focused </b>';
+}
+
+function onBlur() {
+	document.getElementById( 'eMessage' ).innerHTML = this.name + ' lost focus';
+}
+*/
+	</script>
+<!--富文本JS结束-->
+</head>
+
+<body>
+<!--内容框架开始-->
+<div class="WSY_content">
+
+<!--微商城统计代码开始-->
+<!--<div class="WSY_statisticsbox">
+	<li><a>今日订单：</a><span>13</span></li>
+    <li><a>今日销售：</a><span style="color:#F00">￥13000</span></li>
+    <li><a>新增客户：</a><span>0</span></li>
+    <li><a>新增推广员：</a><span>0</span></li>
+</div>-->
+<!--微商城统计代码结束-->
+
+<style type="text/css">
+/*蓝色*/
+.input_butn{margin-top:30%}
+.input_butn input{display:block;width:192px;background:#06a7e1;border:solid 1px #0b91c2;height:32px;line-height:30px;border-radius:3px;font-size:14px;color:#fff;}
+.input_butn input:hover{background:#017ca9;cursor:pointer;}
+.input_butn01 input{width:220px;}
+.leftA01 .leftA01_dl dd .tj{background:#07a7e1;border:solid 1px #0b91c2;color:#fff;}
+.leftA01 .leftA01_dl dd .tj:hover{background:#0b91c2;}
+.WSY_homeright .WSY_homeright_nav li .blueAA{background:#06a7e1;color:#fff;}
+
+/*绿色*/
+/*.input_butn{margin-top:30%}
+.input_butn input{display:block;width:192px;background:#32b16c;border:solid 1px #0e9f50;height:32px;line-height:30px;border-radius:3px;font-size:14px;color:#fff;}
+.input_butn input:hover{background:#0e9f50;cursor:pointer;}
+.input_butn01 input{width:220px;}
+.leftA01 .leftA01_dl dd .tj{background:#32b16c;border:solid 1px #0e9f50;color:#fff;}
+.leftA01 .leftA01_dl dd .tj:hover{background:#0e9f50;}
+.WSY_homeright .WSY_homeright_nav li .blueAA{background:#0e9f50;color:#fff;}*/
+
+/*橙色*/
+/*.input_butn{margin-top:30%}
+.input_butn input{display:block;width:192px;background:#e74f31;border:solid 1px #d43d1f;height:32px;line-height:30px;border-radius:3px;font-size:14px;color:#fff;}
+.input_butn input:hover{background:#d43d1f;cursor:pointer;}
+.input_butn01 input{width:220px;}
+.leftA01 .leftA01_dl dd .tj{background:#e74f31;border:solid 1px #d43d1f;color:#fff;}
+.leftA01 .leftA01_dl dd .tj:hover{background:#d43d1f;}
+.WSY_homeright .WSY_homeright_nav li .blueAA{background:#e74f31;color:#fff;}*/
+
+/*蓝绿色*/
+/*.input_butn{margin-top:30%}
+.input_butn input{display:block;width:192px;background:#0faa9a;border:solid 1px #20b3a4;height:32px;line-height:30px;border-radius:3px;font-size:14px;color:#fff;}
+.input_butn input:hover{background:#20b3a4;cursor:pointer;}
+.input_butn01 input{width:220px;}
+.leftA01 .leftA01_dl dd .tj{background:#0faa9a;border:solid 1px #20b3a4;color:#fff;}
+.leftA01 .leftA01_dl dd .tj:hover{background:#20b3a4;}
+.WSY_homeright .WSY_homeright_nav li .blueAA{background:#20b3a4;color:#fff;}*/
+
+/*草绿色*/
+/*.input_butn{margin-top:30%}
+.input_butn input{display:block;width:192px;background:#096733;border:solid 1px #146e3c;height:32px;line-height:30px;border-radius:3px;font-size:14px;color:#fff;}
+.input_butn input:hover{background:#146e3c;cursor:pointer;}
+.input_butn01 input{width:220px;}
+.leftA01 .leftA01_dl dd .tj{background:#096733;border:solid 1px #146e3c;color:#fff;}
+.leftA01 .leftA01_dl dd .tj:hover{background:#146e3c;}
+.WSY_homeright .WSY_homeright_nav li .blueAA{background:#096733;color:#fff;}*/
+</style>
+       <!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+    	<!--列表头部切换开始-->
+    	<div class="WSY_column_header">
+        	<div class="WSY_columnnav">
+            	<a class="white1">首页设置</a>
+            </div>
+        </div>
+        <!--列表头部切换结束-->
+        
+    <!--首页设置代码开始-->
+    <div class="WSY_data">
+    	<div class="WSY_homebox">
+        	<div class="WSY_homeleft">
+            	<li class="WSY_homeleft_top">
+                	<p></p>
+                </li>
+                <li class="WSY_homeleft_middle">
+                	<div class="WSY_logoleft"><img src="../../../Common/images/Base/home_decoration/contenticon/logo.png"></div>
+                    <div class="WSY_myright"><a>我的订单</a></div>
+                    <div class="WSY_topinput" id="WSY_search_top">
+                        <form>
+                            <input type="text" name="q" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='输入产品名称...';" onfocus="if(this.value=='输入产品名称...')value='';" value="输入产品名称..."/>
+                        </form>
+                    </div>
+                    <div class="WSY_img320px">
+                    	<a><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg"></a>
+                    </div>
+                    <div class="WSY_flbox">
+                    	<p><a class="icon01"></a><span>全部分类</span></p>
+                        <p><a class="icon02"></a><span>新品上市</span></p>
+                        <p><a class="icon03"></a><span>热卖产品</span></p>
+                        <p><a class="icon04"></a><span>购物车</span></p>
+                    </div>
+                </li>
+                <li class="WSY_homeleft_bottom">
+                	<p></p>
+                </li>
+            </div>
+            <div class="WSY_homeright">
+            <ul class="WSY_homeright_nav">
+                <li><a class="blueAA" href="#">功能一</a></li>
+                <li><a href="#">功能二</a></li>
+                <li><a href="#">功能三</a></li>
+	        </ul>
+            <div class="homerightbox">
+            <div class="homeright_left">
+            <!--拾色器开始-->
+        	<div class="WSY_jscolor">
+            	<p>背景颜色：</p>
+                <input id="colorPicker" class="color" value="66ff00">
+                <a class="WSY_jscolor_p01">清除颜色</a>
+            </div>
+            <!--拾色器结束-->
+            <div class="input_butn"><input type="button" value="提交保存"></div>
+            </div>
+            
+            <div class="homeright_right">
+            <!--修改图片单个功能操作代码开始-->
+            <div class="WSY_microbox WSY_single1">
+            	<p>图片1：大图建议尺寸：632*280px</p>
+            	<dl class="WSY_micro">
+                	<dt><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg"><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png"></span></dt>
+                    <!--上传文件代码开始-->
+                    <div class="uploader white" id="WSY_whitebox">
+                        <input type="text" class="filename" readonly/>
+                        <input type="button" name="file" class="button" value="上传..."/>
+                        <input type="file" size="20"/>
+                   </div>
+                   <!--上传文件代码结束-->
+                   <dd><span>链接页面：</span>
+                   		<select>
+                                    <option>-- 请选择 --</option>
+                                    <option>全部产品</option>
+                                    <option>新品上市</option>
+                                    <option>热卖产品</option>
+                                    <option>购物车</option>
+                                    <optgroup label="---------------产品分类---------------">
+                                        <option>衣服</option>
+                                        <option>首饰</option>
+                                        <option>生活用品</option>
+                                        <option>牙膏</option>
+                                        <option>黑人牙膏</option>
+                                    </optgroup>
+                                    <optgroup label="---------------图文消息---------------">
+                                        <option>欢迎关注吴俊权测试</option>
+                                        <option>欢迎关注吴俊权测试</option>
+                                        <option>微信预约，随时随地，省时方便</option>
+                                        <option>您想要对商家说些什么？</option>
+                                        <option>在线调研</option>
+                                        <option>微相册</option>
+                                        <option>微喜帖</option>
+                                        <option>会员卡</option>
+                                        <option>优惠劵</option>
+                                        <option>刮刮卡抽奖</option>
+                                        <option>大转盘抽奖</option>
+                                        <option>水果超人抽奖</option>
+                                        <option>水果超人抽奖</option>
+                                        <option>请柬</option>
+                                        <option>请柬</option>
+                                        <option>微团购</option>
+                                        <option>微团购</option>
+                                        <option>报名</option>
+                                        <option>测试单页</option>
+                                        <option>换群</option>
+                                        <option>微助力2*</option>
+                                        <option>测试1</option>
+                                        <option>软文分销</option>
+                                        <option>附近门店</option>
+                                        <option>999</option>
+                                        <option>测试会员卡</option>
+                                        <option>小尧子会员卡</option>
+                                        <option>翻牌</option>
+                                    </optgroup>
+                                </select>
+                   		</dd>
+                	</dl>
+            	</div>
+            <!--修改标题单个功能操作代码结束-->
+            
+            <!--修改图片单个功能操作代码开始-->
+            <div class="WSY_microbox WSY_single2">
+            	<p>修改标题</p>
+            	<dl class="WSY_micro">
+                   <dd>标题：<input type="text" value=""></dd>
+                   <dd class="WSY_jscolor">
+                   		<b>字体颜色：</b>
+                        <input id="colorPicker" class="color" value="66ff00">
+                    	<a class="WSY_jscolor_p01">清除颜色</a>
+                   </dd>
+                   <dd><span>链接页面：</span>
+                   		<select>
+                                    <option>-- 请选择 --</option>
+                                    <option>全部产品</option>
+                                    <option>新品上市</option>
+                                    <option>热卖产品</option>
+                                    <option>购物车</option>
+                                    <optgroup label="---------------产品分类---------------">
+                                        <option>衣服</option>
+                                        <option>首饰</option>
+                                        <option>生活用品</option>
+                                        <option>牙膏</option>
+                                        <option>黑人牙膏</option>
+                                    </optgroup>
+                                    <optgroup label="---------------图文消息---------------">
+                                        <option>欢迎关注吴俊权测试</option>
+                                        <option>欢迎关注吴俊权测试</option>
+                                        <option>微信预约，随时随地，省时方便</option>
+                                        <option>您想要对商家说些什么？</option>
+                                        <option>在线调研</option>
+                                        <option>微相册</option>
+                                        <option>微喜帖</option>
+                                        <option>会员卡</option>
+                                        <option>优惠劵</option>
+                                        <option>刮刮卡抽奖</option>
+                                        <option>大转盘抽奖</option>
+                                        <option>水果超人抽奖</option>
+                                        <option>水果超人抽奖</option>
+                                        <option>请柬</option>
+                                        <option>请柬</option>
+                                        <option>微团购</option>
+                                        <option>微团购</option>
+                                        <option>报名</option>
+                                        <option>测试单页</option>
+                                        <option>换群</option>
+                                        <option>微助力2*</option>
+                                        <option>测试1</option>
+                                        <option>软文分销</option>
+                                        <option>附近门店</option>
+                                        <option>999</option>
+                                        <option>测试会员卡</option>
+                                        <option>小尧子会员卡</option>
+                                        <option>翻牌</option>
+                                    </optgroup>
+                                </select>
+                   		</dd>
+                </dl>
+            </div>
+            <!--修改图片单个功能操作代码结束-->
+            
+            <!--修改幻灯片功能操作代码开始-->
+            <div class="WSY_slide WSY_single3">
+                <div class="WSY_microbox WSY_microslide">
+                    <p>图片1：大图建议尺寸：640*320px</p>
+                    <dl class="WSY_micro">
+                        <dt><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg"><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png"></span></dt>
+                        <!--上传文件代码开始-->
+                        <div class="uploader white" id="WSY_whitebox">
+                            <input type="text" class="filename" readonly/>
+                            <input type="button" name="file" class="button" value="上传..."/>
+                            <input type="file" size="20"/>
+                       </div>
+                       <!--上传文件代码结束-->
+                       <dd><span>链接页面：</span>
+                            <select>
+                                        <option>-- 请选择 --</option>
+                                        <option>全部产品</option>
+                                        <option>新品上市</option>
+                                        <option>热卖产品</option>
+                                        <option>购物车</option>
+                                        <optgroup label="---------------产品分类---------------">
+                                            <option>衣服</option>
+                                            <option>首饰</option>
+                                            <option>生活用品</option>
+                                            <option>牙膏</option>
+                                            <option>黑人牙膏</option>
+                                        </optgroup>
+                                        <optgroup label="---------------图文消息---------------">
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>微信预约，随时随地，省时方便</option>
+                                            <option>您想要对商家说些什么？</option>
+                                            <option>在线调研</option>
+                                            <option>微相册</option>
+                                            <option>微喜帖</option>
+                                            <option>会员卡</option>
+                                            <option>优惠劵</option>
+                                            <option>刮刮卡抽奖</option>
+                                            <option>大转盘抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>请柬</option>
+                                            <option>请柬</option>
+                                            <option>微团购</option>
+                                            <option>微团购</option>
+                                            <option>报名</option>
+                                            <option>测试单页</option>
+                                            <option>换群</option>
+                                            <option>微助力2*</option>
+                                            <option>测试1</option>
+                                            <option>软文分销</option>
+                                            <option>附近门店</option>
+                                            <option>999</option>
+                                            <option>测试会员卡</option>
+                                            <option>小尧子会员卡</option>
+                                            <option>翻牌</option>
+                                        </optgroup>
+                                    </select>
+                            </dd>
+                        </dl>
+                    </div>
+                    
+                    <div class="WSY_microbox WSY_microslide">
+                    <p>图片2：大图建议尺寸：640*320px</p>
+                    <dl class="WSY_micro">
+                        <dt><img src="../../../Common/images/Base/home_decoration/contenticon/img2.png"><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png"></span></dt>
+                        <!--上传文件代码开始-->
+                        <div class="uploader white" id="WSY_whitebox">
+                            <input type="text" class="filename" readonly/>
+                            <input type="button" name="file" class="button" value="上传..."/>
+                            <input type="file" size="20"/>
+                       </div>
+                       <!--上传文件代码结束-->
+                       <dd><span>链接页面：</span>
+                            <select>
+                                        <option>-- 请选择 --</option>
+                                        <option>全部产品</option>
+                                        <option>新品上市</option>
+                                        <option>热卖产品</option>
+                                        <option>购物车</option>
+                                        <optgroup label="---------------产品分类---------------">
+                                            <option>衣服</option>
+                                            <option>首饰</option>
+                                            <option>生活用品</option>
+                                            <option>牙膏</option>
+                                            <option>黑人牙膏</option>
+                                        </optgroup>
+                                        <optgroup label="---------------图文消息---------------">
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>微信预约，随时随地，省时方便</option>
+                                            <option>您想要对商家说些什么？</option>
+                                            <option>在线调研</option>
+                                            <option>微相册</option>
+                                            <option>微喜帖</option>
+                                            <option>会员卡</option>
+                                            <option>优惠劵</option>
+                                            <option>刮刮卡抽奖</option>
+                                            <option>大转盘抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>请柬</option>
+                                            <option>请柬</option>
+                                            <option>微团购</option>
+                                            <option>微团购</option>
+                                            <option>报名</option>
+                                            <option>测试单页</option>
+                                            <option>换群</option>
+                                            <option>微助力2*</option>
+                                            <option>测试1</option>
+                                            <option>软文分销</option>
+                                            <option>附近门店</option>
+                                            <option>999</option>
+                                            <option>测试会员卡</option>
+                                            <option>小尧子会员卡</option>
+                                            <option>翻牌</option>
+                                        </optgroup>
+                                    </select>
+                            </dd>
+                        </dl>
+                    </div>
+                    
+                    <div class="WSY_microbox WSY_microslide">
+                    <p>图片3：大图建议尺寸：640*320px</p>
+                    <dl class="WSY_micro">
+                        <dt><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg"><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png"></span></dt>
+                        <!--上传文件代码开始-->
+                        <div class="uploader white" id="WSY_whitebox">
+                            <input type="text" class="filename" readonly/>
+                            <input type="button" name="file" class="button" value="上传..."/>
+                            <input type="file" size="20"/>
+                       </div>
+                       <!--上传文件代码结束-->
+                       <dd><span>链接页面：</span>
+                            <select>
+                                        <option>-- 请选择 --</option>
+                                        <option>全部产品</option>
+                                        <option>新品上市</option>
+                                        <option>热卖产品</option>
+                                        <option>购物车</option>
+                                        <optgroup label="---------------产品分类---------------">
+                                            <option>衣服</option>
+                                            <option>首饰</option>
+                                            <option>生活用品</option>
+                                            <option>牙膏</option>
+                                            <option>黑人牙膏</option>
+                                        </optgroup>
+                                        <optgroup label="---------------图文消息---------------">
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>微信预约，随时随地，省时方便</option>
+                                            <option>您想要对商家说些什么？</option>
+                                            <option>在线调研</option>
+                                            <option>微相册</option>
+                                            <option>微喜帖</option>
+                                            <option>会员卡</option>
+                                            <option>优惠劵</option>
+                                            <option>刮刮卡抽奖</option>
+                                            <option>大转盘抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>请柬</option>
+                                            <option>请柬</option>
+                                            <option>微团购</option>
+                                            <option>微团购</option>
+                                            <option>报名</option>
+                                            <option>测试单页</option>
+                                            <option>换群</option>
+                                            <option>微助力2*</option>
+                                            <option>测试1</option>
+                                            <option>软文分销</option>
+                                            <option>附近门店</option>
+                                            <option>999</option>
+                                            <option>测试会员卡</option>
+                                            <option>小尧子会员卡</option>
+                                            <option>翻牌</option>
+                                        </optgroup>
+                                    </select>
+                            </dd>
+                        </dl>
+                    </div>
+                    
+                    <div class="WSY_microbox WSY_microslide">
+                    <p>图片4：大图建议尺寸：640*320px</p>
+                    <dl class="WSY_micro">
+                        <dt><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg"><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png"></span></dt>
+                        <!--上传文件代码开始-->
+                        <div class="uploader white" id="WSY_whitebox">
+                            <input type="text" class="filename" readonly/>
+                            <input type="button" name="file" class="button" value="上传..."/>
+                            <input type="file" size="20"/>
+                       </div>
+                       <!--上传文件代码结束-->
+                       <dd><span>链接页面：</span>
+                            <select>
+                                        <option>-- 请选择 --</option>
+                                        <option>全部产品</option>
+                                        <option>新品上市</option>
+                                        <option>热卖产品</option>
+                                        <option>购物车</option>
+                                        <optgroup label="---------------产品分类---------------">
+                                            <option>衣服</option>
+                                            <option>首饰</option>
+                                            <option>生活用品</option>
+                                            <option>牙膏</option>
+                                            <option>黑人牙膏</option>
+                                        </optgroup>
+                                        <optgroup label="---------------图文消息---------------">
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>微信预约，随时随地，省时方便</option>
+                                            <option>您想要对商家说些什么？</option>
+                                            <option>在线调研</option>
+                                            <option>微相册</option>
+                                            <option>微喜帖</option>
+                                            <option>会员卡</option>
+                                            <option>优惠劵</option>
+                                            <option>刮刮卡抽奖</option>
+                                            <option>大转盘抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>请柬</option>
+                                            <option>请柬</option>
+                                            <option>微团购</option>
+                                            <option>微团购</option>
+                                            <option>报名</option>
+                                            <option>测试单页</option>
+                                            <option>换群</option>
+                                            <option>微助力2*</option>
+                                            <option>测试1</option>
+                                            <option>软文分销</option>
+                                            <option>附近门店</option>
+                                            <option>999</option>
+                                            <option>测试会员卡</option>
+                                            <option>小尧子会员卡</option>
+                                            <option>翻牌</option>
+                                        </optgroup>
+                                    </select>
+                            </dd>
+                        </dl>
+                    </div>
+                    
+                    <div class="WSY_microbox WSY_microslide">
+                    <p>图片5：大图建议尺寸：640*320px</p>
+                    <dl class="WSY_micro">
+                        <dt><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg"><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png"></span></dt>
+                        <!--上传文件代码开始-->
+                        <div class="uploader white" id="WSY_whitebox">
+                            <input type="text" class="filename" readonly/>
+                            <input type="button" name="file" class="button" value="上传..."/>
+                            <input type="file" size="20"/>
+                       </div>
+                       <!--上传文件代码结束-->
+                       <dd><span>链接页面：</span>
+                            <select>
+                                        <option>-- 请选择 --</option>
+                                        <option>全部产品</option>
+                                        <option>新品上市</option>
+                                        <option>热卖产品</option>
+                                        <option>购物车</option>
+                                        <optgroup label="---------------产品分类---------------">
+                                            <option>衣服</option>
+                                            <option>首饰</option>
+                                            <option>生活用品</option>
+                                            <option>牙膏</option>
+                                            <option>黑人牙膏</option>
+                                        </optgroup>
+                                        <optgroup label="---------------图文消息---------------">
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>微信预约，随时随地，省时方便</option>
+                                            <option>您想要对商家说些什么？</option>
+                                            <option>在线调研</option>
+                                            <option>微相册</option>
+                                            <option>微喜帖</option>
+                                            <option>会员卡</option>
+                                            <option>优惠劵</option>
+                                            <option>刮刮卡抽奖</option>
+                                            <option>大转盘抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>请柬</option>
+                                            <option>请柬</option>
+                                            <option>微团购</option>
+                                            <option>微团购</option>
+                                            <option>报名</option>
+                                            <option>测试单页</option>
+                                            <option>换群</option>
+                                            <option>微助力2*</option>
+                                            <option>测试1</option>
+                                            <option>软文分销</option>
+                                            <option>附近门店</option>
+                                            <option>999</option>
+                                            <option>测试会员卡</option>
+                                            <option>小尧子会员卡</option>
+                                            <option>翻牌</option>
+                                        </optgroup>
+                                    </select>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            	<!--修改幻灯片功能操作代码结束-->
+            	</div>
+                </div>
+                
+                <div class="homerightbox">
+                	<div style="overflow:hidden;border-bottom:solid 1px #ccc;margin:0 10px 0 10px">
+                        <div class="homeright_right rightA01">
+                            <dl>
+                                <dt>添加分类楼层图片</dt>
+                                <dd>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                    <a href="#">测试名称多长还未知</a>
+                                </dd>
+                            </dl>
+                        </div>
+                        
+                        <div class="homeright_left leftA01">
+                            <div class="WSY_microbox WSY_microslide">
+                                <p>图片：大图建议尺寸：640*128px</p>
+                                <dl class="WSY_micro">
+                                    <dt><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg" alt=""><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png" alt=""></span></dt>
+                                    <dd style="display:block;text-align:center;padding-top:5px;">上传1张图片，作为首页楼层分类图片</dd>
+                                    <div class="uploader white">
+                                        <input type="text" class="filename" readonly/>
+                                        <input type="button" name="file" class="button" value="上传..."/>
+                                        <input type="file" size="20"/>
+                                   </div>
+                                </dl>
+                                <select class="home_select">
+                                	<option>--选择--</option>
+                                </select>
+                                <div class="input_butn input_butn01"><input type="button" value="提交修改"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="overflow:hidden;margin:10px 10px 0 10px">
+                        <div class="homeright_right rightA01">
+                            <dl>
+                                <dt>分类首页显示图</dt>
+                                <dd class="flei">
+                                	<em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                    <em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                </dd>
+                                <dd class="flei">
+                                	<em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                    <em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                </dd>
+                                <dd class="flei">
+                                	<em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                    <em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                </dd>
+                                <dd class="flei">
+                                	<em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                    <em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                </dd>
+                                <dd class="flei">
+                                	<em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                    <em>
+                                        <a href="#">测试名称多长还未知</a>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                        <span>子级分类菜单</span>
+                                    </em>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="homeright_left leftA01">
+                            <div class="WSY_microbox WSY_microslide">
+                                <p>上传</p>
+                                <dl class="WSY_micro">
+                                    <dt><img src="../../../Common/images/Base/home_decoration/contenticon/20140611053000_0.jpg" alt=""><span><img src="../../../Common/images/Base/home_decoration/operating_icon/guanbi.png" alt=""></span></dt>
+                                    <div class="uploader white">
+                                        <input type="text" class="filename" readonly/>
+                                        <input type="button" name="file" class="button" value="上传..."/>
+                                        <input type="file" size="20"/>
+                                   </div>
+                                </dl>
+                                <div class="input_butn input_butn01"><input type="button" value="添加分类"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="homerightbox">
+                    <div class="homeright_right rightA01 rightA02">
+                    	<dl class="rightA01_dl">
+                        	<dt>
+                            	<a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon05.png" alt="修改"></a>
+                                <a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon04.png" alt="删除"></a>
+                                <em>导航名：测试名字</em>
+                            </dt>
+                            <dd>
+                            	<em><b href="#">子菜单名：一二</b></em>
+                                <em><b href="#">子菜单名：三四</b></em>
+                                <em><b href="#">子菜单名：五六</b></em>
+                                <em><b href="#">子菜单名：七八</b></em>
+                                <em><b href="#">子菜单名：九十</b></em>
+                                <em><b href="#">子菜单名：零零</b></em>
+                            </dd>
+               	        </dl>
+                        <dl class="rightA01_dl">
+                        	<dt>
+                            	<a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon05.png" alt="修改"></a>
+                                <a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon04.png" alt="删除"></a>
+                                <em>导航名：测试名字</em>
+                            </dt>
+                            <dd>
+                            	<em><b href="#">子菜单名：一二</b></em>
+                                <em><b href="#">子菜单名：三四</b></em>
+                                <em><b href="#">子菜单名：五六</b></em>
+                                <em><b href="#">子菜单名：七八</b></em>
+                                <em><b href="#">子菜单名：九十</b></em>
+                                <em><b href="#">子菜单名：零零</b></em>
+                            </dd>
+               	        </dl>
+                        <dl class="rightA01_dl">
+                        	<dt>
+                            	<a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon05.png" alt="修改"></a>
+                                <a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon04.png" alt="删除"></a>
+                                <em>导航名：测试名字</em>
+                            </dt>
+                            <dd>
+                            	<em><b href="#">子菜单名：一二</b></em>
+                                <em><b href="#">子菜单名：三四</b></em>
+                                <em><b href="#">子菜单名：五六</b></em>
+                                <em><b href="#">子菜单名：七八</b></em>
+                                <em><b href="#">子菜单名：九十</b></em>
+                                <em><b href="#">子菜单名：零零</b></em>
+                            </dd>
+               	        </dl>
+                        <dl class="rightA01_dl">
+                        	<dt>
+                            	<a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon05.png" alt="修改"></a>
+                                <a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon04.png" alt="删除"></a>
+                                <em>导航名：测试名字</em>
+                            </dt>
+                            <dd>
+                            	<em><b href="#">子菜单名：一二</b></em>
+                                <em><b href="#">子菜单名：三四</b></em>
+                                <em><b href="#">子菜单名：五六</b></em>
+                                <em><b href="#">子菜单名：七八</b></em>
+                                <em><b href="#">子菜单名：九十</b></em>
+                                <em><b href="#">子菜单名：零零</b></em>
+                            </dd>
+               	        </dl>
+                        <dl class="rightA01_dl">
+                        	<dt>
+                            	<a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon05.png" alt="修改"></a>
+                                <a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon04.png" alt="删除"></a>
+                                <em>导航名：测试名字</em>
+                            </dt>
+                            <dd>
+                            	<em><b href="#">子菜单名：一二</b></em>
+                                <em><b href="#">子菜单名：三四</b></em>
+                                <em><b href="#">子菜单名：五六</b></em>
+                                <em><b href="#">子菜单名：七八</b></em>
+                                <em><b href="#">子菜单名：九十</b></em>
+                                <em><b href="#">子菜单名：零零</b></em>
+                            </dd>
+               	        </dl>
+                        <dl class="rightA01_dl">
+                        	<dt>
+                            	<a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon05.png" alt="修改"></a>
+                                <a href="#"><img src="../../../Common/images/Base/home_decoration/operating_icon/icon04.png" alt="删除"></a>
+                                <em>导航名：测试名字</em>
+                            </dt>
+                            <dd>
+<!--                            	<em><b href="#">子菜单名：一二</b></em>
+                                <em><b href="#">子菜单名：三四</b></em>
+                                <em><b href="#">子菜单名：五六</b></em>
+                                <em><b href="#">子菜单名：七八</b></em>
+                                <em><b href="#">子菜单名：九十</b></em>
+                                <em><b href="#">子菜单名：零零</b></em>-->
+                            </dd>
+               	        </dl>
+                    </div>
+                    
+                    <div class="homeright_left leftA01">
+                    	<dl class="leftA01_dl">
+                        	<dt>添加自定义底部导航栏</dt>
+                            <dd>
+                            	<em>导航栏名称：</em>
+                                <input type="text" value="">
+                            </dd>
+                            <dd>
+                            	<em>是否有子菜单：</em>
+                                <i><input type="radio" checked name="radio" id="no1"><label for="no1">否</label></i>
+                                <i><input type="radio" name="radio" id="no2"><label for="no2">是</label></i>
+                            </dd>
+                            <dd>
+                            	<em>导航栏链接：</em>
+                                <select>
+                                        <option>-- 请选择 --</option>
+                                        <option>全部产品</option>
+                                        <option>新品上市</option>
+                                        <option>热卖产品</option>
+                                        <option>购物车</option>
+                                        <optgroup label="---------------产品分类---------------">
+                                            <option>衣服</option>
+                                            <option>首饰</option>
+                                            <option>生活用品</option>
+                                            <option>牙膏</option>
+                                            <option>黑人牙膏</option>
+                                        </optgroup>
+                                        <optgroup label="---------------图文消息---------------">
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>欢迎关注吴俊权测试</option>
+                                            <option>微信预约，随时随地，省时方便</option>
+                                            <option>您想要对商家说些什么？</option>
+                                            <option>在线调研</option>
+                                            <option>微相册</option>
+                                            <option>微喜帖</option>
+                                            <option>会员卡</option>
+                                            <option>优惠劵</option>
+                                            <option>刮刮卡抽奖</option>
+                                            <option>大转盘抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>水果超人抽奖</option>
+                                            <option>请柬</option>
+                                            <option>请柬</option>
+                                            <option>微团购</option>
+                                            <option>微团购</option>
+                                            <option>报名</option>
+                                            <option>测试单页</option>
+                                            <option>换群</option>
+                                            <option>微助力2*</option>
+                                            <option>测试1</option>
+                                            <option>软文分销</option>
+                                            <option>附近门店</option>
+                                            <option>999</option>
+                                            <option>测试会员卡</option>
+                                            <option>小尧子会员卡</option>
+                                            <option>翻牌</option>
+                                        </optgroup>
+                                    </select>
+                            </dd>
+                            <dd>
+                            	<input class="tj" type="button" value="添加导航">
+                                <input class="fh" type="button" value="返回">
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--首页设置代码结束-->
+</div>
+</div>
+<!--内容框架结束-->
+<script type="text/javascript" src="../../../../common/js_V6.0/content.js"></script>
+
+<script type="text/javascript">
+var n = 0
+$(".homerightbox").hide();
+$(".homerightbox:first").show();
+$(".WSY_homeright_nav li a").click(function(){
+	$(".WSY_homeright_nav li a").removeClass("blueAA");
+	$(this).addClass("blueAA");
+	n=$(".WSY_homeright_nav li a").index(this);
+	$(".homerightbox").hide();
+	$(".homerightbox:eq("+n+")").show();
+}) 
+</script>
+</body>
+</html>

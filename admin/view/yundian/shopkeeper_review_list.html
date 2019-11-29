@@ -1,0 +1,704 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>店主审核</title>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme;?>.css">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Product/product.css"><!--内容CSS配色·蓝色-->
+<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+</head>
+<style>
+.operation-btn{display:inline-block;padding:0 15px;background-color:#06a7e1;color:#fff;border-radius:3px;cursor:pointer;height:30px;line-height:30px;}
+.WSY_list{width:97%;margin-left:18px;}
+.header-left{float:left;}
+.header-left span,.header-left input,.header-left select{vertical-align:middle;}
+a:hover{text-decoration: none!important;}
+.tips{margin-left:40px;position: absolute;margin-top: 13px;}
+.tips span{font-size:15px;margin-left: 10px;}
+table#WSY_t1 td{text-align: center;}
+.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+#export_button {
+    display: inline-block;
+    padding: 0 15px;
+    background-color: #06a7e1;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+}
+.btn_grey{
+	color: #fff;
+	background-color: #d9534f;
+	line-height: 1.35;
+    text-align: center;
+    border-color: #d43f3a;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 2px solid transparent;
+}
+.btn_success{
+	color: #fff;
+	background-color: #5cb85c;
+	line-height: 1.35;
+    text-align: center;
+    border-color: #4cae4c;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 2px solid transparent;
+}
+</style>
+<body>
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+
+       <!--列表内容大框开始-->
+
+	<div class="WSY_columnbox">
+		<div class="WSY_column_header">
+		<?php 
+			$keyContent = '店主审核';
+            include 'cloud_shop_switching.php';
+		?>
+		</div>
+    <div class="WSY_data">
+    	<div class="WSY_list">
+			<div class="header-left" style="margin-top:10px;">
+				<span>用户ID：</span><input type="text" id="user_id" value="<?php echo $search_key['user_id']; ?>" onkeyup="clearInt(this)" onafterpaste="clearInt(this)" />
+				<span style="margin-left:5px;">用户昵称：</span><input type="text" id="user_name" value="<?php echo $search_key['user_name']; ?>" />
+				<span style="margin-left:5px;">店铺名称：</span><input type="text" id="store_name" value="<?php echo $search_key['store_name']; ?>" onkeyup="clearTSZF(this) " onafterpaste="clearTSZF(this) " />
+				<span style="margin-left:5px;">申请身份：</span>
+				<select id="identity_id" class="select" style="margin-left:5px; width:155px;height:21px;">
+			        <option value="">全部</option>
+			        <?php if($identity_arr['errcode'] == 0){
+			        	$selected = '';
+			        	foreach($identity_arr['data'] as $k=>$v){
+			        		if($search_key['identity_id'] == $v['id']){
+			        			$selected = "selected='selected'";
+			        		}
+			        		echo "<option value='".$v['id']."' ".$selected.">".$v['name']."</option>";
+			        	}
+			        }?>
+   				</select>
+				<span style="margin-left:5px;">申请状态：</span>
+				<select id="status" class="select" style="margin-left:5px; width:155px;height:21px;">
+			        <option value="" <?php if($search_key['status'] == ""){echo "selected='selected'";} ?>>全部</option>
+			        <option value="1" <?php if($search_key['status'] == "1"){echo "selected='selected'";} ?>>通过</option>
+			        <option value="2" <?php if($search_key['status'] == "2"){echo "selected='selected'";} ?>>已驳回</option>
+			        <option value="0" <?php if($search_key['status'] == "0"){echo "selected='selected'";} ?>>待审核 </option>
+   				</select>
+				<span style="margin-left:5px;">申请时间：</span><input class="date_picker" type="text" name="begin_time" id="begin_time" value="<?php echo $search_key['begin_time']; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+				&nbsp;&nbsp;-&nbsp;&nbsp;<input class="date_picker" type="text" name="end_time" id="end_time" value="<?php echo $search_key['end_time']; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+				</br>
+				<div style="margin-top:20px;">
+				<span class="WSY-skin-bg form-btn" id="search-button1" style="display: inline-block;padding: 0 15px;color: #fff;border-radius:3px;cursor:pointer;height:30px;line-height: 30px;">搜索</span>
+				<span class="WSY-skin-bg form-btn" id="export_button" onclick="exportExcel();">导出</span>
+				<span class="WSY-skin-bg form-btn" id="export_button" onclick="pass_insert_more();">批量通过</span>
+				<span class="WSY-skin-bg form-btn" id="export_button" onclick="reject_save_more();">批量驳回</span>
+				</div>
+			</div>
+    </div>
+			<table width="97%" class="WSY_table" id="WSY_t1">
+				<thead class="WSY_table_header">
+					<th width="5%"><input type="checkbox"  id="all"/></th>
+					<th width="7%">用户昵称</th>
+					<th width="8%">用户ID</th>
+					<th width="10%">申请身份</th>
+					<th width="8%">真实姓名</th>
+					<th width="12%">手机号码</th>
+					<th width="13%">身份证号码</th>
+					<th width="10%">店铺名称</th>
+					<th width="8%">申请时间</th>
+					<th width="8%">审核时间	</th>
+					<th width="8%">审核状态	</th>
+					<th width="12%">备注</th>
+					<th width="10%">操作</th>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+    	</div>
+        <!--翻页开始-->
+        <div class="WSY_page">
+        	
+        </div>
+        <!--翻页结束-->
+    </div>
+</div>
+<!--内容框架结束-->
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+ <script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script>
+var customer_id    = "<?php echo $customer_id_en;?>";
+var pagenum = 1;//当前页数
+var count = 20;//每页数量
+var pageCount = 1;//总页数
+
+var choucheng = 0;
+var expire_time = 0;
+
+/*var a = {
+        data : Array(),
+        get : function(key){
+            return this.data[key];
+        },
+        set : function(key, value) {
+            this.data[key] = value;
+            return;
+        }
+    }
+a.set(0, ['基本信息','/mshop']);
+a.set(1, ['支付方式','/mshop']);
+a.set(2, ['店主审核','/mshop/admin/index.php?m=yundian&a=shopkeeper_review_list&customer_id=3243']);
+console.log(a.data[0][1]);	
+var html = "";
+function header(num){
+	var data = a.data;
+	html += '<div class="WSY_columnnav">';
+		for(i in data){
+			var selected = '';
+			if(num == i){
+				selected = 'white1';
+			}
+			html += "<a href='"+data[i][1]+"' class='"+selected+"'>"+data[i][0]+"</a>";
+		}
+	html+='</div>';
+	$('.WSY_column_header').append(html);
+}*/
+$(function(){
+	getList(1,count);
+	//header(2);
+});	
+ function getList(pagenum,count){
+ 	var html = "";
+ 	var fenye_html = "";
+ 	var fenye_html1 = "";
+ 	var url = "/mshop/admin/index.php?m=yundian&a=shopkeeper_review_list&customer_id="+customer_id;
+ 	var user_id        = $('#user_id').val();
+	var user_name      = $('#user_name').val();
+	var store_name     = $('#store_name').val();
+	var identity_id    = $('#identity_id').val();
+	var status         = $('#status').val();
+	var begin_time     = $('#begin_time').val();
+	var end_time       = $('#end_time').val();
+	if(end_time < end_time){
+		alert('结束时间不能小于开始时间');
+		return false;
+	}
+	$('#WSY_t1').find('tbody').empty();//清空HTML
+	$('.WSY_page').empty();
+ 	$.ajax({
+ 		 type: "POST",
+	     url: url,
+	     data: {search_key:{user_id:user_id,user_name:user_name,store_name:store_name,identity_id:identity_id,status:status,begin_time:begin_time,end_time:end_time},page:pagenum,page_size:count,is_ajax:1},
+	     dataType: "json",
+	     success: function(res){
+	     	console.log(res.data);
+	     	if(res.errcode == 0){
+		     	var data = res.data.result;
+		     	if(res.data.length != 0){
+		     		if(!res.data.page_arr.total){
+		     			var total = 1;
+		     		}else{
+		     			var total = res.data.page_arr.total;
+		     		}
+		     		if(!res.data.page_arr.page_size){
+		     			var new_page_size = count;
+		     		}else{
+		     			var new_page_size = res.data.page_arr.page_size;
+		     		}
+		     		pageCount = Math.ceil(total/new_page_size);//总页数
+		     		pagenum = res.data.page_arr.page; //当前页
+		     		console.log('总页数'+pageCount);
+			     	for(var i in data){
+			     		if(data[i].store_name == '' ){
+			     			data[i].store_name = data[i].name;
+			     		}
+			     		html += "<tr><td><input type='checkbox' name='ch_box' status='"+data[i].status+"' k_id='"+data[i].k_id+"' value='"+data[i].id+"'/></td>\
+			     		<td>"+data[i].name+"</td>\
+			     		<td style='text-overflow: clip;'>"+data[i].user_id+"</td>\
+			     		<td>"+data[i].identity_name+"</td>\
+			     		<td>"+data[i].realname+"</td>\
+			     		<td>"+data[i].phone+"</td>\
+			     		<td>"+data[i].identity_num+"</td>\
+			     		<td>"+data[i].store_name+"</td>\
+			     		<td>"+data[i].apply_time+"</td>";
+			     		if(data[i].verify_time == null || data[i].verify_time == undefined){
+			     			data[i].verify_time = '/';
+			     		}
+			     		html+="<td>"+data[i].verify_time+"</td>";
+			     		switch(data[i].status){
+			     			case "0":
+			     				html += "<td>待审核</td>";
+			     				break;
+			     			case "1":
+			     				html += "<td>审核通过</td>";
+			     				break;
+			     			case "2":
+			     				html += "<td>已驳回</td>";
+			     				break;
+			     			default:
+			     				html += "<td>/</td>";
+			     				break;				     				
+			     		}
+			     		if(data[i].reject_desc == ''){
+			     			html += "<td>/</td>";
+			     		}else{
+			     			html += "<td style='white-space: nowrap;'>"+data[i].reject_desc+"</td>";
+			     		}
+			     		if(data[i].status == "0"){
+			     			if(!res.data.choucheng.yundian_choucheng){
+			     				 choucheng = 0; 
+			     			}else{
+			     				choucheng = res.data.choucheng.yundian_choucheng;
+			     			}
+			     			if(!res.data.choucheng.shop_valid_time){
+			     				 expire_time = 0; 
+			     			}else{
+			     				expire_time = res.data.choucheng.shop_valid_time;
+			     			}
+			     			html += "<td><button class='table-btn WSY-skin-bg' onclick='pass_confirm("+data[i].id+","+data[i].reward+","+choucheng+","+data[i].user_id+","+data[i].tequan_id+","+expire_time+")'>通过</button> <button class='table-btn WSY-skin-bg' onclick='reject_save_one("+data[i].id+",\""+data[i].identity_name+"\","+data[i].user_id+")'>驳回</button></td>";
+			     		}else{
+			     			html += "<td>/</td>";
+			     		}
+			     	}
+			     	html += '</tr>';
+			     }else{
+			     	html = "<tr><td colspan='12'>----暂时没有数据----</td></tr>"
+			     }
+	     		$('#WSY_t1').find('tbody').append(html);
+
+	     		//分页 start
+				fenye_html = '<ul class="WSY_pageleft" style="width: 70%;">';
+				if(pagenum != 1 && pagenum >= 4 && pageCount!= 4){
+					fenye_html+='<li class="tcdNumber" onclick="getList(1,'+count+')" >'+1+'</li>';
+				}
+				
+				if(pagenum-2 > 2 && pagenum <= pageCount && pageCount > 5){
+					fenye_html+='<span>...</span>';
+				}
+				var start = pagenum -2,end = start+4;				
+				if((start > 1 && pagenum < 4)||pagenum == 1){
+					end++;
+				}
+				if(pagenum > pageCount-3 && pagenum >= pageCount){
+					start--;
+				}	
+				
+				for (;start <= end; start++) {
+					
+					if(start <= pageCount && start >= 1){						
+						if(start != pagenum ){
+							//obj.append('<li class="tcdNumber">'+ start +'</li>');
+							fenye_html+='<li class="tcdNumber" onclick="getList('+start+','+count+')">'+ start +'</li>';
+							console.log(start);
+						}else{
+							//obj.append('<li class="one">'+ start +'</li>');
+							fenye_html+='<li class="one" onclick="getList('+start+','+count+')">'+ start +'</li>';
+							fenye_html1='<div class="WSY_searchbox">';
+							fenye_html1+='<input class="WSY_page_search" name="WSY_jump_page" id="WSY_jump_page" value="">';
+							fenye_html1+='<input class="WSY_jump" type="button" value="跳转" onclick="jumppage()"></div>';
+						}
+					}
+				}
+				if(parseInt(pagenum) + 2 <= parseInt(pageCount) - 1 && parseInt(pagenum) >= 1 && parseInt(pageCount) > 5){
+					//obj.append('<span>...</span>');
+					fenye_html+='<span>...</span>';
+				}
+				if(pagenum != pageCount && pagenum < parseInt(pageCount) -2  && pageCount != 4){
+					//obj.append('<li class="tcdNumber">'+pageCount+'</li>');
+					fenye_html+='<li class="tcdNumber" onclick="getList('+pageCount+','+count+')" >'+pageCount+'</li>';
+				}
+					
+				fenye_html+=fenye_html1+'</ul>';
+				//分页 end
+				$('.WSY_page').append(fenye_html);
+	     	}else{
+	     		layer.alert(res.errmsg);
+	     	}
+	     }
+ 	});
+ }
+ function jumppage(){
+ 	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a==pagenum) || isNaN(a)){
+		return false;
+	}else{
+		getList(a,count);
+	}
+ }
+</script>
+
+<script>
+var passArr = new Array()
+//输入框过滤特殊字符 用法：<input type="text" onkeyup="ValidateValue(this)" />
+function ValidateValue(textbox)
+{
+	 var IllegalString = "\ `~@#;,.!#$%^&*()+{}|\\:\"<>?-=/,\'";
+	 var textboxvalue = textbox.value;
+	 var index = textboxvalue.length - 1;
+	 
+	 var s = textbox.value.charAt(index);
+	 
+	 if(IllegalString.indexOf(s)>=0)
+	 {
+		s = textboxvalue.substring(0,index);
+		textbox.value = s;
+	 }
+}
+$('#search-button1').click(function(){
+	getList(1,count);
+});
+
+function pass_confirm(apply_id,reward_p,yundian_choucheng,user_id,tequan_id,default_expire){
+	if(apply_id < 0 || apply_id == null){
+		apply_id = 0;
+	}
+	if(reward_p < 0 || reward_p == null){
+		reward_p = 0;
+	}
+	if(yundian_choucheng < 0 || yundian_choucheng == null){
+		yundian_choucheng = 0;
+	}
+	layer.confirm('是否确定通过该用户的店主身份申请', {
+            btn : [ '确定', '取消' ]//按钮
+        },function(p_index) {
+		    layer.open({  
+		    	id:1,  
+		        type: 1,  
+		        title:false,  
+		        skin:'layui-layer-rim',  
+		        area:['320px', '200px'],  
+		          
+		        content: '<span class="input-group-addon" style="margin-top: 20px;float:left; margin-left:10px;height:35px;">当前用户的模式抽成分奖励设置如下:</span><span style="margin-left: 5px;font-size:14px;float:left;color:#f00;margin-top: 20px;height:35px;">(0~1之间)</span>'
+		        	+'<div class="row" style="width: 300px;  margin-left:7px; margin-top:10px;clear:both">'  
+		            +'<div class="col-sm-12" style="margin-top: 20px">'  
+		            +'<div class="input-group">'  
+		            +'<span class="input-group-addon" style="margin-left:3px;">自营产品抽成:</span>'  
+		            +'<input id="self_reware" style="margin-left: 10px;width:180px;" value="'+yundian_choucheng+'" type="text" class="form-control" onkeyup="clearNoNum(this)" onafterpaste="clearNoNum(this)">'  
+		            +'</div>'  
+		            +'</div>'  
+		              +'<div class="col-sm-12" style="margin-top: 20px">'  
+		              +'<div class="input-group">'  
+		              +'<span class="input-group-addon" style="margin-left:3px;">身份奖励比例:</span>'  
+		              +'<input id="reward" type="text" style="margin-left: 10px;width:180px;" value="'+reward_p+'" class="form-control" onkeyup="clearNoNum(this)" onafterpaste="clearNoNum(this)" >'  
+		              +'</div>'  
+		              +'</div>'  
+		              +'</div>'  
+		        ,  
+		        btn:['确定','取消'],  
+		        btn1: function (index,layero) {
+		        	 var self_reware = $('#self_reware').val();
+		        	 var reward = $('#reward').val();
+		        	 if(parseFloat(self_reware)<0 || parseFloat(self_reware)>1 || self_reware == undefined || self_reware == ''){
+		        	 	layer.alert('比例请设置为0~1');
+		        	 	return false;
+		        	 }
+		        	 if(parseFloat(reward)<0 || parseFloat(reward)>1 || reward == undefined || reward == ''){
+		        	 	layer.alert('比例请设置为0~1');
+		        	 	return false;
+		        	 }
+		        	 pass_insert_one(apply_id,self_reware,reward,user_id,tequan_id,default_expire);
+		        	 layer.close(p_index);
+		        },  
+		        btn2:function (index,layero) {  
+		             layer.close(p_index);  
+		        }  
+		  
+		    });  
+        },function(p_index){
+        	layer.close(p_index);
+        });
+	}
+//通过操作
+function pass_insert_one(id,self_reware,reward,user_id,tequan_id,default_expire){
+	$.ajax({ 
+     url:"/mshop/admin/index.php?m=yundian&a=review_pass&customer_id="+customer_id, 
+     data:{id:id,self_reware:self_reware,profit_shop:reward,more:0,user_id:user_id,tequan_id:tequan_id,default_expire:default_expire},
+     type:'post', 
+     success:function(res){
+     	data = JSON.parse(res);
+     	if(data.errcode == '0'){
+	     	layer.msg('审核成功',{icon:1},function(){
+	     		location.reload(); 
+/*                parent.location.reload(); // 父页面刷新
+                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                parent.layer.close(index);*/
+            });
+     	}else{
+     		layer.alert(res.errmsg);
+     	}
+     } 
+    }); 
+}
+
+//批量通过操作
+function pass_insert_more(){
+	layer.confirm('确定批量通过操作嘛？', {
+        btn : [ '确定', '取消' ]//按钮
+    }, function(index){
+	    var arrs=new Array();
+	    $("input[name='ch_box']:checkbox").each(function(){ 
+	        if($(this).attr("checked") && $(this).attr("status") == '0' ){
+	            arrs.push($(this).val());
+	        }
+	    });
+	    if(arrs.length == 0 ){
+	        layer.alert('请选择数据或所选的数据已审核!');
+	        return false;
+	    }
+		$.ajax({ 
+	     url:"/mshop/admin/index.php?m=yundian&a=review_pass&customer_id="+customer_id, 
+	     data:{"id":arrs.join(","),"more":1}, 
+	     type:'post', 
+	     success:function(res){
+	     	data = JSON.parse(res);
+	     	if(data.errcode == '0'){
+		     	layer.msg('批量审核成功',{icon:1},function(){
+		     		location.reload(); 
+/*	                parent.location.reload(); // 父页面刷新
+	                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	                parent.layer.close(index);*/
+	            });
+	     	}else{
+	     		layer.alert(res.errmsg);
+	     	}
+	     } 
+	    }); 
+    }) 
+}
+//驳回操作
+function reject_save_one(reject_id,identity_name,user_id){
+	layer.open({  
+	id:1,  
+    type: 1,  
+    title:false,  
+    skin:'layui-layer-rim',  
+    area:['300px', '150px'],  
+      
+    content: '<span class="input-group-addon" style="margin-top:10px;display:block;margin-left:20px;">是否确定驳回该用户的店主身份申请？</span>'
+    	+'<div class="row" style="width: 200px;  margin-left:7px; margin-top:10px;">'  
+        +'<div class="col-sm-12" style="padding-top: 15px">'  
+        +'<div class="input-group" style="margin-left: 15px">'  
+        +'<input id="reject_reason" type="text" class="form-control" placeholder="输入驳回理由" onkeyup="ValidateValue(this)" onafterpaste="ValidateValue(this)">'  
+        +'</div>'  
+        +'</div>'  
+          +'</div>'  
+    ,  
+    btn:['确定','取消'],  
+    btn1: function (index,layero) {
+    	var reject_reason = $('#reject_reason').val();
+    	if(reject_reason == undefined){
+    		reject_reason = '';
+    	}
+    	//var IllegalS= "[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]";
+    	 var IllegalS = "[`~!@#$^&*()=|{}':;',\\[\\].<>/?~]";
+		 var reg = new RegExp(IllegalS);
+		 if(reg.test(reject_reason))
+		 {	
+		    layer.alert("驳回理由含有非法字符，请重新输入！");
+		    return false;
+		 }
+    	$.ajax({ 
+	     url:"/mshop/admin/index.php?m=yundian&a=reject_review&customer_id="+customer_id, 
+	     data:{id:reject_id,reason:reject_reason,more:0,user_id:user_id}, 
+	     type:'post', 
+	     success:function(res){
+	     	data = JSON.parse(res);
+	     	if(data.errcode == '0'){
+		     	layer.msg('驳回成功',{icon:1},function(){
+		     		location.reload(); 
+	                // parent.location.reload(); // 父页面刷新
+	                // var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	                // parent.layer.close(index);
+	            });
+	     	}else{
+	     		layer.alert(res.errmsg);
+	     	}
+	     } 
+	    }); 
+    },  
+    btn2:function (index,layero) {  
+         layer.close(index);  
+    }  
+
+	});   
+}
+//批量驳回操作
+function reject_save_more(){
+	layer.confirm('确定批量驳回操作嘛？', {
+        btn : [ '确定', '取消' ]//按钮
+    }, function(index){
+	    var arrs = new Array();
+	    var k_arrs = new Array();
+	    $("input[name='ch_box']:checkbox").each(function(){ 
+	        if($(this).attr("checked") && $(this).attr("status") == '0'){
+	            arrs.push($(this).val());
+	            k_arrs.push($(this).attr("k_id"));
+	        }
+	    });
+	    if(arrs.length == 0 ){
+	        layer.alert('请选择数据或所选的数据已审核!');
+	        return false;
+	    }
+	    if(arrs.length != k_arrs.length){
+	    	layer.alert('数据存在keeper_id为空！');
+	        return false;
+	    }
+		$.ajax({ 
+	     url:"/mshop/admin/index.php?m=yundian&a=reject_review&customer_id="+customer_id, 
+	     data:{"id":arrs.join(","),"more":1,"k_id":k_arrs.join(",")}, 
+	     type:'post', 
+	     success:function(res){
+	     	data = JSON.parse(res);
+	     	if(data.errcode == '0'){
+		     	layer.msg('批量驳回成功',{icon:1},function(){
+		     		location.reload();
+	                // parent.location.reload(); // 父页面刷新
+	                // var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	                // parent.layer.close(index);
+	            });
+	     	}else{
+	     		layer.alert(res.errmsg);
+	     	}
+	     } 
+	    }); 
+    })
+}
+</script>
+<script>
+//全选和取消全选
+var isCheckAll = false; 
+$("#all").click(function () { 
+  if (isCheckAll) { 
+    $("input[type='checkbox']").each(function() { 
+       this.checked = false; 
+    }); 
+    isCheckAll = false; 
+  } else { 
+    $("input[type='checkbox']").each(function() { 
+      this.checked = true; 
+  　　}); 
+    isCheckAll = true; 
+  } 
+});
+//导出
+function exportExcel(){
+	var url='/weixin/plat/app/index.php/Excel/shopkeeper_review_list_excel/customer_id/'+'<?php echo $customer_id;?>';
+	var user_id        = $('#user_id').val();
+	var user_name      = $('#user_name').val();
+	var identity_id    = $('#identity_id').val();
+	var status         = $('#status').val();
+	var begin_time     = $('#begin_time').val();
+	var end_time       = $('#end_time').val();
+	
+	if( user_name != ''){
+		url += '/user_name/'+user_name;
+	}
+	if( user_id != '' ){
+		url += '/user_id/'+user_id;
+	}
+	if( identity_id != '' ){
+		url += '/identity_id/'+identity_id;
+	}
+	if( status != '' ){
+		url += '/status/'+status;
+	}
+	if( begin_time != '' ){
+		url += '/begin_time/'+begin_time;
+	}
+	if( end_time != '' ){
+		if(end_time<end_time){
+			alert('结束时间不能小于开始时间');
+			return false;
+		}else{
+			url += '/end_time/'+end_time;
+		}
+	}
+	
+	document.location = url;
+}
+
+//输入框按回车键触发搜索
+$('.header-left').find('input').on('keydown',function(){
+	if( event.keyCode == 13 ){
+		$('#search-button1').click();
+	}
+});
+
+function clearNoNum(obj)
+	{
+//先把非数字的都替换掉，除了数字和.
+		obj.value = obj.value.replace(/[^\d.]/g,"");
+//必须保证第一个为数字而不是.
+		obj.value = obj.value.replace(/^\./g,"");
+//保证只有出现一个.而没有多个.
+		obj.value = obj.value.replace(/\.{2,}/g,".");
+//保证.只出现一次，而不能出现两次以上
+		obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+//只能输入两个小数
+		obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d\d\d).*$/,'$1$2.$3');
+}
+
+
+// //搜索
+// $('#search-button').click(function(){
+// 	var search_user_name   = $('#search_user_name').val();
+// 	var search_user_id     = $('#search_user_id').val();
+// 	var search_phone       = $('#search_phone').val();
+// 	var search_begintime   = $('#search_begintime').val();
+// 	var search_endtime     = $('#search_endtime').val();
+	
+// 	var url = "/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list";
+// 	if( search_user_name != ''){
+// 		url += '&search_user_name='+search_user_name;
+// 	}
+// 	if( search_user_id != '' ){
+// 		url += '&search_user_id='+search_user_id;
+// 	}
+// 	if( search_phone != '' ){
+// 		url += '&search_phone='+search_phone;
+// 	}
+// 	if( search_begintime != '' ){
+// 		url += '&search_begintime='+search_begintime;
+// 	}
+// 	if( search_endtime != '' ){
+// 		if(search_endtime<search_begintime){
+// 			alert('结束时间不能小于开始时间');
+// 			return false;
+// 		}else{
+// 			url += '&search_endtime='+search_endtime;
+// 		}
+// 	}
+// 	document.location= url;
+// });
+
+
+//正整数
+function clearInt(obj){
+	if(obj.value.length==1){obj.value=obj.value.replace(/[^1-9]/g,'')}else{obj.value=obj.value.replace(/\D/g,'')}
+}
+/* 过滤特殊字符 */
+function clearTSZF(obj){
+	obj.value = stripscript(obj.value);
+}
+function stripscript(s) 
+{ 
+	var pattern = new RegExp("[/^\s+/`~!%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘’；：”“'。，、？]");
+	var rs = ""; 
+	for (var i = 0; i < s.length; i++) { 
+		rs = rs+s.substr(i, 1).replace(pattern, ''); 
+	} 
+	return rs; 
+}
+</script>
+</body>
+</html> 

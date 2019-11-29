@@ -1,0 +1,72 @@
+@charset "utf-8";html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;font-size:100%;font:inherit;vertical-align:baseline;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body,form{-webkit-text-size-adjust:none}
+body{min-width:320px;font:normal 14px/24px "Microsoft Yahei",Arial}
+table{border-collapse:collapse;border-spacing:0}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+ul,ol,li{list-style:none}
+em,i{font-style:normal}
+hr{height:1px;margin:10px 0;border:medium none;border-top:1px solid #cacaca}
+a img{border:0}
+body{color:#000;font-size:14px;-webkit-text-size-adjust:none}
+/*a{text-decoration:none;color:#25a4bb}*/
+.mp-page input[type=checkbox],.mp-page input[type=radio]{-webkit-appearance:none;appearance:none;width:18px;height:18px;margin:0;cursor:pointer;vertical-align:middle;background:#fff;border:1px solid #dcdcdc;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative}
+.mp-page input[type=checkbox]:active,.mp-page input[type=radio]:active{border-color:#c6c6c6;background:#ebebeb}
+.mp-page input[type=checkbox]:hover{border-color:#c6c6c6;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.1);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.1);box-shadow:inset 0 1px 1px rgba(0,0,0,0.1)}
+.mp-page input[type=radio]{-webkit-border-radius:1em;-moz-border-radius:1em;border-radius:1em;width:15px;height:15px}
+.mp-page input[type=checkbox]:checked,.mp-page input[type=radio]:checked{background:fff}
+.mp-page input[type=radio]:checked::after{content:'';display:block;position:relative;top:3px;left:3px;width:7px;height:7px;background:#25a4bb;-webkit-border-radius:1em;-moz-border-radius:1em;border-radius:1em}
+.mp-page input[type=checkbox]:checked{background:#fff url(http://simg2.qunarzz.com/piao/images/touch/checkbox_l.png) center center no-repeat;background-size:16px 14px}
+.mp-page input[type=checkbox]:focus{outline:0;border-color:#4d90fe}
+.mp-page input[type='button']{font:normal 14px/24px "Microsoft Yahei",Arial}
+.mp-page{position:absolute;top:0;left:0;width:100%;min-height:100%;background:#f3f3f3}
+.mp-header{background:#25a4bb;text-align:center;color:#fff;border-bottom:#1b7a8b 1px solid;position:relative;height:40px}
+.mp-header h1{overflow:hidden;margin:0 50px;font-size:16px;line-height:40px;white-space:nowrap;text-overflow:ellipsis}
+.mp-header-back{position:absolute;left:0;top:0;width:40px;height:40px;background:url(http://simg1.qunarzz.com/piao/images/touch/header-left-arrow_l.png) center center no-repeat;background-size:13px 17px}
+.mp-header-logo{position:absolute;top:0;right:0;width:40px;height:38px;line-height:10px;font-size:10px;text-decoration:none;color:#fff}
+.mp-header-logo img{width:28px;margin:4px 5px 0 0}
+.mp-header-back:active,.mp-header-logo:active{background-color:#058298;color:#fff}
+.mp-header-bar{position:absolute;right:10px;top:0;height:40px;line-height:40px}
+.mp-header-bar .unit{margin-left:15px;font-size:14px;color:#fff;text-decoration:none;cursor:pointer}
+.mp-footer-links{border-bottom:1px solid #cacaca;padding:0 10px;height:39px;line-height:38px;border-top:1px solid #cacaca}
+.mp-footer-links a{margin:0 5px;padding:0 5px;text-decoration:none;font-size:14px}
+.mp-group{position:relative}
+.mp-group-caption{margin:0 8px;font-size:14px;line-height:30px}
+.mp-row{position:relative;padding:8px;background:#fff;box-sizing:border-box}
+.mp-group .mp-row{border-bottom:1px solid #d5d5d5}
+.mp-row-value{text-align:right;position:relative}
+.mp-row-activable{color:#25a4bb}
+.mp-row-activable:active{background-color:#bdf5ff!important}
+.mp-row-arrow{position:absolute;right:8px;top:50%;margin-top:-7px;width:9px;height:14px;background-position:-14px -29px;background-image:url(http://simg4.qunarzz.com/piao/images/touch/v2/sprites.png);background-repeat:no-repeat;background-size:150px 150px}
+.btn{display:block;height:34px;line-height:34px;text-align:center}
+.btn-on{border:1px solid #e96300;color:#fff;background:#ff8400}
+.btn-on:active{color:#fff;background:#e96300}
+.btn-normal{display:block;height:28px;border:1px solid #04879f;line-height:28px;text-align:center;color:#fff;background:#25a4bb}
+.btn-normal:active{color:#fff;background:#04879f}
+.btn-any{border:1px solid #e51000;color:#fff;background:#ff4646}
+.btn-any:active{color:#fff;background:#e51000}
+.btn-tuan{border:1px solid #d49600;color:#fff;background:#ffb400}
+.btn-tuan:active{color:#fff;background:#d49600}
+.mp-button{border:1px solid #e96300;color:#fff;background:#ff8400;color:white;text-align:center;border-radius:3px;display:inline-block}
+.mp-button:active{background:#e96300}
+.mp-button-block{width:100%;height:34px;line-height:34px}
+.mp-button-green{display:block;height:28px;border:1px solid #04879f;line-height:28px;text-align:center;color:#fff;background:#25a4bb}
+.mp-button-green:active{color:#fff;background:#04879f}
+.mp-button-green2{font-size:12px;display:block;width:60px;height:26px;border:1px solid #04879f;line-height:26px;text-align:center;color:#25a4bb;background:#fff;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
+.mp-download{z-index:20;left:0;width:100%;height:40px;background-color:#000;opacity:.4;position:fixed;bottom:0}
+.mp-download-inner{z-index:25;left:0;width:100%;position:fixed;bottom:0;height:40px;line-height:40px}
+.mp-download-close{width:18px;height:18px;background:url(http://simg1.qunarzz.com/piao/images/touch/baiduapp/topsprite.png) no-repeat -70px 0;background-size:88px 34px;display:inline-block;position:absolute;top:0;left:0}
+.mp-download-logo{position:relative;left:30px;top:6px;width:31px;height:31px;background:url(http://simg1.qunarzz.com/piao/images/touch/baiduapp/topsprite.png) no-repeat 0 0;background-size:88px 34px;display:inline-block}
+.mp-download-des{color:#fff;position:relative;left:39px;top:-5px}
+.mp-download-btn{padding:3px 10px;background-color:#fff;border-radius:3px;padding:3px 10px;background-color:#fff;border-radius:3px;position:absolute;right:20px;height:20px;line-height:20px;top:8px}
+.mp-flexbox{display:-ms-flexbox;display:-webkit-box;display:-moz-box;display:box;width:100%}
+.mp-flexbox-item{flex:1;-webkit-flex:1;-moz-flex:1;-ms-flex:1;box-flex:1;-webkit-box-flex:1;-moz-box-flex:1;-ms-flex:1}
+.mp-icon{display:inline-block;background-image:url(http://simg4.qunarzz.com/piao/images/touch/v2/sprites.png);background-repeat:no-repeat;background-size:150px 150px}
+.mp-color-gray{color:#9e9e9e}
+.mp-color-red{color:#f30}
+.mp-ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.mp-activable:active{background-color:#bdf5ff!important}
+.mp-list-morebutton{padding:10px;font-size:16px;text-align:center;color:#25a4bb;font-weight:bold;background:white}
+.mp-border-image:after{border-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB5JREFUeNpiPnH8zH/G////MzAxAAHTyRNn/wMEGABpvQm9g9TJ1QAAAABJRU5ErkJggg==") 2 0 stretch;border-width:0 0 1px}
+.mp-border,.mp-border-right,.mp-border-left,.mp-border-bottom,.mp-border-top{position:relative;border:0}
+.mp-border-bottom:after{content:"";position:absolute;bottom:0;left:0;background:#cfdddf;width:100%;height:1px;-webkit-transform:scaleY(0.5);transform:scaleY(0.5)}

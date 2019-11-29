@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>中奖名单列表</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Product/product.css"><!--内容CSS配色·蓝色-->
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+    <style type="text/css">
+    	/* Body、顶部界面开始*/
+		html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+		img{max-width: 100%;border:none;}
+		a{text-decoration: none;color: black;}
+		body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;-webkit-text-size-adjust:none;}
+		input[type='text'],input[type='number'],input[type='password'],input[type='reset'],input[type='submit'],input[type='button'],input[type='tel'],button,textarea{-webkit-appearance:none; border-radius:0; border:none;} /*去掉苹果的默认UI来渲染按钮*/
+		ol,ul {list-style: none;} 
+		h1,h2,h3,h4,h5,h6 {font-weight: normal;} 
+		textarea{overflow:auto;resize:none;} 
+		.wheell-all{margin: 25px 38px;border-radius: 5px;border: 1px solid #d8d8d8;color: #646464;font-size: 14px;}
+		.nav-list{width: 100%;height: 54px;border-bottom: 1px solid #dddddd;display:flex;padding:0 10px;box-sizing:border-box;}
+		.nav-list span{width:88px;font-size:14px;text-align:center;line-height:54px;cursor:pointer;}
+		.we-content{padding-left: 27px;padding-top: 29px;}
+		.nav-active{color:#06A7E1;border-bottom:1px solid #06A7E1;}
+		.form-btn{width:auto!important;padding:0 10px!important;cursor:pointer;color:#fff!important;border:0!important;}
+		.form-add-btn{display:inline-block;line-height:24px;border-radius:3px;}
+		.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+	</style>
+</head>
+<body>
+    <!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+    	<!--列表头部切换开始-->
+    	<div class="WSY_column_header">
+				<?php 
+					$head = 1;
+					include("action_head.html");
+				?>
+		</div>
+            
+		<div class="wheell-all">
+			<div class="nav-list">
+				<span class="nav-active">获奖名单</span>
+                <span id="award_edit">无奖名单</span>
+			</div>
+			<div class="we-content">
+	            <!-- 参与名单列表start -->
+	            <div class="WSY_agentsbox">
+					
+					<form class="search" id="ac_frm" style="display:block" method="get" action="/mshop/admin/index.php?m=slyder_adventures&a=name_list">
+						<input type="hidden" id="m" name="m" value="slyder_adventures">
+						<input type="hidden" id="a" name="a" value="name_list">
+						<input type="hidden" id="slyder_id" name="slyder_id" value="<?php echo $data['slyder_id'] ?>">
+						<ul class="WSY_search_q">
+							<li>活动编码：<input type="text" name="slyder_id" id="slyder_id" value="<?php if($data['slyder_id']!=""){echo $data['slyder_id'];}?>" class="form_input"></li>
+							<li>活动名称：<input type="text" name="title" id="title" value="<?php if($title!=""){echo $title;}?>" class="form_input"></li>
+							<li>用户微信名：<input type="text" name="weixin_name" id="weixin_name" value="<?php if($data['weixin_name']!=""){echo $data['weixin_name'];}?>" class="form_input"></li>
+							<li>用户ID：<input type="text" name="user_id" id="user_id" value="<?php if($data['user_id']!=""){echo $data['user_id'];}?>" class="form_input"></li>
+							<li>用户姓名：<input type="text" name="name" id="name" value="<?php if($data['name']!=""){echo $data['name'];}?>" class="form_input"></li>
+							<li>用户电话：<input type="text" name="phone" id="phone" value="<?php if($data['phone']!=""){echo $data['phone'];}?>" class="form_input"></li>
+							<li>状态：
+								<select name="status" id="status">
+									<option value="-1">--请选择--</option>
+									<option value="0" <?php if($data['status']=='0'){?>selected<?php }?> >待领取</option>	
+									<option value="1" <?php if($data['status']==1){?>selected<?php }?> >已领取</option>
+									<option value="2" <?php if($data['status']==2){?>selected<?php }?> >已失效</option>
+								</select>
+							</li>
+							<li><input type="submit" class="WSY-skin-bg form-btn"  value="搜索" ></li>
+							<li><a class="WSY-skin-bg form-btn form-add-btn" onclick="jump_url('<?php echo $customer_id ; ?>',1);">导出</a></li>
+						</ul> 
+					</form>
+		            <table width="97%" class="WSY_table" id="WSY_t1">
+						<thead class="WSY_table_header">
+							<th width="10%" align="center">用户ID</th>
+							<th width="5%" align="center">活动编码</th>
+							<th width="10%" align="center">活动名称</th>
+							<th width="5%" align="center">获得奖项</th>
+							<th width="10%" align="center">奖品</th>
+							<th width="10%" align="center">姓名</th>
+							<th width="10%" align="center">电话</th>
+							<th width="10%" align="center">地址</th>
+							<th width="5%" align="center">状态</th>
+							<th width="20%" align="center">操作</th>
+						</thead>
+						<tbody class="tbody-main">
+							<?php foreach ($data2 as $key => $row) { 								
+								$status = $row['status'] ;
+								switch($status){
+									case "0":
+										$status_str = "待领取";
+										break;
+									case "1":
+										$status_str = "已领取";
+										break;
+									case "2":
+										$status_str = "已失效";
+										break;
+									default:
+										break;
+								}
+								// var_dump($row);
+								?>
+								<tr>
+									<td style="text-align:center;"><?php echo $row['id']?></td>
+									<td style="text-align:center;"><?php echo $data['slyder_id']?></td>
+									<td style="text-align:center;"><?php echo $title?></td>
+									<td style="text-align:center;"><?php echo $row['award_level']?></td>
+									<td style="text-align:center;"><?php echo $row['award_name']?></td>
+									<td style="text-align:center;"><?php echo $row['name']."(".$row['weixin_name'].")"?></td>
+									<td style="text-align:center;"><?php echo $row['phone']?></td>
+									<td style="text-align:center;"><?php echo $row['address']?></td>
+									<td style="text-align:center;"><?php echo $status_str?></td>
+									<td style="text-align:center;">
+										<?php if($row['type']!="1"){?>
+										<button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $row['order_batchcode']?>',2);">查看订单</button>
+										<?php }?>
+										<?php if($row['token']){?>
+										<button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $customer_id."&search_batchcode=".$row['batchcode_shop']?>',3);">关联订单</button>
+										<?php }?>
+									</td>
+								</tr>
+							<?php }?>							
+						</tbody>
+					</table>
+				</div>
+	            <!-- 参与名单列表end -->
+		        <!--翻页开始-->
+		        <div class="WSY_page"></div>
+		        <!--翻页结束-->
+			</div>
+		</div>	
+	</div>
+</body>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript">
+	var slyder_id   = <?php echo $data['slyder_id'] ?>;
+	var title       = '<?php echo $title ?>';
+	var data        = "";
+	var data2       = "";
+$(function() {	
+	var weixin_name = $("#weixin_name").val();
+	var user_id     = $("#user_id").val();
+	var name        = $("#name").val();
+	var phone       = $("#phone").val();
+	var status      = $("#status").val();
+	data            = "";
+	data2           = "";
+	if (weixin_name!="") {
+		data += "&weixin_name="+weixin_name;
+		data2 += "/weixin_name/"+weixin_name;
+	}
+	if (user_id!="") {
+		data += "&user_id="+user_id;
+		data2 += "/user_id/"+user_id;
+	}
+	if (name!="") {
+		data += "&name="+name;
+		data2 += "/name/"+name;
+	}
+	if (phone!="") {
+		data += "&phone="+phone;
+		data2 += "/phone/"+phone;
+	}
+	if (status>-1) {
+		data += "&status="+status;
+		data2 += "/status/"+status;
+	}
+	if (slyder_id!="") {
+		data += "&slyder_id="+slyder_id;
+		data2 += "/slyder_id/"+slyder_id;
+	}
+	if (title!="") {
+		data += "&title="+title;
+		data2 += "/title/"+title;
+	}
+})
+<!-- 分页 start -->
+var pagenum = <?php echo $pageNum ?>;//当前页
+var count =<?php echo $pageCount ?>;//总页数	
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+	pageCount:count,
+	current:pagenum,
+	backFn:function(p){
+	var url="/mshop/admin/index.php?m=slyder_adventures&a=name_list&pagenum="+p+data;	
+
+	location.href = url;
+   }
+});
+
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a>count) || isNaN(a)){
+		layer.alert('没有下一页了');
+		return false;
+	}else{
+		var url="/mshop/admin/index.php?m=slyder_adventures&a=name_list&pagenum="+a+data;	
+		location.href = url;
+	}
+}
+<!-- 分页 end -->
+	
+	$("#award_edit").click(function(){
+
+	location.href="/mshop/admin/index.php?m=slyder_adventures&a=notwin_list&slyder_id="+slyder_id;
+	});
+
+function jump_url(id,type){
+	//type : 1-导出  2-查看订单  3-关联订单
+	// console.log(data2);
+	var url = "";
+	if(type==1){
+		url = "/weixin/plat/app/index.php/Excel/excel_name_list/customer_id/"+id+"/slyder_id/"+slyder_id+data2;
+		// console.log(url);
+	}else if(type==2){
+		url = "/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&search_batchcode="+id;
+	}else if(type==3){
+		url = "/weixinpl/back_newshops/Order/order/order.php?customer_id="+id;
+	}
+	location.href = url;
+}	
+
+</script>
+</html> 
+
+            

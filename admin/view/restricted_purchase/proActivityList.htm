@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>产品活动列表</title>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+<style>
+
+table th{color: #FFF;line-height: 30px;text-align: center;font-size: 12px; }
+table td{height: 40px;line-height: 20px;font-size: 12px;color: #323232;padding: 0px 1em;text-align: center;border: 1px solid #D8D8D8; }
+.display{display:none}
+table td img{width: 20px;height: 20px;margin-left: 5px;}
+.tips{margin-left:40px;position: absolute;margin-top: 13px;}
+.tips span{font-size:15px;margin-left: 10px;}
+.redfont{color:red;display:inline-block;max-width:300px;height:17px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.navbox{z-index: 999;}
+.operation-btn{display:inline-block;padding: 3px 5px;background-color: #06a7e1;color: #fff;border-radius: 2px;cursor:pointer;margin: 2px 0;}
+#add_product {
+    width: 70px;
+    height: 27px;
+    background: #2eade8;
+    border-radius: 2px;
+    color: #fff;
+    margin-left: 40px;
+    margin-top: 19px;
+    cursor: pointer;
+}
+#save_button {
+    width: 70px;
+    height: 27px;
+    background: #2eade8;
+    border-radius: 2px;
+    color: #fff;
+    margin-left: 40px;
+    margin-top: 19px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body id="bod" style="min-height: 580px;">
+	<!--内容框架-->
+	<div class="WSY_content" style="height: 100%;">
+
+		<!--列表内容大框-->
+		<div class="WSY_columnbox">
+			<!--列表头部切换开始-->
+			<div class="WSY_column_header">
+				<div class="WSY_columnnav">
+					<a <?php if($search_class == 0){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list">活动管理</a>
+					<a <?php if($search_class == 1){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=product_sales_statistics">销量统计</a>
+					<a <?php if($search_class == 2){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list">用户管理</a>
+					<a <?php if($search_class == 3){echo 'class="white1"';} ?> href="/weixinpl/back_newshops/Order/order/order.php?customer_id=<?php echo passport_encrypt($customer_id)?>&from_page=<?php echo $from_page;?>&f2c_id=<?php echo $f2c_id;?>&orgin_type=5">订单管理</a>
+				</div>
+			</div>
+			<!--列表头部切换结束-->
+<!--门店列表开始-->
+  <div  class="WSY_data">
+	 <!--列表按钮开始-->
+      <div class="WSY_list" id="WSY_list">
+
+      	<div class="search-box" style="margin-left:40px;margin-top:0px;"> 
+			<input type="button" id="add_product" onclick="add_product()" value="添加产品" >
+			<input type="button" id="save_button" value="保存" >
+			<input type="button" id="my_search" onclick="javascript:location.href='/mshop/admin/index?m=restricted_purchase&a=get_activity_list'" value="返回" >
+		</div>
+		
+		<div class="tips"> 
+			<span>活动ID：  <?php echo $res[0]['id']; ?></span>
+			<span>活动标题：<?php echo $res[0]['title'];  ?></span>
+			<span>活动时间：<?php echo $res[0]['time_start'].'-'.$res[0]['time_end'];  ?></span>
+			<span>限购次数和限购数量中的-1则代表无限制</span>
+		</div>
+
+
+             <br class="WSY_clearfloat";>
+        </div> 
+        <!--列表按钮开始-->
+		
+        <!--表格开始-->
+		<div class="WSY_data" id="type1" style="margin-left: 1.5%;">
+		<table class="WSY_t2"  width="97%"  style="border: 1px solid #D8D8D8;border-collapse: collapse;">
+			<thead class="WSY_table_header">
+				<tr style="border:none">
+					<th width="2%">产品ID</th>
+					<th width="20%">产品名称</th>
+					<th width="6%">产品分类</th>
+					<th width="6%">市场价</th>
+					<th width="6%">现价</th>
+					<th width="6%">库存</th>
+					<th width="6%">活动价格</th>			
+					<th width="6%">限购次数(每人/次)</th>
+					<th width="6%">限购数量(每次/个)</th>
+					<th width="6%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php	
+				foreach($result['product_list'] as $key => $val){
+			?>
+				<tr class="product_list" style="border:1px solid #D8D8D8">
+					<td><?php echo $val['product_id'];?></td>
+					<td><?php echo $val['name'];?></td>
+					<td><?php echo $val['typename'];?></td>
+					<td><?php echo $val['orgin_price'];?></td>
+					<td><?php echo $val['now_price'];?></td>
+					<td><?php echo $val['storenum'];?></td>
+					<input type="hidden" name="aid" id="aid" value="<?php echo $val['id']; ?>" />
+					<input type="hidden" name="product_id" id="product_id" value="<?php echo $val['product_id']; ?>" />
+					<td><input type="text" name="price" id="price" style="border:1px solid black;width:50px; height:30px;text-align: center" value="<?php echo $val['price'];?>" onkeyup="checkRate(this)" /></td>
+					<td><input type="text" name="purchase_times" style="border:1px solid black;width:50px; height:30px;text-align: center" id="purchase_times" value="<?php echo $val['purchase_times'];?>" onkeyup="clearInt(this)"/></td>
+					<td><input type="text" name="quantity_purchased" style="border:1px solid black;width:50px; height:30px;text-align: center" id="quantity_purchased" value="<?php echo $val['quantity_purchased'];?>" onkeyup="clearInt(this)" /></td>
+					<td class="WSY_remind_main">
+						<a onclick="del(<?php echo $activity_id;?>,<?php echo $val['product_id']; ?>)" style="cursor:pointer;">
+							<span class="operation-btn">删除</span>
+						</a>
+					</td>
+				</tr>
+			<?PHP }?> 
+			
+			</tbody>
+			
+			</table>
+			<!--翻页开始-->
+			<div class="WSY_page">
+				
+			</div>
+			<!--翻页结束-->
+		</div>
+		<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+		<script type="text/javascript">
+			var customer_id = '<?php echo $customer_id_en ?>';
+			var customer_id1 = '<?php echo $customer_id ?>';
+			var pagenum = <?php echo $result['pagenum'] ?>;
+			var count   = <?php echo $result['page'] ?>;//总页数
+			
+			var activity_id = '<?php echo $activity_id; ?>';
+				//pageCount：总页数
+				//current：当前页
+			$(".WSY_page").createPage({
+				pageCount:count,
+				current:pagenum,
+				backFn:function(p){
+				 document.location= "/mshop/admin/index?m=restricted_purchase&a=activity_product_list&activity_id="+activity_id+"&pagenum="+p;
+			   }
+			});
+
+		    var page = <?php echo $result['page'] ?>;
+		  
+		    function jumppage(){
+				var a=parseInt($("#WSY_jump_page").val());
+				if((a<1) || (a==pagenum) || (a>page) || isNaN(a)){
+					return false;
+				}else{
+					document.location= "/mshop/admin/index?m=restricted_purchase&a=activity_product_list&activity_id="+activity_id+"&pagenum="+a;
+				}
+		    }	
+		
+			//添加产品页面
+			function add_product(){
+				location.href = "/mshop/admin/index?m=restricted_purchase&a=get_product_list&activity_id="+activity_id+"&customer_id="+customer_id;
+			}
+		
+		var temp = new Array();
+		var arr  = new Array();
+		var check = 0;
+		$('#save_button').click(function(){
+			check = 0;
+			//组合数组
+			$('.product_list').each(function(i){
+				var id   	       	   = $(this).find('#aid').val();
+				var product_id		   = $(this).find('#product_id').val();
+				var price   	       = $(this).find('#price').val();
+				if(price == ""){
+					alert('产品活动价格不能为空');
+					check = 1;
+					return false;
+				}
+				var purchase_times 	   = $(this).find('#purchase_times').val();
+				if(purchase_times == ""){
+					alert('限购次数不能为空');
+					check = 1;
+					return false;
+				}
+				var quantity_purchased = $(this).find('#quantity_purchased').val();
+				if(quantity_purchased == ""){
+					alert('限购数量不能为空');
+					check = 1;
+					return false;
+				}
+				temp.push(id,product_id,quantity_purchased,purchase_times,price);
+				arr.push(temp);
+				temp = new Array();
+			});
+			if(check == '1'){
+				return false;
+			}
+			$.ajax({
+				url: '/mshop/admin/index.php?m=restricted_purchase&a=update_activity_product',
+				dataType: 'json',
+				type: 'post',
+				data: {
+					product_list  : arr,
+					activity_id : activity_id
+				},
+				success: function(res){
+					if( res.errcode == '0' ){
+						alert(res.errmsg);
+						window.location="/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list";
+					}else{
+						alert(res.errmsg);
+					}
+				}
+			});
+		});
+		
+		//删除
+		function del(activity_id,product_id){
+			if( !confirm('是否删除该产品？删除后该产品无法恢复') ){
+				return;
+			}
+			$.ajax({
+				url: '/mshop/admin/index.php?m=restricted_purchase&a=del_activity_product',
+				dataType: 'json',
+				type: 'post',
+				data: {
+					product_id  : product_id,
+					activity_id : activity_id
+				},
+				success: function(res){
+					if( res.errcode == '0' ){
+						alert(res.errmsg);
+						window.location.reload();
+					}else{
+						alert(res.errmsg);
+					}
+				}
+			});
+		}
+		
+		function checkRate(obj) {
+        　　var re = /^[0-9]+.?[0-9]*$/;   //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/  
+        　　var nubmer = obj.value;
+       　　 if (!re.test(nubmer)) {
+            　　　　obj.value = "";
+            　　　　return false;
+        　　}
+		}
+			
+		function clearInt(obj){
+			if(obj.value=='-' || obj.value=='-1'){
+				return false;
+			}
+			if(obj.value.length==1){obj.value=obj.value.replace(/[^1-9]/g,'')}else{obj.value=obj.value.replace(/\D/g,'')}
+		}
+		</script>
+
+	</div>
+</div>
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/fenye/fenye.css" media="all">
+
+
+<?php 
+
+mysql_close($link);
+?>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>接口解绑</title>
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/content.css">
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/contentblue.css"><!--内容CSS配色·蓝色-->
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/base_set.css">
+    <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/addons/common/js/layer/V2_1/layer.js"></script>
+    <!-- <script type="text/javascript" src="../../../common/get.js"></script> -->
+    <!-- <script type="text/javascript" src="../common/js/Back_aliyun_setting.js"></script> -->
+    <style>
+        .WSY_remind_dl02 dt {
+            line-height: 24px;
+            width: auto;
+            font-weight: normal;
+            font-size: 14px;
+            text-align: left;
+            min-width: 60px;
+        }
+    </style>
+</head>
+
+<body>
+<!--内容框架-->
+<div class="WSY_content">
+    <div class="WSY_columnbox">
+        <div class="WSY_column_header"></div>
+            <div class="WSY_list" style="padding-left: 50px;">
+                <h3 style="font-size:16px;margin-bottom:15px;">已绑定</h3>
+                <img src="<?php echo $res['ext_info']['ws_logo'] ?>" style="width:160px;height:89px">
+                <span style="font-weight:400;vertical-align:top;margin-left:20px;"><?php echo $res['ext_info']['ws_name'] ?></span>
+                <span style="font-family:'微软雅黑';font-weight:400;color: #169BD5;cursor:pointer;margin-left:-29px;" onclick="Untie()">解绑</span>
+            </div>
+            <div class="WSY_remind_main" style="margin-left:50px;">
+            <h1 style="font-size:16px;">接口配置信息</h1>
+                <dl class="WSY_remind_dl02">
+                    <dt>Token:</dt>
+                    <dt><?php echo $res['appsecret'] ?></dt>
+                    <dt><span style="color: #169BD5;cursor:pointer;" onclick="Edit_link()">修改</span></dt>
+                </dl>
+                <dl class="WSY_remind_dl02">
+                    <dt>URL:</dt>
+                    <dt><?php echo $res['api_domain'] ?></dt>
+                </dl>
+                <dl class="WSY_remind_dl02">
+                    <dt>server_id:</dt>
+                    <dt><?php echo $res['ext_info']['server_id'] ?></dt>
+                </dl>
+                <h1 style="font-size:16px;margin-top:15px;margin-bottom:10px;">备注</h1>
+                <div style="margin-bottom:10px;"> 1、绑定成功后商城与知识付费系统将共用同个公众账号和小程序，公众账号设置以知识付费系统为主；</div>
+                <div> 2、商城建议采用【第一次邀请人锁定】，绑定后商城与"微云视平台"支持共用同个公众账号和小程序；</div>
+            </div>
+
+        <div class="submit_div">
+            <!-- <input type="button" class="WSY_button" value="绑定" onclick="save_weishi_link()" style="cursor:pointer;"> -->
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="/mshop/admin/static/js/admin_menu.js"></script>
+<script>
+    var customer_id = '<?php echo $customer_id ?>';
+    var token = "<?php echo $res['appsecret'] ?>";
+    var server_id = "<?php echo $res['ext_info']['server_id'] ?>";
+    var ws_url = "<?php echo $res['api_domain']?>";
+    function Untie(){
+        layer.confirm('是否进行解绑？解绑后商城系统与知识付费系统将不能在共用同个公众账号。',{btn: ['确定','取消']},
+            function(){
+                $.ajax({
+                    url: '/mshop/admin/index.php?m=weishi&a=del_link&customer_id=' + customer_id,
+                    type: "POST",
+                    dataType: "JSON",
+                    data: {'customer_id':customer_id,'token':token,'server_id':server_id,'ws_url':ws_url},
+                    // async: false,
+                    success: function (res) {
+                        console.log(res);
+                        if(res.errcode==0){
+                            layer.alert('解绑成功', function(index){
+                              window.location.href='/mshop/admin/index.php?m=weishi&a=weishi_link&customer_id=' + customer_id; 
+                            });  
+                        }else{
+                            layer.alert(res.errormsg);
+                        }
+                    },
+                    error: function (res) {
+                        layer.alert(res.errormsg);
+                    }
+                });
+            })
+    } 
+
+    function Edit_link(){
+        if(customer_id!=null&&token!=null&&server_id!=null&&ws_url!=null){
+            window.location.href='/mshop/admin/index.php?m=weishi&a=weishi_link&customer_id=' + customer_id +'&url='+ws_url+'&server_id='+server_id;
+        }
+    }
+</script>
+</body>
+</html>

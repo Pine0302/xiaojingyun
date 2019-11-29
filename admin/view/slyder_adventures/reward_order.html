@@ -1,0 +1,1239 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>订单管理</title>
+
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Order/orders/order.css">
+
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/region_select.js"></script>
+	<script>
+	layer.config({
+		extend: '/extend/layer.ext.js'
+	});
+	</script>
+
+	<style>
+	.con-button{  float: left;padding-left: 20px;padding-top: 17px;}
+	.con-button2{  float: left;padding-left: 5px;padding-top: 17px;}
+	.textCenter{text-align: center;}
+	.WSY_position_text a:first-child{margin-left: 0;}
+	.WSY_bottonli2 input{margin-right: 6px;}
+
+	.WSY_righticon_li04 label{margin-top: 3px;display: inline-block;}
+	.WSY_righticon_li04 input{margin-top: 6px;margin-right: 5px;vertical-align: sub;}
+	.WSY_righticon_li05 label{margin-top: 3px;display: inline-block;}
+	.WSY_righticon_li05 input{margin-top: 6px;margin-right: 5px;vertical-align: sub;}
+	.WSY_position_date input{height:22px;}
+
+	#topLoader {
+		width: 256px;
+		height: 256px;
+		margin-bottom: 32px;
+		position:absolute;width:400px; left:50%; top:50%; margin-left:-200px; height:auto; z-index:100; padding:1px;
+	}
+	#per_container {
+		width: 500px;
+		padding: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#BgDiv{background-color:#e3e3e3; position:absolute; z-index:99; left:0; top:0; display:none; width:100%; height:1000px;opacity:0.5;filter: alpha(opacity=50);-moz-opacity: 0.5;}
+	.searchform{ position:fixed; display:none;z-index:25; left:50%; top:30%;width:300px; background:#fff; box-shadow: 0px 3px 6px 0px rgb( 193, 193, 193 ); border:1px solid #999;margin-left:-150px;}
+	.searchform p{padding: 0 15px;}
+	.blessing_img{ position:fixed; display:none;z-index:25; left:50%; top:30%;width:250px;height:250px; background:#fff; box-shadow: 0px 3px 6px 0px rgb( 193, 193, 193 ); border:1px solid #999;margin-left:-150px;}
+	.cancal{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		font-size: 25px;
+		width: 20px;
+		height: 20px;
+		background: #06a7e1;
+		text-align: center;
+		line-height: 20px;
+		color: #fff;
+		border-radius: 4px;
+		cursor:pointer;
+	}
+	.daochuipt{border: 1px solid #bbb;width: 100%;line-height: 25px;}
+	#DialogDiv{position:absolute;width:400px; left:50%; top:50%; margin-left:-200px; height:auto; z-index:100;background-color:#fff; border:1px #8FA4F5 solid; padding:1px;}
+	.order dl dd b{width:85px;}
+	.shui{width: 15px;height: 15px;color: #ffffff;background: #ec2935;padding: 2px;line-height: 15px;display: inline-block;border-radius: 3px;font-size: 15px;text-align: center;vertical-align: bottom;}
+	.div_item{float:left;padding:15px;font-size:14px;}
+	.div_item label{margin-left:5px;font-size:14px;}
+	.div_item input{border:1px solid #ccc; border-radius: 2px;}
+	.layui-layer-content button{float: left;margin-top: 56px;margin-bottom: 19px;width: 80px;height: 30px;}
+	.layui-layer{width:362px;}
+	.CP_table_bianhaoh + span{margin: 5px 40px 0 0;float: right;}
+	.zhibo{width: 30px;height: 15px;color: #ffffff;background: #25bf49;padding: 2px;line-height: 15px;display: inline-block;border-radius: 3px;font-size: 14px;text-align: center;vertical-align: bottom;}
+	a.payon_btn{display: inline-block; height: 20px; color: #fff; background: #06a7e1; line-height:20px;padding: 3px 15px; border-radius: 3px;}
+	.loading{
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		position: fixed;
+		opacity: 0.5;
+		-moz-opacity: 0.5;
+		 display: none;
+		top: 0;
+		z-index: 5;
+	}
+	.loading img{margin-left: -64px;margin-top: -64px;position: absolute;left: 50%;top: 50%;}
+	.loading p{margin-left: -64px;margin-top: 64px;position: absolute;left: 50%;top: 50%;font-size: 20px;color:#fff;}
+	.ex-tip{
+		background-color: red; 
+		color: #fff;    
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		font-size: 10px;
+		line-height: 14px;
+		text-align: center !important;
+	}
+	.uploader,.WSY_position_text{float:left}
+	</style>
+</head>
+
+<body>
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+
+
+    <!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+    	<!--列表头部切换开始-->
+    	<div class="WSY_column_header">
+        	<div class="WSY_columnnav">
+				<a <?php if($condition['orders.status'] == null){echo 'class="white1"';} ?>  href="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list">所有订单</a>
+				<a <?php if($condition['orders.status'] == 4){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&search_class=4">待付款</a>
+				<a <?php if($condition['orders.status'] == 1){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&search_class=1">待发货</a> 
+				<a <?php if($condition['orders.status'] == 2){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&search_class=2">已发货</a>  
+				<a <?php if($condition['orders.status'] == 3){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&search_class=3">已完成</a>  				
+			</div>
+        </div>
+        <!--列表头部切换结束-->
+         <!--放置头部按钮  开始-->
+        <div style="width:100%;display:block;">
+			<ul>
+         		<li class="WSY_bottonli WSY_bottonli2" style="display:block;float:left;margin-left:20px;">
+					<input type="button"  value="导出记录" onClick="export_excel();" >
+				</li>
+			</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!--放置头部按钮  结束-->
+		
+    <!--订单管理代码开始-->
+	<form class="search" id="search_form" >
+    <div class="WSY_data">
+
+		<div class="WSY_position1" >
+			<ul>
+				<li class="WSY_position_date tate001">
+					<p>支付时间：<input class="date_picker" type="text" name="AccTime_S" id="pay_begintime" value="<?php echo $condition['pay_begintime']; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"></p>
+					<p>&nbsp;&nbsp;-&nbsp;&nbsp;<input class="date_picker" type="text" name="AccTime_B" id="pay_endtime" value="<?php echo $condition['pay_endtime']; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"></p>
+				</li>
+				<li class="WSY_position_date tate001" >
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;下单时间：<input class="date_picker" type="text" name="AccTime_E" id="begintime" value="<?php echo $condition['search_begintime']; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"></p>
+					<p>&nbsp;&nbsp;-&nbsp;&nbsp;<input class="date_picker" type="text" name="AccTime_B" id="endtime" value="<?php echo $condition['search_endtime']; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"></p>
+				</li>		
+			 </ul>
+		</div>
+
+		<div class="WSY_position1" style="margin-top: 12px;">
+			<ul>
+				<li class="WSY_position_text" style="margin-top:13px;margin-left:10px;margin-right: 10px;">
+					<a>订单号：<input type="text" name="search_batchcode" id="search_batchcode" value="<?php echo $condition['orders.batchcode']; ?>"></a>
+					<a>姓名：<input type="text" name="search_name" id="search_name" value="<?php echo $condition_ext['search_name']; ?>"></a>
+					<select name="search_name_type" id="search_name_type">
+						<option value="1" <?php if($condition_ext['search_name_type']==1){ ?>selected <?php } ?>>微信昵称</option>
+						<option value="2" <?php if($condition_ext['search_name_type']==2){ ?>selected <?php } ?>>收货人</option>
+					</select>
+				</li>
+				<li class="WSY_position_text" style="margin-top:13px;">
+					<a>产品名称：<input type="text" name="search_product_name" id="search_product_name" value="<?php echo $condition_ext['orders.product_name']; ?>"></a>
+					<a>手机号码：<input type="text" name="search_phone" id="search_phone" value="<?php echo $condition['address.phone']; ?>" onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></a>
+					<input type="hidden" id="search_class" value="<?php echo $condition['orders.status'];?>">
+					<a class="WSY_bottonliss"><input type="button" value="订单搜索" onclick="searchForm();" /></a>
+				</li>						
+			</ul>				
+		</div>
+		
+    	<div class="WSY_orderformbox" style="margin-top: 12px;" >
+			<ul>
+            <li class="WSY_righticon_li01">
+				<p>支付方式：</p>
+                	<select name="search_paystyle" id="search_paystyle" >
+						<option value="" >-- 请选择 --</option>
+						<option value="微信支付" >微信支付</option>
+						<!--
+						<option value="支付宝支付" >支付宝支付</option>
+						<option value="通联支付" >通联支付</option>
+						<option value="货到付款" >货到付款</option>
+						<option value="到店支付" >到店支付</option>
+						<option value="会员卡余额支付" >会员卡余额支付</option>
+						<option value="购物币支付" >购物币支付</option>
+						<option value="零钱支付" >零钱支付</option>
+						<option value="积分支付" >积分支付</option>
+						<option value="易宝支付" >易宝支付</option>
+						<option value="京东支付" >京东支付</option>
+						<option value="V咖支付" >V咖支付</option>
+						<option value="paypal支付" >paypal支付</option>
+						<option value="兴业银行公众号支付" >兴业银行公众号支付</option>
+						<option value="优惠抵扣" >优惠抵扣</option>
+						<option value="环迅快捷支付" >环迅快捷支付</option>
+						<option value="环迅微信支付" >环迅微信支付</option>
+						<option value="后台支付" >后台支付</option>
+						<option value="威富通支付" >威富通支付</option>
+						<option value="健康钱包支付" >健康钱包支付</option>
+						-->
+                 </select>
+            </li>
+            <li class="WSY_righticon_li03">
+				<p>每页记录数：</p>
+				<select name="pagesize" id="pagesize" >
+				<option value="20" <?php if($pagesize==20){ ?>selected<?php } ?>>20</option>
+				<option value="40" <?php if($pagesize==40){ ?>selected<?php } ?>>40</option>
+				<option value="75" <?php if($pagesize==75){ ?>selected<?php } ?>>75</option>
+				<option value="100" <?php if($pagesize==100){ ?>selected<?php } ?>>100</option>
+				</select>				
+            </li>
+		
+			<li class="WSY_righticon_li04">
+			    <input type="checkbox" id="auto_refer" name="auto_refer" value="on" <?php if($isauto){?> checked<?php } ?> ><label for="auto_refer">自动刷新订单</label>
+			</li>
+			<!--
+			<li class="WSY_righticon_li05">
+				<input type="checkbox"  id="order_remind" name="order_remind" value="on" onclick="chkremind();"  checked><label for="order_remind">订单提醒功能</label>
+			</li>
+			-->
+			</ul>
+        </div>
+	</div>
+	</form>
+
+	<form  id="frm_import" action="" enctype="multipart/form-data" method="post">
+		<div style="overflow:hidden;margin-left:20px">
+			<div class="uploader white">
+				<input type="text" class="filename" readonly/>
+				<input type="button" name="file" class="button" value="上传..."/>
+				<input type="file" name="excelfile" id="excelfile" size="30"/>
+			</div>
+			<div class="WSY_position_text" style="margin-left: 33px;margin-top:24px;">
+				<span>数据来源：</span>
+				<select name="order_way">
+					<option value="1">导出记录</option>
+				</select>
+				<a class="WSY_bottonliss"><input type="button" value="导入数据" onclick="importMember();" /></a>
+				<span style="color:red">
+					(请使用金山Excel)
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span id="print_batch_show"> </span>
+
+			</div>
+		</div>
+	</form>
+	<!--订单管理代码开始 End -->
+
+	
+    <!--表格开始-->
+	<div style="width:100%;overflow:hidden">
+		<table width="97%" class="CP_table " id="order_table">
+			<thead class="CP_table_header">
+				<th width="3%"><input type="checkbox" name="all_checkbox" onclick="change_box()" class="all_checkbox" >全选</th>
+				<th width="30%">产品</th>
+				<th width="10%">收货人</th>
+				<th width="10%">实付金额</th>
+				<th width="10%">发货状态</th>
+				<th width="8%">订单状态</th>
+				<th width="15%">操作</th>
+			</thead>
+
+			<?php 
+			if($result['errcode'] == 0){ 
+				$data = $result['data'];
+				foreach($data as $key => $order){
+				
+			?>
+			<tr class="CP_table_bianhao" >
+
+				<td class="CP_table_bianhaoa" colspan="8">
+					<!--<input type="checkbox" name="code_Value" value="1">-->
+					<span class="CP_table_bianhaob" >
+						编号：<b onclick="showDetail('<?php echo $order['batchcode']; ?>')"><?php echo $order['batchcode']; ?></b>
+						<!--<img style="width:18px;height:18px;margin-left:2px" src="/weixinpl/common/images_V6.0/contenticon/cashback2.png" ondragstart="return false;" title="赠送订单" />-->
+						<span class="CP_table_bianhaod"><?php echo $order['create_time']; ?></span>
+						<span id="order_pay_<?php echo $order['batchcode']; ?>" >							
+							<?php if($order['pay_status']==1){ ?>
+							<img src="/weixinpl/common/images_V6.0/contenticon/pay-icon.png" />
+							<span class="CP_table_bianhaof">已支付</span>
+							<span class="CP_table_bianhaog">支付订单号：<?php echo $order['batchcode']; ?></span>
+							<?php }else{ ?>
+							<img src="/weixinpl/common/images_V6.0/contenticon/del-icon.png" />
+							<span class="CP_table_bianhaoe">未支付</span>
+							<?php } ?>							
+						</span>
+
+						<?php 
+							$pay_type_str   = '';
+							$transaction_id = '';
+							$pay_url        = '';
+							switch($order['pay_type']){
+								case 1: $pay_type_str = "微信支付";
+										$return_wx_pay  = $this->model->order_wx_pay_select($order['batchcode']);
+										//var_dump($return_wx_pay);
+										$transaction_id = $return_wx_pay['wx_pay']['transaction_id'];
+										$pay_url        = "/weixinpl/back_newshops/Order/order/weipay_detail.php?allipay_orderid=" . $transaction_id;
+								break;
+								default:$pay_type_str = "无";
+							}
+						?>						
+						<span class="CP_table_bianhaog">支付方式：<?php echo $pay_type_str; ?>
+						</span>
+						<span class="CP_table_bianhaoh">
+						<?php if(!empty($transaction_id)){ ?>
+						[<a href="<?php echo $pay_url; ?>"><?php echo $transaction_id; ?>(点击查看)</a>]		
+						<?php } ?>						
+						</span>
+						<!--
+						<span style="margin-left: 250px;color: #E90B0B;">
+							已付款0天				
+						</span>
+						-->
+					</span>
+				</td>
+			</tr>
+
+			<tr class="CP_table_chanpina">
+				<td>
+					<input type="checkbox" name="input_checkbox" class="checkbox">
+				</td>
+				<td class="CP_table_chanpina_one">
+					<img src="<?php echo $order['product_img']; ?>" />
+					<span class="CP_table_chanpina_onep">
+						<p><b><?php echo $order['product_name']; ?></b>  </p>
+						<p><span class="CP_table_chanpina_onepa"> 数量：<b><?php echo $order['product_num']; ?></b></span></p>
+						<!-- 必填信息 开始 -->
+					</span>
+				</div>
+				</td>
+				<td class="CP_table_chanpina_two" rowspan="1">
+					<p><?php echo $order['name']; ?>(<?php echo $order['weixin_name']; ?>)					
+					<a title="微信对话" href="/weixinpl/weixin_inter/send_to_msg.php?fromuserid=<?php echo $order['weixin_fromuser']; ?>&customer_id=<?php echo $customer_id_en; ?>" ><i class="order-comment"></i></a>
+					</p>
+					<p><?php echo $order['phone']; ?></p>
+				</td>
+				<td class="CP_table_chanpina_three"  id="table_three" rowspan="1">
+					<span>邮费:</span><b><?php echo $order['express_pirce']?$order['express_pirce']."元":'免邮'; ?></b>
+				</td>
+
+				<td class="CP_table_chanpina_four " id="table_four_<?php echo $order['batchcode']; ?>" rowspan="1">
+					<p class="CP_table_chanpina_fourp">
+					<?php 
+												
+					$send_str = "<img style='width: 18px;' src=\"/weixinpl/common/images_V6.0/contenticon/gbicon.png\" /> <b style=\"color:#d53131\">状态异常</b>";
+					switch($order['send_status']){
+						case 0:
+							$send_status = '未发货';
+							$send_str = "<img src=\"/weixinpl/common/images_V6.0/contenticon/notaffirm-icon.png\" /> <b>未发货</b>";
+						    break;  
+						case 1:
+							$send_status = '已发货';
+							$send_str = "<img src=\"/weixinpl/common/images_V6.0/contenticon/affirm-icon.png\" /> <b style=\"color:#31B0D5\">已发货</b>";								
+						    break;		
+						case 2:
+							$send_status = '顾客已收货';
+							$send_str = "<img src=\"/weixinpl/common/images_V6.0/contenticon/confirm_delivery.png\" /> <b style=\"color:#337AB7\">顾客已收货</b>";								
+						    break;								
+						default:	
+							$send_status = '状态异常';
+							$send_str = "<img style='width: 18px;' src=\"/weixinpl/common/images_V6.0/contenticon/gbicon.png\" /> <b style=\"color:#d53131\">状态异常</b>";	
+					} 
+					
+					$express_num       = '';
+					$express_remark    = '';
+					$express_id		   = -1;	
+					$express_create_time   = '';	
+					$express_receive_time  = '';	
+					if(in_array($order['status'],$send_status_array)){ 
+						//已发货 查询快递信息
+						$return_d_s  = $this->model->order_delivery_select($order['id']);
+						$express_num          = $return_d_s['adress']['express_num'];
+						$express_remark       = $return_d_s['adress']['remark'];
+						$express_id           = $return_d_s['adress']['express_id'];
+						$express_create_time  = $return_d_s['adress']['create_time'];
+						$express_receive_time = $return_d_s['adress']['receive_time'];
+						//已发货 查询快递信息
+					}
+
+					if($express_id>0){
+						//匹配快递名称
+						$express_send = array_filter($express, function($t) use ($express_id) { return $t['id'] == $express_id; });
+						$expresses_name = array_column($express_send, 'expresses_name');
+						$send_status = $expresses_name[0];
+						//匹配快递名称 End
+					}						
+					
+					echo $send_str;
+					?>
+					</p>	
+					<?php 
+					if(!empty($express_create_time)){ echo "<p>发货时间:".$express_create_time."</p>"; }
+					if(!empty($express_receive_time)){ echo "<p>收货时间:".$express_receive_time."</p>"; }					
+					?>
+				</td>
+
+				<td class="CP_table_chanpina_five" id="table_five_<?php echo $order['batchcode']; ?>" rowspan="1">
+					<?php 
+					$status_str = "<span class='btn btn-grey'>未完成</span><br>";
+					switch($order['status']){
+						case 3:
+							$status_str = "<span class='btn btn-success'>已完成</span><br>";
+						    break;  												
+						default:	
+							$status_str = "<span class='btn btn-grey'>未完成</span><br>";
+					} 
+					echo $status_str;					
+					?>								
+				</td>
+				
+				<td class="CP_table_chanpina_six" rowspan="1">
+					<a title="订单详情" onclick="showDetail('<?php echo $order['batchcode']; ?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon44.png" /></a>					
+					<a title="订单日志" onclick="showLog('<?php echo $order['batchcode']; ?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon11.png" /></a>
+					<?php 
+					if(in_array($order['status'],$send_button)){ 
+					?>					
+					<a class="change_add_<?php echo $order['batchcode']; ?>" title="修改收件地址" onclick="showAddress('<?php echo $order['batchcode']; ?>',1)" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon52.png" /></a>					
+					<a id="button_delivery_<?php echo $order['batchcode']; ?>" title="发货"  onclick="showDelivery('<?php echo $order['batchcode']; ?>')" ><img src="/weixinpl/common/images_V6.0/operating_icon/icon42.png" /></a>
+					<?php 
+					}
+					?>					
+				</td>
+
+			</tr>
+			 
+
+        <!--订单详情开始·定位属性-->		
+        <tr class="WSY_positiontrhide">
+          	<td colspan="11" class="order_td">
+            	<div class="order order_hide div_show" id="order_<?php echo $order['batchcode']; ?>" >
+					<i class="guanbi" onclick="hideDetail()" ><img class="WSY_modifypimg" src="/weixinpl/common/images_V6.0/contenticon/gbicon.png" alt=""></i><!--点击关闭信息-->
+                	<dl class="order_dl01">
+                        <dt><a>订单信息</a></dt>
+                        <div class="order_div">
+                            <dd><b>订单号：</b><span><?php echo $order['batchcode']; ?></span></dd>
+                            <dd><b>下单时间：</b><span><?php echo $order['create_time']; ?></span></dd>
+                            <dd><b>支付时间：</b><span><?php echo $order['pay_time']; ?></span></dd>
+                            <dd><b>支付方式：</b><span><?php if($order['pay_status'] == 1){echo "微信支付";} ?></span></dd>
+							<dd><b>收货方式：</b><span>快递</span></dd>
+							<dd><b>买家姓名：</b><span><?php echo $order['name']; ?></span></dd>
+							<dd><b>微信名称：</b><span><?php echo $order['weixin_name']; ?></span></dd>
+							<dd><b>买家电话：</b><span><?php echo $order['phone']; ?></span></dd>							
+						</div>
+                        <div class="order_div">
+							<dd><b>订单金额：</b><span class="WSY_red">免费（奖品）</span></dd>
+							<dd><b>邮费：</b><span class="WSY_red"><?php echo $order['express_pirce']?$order['express_pirce']."元":'免邮'; ?></span></dd>
+							<dd><b>使用购物币：</b><span>0.00</span></dd>
+							<dd><b>实付金额：</b><span class="WSY_red"><?php echo number_format($order['express_pirce'],2).OOF_T; ?></span></dd>
+                        </div>
+                    </dl>
+                    <dl class="order_dl02">
+                        <form>
+                        <dt><a>收货信息</a></dt>
+                        <div class="order_div01">
+                            <dd><b>收货人：</b><span data-name="<?php echo $order['batchcode']; ?>"><?php echo $order['a_name']; ?></span></dd>
+                            <dd><b>收货电话：</b><span data-phone="<?php echo $order['batchcode']; ?>"><?php echo $order['a_phone']; ?></span></dd>
+                            <dd><b>收货地址：</b><span title="<?php echo $order['location_p'].$order['location_c'].$order['location_a']. '  ' .$order['address']; ?>" class="order_span_break" data-add="<?php echo $order['batchcode']; ?>"><?php echo $order['location_p'].$order['location_c'].$order['location_a']. '  ' .$order['address']; ?></span></dd>
+                            <dd><b>订单备注：</b><span class="order_span_break" ><?php echo $order['remark']; ?></span></dd>
+                            <dd><b>物流公司：</b><span id="express_id2_<?php echo $order['batchcode']; ?>"><?php echo $send_status; ?></span></dd>
+                        </div>
+						
+                        <div class="order_div01">
+							<dd>
+							<b>物流单号：</b><span><input type="text" disabled="disabled"  id="express_num2_<?php echo $order['batchcode']; ?>" value="<?php echo $express_num; ?>" ></span>
+							<?php if(!empty($express_num)){?>
+								<span class="order_kuaidi" onclick="KuaiDi100('<?php echo $order['batchcode']; ?>')" >(点击查看物流)</span>
+							<?php }	?>
+							</dd>
+							<dd class="order_ddleft"><b>物流备注：</b><span><textarea class="textarea01" disabled="disabled" id="express_remark2_<?php echo $order['batchcode']; ?>"><?php echo $express_remark; ?></textarea></span></dd>
+                        </div>
+                        </form>
+                    </dl>
+
+				</div>
+				<!--订单详情 End -->
+				
+				<!-- 订单日志 -->
+            	<div class="WSY_modifydiv order_hide div_show" id="log_<?php echo $order['batchcode']; ?>" >
+                    <dl class="order_log">
+                        <dt><a>订单日志</a></dt>
+							<?php
+								$order_log_detail = '';
+								$order_log = $this->model->order_log_select($order['id']);
+								if($order_log['errcode']==0){
+									$order_log_detail = $order_log['log'];
+									foreach($order_log_detail as $key_log => $log){																
+							?>
+							<dd>
+								<b>时间：</b><span><?php echo $log['create_time'];?></span>
+								<b>操作：</b>
+								<span>
+							<?php
+									$op_str = "";
+									$op = $log['operation'];									//0：下单；1：取消；2：支付；3：修改价格；4：发货：5：申请延期；6：确认延期；7：确认收货；8：退货；9：退货审批；10：退款；11：退款审批；12：退款；13：用户退货填单；14：商家确认退货；';
+									switch($op){
+										case 0 :$op_str = "下单";break;
+										case 1 :$op_str = "取消";break;
+										case 2 :$op_str = "支付";break;
+										case 3 :$op_str = "修改价格";break;
+										case 4 :$op_str = "发货";break;
+										case 5 :$op_str = "申请延期";break;
+										case 6 :$op_str = "确认延期";break;
+										case 7 :$op_str = "确认收货";break;
+										case 8 :$op_str = "退货";break;
+										case 9 :$op_str = "退货审批";break;
+										case 10 :$op_str = "退款";break;
+										case 11 :$op_str = "退款审批";break;
+										case 12 : $op_str = "退款操作";break;
+										case 13 :$op_str = "用户退货填单";break;
+										case 14 :$op_str = "商家确认退货";break;
+										case 15 :$op_str = "退货完成";break;
+										case 16 :$op_str = "确认完成";break;
+										case 17 :$op_str = "订单评价";break;
+										case 18 :$op_str = "申请维权";break;
+										case 19 :$op_str = "维权审批";break;
+										case 20 :$op_str = "维权处理";break;
+										case 21 :$op_str = "微信退款";break;
+										case 22 :$op_str = "订单删除";break;
+										case 23 :$op_str = "维权扣除合作商款项";break;
+                                        case 30 :$op_str = "系统派单";break;
+                                        case 31 :$op_str = "运费修改";break;
+                                        case 34 :$op_str = "修改快递单号";break;
+									}
+									echo $op_str;
+								?>
+								</span>
+								<b>描述：</b><span><?php echo $log['descript'];?></span>
+								<b>操作人：</b><span><?php echo $log['operation_user'];?></span>
+							</dd>
+							<?php   }  
+							    }else{
+							?>
+							<dd>
+								<b>错误代码：</b><span><?php echo $order_log['errcode'];?></span>
+								<b>描述：</b><span><?php echo $order_log['errmsg'];?></span>							
+							</dd>
+						<?php } ?>
+                    </dl>
+             </div>
+			<!-- 订单日志 End -->	
+
+			<!--修改收件地址-->
+			<div class="WSY_modifydiv order_hide div_show" id="address_<?php echo $order['batchcode']; ?>" >
+				<dl class="order_dl_gaijia">
+					<dt><a>修改收件地址</a></dt>
+					<dd class="order_dl_add"><b>收件人姓名：</b><span><input type="text" id="address_name_<?php echo $order['batchcode']; ?>" value="<?php echo $order['a_name']; ?>"></span></dd>
+					<dd class="order_dl_add"><b>收件人手机：</b><span><input type="text" id="address_phone_<?php echo $order['batchcode']; ?>" value="<?php echo $order['a_phone']; ?>"></span></dd>
+					<dd class="order_dl_add"><b>省级：</b><span><select name="address_p_<?php echo $order['batchcode']; ?>" id="address_p_<?php echo $order['batchcode']; ?>" ></select></span></dd>
+					<dd class="order_dl_add"><b>市级：</b><span><select name="address_c_<?php echo $order['batchcode']; ?>" id="address_c_<?php echo $order['batchcode']; ?>" ></select></span></dd>
+					<dd class="order_dl_add"><b>区级：</b><span><select name="address_a_<?php echo $order['batchcode']; ?>" id="address_a_<?php echo $order['batchcode']; ?>" ></select></span></dd>
+					<dd class="order_dl_add"><b>详细地址：</b><span><input type="text" name="address_add_<?php echo $order['batchcode']; ?>" id="address_add_<?php echo $order['batchcode']; ?>" value="<?php echo $order['address']; ?>"></span></dd>
+					<dd class="WSY_bottonli con-button"><input  type="button" value="确定" class="order_add" data-batchcode="<?php echo $order['batchcode']; ?>" data-id="<?php echo $order['id']; ?>"></dd>
+					<dd class="WSY_bottonli con-button2"><input  type="button" value="取消" onclick="hideDetail()"></dd>
+				</dl>
+			</div>
+			<script type="text/javascript">
+				new PCAS('address_p_<?php echo $order['batchcode']; ?>', 'address_c_<?php echo $order['batchcode']; ?>', 'address_a_<?php echo $order['batchcode']; ?>', '<?php echo $order['location_p']; ?>', '<?php echo $order['location_c']; ?>', '<?php echo $order['location_a']; ?>');
+			</script>
+			<!--修改收件地址End-->		
+
+
+			<!--订单发货-->
+			<div class="order order_delivery_dl order_hide div_show" id="delivery_<?php echo $order['batchcode']; ?>"  >
+				<i class="guanbi" onclick="hideDetail()" ><img class="WSY_modifypimg" src="/weixinpl/common/images_V6.0/contenticon/gbicon.png" alt=""></i><!--点击关闭信息-->
+				<dl>
+					<form>
+					<dt><a>收货信息</a></dt>
+					<div class="order_div01">
+						<dd><b>收货人：</b><span data-name="<?php echo $order['batchcode']; ?>"><?php echo $order['a_name']; ?></span></dd>
+						<dd><b>收货电话：</b><span data-phone="<?php echo $order['batchcode']; ?>"><?php echo $order['a_phone']; ?></span></dd>
+						<dd><b>收货地址：</b><span class="order_span_break" data-add="<?php echo $order['batchcode']; ?>"><?php echo $order['location_p'] . $order['location_c'] . $order['location_a'] . $order['address']; ?></span></dd>
+						<dd><b>订单备注：</b><span class="order_span_break" ><?php echo $order['remark']; ?></span></dd>
+						<dd><b>物流公司：</b><span>
+							<select id="express_id_<?php echo $order['batchcode']; ?>">
+							<?php
+							foreach($express as $express_line){								
+							?>
+							<option value="<?php echo $express_line['id']; ?>" ><?php echo $express_line['expresses_name']; ?></option>
+							<?php } ?>
+							</select>
+						</span><span><a style="color:blue" href="/weixinpl/back_newshops/Distribution/express/express_company.php?customer_id=<?php echo $customer_id_en;?>">点击添加物流公司</a></span></dd>
+
+					<dd class="WSY_bottonli con-button"><input  type="button" value="确定发货" class="order_delivery" data-batchcode="<?php echo $order['batchcode'];?>" data-id="<?php echo $order['id'];?>" ></dd>
+					<dd class="WSY_bottonli con-button2"><input  type="button" value="取消" onclick="hideDetail()"></dd>
+					</div>
+					<div class="order_div01">
+						<dd><b>物流单号：</b><span><input type="text" placeholder="虚拟发货可不用填" id="express_num_<?php echo $order['batchcode']; ?>" ></span></dd>
+						<dd class="order_ddleft"><b>物流备注：</b>
+						<span><textarea class="textarea01" placeholder="写上要留言的信息" id="express_remark_<?php echo $order['batchcode']; ?>"></textarea></span>
+						</dd>
+					</div>
+					</form>
+				</dl>
+			</div>
+			<!--订单发货End-->
+			
+				
+
+            </td>
+        </tr>
+		<!--订单详情开始·定位属性 End -->	
+		<?php
+			}
+		}
+		?>		
+			
+			
+		</table>
+	</div>
+
+	<!--翻页开始-->
+	<div class="WSY_page">
+	</div>
+	<!--翻页结束-->
+
+     <!--表格结束-->
+    </div>
+
+   </div>
+    <!--订单管理代码结束-->
+	
+	
+</div>
+
+</body>
+<script type="text/javascript" src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript" src="/weixinpl/common/region_select.js"></script>
+<script type="text/javascript" src="/weixinpl/common/utility.js"></script>
+<script src="/weixinpl/common/js/floatBox.js"></script>
+<script>
+
+<!-- 分页 --start-->
+var customer_id = "<?php echo $customer_id_en;?>";
+var pagenum = <?php echo $pagenum ?>;
+var count =<?php echo $page ?>;//总页数
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+	pageCount:count,
+	current:pagenum,
+	backFn:function(p){
+	var url="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&pagenum="+p;
+	search_condition(url);
+   }
+});
+
+	
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a>count) || isNaN(a)){
+		layer.alert('没有下一页了');
+		return false;
+	}else{
+		var url="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list&pagenum="+p;
+		search_condition(url);
+
+	}
+}
+
+function search_condition(url){
+	var url2             = '';		
+	var search_class = $("#search_class").val();      //订单状态
+	if(search_class !=""){
+		url2=url2+"&search_class="+search_class;
+	}
+	
+	var search_begintime = $("#begintime").val();//下单时间开始
+	var search_endtime   = $("#endtime").val();  //下单时间结束
+	if(search_endtime!=''){
+		if(search_endtime<search_begintime){
+			alert("下单时间有误，结束时间不能比开始时间早！");
+			return;
+		}
+	}
+	
+	if(search_begintime !=""){
+		url2=url2+"&search_begintime="+search_begintime;
+	}	
+	
+	if(search_endtime !=""){
+		url2=url2+"&search_endtime="+search_endtime;
+	}	
+	
+
+	var pay_begintime = $("#pay_begintime").val(); // 订单支付时间开始
+	var pay_endtime   = $("#pay_endtime").val();   // 订单支付时间结束
+	if(pay_endtime!=''){
+		if(pay_endtime<pay_begintime){
+			alert("支付时间有误，结束时间不能比开始时间早！");
+			return;
+		}	
+	}
+	
+	
+	if(pay_begintime !=""){
+		url2=url2+"&pay_begintime="+pay_begintime;
+	}	
+	
+	if(pay_begintime !=""){
+		url2=url2+"&pay_begintime="+pay_begintime;
+	}		
+	
+	var search_batchcode = $("#search_batchcode").val();  //订单号
+	
+	if(search_batchcode !=""){
+		url2=url2+"&search_batchcode="+search_batchcode;
+	}	
+	
+	var search_product_name = $("#search_product_name").val();  //产品名称
+	
+	if(search_product_name !=""){
+		url2=url2+"&search_product_name="+search_product_name;
+	}	
+	
+	var search_name      = $("#search_name").val();       //搜索姓名
+	
+	if(search_name !=""){
+		url2=url2+"&search_name="+search_name;
+	}	
+	
+	var search_name_type = $("#search_name_type").val();  //搜索姓名类型
+	
+	if(search_name_type !=""){
+		url2=url2+"&search_name_type="+search_name_type;
+	}		
+	
+	var search_phone     = $("#search_phone").val();      //搜索手机号
+	
+	if(search_phone !=""){
+		url2=url2+"&search_phone="+search_phone;
+	}	
+	
+	var search_paystyle  = $("#search_paystyle").val();   //支付方式
+	
+	if(search_paystyle !=""){
+		url2=url2+"&search_paystyle="+search_paystyle;
+	}		
+	
+	var pagesize         = $("#pagesize").val();          //页码
+
+	if(pagesize !=""){
+		url2=url2+"&pagesize="+pagesize;
+	}		
+
+	document.location=url+url2;
+}
+
+<!-- 分页 --end-->
+
+
+<!-- layer --end-->
+var index_layer;
+function layer_open(){
+	index_layer= layer.load(0, {
+		shade: [0.1,'#000'], //0.1透明度的白色背景
+		content: '<div style="position:relative;top:30px;width:200px;color:red">数据处理中</div>'
+	});
+}
+<!-- layer --end-->
+
+
+<!-- 订单搜索 --end-->
+
+function searchForm(){
+	var url="/mshop/admin/index.php?m=slyder_adventures&a=reward_order_list";
+	search_condition(url); 
+}
+
+<!-- 订单搜索 --end-->
+
+
+
+<!-- 关闭订单详情 -->
+function hideDetail(){
+	$(".order_hide").fadeOut("slow");
+}
+<!-- 关闭订单详情 --end-->
+
+<!-- 显示订单详情 -->
+function showDetail(batchcode){
+	var div = $("#order_"+batchcode);
+	$(".div_show").not(div).hide();
+	if(div.is(":hidden")){
+		div.fadeIn("slow");
+	}else{
+		div.fadeOut("slow");
+	}
+}
+<!-- 显示订单详情 --end-->
+
+
+<!-- 显示订单日志 -->
+function showLog(batchcode){
+	var div = $("#log_"+batchcode);
+	$(".div_show").not(div).hide();
+	if(div.is(":hidden")){
+		div.fadeIn("slow");
+	}else{
+		div.fadeOut("slow");
+	}
+}
+<!-- 显示订单日志 --end-->
+
+
+<!-- 显示修改地址发货 -->
+function showAddress(batchcode){
+	var div = $("#address_"+batchcode);
+	$(".div_show").not(div).hide();
+	if(div.is(":hidden")){
+		div.fadeIn("slow");
+	}else{
+		div.fadeOut("slow");
+	}
+}
+<!-- 显示修改地址发货 --end-->
+
+
+<!-- 修改地址 -->
+$(".order_add").click(function(){
+	var batchcode = $(this).data('batchcode');
+	var order_id  = $(this).data('id');
+	layer.confirm('您确认要修改<br>订单:'+batchcode+' 的收货地址信息吗', {
+		btn: ['修改收货信息','取消']
+	}, function(confirm){
+
+		var addressName = $("#address_name_"+batchcode).val();
+		var addressPhone = $("#address_phone_"+batchcode).val();
+		var addressP = $("#address_p_"+batchcode).val();
+		var addressC = $("#address_c_"+batchcode).val();
+		var addressA = $("#address_a_"+batchcode).val();
+		var addressAdd = $("#address_add_"+batchcode).val();
+
+		if(addressName=="" || addressPhone=="" || addressP=="" || addressC=="" || addressA=="" || addressAdd=="" ){
+			layer.alert("请输入完整的收件人信息", function(index){layer.close(index);});
+			return;
+		}
+		if((/^\s+$/g).test(addressName)){
+			layer.alert("请输入正确的姓名", function(index){layer.close(index);});
+			return;
+		}
+        if( !chkPhoneNumber(addressPhone) && !chk400(addressPhone) ){
+            layer.alert("请输入正确的电话号码", function(index){layer.close(index);});
+			return;
+        }
+		if((/^\s+$/g).test(addressAdd)){
+			layer.alert("请输入正确的详细地址", function(index){layer.close(index);});
+			return;
+		}
+
+		layer.close(confirm);
+		layer_open();
+		$.ajax({
+			url: "/mshop/admin/index.php?m=slyder_adventures&a=reward_order_changeAdd",
+			type:"POST",
+			data:{'order_id':order_id,'addressName':addressName,'addressPhone':addressPhone,'addressP':addressP,'addressC':addressC,'addressA':addressA,'addressAdd':addressAdd},
+			dataType:"json",
+			success: function(res){
+				layer.close(index_layer);
+				if(res.errcode == 0){
+					$("span[data-add='"+batchcode+"']").text(addressP+addressC+addressA+addressAdd);
+					$("span[data-name='"+batchcode+"']").text(addressName);
+					$("span[data-phone='"+batchcode+"']").text(addressPhone);
+					showAddress(batchcode);
+					layer.alert('订单：'+batchcode+'<br>地址更改成功!',{title:'执行成功'});
+				}else if(res.errcode>0){
+					layer.alert(res.errmsg,{title:'执行失败'});
+				}
+			},
+			error:function(){
+				layer.close(index_layer);
+				layer.alert("网络错误请检查网络",{title:'错误'});
+			}
+		});
+	}, function(){
+		layer.msg('已取消', {
+			time: 4000,
+			btn: ['确认'],
+			icon:1
+		});
+	});
+
+});
+<!-- 修改地址 End -->、
+
+
+<!-- 显示订单发货 -->
+function showDelivery(batchcode){
+	var div = $("#delivery_"+batchcode);
+	$(".div_show").not(div).hide();
+	if(div.is(":hidden")){
+		div.fadeIn("slow");
+	}else{
+		div.fadeOut("slow");
+	}
+}
+<!-- 显示订单发货 --end-->
+
+
+<!-- 发货 -->
+$(".order_delivery").click(function(){
+	var batchcode = $(this).data('batchcode');
+	var order_id  = $(this).data('id');
+	var $button   = $(this);
+	layer.confirm('您确认要发货吗', {
+		btn: ['发货','取消']
+	}, function(confirm){
+
+		var expressID     = $("#express_id_"+batchcode).val();
+		var expressName   = $("#express_id_"+batchcode).find("option:selected").text();
+		var expressRemark = $("#express_remark_"+batchcode).val();
+		var expressNum    = $("#express_num_"+batchcode).val();
+
+		if(expressNum=="" && expressID!=0 && expressName!='虚拟发货'){
+			layer.alert("请输入快递单号" ,{title:'错误',icon:2});
+			return;
+		}
+		layer.close(confirm);
+		layer_open();
+		$.ajax({
+			url: "/mshop/admin/index.php?m=slyder_adventures&a=reward_order_send",
+			type:"POST",
+			data:{'batchcode':batchcode,'order_id':order_id,'expressID':expressID,'expressRemark':expressRemark,'expressNum':expressNum},
+			dataType:"json",
+			success: function(res){
+				layer.close(index_layer);
+				if(res.errcode==0){
+					$button.parent("dd").next("dd").remove();
+					$button.parent("dd").remove();
+					var sendstr = "";
+					$("#button_delivery_"+batchcode).prev("a").remove();
+					$("#express_id2_"+batchcode).text(expressName);
+					$("#express_remark2_"+batchcode).text(expressRemark);
+					$("#express_num2_"+batchcode).val(expressNum);
+					$("#express_num2_"+batchcode).parent('span').parent('dd').append('<span onclick="KuaiDi100('+batchcode+')" class="order_kuaidi">(点击查看物流)</span>');
+					$(".change_add_"+batchcode).remove();
+
+					sendstr = '<p class="CP_table_chanpina_fourp"><img src="/weixinpl/common/images_V6.0/contenticon/affirm-icon.png"><b style="color:#31B0D5"> 已发货</b></p><p>发货时间:'+res.time+'</p>';
+					$("#button_delivery_"+batchcode).remove();
+					
+					$("#table_four_"+batchcode).html(sendstr);
+					$(".order_hide").fadeOut("slow");
+					layer.alert('订单：'+batchcode+' 发货成功!',{title:'发货成功',icon:1});
+				}else{
+					layer.alert(res.errmsg,{title:'执行失败',icon:2});
+				}
+			},
+			error:function(res){
+				layer.close(index_layer);
+				layer.alert("网络错误请检查网络");
+			}
+		});
+	}, function(){
+		layer.msg('已取消', {
+			time: 4000,
+			btn: ['确认'],
+			icon:1
+		});
+	});
+
+});
+<!-- 发货 --end-->
+
+<!-- 快递100 -->
+function KuaiDi100(obj){
+	KDNum = $("#express_num2_"+obj).val();
+	KDName = $("#express_id2_"+obj).text().trim();
+
+	layer.open({
+		type: 2,
+		title: '快递查询',
+		shadeClose: true,
+		shade: 0.5,
+		area: ['450px', '70%'],
+		content: '<?php echo Protocol ?>m.kuaidi100.com/index_all.html?type='+KDName+'&postid='+KDNum+'#result'
+	});
+}
+<!-- 快递100 --end-->
+
+
+<!-- 自动刷新 -->
+var refer_time=10;
+var refer_left_time=0;
+var refer_ing=false;
+function auto_refer(){
+	if($('#auto_refer').is(':checked')){
+		if(refer_left_time<refer_time){
+			$('#search_form div .WSY_righticon_li04 label').html('<span><strong>'+(refer_time-refer_left_time)+'</strong></span>秒后自动刷新');
+			refer_left_time++;
+		}else{
+				url=window.location.href;
+				if(url.indexOf("&isauto=1")==-1)
+			　{
+			　　url=window.location.href+"&isauto=1";
+			　}
+				location.href=url;
+		}
+	}else{
+		$('#search_form div .WSY_righticon_li04 label').html('自动刷新订单');
+		refer_left_time=0;
+		refer_ing=false;
+		url=window.location.href;
+		if(url.indexOf("&isauto=1")>0)
+		{
+			url=url.replace("&isauto=1","");
+			location.href=url;
+		}
+	}
+	setTimeout(auto_refer, 1000);
+};
+auto_refer();
+<!-- 自动刷新 --end-->
+
+//上传文件效果
+$("input[type=file]").change(function() {
+	$(this).parents(".uploader").find(".filename").val($(this).val());
+});
+
+$("input[type=file]").each(function() {
+	if ($(this).val() == "") {
+		$(this).parents(".uploader").find(".filename").val("请选择文件...");
+	}
+});
+
+function importMember(){
+	layer_open();	
+	var f_content = document.getElementById("excelfile").value;
+	var fileext=f_content.substring(f_content.lastIndexOf("."),f_content.length)
+
+	fileext=fileext.toLowerCase();
+	if (fileext!='.xls'){
+		layer.close(index_layer);
+		layer.alert("对不起，导入数据格式必须是xls格式文件哦，请您调整格式后重新上传，谢谢 ！");
+		return false;
+	}
+	var formData = new FormData();
+    formData.append("excelfile",$("#excelfile")[0].files[0]);
+    formData.append("name",name);
+    $.ajax({
+        url : '/mshop/admin/index.php?m=slyder_adventures&a=import_excel',
+        type : 'POST',
+        dataType:"json",
+        data : formData,
+        // 告诉jQuery不要去处理发送的数据
+        processData : false,
+        // 告诉jQuery不要去设置Content-Type请求头
+        contentType : false,
+        success : function(res) {
+        	layer.close(index_layer);
+
+			layer.confirm(res.errmsg, {
+					btn: ['确定']
+				}, function(confirm){
+		            location.reload();
+				});
+        }
+    });
+}
+
+/*校验邮箱地址*/
+function checkEmail(str){
+	var re= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+	return re.test(str);
+}
+
+//导出订单
+function export_excel(){
+	var name ="slyder_adventures_reward_orders_excel";
+	var excelArray = [
+			["batchcode","订单号"],
+			["expressname","快递"],
+			["expressnum","快递单号"],
+			["send_remarks","备注信息"],
+			["createtime","下单时间"],
+			["product_name","产品名称"],
+			["product_num","数量"],
+			["name","收货人"],
+			["phone","收货电话"],
+			["address","收货地址"],
+			["express_price","运费"],
+			["pay_status","支付状态"],
+			["pay_type","支付方式"],
+			["paytime","支付时间"],
+			["status","订单状态"],
+			["send_status","发货状态"],
+			["remark","客户留言"],
+		 ];
+
+	var status = '<?php echo $condition["orders.status"]; ?>';//订单状态
+	var begintime = $("#begintime").val();//下单时间开始
+	var endtime = $("#endtime").val();//下单时间结束
+	var pay_begintime = $("#pay_begintime").val();//订单支付时间开始
+	var pay_endtime = $("#pay_endtime").val();//订单支付时间结束
+	var search_batchcode = $("#search_batchcode").val();//订单号
+	var search_name = $("#search_name").val();//搜索姓名
+	var search_name_type = $("#search_name_type").val();//微信名还是收货名
+	var search_product_name = $("#search_product_name").val();//搜索产品
+	var search_phone = $("#search_phone").val();//搜索电话
+	var search_paystyle = $("#search_paystyle").val();//支付方式
+	if(begintime != '' && endtime != '' && endtime < begintime){
+		 alert("下单时间有误，结束时间不能比开始时间早！");
+		return;
+	 }
+
+	if(pay_begintime != '' && pay_endtime !='' && pay_endtime < pay_begintime){
+		 alert("支付时间有误，结束时间不能比开始时间早！");
+		return;
+	}
+
+	/*导出订单筛选框*/
+	exportBox(excelArray);
+	$(".floatbox").show();
+
+	$(".floatinputs").click(function(){
+		var str="";
+		$("input[name='excel_field[]']:checkbox").each(function(){
+            if($(this).is(':checked')){
+                str += $(this).val()+","
+            }
+        })
+        str = str.substring(0,str.length-1);
+
+	if(str==""){
+		str = 0;
+	}
+	// if(search_batchcode==""){
+	// 	search_batchcode = -1;
+	// }
+	// if(search_name==""){
+	// 	search_name = -1;
+	// }
+	// if(search_product_name==""){
+	// 	search_product_name = -1;
+	// }
+	// if(search_paystyle==""){
+	// 	search_paystyle = -1;
+	// }
+	// if(search_phone==""){
+	// 	search_phone = -1;
+	// }
+	// if(begintime==""){
+	// 	begintime = 0;
+	// }
+	// if(endtime==""){
+	// 	endtime = 0;
+	// }
+	// if(pay_begintime==""){
+	// 	pay_begintime = 0;
+	// }
+	// if(pay_endtime==""){
+	// 	pay_endtime = 0;
+	// }
+
+	var url_base='/weixin/plat/app/index.php/Excel/'
+
+	var excel_fields= str;
+	var parm =  '/customer_id/<?php echo passport_decrypt($customer_id); ?>/begintime/'+begintime+'/endtime/'+endtime+'/pay_begintime/'+pay_begintime+'/pay_endtime/'+pay_endtime+'/search_batchcode/'+search_batchcode+'/search_paystyle/'+search_paystyle+'/search_name/'+search_name+'/search_product_name/'+search_product_name+'/search_phone/'+search_phone+'/search_name_type/'+search_name_type+'/status/'+status+'/';
+	url_base += name + parm + 'excel_fields/'+str+'/';
+
+	var __s = [];
+	parm = parm.substring(1, parm.length-1);
+	console.log(parm);
+	__s = parm.split('/');
+	var _obj = {};
+	console.log(__s);
+	for (var i in __s) {
+		if (parseInt(i)%2 == 0) {
+			_obj[__s[i]] = '';
+		} else {
+			_obj[__s[i-1]] = __s[i];
+		}
+	}
+
+	var obj = JSON.stringify(_obj);
+
+		var emails = '';
+		var op     = 'iscount';
+		$.ajax({type:'post', async:false, url:'/weixinpl/common/explore/jiaoben.php',data:{fields:excel_fields,function_name:name,param_json:obj,customer_id:<?php echo passport_decrypt($customer_id); ?>,op:op,},
+			success:function(data)
+			{
+				var res = JSON.parse(data);
+
+				if(res.status == 2)
+				{
+					layer.msg(res.msg);
+					return;
+				}
+
+
+				var eamil_arr     = res.emails.split('#*#');
+				var eamil_address = "";
+				var type          = 2;
+				var op            = 'add_email';
+				var tips          = "导出数据已打包发送到您的邮箱，请注意查收";
+				if(eamil_arr.length>0)
+				{
+					eamil_address = eamil_arr[0];
+				}
+
+				if(res.errcode == 10003)
+				{
+					layer.msg(res.errmsg);
+					return;
+				}
+				else
+				{
+					type = 2;
+					tips = "请留意您的邮箱，导出完成后会发到你的邮箱上！";
+					layer.prompt({title: '请输入您邮箱地址',value:'', formType: 0}, function(email, prompt){
+
+						layer.close(prompt);
+						if (checkEmail(email)){
+							emails	  = email;
+							$.ajax({type:'post', async:false, url:'/weixinpl/common/explore/jiaoben.php', data:{fields:excel_fields,function_name:name,param_json:obj,customer_id:<?php echo passport_decrypt($customer_id); ?>,email:emails,op:op,type:type,},
+								success:function(data){
+									var res           = JSON.parse(data);
+									if(res.status == 2)
+									{
+										layer.msg(res.msg);
+										return;
+									}
+									$.post('/weixinpl/common/explore/jiaoben.php',{'debug':1},function(da){},'json');
+									layer.msg(tips);
+								}
+							 });
+
+						}
+						else
+						{
+							layer.msg("邮箱地址填写有误，请填写正确的邮箱地址");
+							return;
+						}
+					})
+				}
+
+
+			}
+		})
+		$(".floatbox").hide();
+		$(".floatbox").remove();
+	});
+}
+</script>
+</html>

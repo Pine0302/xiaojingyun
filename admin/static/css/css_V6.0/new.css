@@ -1,0 +1,38 @@
+* {
+font-size: 14px;
+}
+.WSY_member dd select{
+width:auto;
+height: 32px;
+border: 1px solid #ddd;
+padding: 5px;
+border-radius: 5px;
+}
+.WSY_member div {
+  margin-right: 0;
+}
+#edui1_iframeholder{
+height:300px!important;
+}
+.WSY_member1{
+  overflow: hidden;
+  margin: 20px 0 0 20px;
+}
+.WSY_member1 dt {
+  display: block;
+  float: left;
+  width: 110px;
+  line-height: 20px;
+}
+.WSY_member1 dd {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+.WSY_member1 dd {
+  display: block;
+  float: left;
+}
+.edui-default .edui-for-music .edui-dialog-content {
+  width: 515px;
+  height: 180px!important;
+}

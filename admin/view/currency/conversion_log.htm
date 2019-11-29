@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>转换日志</title>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+</head>
+<style>
+.operation-btn{display:inline-block;padding:0 15px;background-color:#06a7e1;color:#fff;border-radius:3px;cursor:pointer;height:30px;line-height:30px;}
+.WSY_list{width:97%;margin-left:18px;}
+.header-left{float:left;}
+.header-left span,.header-left input,.header-left select{vertical-align:middle;}
+a:hover{text-decoration: none!important;}
+table#WSY_t1 td{text-align: center;}
+.CP_table_chanpina_six img {
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+}
+</style>
+<body>
+       <!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+<!-- 头部列表开始 -->
+<style  type="text/css">
+body{
+	margin:0;
+	font-family:'微软雅黑','Times New Roman', Times, serif;
+	}
+.WSY_columnbox{overflow: auto}
+.navi_head{
+	height:38px;
+    background:#F4F4F4;
+    border-bottom:1px solid #D8D8D8;
+}
+.navi_body{
+	height:50px;
+	cursor: pointer;
+	transition:height ease 0.5s;
+}
+.headbox li{float: left;width:150px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	font-size:14px;
+	vertical-align:top;}
+.headbox li p{height: 38px;line-height: 38px}
+.headbox li .navi_title{
+	font-size:15px;
+	line-height:38px;
+	margin-top:0;
+    color:#646464;
+    font-weight:normal;
+}
+.navbox{background:#06a7e1;display: none;position: absolute;border-bottom:2px solid #06A7E1;}
+.navbox li{float: none;height: 38px;line-height: 38px;background:#FFFFFF;color:#646464;font-weight:normal;}
+.navbox li:hover{background:#EBEBEB;}
+.navbox li:hover a{border:none;}
+.clear{clear:both;}
+.navi_title:hover{background:#FFFFFF;}
+.operation-button{height: 50px;line-height: 50px;text-align: center;}
+.save-button,.add-selected-product{padding:5px 40px;;background-color:#06a7e1;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+</style>
+<div class="navi_body">
+	<div class="navi_head">
+		<ul class="headbox">
+		<li>
+			<p class="navi_title">零钱设置</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/payset.php?customer_id=<?php echo $customer_id; ?>"><li>支付设置</li></a>
+					<a href="/weixinpl/back_newshops/Base/moneybag/moneybag.php?customer_id=<?php echo $customer_id; ?>"><li>提现设置</li></a>
+					<a href="https://admin.weisanyun.cn/mshop/admin/index.php?m=currency&a=money_conversion&customer_id=<?php echo $customer_id; ?>"><li>转换设置</li></a>
+			</ul>
+		</li>
+
+		<li>
+			<p class="navi_title">待提现列表</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/cash_being.php?customer_id=<?php echo $customer_id; ?>"><li>待提现列表</li></a>	
+			</ul>
+		</li>
+
+		<li>
+			<p class="navi_title">零钱后台充值</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/shop_set.php?customer_id=<?php echo $customer_id; ?>"><li>零钱后台充值</li></a>	
+			</ul>
+		</li>
+
+		<li>
+			<p class="navi_title">零钱日志</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/recharge_log.php?customer_id=<?php echo $customer_id; ?>"><li>零钱日志</li></a>
+					<a href="https://admin.weisanyun.cn/mshop/admin/index.php?m=currency&a=conversion_log&customer_id=<?php echo $customer_id; ?>"><li>转换日志</li></a>	
+			</ul>
+		</li>
+		<div class="clear"></div>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$(".headbox li").hover(function(){
+			$(this).find(".navbox").stop().slideDown(300)
+	},function(){
+			$(this).find(".navbox").stop().slideUp(300)
+	})
+</script>
+
+       <!-- 头部列表结束 -->
+
+    <div class="WSY_data">
+    	<div class="WSY_list" style="margin-top:15px;">
+			<div class="header-left">
+				<span>用户ID：</span><input type="text" name="user_id" class="search-box" id="user_id" value="<?php echo $user_id;?>" onkeyup="clearInt(this)" />
+<!-- 				<span>转换类型：</span>
+				<select id="switch_type">
+					<option value="-1" <?php if($type==-1){echo 'selected';}?>>全部</option>
+					<option value="0" <?php if($type==0){echo 'selected';}?>>购物币</option>
+				</select> -->
+				<input type="button" class="my_search" id="search-button"  value="搜索" />
+				<input type="button" class="my_search" id="export-button" onclick="exportExcel();" style="margin-left:15px;" value="导出">
+			</div>
+    </div>
+			<table width="97%" class="WSY_table" id="WSY_t1">
+				<thead class="WSY_table_header">
+					<th width="7%">ID</th>
+					<th width="10%">用户ID</th>
+					<th width="10%">涉及金额</th>
+					<th width="10%">转换比例</th>
+					<th width="10%">转换类型</th>
+					<th width="15%">创建时间</th>
+					<th width="10%">操作人</th>
+					<th width="25%">备注信息</th>
+				</thead>
+				<?php
+					foreach($data2['list'] as $v){
+				?>
+				<tr>
+					<td><?php echo $v['id']; ?></td>
+					<td><?php echo $v['user_id']; ?></td>
+					<td><?php echo $v['money']; ?></td>
+					<td><?php echo "1&nbsp;:&nbsp;".$v['conversion_ratio']; ?></td>
+					<td><?php if($v['switch_type']="1") {echo defined('PAY_CURRENCY_NAME') ?PAY_CURRENCY_NAME: '购物币';}echo ""; ?></td>
+					<td><?php echo $v['createtime']; ?></td>
+					<td><?php echo $v['operation_user']; ?></td>
+					<td><?php echo $v['remark']; ?></td>
+				</tr>
+				<?php }?>
+			</table>
+    	</div>
+        <!--翻页开始-->
+        <div class="WSY_page">
+        	
+        </div>
+        <!--翻页结束-->
+    </div>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script src="/weixinpl/back_newshops/Common/js/percent/jquery.percentageloader.0.2.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script>
+var customer_id = '<?php echo $data['customer_id'];?>';
+var user_id = '<?php echo $user_id;?>';
+var switch_type = '<?php echo $switch_type;?>';
+
+
+  var pagenum = <?php echo $data2['pagenum']; ?>;
+  var count =   <?php echo $data2['page']; ?>;//总页数
+  	//pageCount：总页数
+	//current：当前页
+	$(".WSY_page").createPage({
+        pageCount:count,
+        current:pagenum,
+        backFn:function(p){
+			var url = "/mshop/admin/index.php?m=currency&a=	conversion_log&pagenum="+p+"&customer_id=<?php echo $data['customer_id']; ?>";
+			if( user_id != '' && user_id > 0 ){
+				url += '&user_id='+user_id;
+			}
+			// if( switch_type >= 0 ){
+			// 	url += '&switch_type='+switch_type;
+			// }
+			document.location= url;
+	   }
+    });
+</script>
+
+<script>
+  var pagenum = <?php echo $data2['pagenum']; ?>;
+  var page =   <?php echo $data2['page']; ?>;//总页数
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a==pagenum) || isNaN(a)){
+		return false;
+	}else{
+		var url = "/mshop/admin/index.php?m=currency&a=conversion_log&pagenum="+a+"&customer_id=<?php echo $data['customer_id']; ?>";
+		if( user_id != '' && user_id > 0 ){
+			url += '&user_id='+user_id;
+		}
+		// if( switch_type >= 0 ){
+		// 	url += '&switch_type='+switch_type;
+		// }
+		document.location= url;
+	}
+}
+</script>
+<script>
+//导出
+function exportExcel(){
+	var url='/weixin/plat/app/index.php/Excel/conversion_log/customer_id/<?php echo $data['customer_id']; ?>';
+	
+	if( user_id != '' && user_id > 0 ){
+		url += '/user_id/'+user_id;
+	}
+	
+	document.location = url;
+}
+
+//输入框按回车键触发搜索
+$('.header-left').find('input').on('keydown',function(){
+	if( event.keyCode == 13 ){
+		$('#search-button').click();
+	}
+});
+
+//搜索
+$('#search-button').click(function(){
+	var user_id = $('#user_id').val();
+	var switch_type = $('#switch_type').val();
+	
+	var url = "/mshop/admin/index.php?m=currency&a=conversion_log";
+	if( user_id != '' && user_id > 0 ){
+			url += '&user_id='+user_id;
+	}
+	// if( switch_type >= 0 ){
+	// 	url += '&switch_type='+switch_type;
+	// }
+	document.location= url;
+});
+
+//正整数
+function clearInt(obj){
+	if(obj.value.length==1){obj.value=obj.value.replace(/[^1-9]/g,'')}else{obj.value=obj.value.replace(/\D/g,'')}
+}
+</script>
+<?php
+	mysql_close($link);
+?>
+</body>
+</html>

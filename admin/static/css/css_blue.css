@@ -1,0 +1,152 @@
+/* 此文件为换肤文件，请只把样式的颜色属性在此填上*/
+/*个人中心其他部分*/
+#wodeInfoDiv{ background-color:#5d9cec;color:white;} 					 /*内联样式抽离*/
+.wo_title span{background-color:#f75252;border: 1px solid #f75252;} 
+#myInfoDiv{background-color:#5d9cec;color:white;}  
+.everyValue{color:white;border:1px solid #fff;}                                                  			       
+.selected{border-bottom: 3px solid #5d9cec; color:#5d9cec ; }        /*公共样式global.css*/
+.content-intro{ background:#5d9cec; }
+.seletor{color:  #5d9cec;}
+.command-button{background:#5d9cec;}
+.item-row-shengji{ background:#5d9cec;}
+.content-header{background:#5d9cec; }
+.shengji_button{background:#5d9cec;color:white;}
+.m-chatting-body:before{background-color:#5d9cec;}
+.dlg_commit{background:#5d9cec;}                                     /*mshop/self_dialog*/
+.submit-button {background:#5d9cec;}
+.submit-button span{background:#5d9cec;}
+.am-btn{background-color: #5d9cec;border-color: #5d9cec;}
+.am-btn-danger {color: #fff;background-color: #f55253;border-color: #f55253;}
+.btn{background-color:#5d9cec;}
+.btn span{color:white;}
+.ele_coinstyle {color:#5d9cec;}
+.ele_coinstyle_cash {color:#5d9cec;}
+.rule{color: #5d9cec; }
+.box .commtBtn{background: #5d9cec;color: #fff;}
+.ele #price{color: #5d9cec;}
+.right{color: #5d9cec;}
+.itemProContent.right_white_rect{color: #5d9cec;}
+.white-list .btnWhite4{color: #5d9cec;}
+.black{color:#3cbaef;}
+.info_right_text{color: #5d9cec}
+.redunder{color:#f75252;}
+/*个人中心其他部分*/
+
+/*从头改下来*/
+.btn_bottom	{background-color:#5d9cec;}                      /*order_css/tuihuo.css*/
+#send_msg{background-color: #5d9cec;color: #fff;border: 1px solid #5d9cec;}
+.type-left-button.select{border-left: 5px solid #5d9cec;}    /*css/vic.css*/
+.am-navbar .foot_balck{color:#5d9cec;}                       /*order_css/global.css*/
+.button_black18	{background-color:#5d9cec;}                  /*order_css/address.css*/
+#row2-button1{ background:#fff;color: #5d9cec;border: 1px solid #5d9cec;}
+.del-btn{background:#5d9cec;}
+#middle-tab .area-one.select{border-bottom: 2px solid #5d9cec;}             /*order_css/dingdan.css*/
+#middle-tab .area-one.select div{color:#5d9cec;}                                     /*order_css/dingdan.css*//*css/vic.css*/
+.chk_3:checked + label:after{background: #5d9cec;box-shadow: 0 0 1px #5d9cec;}         /*order_css/pingjia.css*/
+.btn_type1{background-color:#5d9cec;}                                                        /*order_css/pingjia.css*/
+.divOrderState .lineBlack{background: #5d9cec;}                                             /*order_css/dingdan_detail.css*/
+.am-navbar-label.btnBlack4{background: #5d9cec;}                                                /*order_css/dingdan.css*/
+.am-navbar-label.btnBlack2{background: #5d9cec;}                                                /*order_css/dingdan.css*/
+.pay_desc_btn{background: #5d9cec;}                                                /*order_css/dingdan_detail.css*/
+div.comment-mark.sel div{color:#5d9cec;}                                                        /*order_css/pingjia.css*/
+.bottomButton-rightWrapper{background:#5d9cec;}                                               /*goods/querendingdan.css*/
+ .footer .footer-box .weidian .foot_select{color:#5d9cec; }                                    /*class_page.php*/
+#submit_id{background: #5d9cec;}                                                                /*css/package/package_detail.css*/
+/*从头改下来*/
+/*my_microshop*/
+.chk_3:checked + label:after{background: #5d9cec;box-shadow: 0 0 1px #5d9cec;}                 /*list.css/r_style.css*/
+#middle-tab .area-one.select#kindAll{border-bottom: 2px solid #5d9cec;}            /*css/vic.css*/
+#middle-tab .area-one.select#kindRecommend{border-bottom: 3px solid #5d9cec;}            /*css/vic.css*/
+.parent-firststr{color:#5d9cec;}      
+.small-type-button6.ui-btn-hidden{background-color: #5d9cec;border-color: #5d9cec;color: #fff;}    /*my_profit.php*/
+#buts .content-base-size-selected{    background: url('../images_blue/goods_image/2016042705.png');background-size: 15px 15px;background-repeat: no-repeat;background-position: right bottom;color: #5d9cec;border: 1px solid #5d9cec;background-color: #fff;}
+.btnTitleRight{background-color:#5d9cec;}                                               /*list_css/r_style.css/464行*/                                     
+
+.shangjia{background-color:#5d9cec;}
+.sort-select{color: #5d9cec;}
+.small-type-button6{color: #5d9cec;border: 1px solid #5d9cec;}
+.blackBtn{color: #5d9cec;}
+.t-size.sel {border: 2px #5d9cec solid;}
+.t-size.sel b{background: url(../images_blue/list_image/bottomCheck.png) no-repeat ;background-size:cover}
+/*my_microshop*/
+
+/*my_store*/
+.menu-title .wordblack{color:#5d9cec;}                                           /*goods/my_store_list.css*/
+.menu-selected {border-bottom: 3px solid #5d9cec;}                             /*goods/my_store_list.css*/
+
+/*my_store*/
+.calendar_top{background:#5d9cec;}
+.am-share .showAll{background:#5d9cec;}
+.dlg_commit_left{background:#5d9cec;}
+.fanhui-btn{background:#5d9cec;}
+
+
+.jiesan-button {background: #5d9cec;}
+#queding{background:#5d9cec;}
+.am-navbar .foot_balck {color: #5d9cec!important;}
+.shangpin-dialog .active{background-image: url(/weixinpl/mshop/images_blue/goods_image/2016042705.png);   border: 1px solid #5d9cec;} /* goods/product_detail.css */
+.dlg_close_btn{background-color:#5d9cec; }   /*wodetuandui.css*/
+.default-span{background: #5d9cec;} /*vic.css */
+.addressDiv .address-item.default .set-default{background-image: url("../images_blue/vic/icon_option_on-orange.png");background-size: auto 100%;}/* 我的地址*/
+.divOrderState .sel .lineGray {background-color: #5d9cec;}
+#middle-tab .area-one.sel div 	{color: #5d9cec;}
+.sort-select{color: #5d9cec;}/*list.php*/
+
+
+/*myteam*/
+.dlg-div-content-item,.dlg-div-content-item-p,.dlg-div-content-item1{border: 1px solid #5d9cec;border-color:#5d9cec;}
+.register_info .btn{background: #5d9cec;}
+.register_info .btn_apply,.btn_ing{background: #5d9cec;}
+.fanhui-btn{background:#5d9cec;}
+
+#need_score{color:#5d9cec;}/*product_detail.css*/
+.dlg-content-row1-right-top2 span{color: #5d9cec;}
+
+#detail_div{color: #5d9cec;}
+.m-chatting-content .item-row-libao-span1{color:#5d9cec;}
+.m-chatting-content div .item-row-libao {border:1px solid #5d9cec;}
+.dlg-div-title-right-cell1-text{color: #5d9cec;}
+.dlg-div-content-item-selected,.dlg-div-content-item1-selected{background-image: url('../images_blue/goods_image/2016042705.png');}
+
+.divOrderState .sel .lineGray {background-color: #5d9cec;}
+#middle-tab .area-one.sel div 	{color: #5d9cec;}
+
+.itemMainDiv .rightWrapper .itemProPrice{color: #fc444c;}
+.item-delete-button{background: #5d9cec;}
+.content-footer-left3-item1-top1-font2 {color: #f65251;}
+.content-footer-left3-item1-top1-font1{color:#f65251;}
+/*my_collect*/
+.productMoney {color: #f65251;}
+.font-cl{color: #f65251;}
+/*order_form*/
+.select_coupon_span_r {color: #f65251 !important;}
+.bottomButton-left-right-span{color:#f65251}
+.foote .top .right{color:#f65251}
+.search_top#shopType1.selected{color: #5d9cec;}
+.search_top#shopType2.selected{color: #5d9cec;}
+
+.dw-cal-prev-y,.dw-cal-prev-m{background:url(/weixinpl/mshop/images_blue/zuo.png) center center no-repeat;background-size:19px;}
+.dw-cal-next-y,.dw-cal-next-m{background:url(/weixinpl/mshop/images_blue/you.png) center center no-repeat;background-size:19px;}
+.mbsc-mobiscroll .dw-cal-m-c  .dw-cal-days{color:#5d9cec ;}
+.dw-sel .dw-cal-day-fg.dd{background-color: #5d9cec;}
+.dw-cal-today .dw-i{color:#5d9cec;}
+.mbsc-mobiscroll  .dwb-e.dwb{color:#5d9cec;}
+
+.type-left-button.select{color:#5d9cec}
+#badge-span{background-color:#E4393C}
+.shangpin-price .curprice {color: #fb1d36;}
+
+.list_color_blue{color:#5d9cec}
+
+.item-wrapper-right-row2-span1{color: #5b9de9;}
+.goodsRedRect{background-color: #5d9cec;}
+.copy_tip{border:1px solid #5d9cec;color:#5d9cec;}
+.search_top#shopType1.se_selected{color:#5d9cec;}
+.search_top#shopType2.se_selected{color:#5d9cec;}
+.btulog{background-color: #5d9cec;}
+.ok{background: #5d9cec;}
+.copy_tip {border: 1px solid #5d9cec;color: #5d9cec;}
+.btn_arr .btn p{border: 1px solid #5d9cec;}
+.o_bg{background: #5d9cec;}
+.buy_btn{border: 1px solid #5d9cec;}
+.zicol{color:#5d9cec;}

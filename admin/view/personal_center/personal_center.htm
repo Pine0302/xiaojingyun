@@ -1,0 +1,1970 @@
+<?php
+$pageindex= 2 ;//头部文件
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+ <link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/personal_center/css/com.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/personal_center/css/mod.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/personal_center/css/custom.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/personal_center/css/custom2.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/personal_center/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme;?>.css">
+<link href="/weixinpl/back_commonshop/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/back_commonshop/css/main.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/back_commonshop/css/style.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/back_commonshop/css/operamasks-ui.css" rel="stylesheet" type="text/css"> 
+<link rel="stylesheet" media="screen" type="text/css" href="/weixinpl/back_newshops/Base/personalization/personal_center/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/personal_center/css/colorpicker.css">
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentGreen.css">--><!--内容CSS配色·绿色-->
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentOrange.css">--><!--内容CSS配色·橙色-->
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentbgreen.css">--><!--内容CSS配色·蓝绿-->
+<!--<link rel="stylesheet" type="text/css" href="../../../../common/css_V6.0/contentGGreen.css">--><!--内容CSS配色·草绿-->
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/jquery-1.12.1.min.js"></script>
+</head>
+
+<body>
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+<!--微商城统计代码结束-->
+
+<style type="text/css">
+/*蓝色*/
+.input_butn{margin-top:30%}
+.input_butn input{display:block;width:192px;background:#06a7e1;border:solid 1px #0b91c2;height:32px;line-height:30px;border-radius:3px;font-size:14px;color:#fff;}
+.input_butn input:hover{background:#017ca9;cursor:pointer;}
+.input_butn01 input{width:268px;}
+.leftA01 .leftA01_dl dd .tj{background:#07a7e1;border:solid 1px #0b91c2;color:#fff;}
+.leftA01 .leftA01_dl dd .tj:hover{background:#0b91c2;}
+.WSY_homeright .WSY_homeright_nav li .blueAA{background:#06a7e1;color:#fff;}
+.marquee{height:40px;line-height:40px;overflow:hidden;margin:0 auto;padding-left:5px;margin-left:5px;}
+.marquee ul{height:40px;line-height:40px;}
+.marquee ul li{padding:0 10px;line-height:40px;height:40px;overflow:hidden;text-align:left;text-overflow:ellipsis;white-space:nowrap;}
+.input.xlarge{width:200px;}
+.imgnav-info{width:550px;}
+.search-input{width:150px;height: 18px;margin-right:0;}
+.search-input-btn{cursor: pointer;padding: 6px 11px;background: #3899eb;color: #FFFFFF;margin-left: 5px;vertical-align: top;border-radius: 3px;-webkit-border-radius:3px;-moz-border-radius:3px;border: none;}
+.colorpicker{z-index: 9}
+.num-input{width:100px;height:22px;line-height:22px;margin:0 10px;padding-left:5px;}
+
+.top-main01{width: 100%;background-color: #fe8510;position: relative;text-align: center;font-size: 13px;padding: 15px 17px;color:#FFF;box-sizing:border-box;}
+    	.top-set{position: absolute;right: 17px;top: 14px;font-size: 13px;color:#FFF;}
+    	.top-imgBox{text-align:center;width: 76px;height: 76px;line-height: 76px;background-color: #FFF;border: 2px solid #FFFFFF;border-radius: 50%;display: inline-block;margin-bottom: 7px;overflow:hidden;}
+        .top-userName{font-size: 19px;color:#FFF;margin-bottom:7px;}
+        .top-info p{font-size:13px;color:#FFF;margin-bottom:7px;}
+        .id-area01{font-size:14px;text-align:center;color:#FFF;display:flex;justify-content:center;align-items:center;}
+        .id-area01 span{display:inline-block;padding-left: 5px;color:#FFF;margin-right:5px;}
+        .id-area01 img{height: 15px;}
+        .top-imgBox img{width:100%;height:100%;}
+        
+        .top-main02{background-color: #FF9900;display: flex;padding: 20px 15px;font-size: 13px;align-items: center;position:relative;}
+        .top-imgBox02{display: inline-block;background-color: #FFF;width: 60px;height: 60px;line-height: 60px;border: 2px solid rgba(255,255,255,0.5);border-radius: 5px;text-align: center;overflow: hidden;margin-right: 10px;flex-shrink: 0;overflow:hidden;}
+        .top-imgBox02 img{width:100%;height:100%;}
+        .top-name02{font-size: 16px;color:#FFF;}
+        .top-info02 p{margin: 7px 0;color:#FFF;font-size:12px;}
+        .arrow-right{position:absolute;top:40px;right:10px;width:12px;color:#FFF;}
+        
+        .top-main03{background-color: #fe8510;font-size: 13px;position:relative;padding-bottom:35px;}
+        .top-main03 .top-imgBox{width:60px;height:60px;line-height:60px;}
+        .top-mainInner{position: relative;display: flex;padding: 10px;align-items: center;}
+        .top-info03{margin-left: 10px;font-size:12px;}
+        .top-info03 p{margin: 3px 0;color:#FFF;}
+        .top-status{position:absolute;bottom:0;left:0;background:rgba(255,255,255,0.1);width:100%;font-size:12px;color:#FFF;height:35px;line-height:35px;padding-left:15px;}
+        
+        .top-main04{width: 100%;background-color: #fe8510;position: relative;text-align: center;font-size: 13px;padding-top: 10px;padding-bottom:30px;}
+        .top-main04 .id04{font-size:16px;color:#FFF;}
+        .top-main04 .top-imgBox{width:55px;height:55px;line-height:55px;overflow:hidden;}
+        .top-userName04{background: rgba(255,255,255,0.9);padding: 0 12px;border-radius: 15px;font-size: 12px;display: inline-block;color:#7b7b7b;height:17px;line-height:17px;}
+        .top-status04{background-color: rgba(255,255,255,0.1);color: #803300;height:30px;line-height:30px;text-align:center;position:absolute;bottom:0;left:0;width:100%;color:#FFF;}
+        .name04{position: absolute;top: 60px;text-align: center;width: 100%;}
+        .top-info04{margin-top: 10px;font-size:12px;color:#FFF;}
+        .top-info04 p{color:#FFF;margin-bottom:8px;}
+        
+        .topimg{width: 100%;height: 123px;}
+        .top-set05{text-align: right;padding: 10px 8px 0 0;color:#FFF;}
+        .top-main05{font-size: 12px;color: #FFF;position: relative;background-size:100% 100%;background-repeat:no-repeat;background-color:#FFF;border-bottom:1px solid #d1d1d1; }
+        .status05 {display: flex;align-items: center;justify-content: center;height: 27px;font-size:12px;line-height:27px;}
+        .status05 span{color:#FFF;}
+        .status05 img{width: 16;height:15px;margin: 0 3px 0 8px;}
+        .head-img05{position: absolute;left: 0;width: 100%;text-align: center;top: 84px;}
+        .head-content{width: 65px;height: 65px;background: #FFFFFF;border-radius: 50%;border: 2px solid rgba(255,255,255,0.5);margin: 0 auto;font-size: 12px;color: #000000;line-height: 65px;overflow:hidden;}
+        .head-content img{width:100%;height:100%;}
+        .name05{font-size: 15px;color: #333333;padding:41px 0 15px 0;text-align: center;}
+        
+        .back-img{background-size:100% 100%;}
+        .head-delete{font-size:13px;background:rgba(0,0,0,0.6);width:100%;height:20px;line-height:20px;position:absolute;left:0;bottom:0;display:none;color:#FFF;}
+        .add-img{position:relative;}
+        .add-img:hover .head-delete{display:block;}
+        
+        .size05{position:relative;}
+      .size05:hover .size-img{display:block;position:absolute;width:400px;left:-50px;top:16px;}
+        .size-img{display:none;}
+</style>
+       <!--列表内容大框开始-->
+	<div class="WSY_columnbox" style="position:relative">
+		<!--列表头部切换开始-->
+    	<?php
+			include($_SERVER['DOCUMENT_ROOT']."/mshop/admin/Diy/person_center/head.php"); 
+		?>
+        <!--列表头部切换结束-->
+         
+    <!--首页设置代码开始-->
+<div class="main">
+    <div class="WSY_data">
+    	<div class="WSY_homebox">
+        	<div class="WSY_homeleft">
+            	<li class="WSY_homeleft_top">
+                	<p></p>
+                </li>
+                <li class="WSY_homeleft_middle" style="background:<?php echo $bgcolor;?>">
+                <!--模块开始-->
+
+                <!--模块结束-->
+                </li>
+                <li class="WSY_foot" style="background:<?php echo $bgcolor;?>">
+                </li>
+            </div>
+            <div class="WSY_ctrl">
+            <div class="diy-ctrl-item-b" data-origin="pagetitle" style="display:block;">  
+                <div class="formitems">  
+                    <label class="fi-name">模板名称：</label>  
+                    <div class="form-controls">  
+                        <input type="text" name="tempname" id="tempname" class="input j-pagetitle-ipt" value="<?php echo $name;?>">
+                    </div>
+                </div>
+                <div class="formitems">
+                    <label class="fi-name">页面背景色：</label> 
+                    <div class="form-controls">
+                        <div class="colorSelector" id="bgColor"><div style="background-color: <?php echo $bgcolor;?>"></div></div>
+                        <input type="hidden" value="<?php echo $bgcolor;?>" name="bgColor" id="colorbg">
+                    </div>
+                </div>
+				<!--<p class="imgnav-select">
+				<iframe src="/weixinpl/back_newshops/Base/personalization/personal_center/default_img.php?customer_id=<?php echo $customer_id; ?>&temid=<?php echo $diy_temid; ?>" height=200 width=100% FRAMEBORDER=0 SCROLLING=no></iframe>
+            	</p>-->
+            </div>
+            </div>
+        </div>
+        <div class="diy-actions">
+                <div class="diy-actions-addModules clearfix">
+                    <a data-type="0" class="j-page-addModule" href="javascript:;"><i class="gicon-cog"></i>页面设置</a>
+                    <a data-type="7" class="j-diy-addModule" href="javascript:;"><span class="icon-plus"></span>分割线</a>
+                    <a data-type="13" class="j-diy-addModule" href="javascript:;"><span class="icon-plus"></span>滚动公告栏</a> 
+                    <a data-type="17" class="j-diy-addModule" style="width:117px;" href="javascript:;"><span class="icon-plus"></span>个人中心头部</a>
+                    <a data-type="21" class="j-diy-addModule" href="javascript:;"><span class="icon-plus"></span>订单显示一</a>
+                    <a data-type="24" class="j-diy-addModule" href="javascript:;"><span class="icon-plus"></span>订单显示二</a>
+                    <a data-type="22" class="j-diy-addModule" href="javascript:;"><span class="icon-plus"></span>数据显示</a>
+                    <a data-type="23" class="j-diy-addModule" href="javascript:;"><span class="icon-plus"></span>功能模块</a>
+					
+                    <div class="clear"></div>
+                </div>
+                <div class="diy-actions-submit">
+                    <a href="javascript:;" class="save-btn diy_btn" id="j-savePage" >保存</a>
+                </div>
+        </div>
+    </div>
+</div>
+    <!--首页设置代码结束-->
+</div>
+<!--内容框架结束-->
+    <!-- diy common start -->
+<!--编辑框-->
+<script type="dot-template" id="type_conitem">
+    <div class="type-conitem">
+       {{= it.html }}
+        <div class="type-conitem-action">
+            <div class="type-conitem-action-btns">
+               
+                <a href="javascript:;" class="type-conitem-btn type-del j-del">删除</a>
+            </div>
+        </div>
+    </div>
+</script>
+<!--编辑框-->
+<script type="dot-template" id="type_ctrl">
+    <div class="type-ctrl-item" data-origin="item" style ="margin-bottom:50px">
+        {{= it.html }}
+    </div>
+</script>
+
+
+
+
+
+<!--订单显示-->
+<script  type="dot-template" id="type_con_21">
+<div class="con_display" {{? it.content.padding}}style="padding-top:{{= it.content.padding}}px;padding-bottom:{{= it.content.padding}}px"{{?}}>
+<div class=" clearfix">
+    	<div class="div-row type2">
+	    	<div class="img" style="margin-left:10px;">
+	    	<img src="{{=it.content.icon_pic}}">
+	    	</div>
+	    	<p>{{=it.content.li_title}}</p>
+    	</div>
+		{{ if(it.content.select_value == '票务订单' || it.content.select_value == '大礼包订单' || it.content.select_value == '拼团订单'){ }}
+		{{ }else{ }}
+		<ul class="order-list">
+		{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+		    <li>
+		    <div class="img">
+		    	<img src="{{=it.content.dataset[i].pic}}">
+		    </div>
+		    <p>{{=it.content.dataset[i].title}}</p>
+		    </li>
+		{{ } }}
+		</ul>
+		{{ } }}
+</div>
+</div>
+</script>
+<script type="dot-template" id="type_ctrl_21">
+<div class="formitems">
+    <label class="fi-name">模块上下边距：</label>
+    <div class="form-controls">
+        <div  id='slider' class="fl diy-slider j-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2">{{? it.content.padding}}{{=it.content.padding+'px'}}{{??}}0px{{?}}</span>
+    </div>
+</div>
+
+
+
+<div class="formitems">  
+    <label class="fi-name">选择分类：</label>  
+    <div class="form-controls">
+        <div class="droplist">
+            <select  name="type_id_2"  id="type_id_2"  class="input xlarge" style="height:28px;">
+			<option value="商城订单" {{? it.content.select_value=='商城订单'}}selected="selected"{{?}}>商城订单</option>
+			<option value="大礼包订单" {{? it.content.select_value=='大礼包订单'}}selected="selected"{{?}}>大礼包订单</option>
+			<option value="订餐订单" {{? it.content.select_value=='订餐订单'}}selected="selected"{{?}}>订餐订单</option>
+			<option value="外卖订单" {{? it.content.select_value=='外卖订单'}}selected="selected"{{?}}>外卖订单</option>
+			<option value="KTV订单" {{? it.content.select_value=='KTV订单'}}selected="selected"{{?}}>KTV订单</option>
+			<option value="酒店订单" {{? it.content.select_value=='酒店订单'}}selected="selected"{{?}}>酒店订单</option>
+			<option value="线下商城-自提订单" {{? it.content.select_value=='线下商城-自提订单'}}selected="selected"{{?}}>线下商城-自提订单</option>
+			<option value="线下商城-配送订单" {{? it.content.select_value=='线下商城-配送订单'}}selected="selected"{{?}}>线下商城-配送订单</option>
+			<option value="线下商城-社区订单" {{? it.content.select_value=='线下商城-社区订单'}}selected="selected"{{?}}>线下商城-社区订单</option>
+			<option value="金融订单" {{? it.content.select_value=='金融订单'}}selected="selected"{{?}}>金融订单</option>
+			<option value="教练服务订单" {{? it.content.select_value=='教练服务订单'}}selected="selected"{{?}}>教练服务订单</option>
+			<option value="线下收银订单" {{? it.content.select_value=='线下收银订单'}}selected="selected"{{?}}>线下收银订单</option>
+			<option value="拼团订单" {{? it.content.select_value=='拼团订单'}}selected="selected"{{?}}>拼团订单</option>
+			<option value="票务订单" {{? it.content.select_value=='票务订单'}}selected="selected"{{?}}>票务订单</option>
+			<option value="到店付订单" {{? it.content.select_value=='到店付订单'}}selected="selected"{{?}}>到店付订单</option>
+			<option value="艺人订单" {{? it.content.select_value=='艺人订单'}}selected="selected"{{?}}>艺人订单</option>
+            </select>
+        </div>
+        <input type="hidden" class="j-verify" name="item_id" value="">
+        <span class="fi-help-text j-verify-linkType"></span>
+    </div>
+</div>
+
+<div class="formitems">  
+    <label class="fi-name">自定义订单名称：</label>  
+    <div class="form-controls">
+        <input type="text" name="title1"  class="input xlarge" value="{{=it.content.li_title}}" maxlength="10">
+    </div>
+</div>
+
+<div class="formitems">  
+    <label class="fi-name">自定义订单名称：</label>  
+    <div class="form-controls">
+    <div class="formitems">                 
+	    <label class="note">建议尺寸：40*40,200k以内</label>
+    </div>
+		<div class="fl" style="margin-right:20px;">
+			<div class="imgnav j-selectimg">
+				<form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img10" enctype="multipart/form-data" method="post" onsubmit="return saveReport(10);">
+					<input type="hidden" name="getImg" id='getImg10' value="{{=it.content.icon_pic}}">
+					<p class="imgnav-select">
+						<input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+						<img src="{{=it.content.icon_pic}}">
+					</p>
+					<input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+					<input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+					<input type="hidden" name="img_sort" value="0">
+					<input type="hidden" name="uptypes" value="image/jpg,image/jpeg,image/png,">
+
+				</form>
+				</div>
+			<span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+		</div>
+		
+    </div>
+</div>
+
+<div class="formitems" style="width:550px;">  
+    <label class="fi-name">自定义订单名称：</label>  
+    <div class="form-controls">
+    <div class="formitems">                 
+	    <label class="note">建议尺寸：46*46,200k以内</label>
+    </div>
+    </div>
+{{ if(it.content.select_value == '票务订单' || it.content.select_value == '大礼包订单' || it.content.select_value == '拼团订单'){ }}
+{{ }else{ }}
+<ul>
+{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+<li class="up-icon">
+	<p class="fl" style="width:50px;text-align:right;margin-right:10px;line-height:30px;">{{=it.content.dataset[i].title}}：</p>
+    <div class="fl" style="margin-right:20px;">
+			<div class="imgnav j-selectimg">
+				<form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img{{=i}}" enctype="multipart/form-data" method="post" onsubmit="return saveReport({{=i}});">
+					<input type="hidden" name="getImg" id='getImg{{=i}}' value="{{=it.content.dataset[i].pic}}">
+					<p class="imgnav-select">
+						<input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+						<img src="{{=it.content.dataset[i].pic}}">
+					</p>
+					<input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+					<input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+					<input type="hidden" name="img_sort" value="0">
+					<input type="hidden" name="uptypes" value="image/jpg,image/jpeg,image/png,">
+
+				</form>
+				</div>
+			<span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+		</div>
+{{ } }}
+</li>
+</ul>
+{{ } }}
+</div>
+</script>
+<!--订单显示-->
+<!--数据模块-->
+<script  type="dot-template" id="type_con_22">
+<div class="con_display" {{? it.content.padding}}style="padding-top:{{= it.content.padding}}px;padding-bottom:{{= it.content.padding}}px"{{?}}>
+	{{? it.content.css_type==2}}
+	{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+		<div class="div-row">
+	    	<div class="img">
+	    	<img src="{{=it.content.dataset[i].pic}}">
+	    	</div>
+			{{ if(it.content.dataset[i].select_value == '优惠券' || it.content.dataset[i].select_value == '红包' || it.content.dataset[i].select_value == '分享卡' || it.content.dataset[i].select_value == '排队奖励' || it.content.dataset[i].select_value == '我的收藏' || it.content.dataset[i].select_value == '我的足迹'){ }}
+	    	<p style="color:{{=it.content.dataset[i].color}}">{{=it.content.dataset[i].title}} <span style="color:{{=it.content.dataset[i].color1}}">0</span></p>
+			{{ }else{ }}
+			<p style="color:{{=it.content.dataset[i].color}}">{{=it.content.dataset[i].title}} <span style="color:{{=it.content.dataset[i].color1}}">0.00</span></p>
+			{{ } }}
+    	</div>  
+	{{ } }}
+    
+    {{?? it.content.css_type==1}}
+    	
+    	<ul class="data-list">
+    		{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+    		<li>
+    			
+				{{ if(it.content.dataset[i].select_value == '优惠券' || it.content.dataset[i].select_value == '红包' || it.content.dataset[i].select_value == '分享卡' || it.content.dataset[i].select_value == '排队奖励' || it.content.dataset[i].select_value == '我的收藏' || it.content.dataset[i].select_value == '我的足迹'){ }}
+				<span style="color:{{=it.content.dataset[i].color1}}">0</span>
+				{{ }else{ }}
+				<span style="color:{{=it.content.dataset[i].color1}}">0.00</span>
+				{{ } }}
+				<p style="color:{{=it.content.dataset[i].color}}">{{=it.content.dataset[i].title}}</p>
+    		</li>
+    		{{ } }}
+    	</ul>
+    	
+    {{??}}
+{{?}}
+</div>
+</script>
+<script type="dot-template" id="type_ctrl_22">
+<div class="formitems">
+    <label class="fi-name">模块上下边距：</label>
+    <div class="form-controls">
+        <div  id='slider' class="fl diy-slider j-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2">{{? it.content.padding}}{{=it.content.padding+'px'}}{{??}}0px{{?}}</span>
+    </div>
+</div>
+<div class="formitems">  
+        <label class="fi-name">样式选择：</label>   
+        <div class="form-controls">
+            <div class="radio-group">
+                <label><input type="radio" name="css_type" value="1"{{? it.content.css_type==1}} checked{{?}}>样式一</label>
+                <label><input type="radio" name="css_type" value="2"{{? it.content.css_type==2}} checked{{?}}>样式二</label>
+            </div>
+        </div>
+</div>
+
+{{? it.content.css_type==1}}
+<div class="formitems">  
+        <label class="fi-name">数据显示个数：</label>   
+        <div class="form-controls">
+            <div class="radio-group">
+                <label><input type="radio" name="data_num" value="2"{{? it.content.data_num==2}} checked{{?}}>2个</label>
+                <label><input type="radio" name="data_num" value="3"{{? it.content.data_num==3}} checked{{?}}>3个</label>
+                <label><input type="radio" name="data_num" value="4"{{? it.content.data_num==4}} checked {{?}}>4个</label>
+                <label><input type="radio" name="data_num" value="5"{{? it.content.data_num==5}} checked{{?}}>5个</label>
+            </div>
+        </div>
+</div>
+{{?}}
+<ul class="ctrl-item-list"> 
+{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+    <li class="ctrl-item-list-li clearfix">
+        <div class="fl" style="{{? it.content.css_type==1}}display:none{{?}}">
+            <div class="imgnav j-selectimg">			
+			<form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img{{=i}}" enctype="multipart/form-data" method="post" onsubmit="return saveReport({{=i}});">
+				<input type="hidden" name="getImg" id='getImg{{=i}}' value="{{=it.content.dataset[i].pic}}">
+                <p class="imgnav-select">
+                    <input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+                    <img src="{{=it.content.dataset[i].pic}}">
+                </p>
+				<input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+				<input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+				<input type="hidden" name="img_sort" value="{{=i}}">
+                
+			</form>
+            </div>
+            <span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+        </div>
+		
+        <div class="fl imgnav-info">
+            <div class="formitems">  
+                <label class="fi-name">选择数据类型：</label>  
+                <div class="form-controls">
+                    <div class="droplist">
+                        
+                        <select  name="type_id_2"  id="type_id_2"  class="input xlarge" style="height:28px;">
+                       		<option value="零钱" {{? it.content.dataset[i].select_value=='零钱'}}selected="selected"{{?}}>零钱</option>
+							<option value="会员卡积分" {{? it.content.dataset[i].select_value=='会员卡积分'}}selected="selected"{{?}}>会员卡积分</option>
+							<option value="会员卡余额" {{? it.content.dataset[i].select_value=='会员卡余额'}}selected="selected"{{?}}>会员卡余额</option>
+							<option value="消费总额" {{? it.content.dataset[i].select_value=='消费总额'}}selected="selected"{{?}}>消费总额</option>
+							<option value="购物币" {{? it.content.dataset[i].select_value=='购物币'}}selected="selected"{{?}}>购物币</option>
+							<option value="优惠券" {{? it.content.dataset[i].select_value=='优惠券'}}selected="selected"{{?}}>优惠券</option>
+							<option value="分享卡" {{? it.content.dataset[i].select_value=='分享卡'}}selected="selected"{{?}}>分享卡</option>
+							<option value="红积分" {{? it.content.dataset[i].select_value=='红积分'}}selected="selected"{{?}}>红积分</option>
+							<option value="红包" {{? it.content.dataset[i].select_value=='红包'}}selected="selected"{{?}}>红包</option>
+							<option value="商城积分" {{? it.content.dataset[i].select_value=='商城积分'}}selected="selected"{{?}}>商城积分</option>
+							<option value="我的足迹" {{? it.content.dataset[i].select_value=='我的足迹'}}selected="selected"{{?}}>我的足迹</option>
+							<option value="我的收藏" {{? it.content.dataset[i].select_value=='我的收藏'}}selected="selected"{{?}}>我的收藏</option>
+							<option value="排队奖励" {{? it.content.dataset[i].select_value=='排队奖励'}}selected="selected"{{?}}>排队奖励</option>
+                            <option value="积分单元总量"  {{? it.content.dataset[i].select_value=='积分单元总量'}}selected="selected" {{? }}  {{? it.content.has_red_score_member == -1}}style="display:none" {{?}}>积分单元总量</option>
+                            <option value="单元转换率"  {{? it.content.dataset[i].select_value=='单元转换率'}}selected="selected" {{? }}  {{? it.content.has_red_score_member == -1}}style="display:none" {{?}}>单元转换率</option>
+                            <option value="红积分总量"  {{? it.content.dataset[i].select_value=='红积分总量'}}selected="selected" {{? }}  {{? it.content.has_red_score_member == -1}}style="display:none" {{?}}>红积分总量</option>
+                            <option value="品牌代理商库存余额"  {{? it.content.dataset[i].select_value=='品牌代理商库存余额'}}selected="selected" {{? }}  {{? it.content.has_red_score_member == -1}}style="display:none" {{?}}>品牌代理商库存余额</option>
+                            <option value="区块链积分记录" {{? it.content.dataset[i].select_value=='区块链积分记录'}}selected="selected"{{?}}>区块链积分记录</option>
+                            <option value="区块链奖励详情" {{? it.content.dataset[i].select_value=='区块链奖励详情'}}selected="selected"{{?}}>区块链奖励详情</option>
+                            <option value="门店积分" {{? it.content.dataset[i].select_value=='门店积分'}}selected="selected"{{?}}>门店积分</option>
+                            <optgroup label="-----------社区功能-----------"></optgroup>
+                            <option value="我的粉丝" {{? it.content.dataset[i].select_value=='我的粉丝'}}selected="selected"{{?}}>我的粉丝</option>
+							<option value="社区-我的收藏" {{? it.content.dataset[i].select_value=='社区-我的收藏'}}selected="selected"{{?}}>社区-我的收藏</option>
+							<option value="我的关注" {{? it.content.dataset[i].select_value=='我的关注'}}selected="selected"{{?}}>我的关注</option>
+                        </select>
+						
+                    </div>
+					
+                    <input type="hidden" class="j-verify" name="item_id" value="">
+                    <span class="fi-help-text j-verify-linkType"></span>
+                </div>
+            </div>
+            <div class="formitems member_cart_{{=i}}"  {{? it.content.dataset[i].select_value!='积分单元总量' && it.content.dataset[i].select_value!='单元转换率'&&it.content.dataset[i].select_value!='红积分总量'}}style="display:none"{{?}}>  
+                <label class="fi-name">会员卡：</label>  
+                <div class="form-controls">
+                    <div class="droplist">
+                        <select  name="member_cart_type"  id="member_cart_type"  class="input xlarge" style="height:28px;">
+                            {{? it.content.dataset[i].select_value!='单元转换率'}}
+                                <option value="-1" {{? it.content.dataset[i].member_id==-1}}selected="selected"{{?}} >所有</option>
+                            {{?}}
+
+                            {{ for(var p=0,ww=it.red_score_member_link.length;p<ww;p++) { 
+                                temp_arr =it.red_score_member_link[p].split("_");
+                            }}
+                                <option value="{{= temp_arr[0]}}" {{? it.content.dataset[i].member_id==temp_arr[0]}}selected="selected"{{?}} >{{=temp_arr[1]}}</option>
+                            {{ } }}
+                        </select>
+                    </div>
+                </div>
+            </div>
+			<div class="formitems">
+				<label class="fi-name">文字自定义：</label>
+				<div class="form-controls">
+					<input type="text" name="title" id="title_{{=i}}" value="{{= it.content.dataset[i].title}}" class="input xlarge" maxlength="5"/>
+				</div>
+			</div>
+			<div class="formitems">
+                <label class="fi-name">字体颜色：</label> 
+                <div class="form-controls">
+                    <div class="colorSelector"><div color="color" style="background-color: {{=it.content.dataset[i].color}}"></div></div>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name">数字颜色：</label> 
+                <div class="form-controls">
+                    <div class="colorSelector1" style="position: relative;width: 36px;height:36px;background: url(/weixinpl/back_newshops/Base/personalization/personal_center/images/select.png);"><div color="color" style="    position: absolute;top: 3px;left: 3px;width: 30px;height: 30px;background: url(/weixinpl/back_newshops/Base/personalization/personal_center/images/select.png) center;background-color: {{=it.content.dataset[i].color1}}"></div></div>
+                </div>
+            </div>
+            <div class="formitems">  
+                <label class="fi-name">建议尺寸：</label>
+                <label class="note">1080*540 px 图片大小不超过200K</label>
+            </div>
+            
+            
+        </div>
+        <div class="ctrl-item-list-actions">
+            <a href="javascript:;" title="上移" class="j-moveup"><i class="gicon-arrow-up"></i></a>
+            <a href="javascript:;" title="下移" class="j-movedown"><i class="gicon-arrow-down"></i></a>
+            <a href="javascript:;" title="删除" class="j-del" style="{{? it.content.css_type==1}}display:none{{?}}"><i class="gicon-remove"></i></a>
+        </div>
+    </li>
+    {{ } }}
+    <li style="{{? it.content.css_type==1}}display:none{{?}}" class="ctrl-item-list-add" title="添加">+</li>
+</ul>
+</script>
+<!--数据模块-->
+<!--功能模块-->
+<script  type="dot-template" id="type_con_23">
+<div class="con_display" {{? it.content.padding}}style="padding-top:{{= it.content.padding}}px;padding-bottom:{{= it.content.padding}}px"{{?}}>
+{{? it.content.css_type==1}}
+	
+	<ul class="fun-list line{{= it.content.data_num}}">
+    		{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+    		<li>
+    			<img src="{{=it.content.dataset[i].pic}}">
+    			<p style="color:{{=it.content.dataset[i].color}}">{{=it.content.dataset[i].title}}</p>
+    		</li>
+    		{{ } }}
+    	</ul>
+    
+    {{?? it.content.css_type==2}}
+    	{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+		<div class="div-row">
+	    	<div class="img">
+	    	<img src="{{=it.content.dataset[i].pic}}">
+	    	</div>
+	    	<p style="color:{{=it.content.dataset[i].color}}">{{=it.content.dataset[i].title}}</p>
+    	</div>  
+	{{ } }}
+	
+    {{??}}
+{{?}}
+</div>
+</script>
+<script type="dot-template" id="type_ctrl_23">
+<div class="formitems">
+    <label class="fi-name">模块上下边距：</label>
+    <div class="form-controls">
+        <div  id='slider' class="fl diy-slider j-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2">{{? it.content.padding}}{{=it.content.padding+'px'}}{{??}}0px{{?}}</span>
+    </div>
+</div>
+<div class="formitems">  
+        <label class="fi-name">样式选择：</label>   
+        <div class="form-controls">
+            <div class="radio-group">
+                <label><input type="radio" name="css_type" value="1"{{? it.content.css_type==1}} checked{{?}}>样式一</label>
+                <label><input type="radio" name="css_type" value="2"{{? it.content.css_type==2}} checked{{?}}>样式二</label>
+            </div>
+        </div>
+</div>
+
+{{? it.content.css_type==1}}
+<div class="formitems">  
+        <label class="fi-name">数据显示个数：</label>   
+        <div class="form-controls">
+            <div class="radio-group">
+                <label><input type="radio" name="data_num" value="4"{{? it.content.data_num==4}} checked{{?}}>每行4个</label>
+                <label><input type="radio" name="data_num" value="3"{{? it.content.data_num==3}} checked{{?}}>每行3个</label>
+            </div>
+        </div>
+</div>
+{{?}}
+<ul class="ctrl-item-list"> 
+{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+    <li class="ctrl-item-list-li clearfix">
+        <div class="fl">
+            <div class="imgnav j-selectimg">			
+			<form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img{{=i}}" enctype="multipart/form-data" method="post" onsubmit="return saveReport({{=i}});">
+				<input type="hidden" name="getImg" id='getImg{{=i}}' value="{{=it.content.dataset[i].pic}}">
+                <p class="imgnav-select">
+                    <input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+                    <img src="{{=it.content.dataset[i].pic}}">
+                </p>
+				<input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+				<input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+				<input type="hidden" name="img_sort" value="{{=i}}">
+                
+			</form>
+            </div>
+            <span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+        </div>
+		
+        <div class="fl imgnav-info">
+            <div class="formitems">  
+                <label class="fi-name">选择功能：</label>  
+                <div class="form-controls">
+                    <div class="droplist">
+                        
+                        <select  name="type_id_2"  id="type_id_2"  class="input xlarge" style="height:28px;">
+							<optgroup label="-----------全部订单类型-----------"></optgroup>
+							<option value="全部订单" {{? it.content.dataset[i].select_value=='全部订单'}}selected="selected"{{?}}>全部订单</option>
+							<option value="商城订单" {{? it.content.dataset[i].select_value=='商城订单'}}selected="selected"{{?}}>商城订单</option>
+							<option value="大礼包订单" {{? it.content.dataset[i].select_value=='大礼包订单'}}selected="selected"{{?}}>大礼包订单</option>
+							<option value="订餐订单" {{? it.content.dataset[i].select_value=='订餐订单'}}selected="selected"{{?}}>订餐订单</option>
+							<option value="外卖订单" {{? it.content.dataset[i].select_value=='外卖订单'}}selected="selected"{{?}}>外卖订单</option>
+							<option value="KTV订单" {{? it.content.dataset[i].select_value=='KTV订单'}}selected="selected"{{?}}>KTV订单</option>
+							<option value="酒店订单" {{? it.content.dataset[i].select_value=='酒店订单'}}selected="selected"{{?}}>酒店订单</option>
+							<option value="线下商城-自提订单" {{? it.content.dataset[i].select_value=='线下商城-自提订单'}}selected="selected"{{?}}>线下商城-自提订单</option>
+							<option value="线下商城-配送订单" {{? it.content.dataset[i].select_value=='线下商城-配送订单'}}selected="selected"{{?}}>线下商城-配送订单</option>
+							<option value="线下商城-社区订单" {{? it.content.dataset[i].select_value=='线下商城-社区订单'}}selected="selected"{{?}}>线下商城-社区订单</option>
+							<option value="金融订单" {{? it.content.dataset[i].select_value=='金融订单'}}selected="selected"{{?}}>金融订单</option>
+							<option value="教练服务订单" {{? it.content.dataset[i].select_value=='教练服务订单'}}selected="selected"{{?}}>教练服务订单</option>
+							<option value="线下收银订单" {{? it.content.dataset[i].select_value=='线下收银订单'}}selected="selected"{{?}}>线下收银订单</option>
+							<option value="拼团订单" {{? it.content.dataset[i].select_value=='拼团订单'}}selected="selected"{{?}}>拼团订单</option>
+							<option value="票务订单" {{? it.content.dataset[i].select_value=='票务订单'}}selected="selected"{{?}}>票务订单</option>
+							<option value="到店付订单" {{? it.content.dataset[i].select_value=='到店付订单'}}selected="selected"{{?}}>到店付订单</option>
+							<option value="艺人订单" {{? it.content.dataset[i].select_value=='艺人订单'}}selected="selected"{{?}}>艺人订单</option>
+							<optgroup label="-----------必备功能-----------"></optgroup>
+                       		<option value="我的资产" {{? it.content.dataset[i].select_value=='我的资产'}}selected="selected"{{?}}>我的资产</option>
+							<option value="我的特权" {{? it.content.dataset[i].select_value=='我的特权'}}selected="selected"{{?}}>我的特权</option>
+							<option value="我的团队" {{? it.content.dataset[i].select_value=='我的团队'}}selected="selected"{{?}}>我的团队</option>
+							<option value="累积收益" {{? it.content.dataset[i].select_value=='累积收益'}}selected="selected"{{?}}>累积收益</option>
+							<option value="收货地址" {{? it.content.dataset[i].select_value=='收货地址'}}selected="selected"{{?}}>收货地址</option>
+							<option value="二维码" {{? it.content.dataset[i].select_value=='二维码'}}selected="selected"{{?}}>二维码</option>
+							<option value="我的微店" {{? it.content.dataset[i].select_value=='我的微店'}}selected="selected"{{?}}>我的微店</option>
+							<option value="我的店铺" {{? it.content.dataset[i].select_value=='我的店铺'}}selected="selected"{{?}}>我的店铺</option>
+							<option value="F2C店" {{? it.content.dataset[i].select_value=='F2C店'}}selected="selected"{{?}}>F2C店</option>
+							<option value="订货系统" {{? it.content.dataset[i].select_value=='订货系统'}}selected="selected"{{?}}>订货系统</option>
+							<option value="奖励报表" {{? it.content.dataset[i].select_value=='奖励报表'}}selected="selected"{{?}}>奖励报表</option>
+							<option value="我的导师" {{? it.content.dataset[i].select_value=='我的导师'}}selected="selected"{{?}}>我的导师</option>
+							<option value="签到" {{? it.content.dataset[i].select_value=='签到'}}selected="selected"{{?}}>签到</option>
+							<option value="大转盘" {{? it.content.dataset[i].select_value=='大转盘'}}selected="selected"{{?}}>大转盘</option>
+							<option value="中奖纪录" {{? it.content.dataset[i].select_value=='中奖纪录'}}selected="selected"{{?}}>中奖纪录</option>
+							<option value="社区微店" {{? it.content.dataset[i].select_value=='社区微店'}}selected="selected"{{?}}>社区微店</option>
+							<option value="微信卡券" {{? it.content.dataset[i].select_value=='微信卡券'}}selected="selected"{{?}}>微信卡券</option>
+                            <option value="云店" {{? it.content.dataset[i].select_value=='云店'}}selected="selected"{{?}}>云店</option>
+                            <option value="我的名片" {{? it.content.dataset[i].select_value=='我的名片'}}selected="selected"{{?}}>我的名片</option>
+							<optgroup label="-----------推荐功能-----------"></optgroup>
+                       		<option value="推广排行榜" {{? it.content.dataset[i].select_value=='推广排行榜'}}selected="selected"{{?}}>推广排行榜</option>
+							<option value="授权证书" {{? it.content.dataset[i].select_value=='授权证书'}}selected="selected"{{?}}>授权证书</option>
+                            <option value="赠送码" {{? it.content.dataset[i].select_value=='赠送码'}}selected="selected"{{?}}>赠送码</option>
+							<option value="我的慈善" {{? it.content.dataset[i].select_value=='我的慈善'}}selected="selected"{{?}}>我的慈善</option>
+							<option value="修改邀请人" {{? it.content.dataset[i].select_value=='修改邀请人'}}selected="selected"{{?}}>修改邀请人</option>
+							<option value="头部引导" {{? it.content.dataset[i].select_value=='头部引导'}}selected="selected"{{?}}>头部引导</option>
+							<option value="外卖配送" {{? it.content.dataset[i].select_value=='外卖配送'}}selected="selected"{{?}}>外卖配送</option>
+							<option value="安装预约" {{? it.content.dataset[i].select_value=='安装预约'}}selected="selected"{{?}}>安装预约</option>
+							<option value="我的赠送" {{? it.content.dataset[i].select_value=='我的赠送'}}selected="selected"{{?}}>我的赠送</option>
+							<option value="我的佣金" {{? it.content.dataset[i].select_value=='我的佣金'}}selected="selected"{{?}}>我的佣金</option>
+							<option value="店铺龙虎榜" {{? it.content.dataset[i].select_value=='店铺龙虎榜'}}selected="selected"{{?}}>店铺龙虎榜</option>
+                             <?php if($is_travelcard == 1){ ?>
+                             <option value="我的旅游卡" {{? it.content.dataset[i].select_value=='我的旅游卡'}}selected="selected"{{?}}>我的旅游卡</option>
+                             <option value="旅游卡办卡首页" {{? it.content.dataset[i].select_value=='旅游卡办卡首页'}}selected="selected"{{?}}>旅游卡办卡首页</option>
+                             <?php } ?>
+                            <option value="我的彩铃" {{? it.content.dataset[i].select_value=='我的彩铃'}}selected="selected"{{?}}>我的彩铃</option>
+                            <option value="我的订阅" {{? it.content.dataset[i].select_value=='我的订阅'}}selected="selected"{{?}}>我的订阅</option>
+							
+                           <!--  <optgroup label="-----------期权交易-----------"></optgroup>
+                            <option value="持仓" {{? it.content.dataset[i].select_value=='持仓'}}selected="selected"{{?}}>持仓</option>
+                            <option value="我的自选" {{? it.content.dataset[i].select_value=='我的自选'}}selected="selected"{{?}}>我的自选</option>
+                            <option value="帮助中心" {{? it.content.dataset[i].select_value=='帮助中心'}}selected="selected"{{?}}>帮助中心</option>  -->
+
+                            <optgroup label="-----------自定义功能-----------"></optgroup>
+                            <option value="队列活动" {{? it.content.dataset[i].select_value=='队列活动'}}selected="selected"{{?}}>队列活动</option>
+
+							<?php 
+							$query_custom	 ="select id,subscribe_id,need_score,imgurl from weixin_commonshop_subscribes where isvalid=true  and customer_id=".$customer_id." ORDER BY id desc";
+							$result_custom = _mysql_query($query_custom) or die('Query failed167: ' . mysql_error());
+							 	//自定义功能
+							$imgurl ='';
+							while ($row_c = mysql_fetch_object($result_custom)) {
+								$cs_id = $row_c->id;
+								$subscribe_id = $row_c->subscribe_id;
+								$need_score = $row_c->need_score;
+								$imgurl =$row_c->imgurl;                        
+								if($imgurl == '' ){
+
+									$imgurl='/weixinpl/mshop/images/info_image/function.png';
+								}                       
+								$imgurl = $new_baseurl.$imgurl;
+								$query = "SELECT id,title,website_url,coupon_id FROM weixin_subscribes where  id=".$subscribe_id;
+								$result = _mysql_query($query) or die('Query failed: ' . mysql_error());
+								$website_url="";
+								$title="";
+								while ($row = mysql_fetch_object($result)) {
+									$website_url = $row->website_url;
+									$title = $row->title;
+									$coupon_id = $row->coupon_id;
+								}
+								if($coupon_id>0){
+									continue;
+								}
+								$pos = strpos($website_url,"?"); 
+								if($pos>0){
+									$website_url = $website_url."&C_id=".$customer_id."&fromuser=".$weixin_fromuser;
+								}else{
+									$website_url = $website_url."?C_id=".$customer_id."&fromuser=".$weixin_fromuser;
+								}
+								$mppos= strstr($title,"{weixin_title}");
+								if(!empty($mppos)){
+									$title = str_replace("{weixin_title}",$weixin_name,$title);
+								}
+									$mppos= strstr($title,"{weixin_parent_title}");
+								if(!empty($mppos) and $parent_id>0){
+									$query="select weixin_name from weixin_users where  isvalid=true and id=".$parent_id." limit 0,1";
+									$result = _mysql_query($query) or die('Query failed: ' . mysql_error());
+									$parent_weixin_name="";
+									while ($row = mysql_fetch_object($result)) {
+										$parent_weixin_name = $row->weixin_name;
+									}
+										$title = str_replace("{weixin_parent_title}",$parent_weixin_name,$title);
+								}
+							?>
+							<option value="<?php echo $title; ?>" {{? it.content.dataset[i].select_value=='<?php echo $title; ?>'}}selected="selected"{{?}}><?php echo $title; ?></option>
+							<?php } ?>
+							<optgroup label="-----------专区版块-----------"></optgroup>
+							<option value="大礼包" {{? it.content.dataset[i].select_value=='大礼包'}}selected="selected"{{?}}>大礼包</option>
+							<option value="VP产品" {{? it.content.dataset[i].select_value=='VP产品'}}selected="selected"{{?}}>VP产品</option>
+							<option value="积分专区" {{? it.content.dataset[i].select_value=='积分专区'}}selected="selected"{{?}}>积分专区</option>
+							<option value="续费专区" {{? it.content.dataset[i].select_value=='续费专区'}}selected="selected"{{?}}>续费专区</option>
+							<option value="电商直播" {{? it.content.dataset[i].select_value=='电商直播'}}selected="selected"{{?}}>电商直播</option>
+							<option value="语音直播" {{? it.content.dataset[i].select_value=='语音直播'}}selected="selected"{{?}}>语音直播</option>
+							<option value="拼团专区" {{? it.content.dataset[i].select_value=='拼团专区'}}selected="selected"{{?}}>拼团专区</option>
+							<option value="限时抢购" {{? it.content.dataset[i].select_value=='限时抢购'}}selected="selected"{{?}}>限时抢购</option>
+							<option value="特权专区" {{? it.content.dataset[i].select_value=='特权专区'}}selected="selected"{{?}}>特权专区</option>
+                            <optgroup label="-----------社区功能-----------"></optgroup>
+							<option value="我的发布" {{? it.content.dataset[i].select_value=='我的发布'}}selected="selected"{{?}}>我的发布</option>
+							<option value="社区动态" {{? it.content.dataset[i].select_value=='社区动态'}}selected="selected"{{?}}>社区动态</option>
+                        </select>
+						
+                    </div>
+					
+                    <input type="hidden" class="j-verify" name="item_id" value="">
+                    <span class="fi-help-text j-verify-linkType"></span>
+                </div>
+            </div>
+			<div class="formitems">
+				<label class="fi-name">文字自定义：</label>
+				<div class="form-controls">
+					<input type="text" name="title" id="title_{{=i}}" value="{{= it.content.dataset[i].title}}" class="input xlarge" maxlength="5"/>
+				</div>
+			</div>
+			<div class="formitems">
+                <label class="fi-name">字体颜色：</label> 
+                <div class="form-controls">
+                    <div class="colorSelector"><div color="color" style="background-color: {{=it.content.dataset[i].color}}"></div></div>
+                </div>
+            </div>
+            <div class="formitems">  
+                <label class="fi-name">建议尺寸：</label>
+                <label class="note">65*65 px 图片大小不超过200K</label>
+            </div>
+            
+            
+        </div>
+        <div class="ctrl-item-list-actions">
+            <a href="javascript:;" title="上移" class="j-moveup"><i class="gicon-arrow-up"></i></a>
+            <a href="javascript:;" title="下移" class="j-movedown"><i class="gicon-arrow-down"></i></a>
+            <a href="javascript:;" title="删除" class="j-del"><i class="gicon-remove"></i></a>
+        </div>
+    </li>
+    {{ } }}
+    <li class="ctrl-item-list-add" title="添加">+</li>
+</ul>
+</script>
+<!--功能模块-->
+
+<!--订单模块二-->
+<script  type="dot-template" id="type_con_24">
+<div class="con_display" {{? it.content.padding}}style="padding-top:{{= it.content.padding}}px;padding-bottom:{{= it.content.padding}}px"{{?}}>
+
+    {{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+        <div class="div-row">
+            <div class="img">
+            <img src="{{=it.content.dataset[i].pic}}">
+            </div>
+            <p style="color:{{=it.content.dataset[i].color}}">{{=it.content.dataset[i].title}}</p>
+        </div>  
+    {{ } }}
+
+</div>
+</script>
+<script type="dot-template" id="type_ctrl_24">
+<div class="formitems">
+    <label class="fi-name">模块上下边距：</label>
+    <div class="form-controls">
+        <div  id='slider' class="fl diy-slider j-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2">{{? it.content.padding}}{{=it.content.padding+'px'}}{{??}}0px{{?}}</span>
+    </div>
+</div>
+
+
+<ul class="ctrl-item-list"> 
+{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+    <li class="ctrl-item-list-li clearfix">
+        <div class="fl">
+            <div class="imgnav j-selectimg">            
+            <form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img{{=i}}" enctype="multipart/form-data" method="post" onsubmit="return saveReport({{=i}});">
+                <input type="hidden" name="getImg" id='getImg{{=i}}' value="{{=it.content.dataset[i].pic}}">
+                <p class="imgnav-select">
+                    <input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+                    <img src="{{=it.content.dataset[i].pic}}">
+                </p>
+                <input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+                <input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+                <input type="hidden" name="img_sort" value="{{=i}}">
+                
+            </form>
+            </div>
+            <span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+        </div>
+        
+        <div class="fl imgnav-info">
+            <div class="formitems">  
+                <label class="fi-name">选择分类:</label>  
+                <div class="form-controls">
+                    <div class="droplist">
+                        
+                        <select  name="type_id_2"  id="type_id_2"  class="input xlarge" style="height:28px;">
+                           <option value="商城订单" {{? it.content.dataset[i].select_value=='商城订单'}}selected="selected"{{?}}>商城订单</option>
+							<option value="大礼包订单" {{? it.content.dataset[i].select_value=='大礼包订单'}}selected="selected"{{?}}>大礼包订单</option>
+							<option value="订餐订单" {{? it.content.dataset[i].select_value=='订餐订单'}}selected="selected"{{?}}>订餐订单</option>
+							<option value="外卖订单" {{? it.content.dataset[i].select_value=='外卖订单'}}selected="selected"{{?}}>外卖订单</option>
+							<option value="KTV订单" {{? it.content.dataset[i].select_value=='KTV订单'}}selected="selected"{{?}}>KTV订单</option>
+							<option value="酒店订单" {{? it.content.dataset[i].select_value=='酒店订单'}}selected="selected"{{?}}>酒店订单</option>
+							<option value="线下商城-自提订单" {{? it.content.dataset[i].select_value=='线下商城-自提订单'}}selected="selected"{{?}}>线下商城-自提订单</option>
+							<option value="线下商城-配送订单" {{? it.content.dataset[i].select_value=='线下商城-配送订单'}}selected="selected"{{?}}>线下商城-配送订单</option>
+							<option value="线下商城-社区订单" {{? it.content.dataset[i].select_value=='线下商城-社区订单'}}selected="selected"{{?}}>线下商城-社区订单</option>
+							<option value="金融订单" {{? it.content.dataset[i].select_value=='金融订单'}}selected="selected"{{?}}>金融订单</option>
+							<option value="教练服务订单" {{? it.content.dataset[i].select_value=='教练服务订单'}}selected="selected"{{?}}>教练服务订单</option>
+							<option value="线下收银订单" {{? it.content.dataset[i].select_value=='线下收银订单'}}selected="selected"{{?}}>线下收银订单</option>
+							<option value="拼团订单" {{? it.content.dataset[i].select_value=='拼团订单'}}selected="selected"{{?}}>拼团订单</option>
+							<option value="票务订单" {{? it.content.dataset[i].select_value=='票务订单'}}selected="selected"{{?}}>票务订单</option>
+							<option value="到店付订单" {{? it.content.dataset[i].select_value=='到店付订单'}}selected="selected"{{?}}>到店付订单</option>
+							<option value="艺人订单" {{? it.content.dataset[i].select_value=='艺人订单'}}selected="selected"{{?}}>艺人订单</option>
+                        </select>
+                        
+                    </div>
+                    
+                    <input type="hidden" class="j-verify" name="item_id" value="">
+                    <span class="fi-help-text j-verify-linkType"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name">文字自定义：</label>
+                <div class="form-controls">
+                    <input type="text" name="title" id="title_{{=i}}" value="{{= it.content.dataset[i].title}}" class="input xlarge" maxlength="5"/>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name">字体颜色：</label> 
+                <div class="form-controls">
+                    <div class="colorSelector"><div color="color" style="background-color: {{=it.content.dataset[i].color}}"></div></div>
+                </div>
+            </div>
+            <div class="formitems">  
+                <label class="fi-name">建议尺寸：</label>
+                <label class="note">65*65 px 图片大小不超过200K</label>
+            </div>
+            
+            
+        </div>
+        <div class="ctrl-item-list-actions">
+            <a href="javascript:;" title="上移" class="j-moveup"><i class="gicon-arrow-up"></i></a>
+            <a href="javascript:;" title="下移" class="j-movedown"><i class="gicon-arrow-down"></i></a>
+            <a href="javascript:;" title="删除" class="j-del"><i class="gicon-remove"></i></a>
+        </div>
+    </li>
+    {{ } }}
+    <li class="ctrl-item-list-add" title="添加">+</li>
+</ul>
+</script>
+<!--订单模块二-->
+
+
+<!--分割线-->
+<script type="dot-template" id="type_con_7">
+<div class="con_display" {{? it.content.padding}}style="padding-top:{{= it.content.padding}}px;padding-bottom:{{= it.content.padding}}px"{{?}}>
+    <div class="members_con">
+        <a title="{{=it.content.dataset[0].title}}" href="{{=it.content.dataset[0].link}}" ><img src="{{=it.content.dataset[0].pic}}" width="100%" /></a>
+    </div>
+</div>
+</script>
+<script type="dot-template" id="type_ctrl_7">
+<div class="formitems">
+    <label class="fi-name">模块上下边距：</label>
+    <div class="form-controls">
+        <div  id='slider' class="fl diy-slider j-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2">{{? it.content.padding}}{{=it.content.padding+'px'}}{{??}}0px{{?}}</span>
+    </div>
+</div>
+<ul class="ctrl-item-list"> 
+{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+    <li class="ctrl-item-list-li clearfix">
+        <div class="fl">
+            <div class="imgnav j-selectimg">
+            <form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img{{=i}}" enctype="multipart/form-data" method="post" onsubmit="return saveReport({{=i}});">
+                <input type="hidden" name="getImg" id='getImg{{=i}}' value="{{=it.content.dataset[i].pic}}">
+                <p class="imgnav-select">
+                    <input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+                    <img src="{{=it.content.dataset[i].pic}}">
+                </p>
+                <input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+                <input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+                <input type="hidden" name="img_sort" value="{{=i}}">
+                
+            </form>
+            </div>
+            <span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+        </div>
+        <div class="fl imgnav-info">
+            <div class="formitems">
+                <label class="fi-name"><input type="radio" class="sel_link_type" name="sel_link_type_{{=i}}" id="sel_link_type_{{=i}}" value="1" {{? it.content.dataset[i].sel_link_type == 1}}checked{{?}}/>链接到：</label> 
+                <div class="form-controls">
+                    <div class="droplist">
+                        
+                        <select  name="type_id_2"  id="type_id_2"  class="input xlarge" style="height:28px;">
+							<optgroup label="-----------必备功能-----------"></optgroup>
+							<option value="1_我的资产" {{? it.content.dataset[i].select_value=='1_我的资产'}}selected="selected"{{?}}>我的资产</option>
+							<option value="1_我的特权" {{? it.content.dataset[i].select_value=='1_我的特权'}}selected="selected"{{?}}>我的特权</option>
+							<option value="1_我的团队" {{? it.content.dataset[i].select_value=='1_我的团队'}}selected="selected"{{?}}>我的团队</option>
+							<option value="1_累积收益" {{? it.content.dataset[i].select_value=='1_累积收益'}}selected="selected"{{?}}>累积收益</option>
+							<option value="1_收货地址" {{? it.content.dataset[i].select_value=='1_收货地址'}}selected="selected"{{?}}>收货地址</option>
+							<option value="1_二维码" {{? it.content.dataset[i].select_value=='1_二维码'}}selected="selected"{{?}}>二维码</option>
+							<option value="1_我的微店" {{? it.content.dataset[i].select_value=='1_我的微店'}}selected="selected"{{?}}>我的微店</option>
+							<option value="1_我的店铺" {{? it.content.dataset[i].select_value=='1_我的店铺'}}selected="selected"{{?}}>我的店铺</option>
+							<option value="1_F2C店" {{? it.content.dataset[i].select_value=='1_F2C店'}}selected="selected"{{?}}>F2C店</option>
+							<option value="1_订货系统" {{? it.content.dataset[i].select_value=='1_订货系统'}}selected="selected"{{?}}>订货系统</option>
+							<option value="1_奖励报表" {{? it.content.dataset[i].select_value=='1_奖励报表'}}selected="selected"{{?}}>奖励报表</option>
+							<option value="1_我的导师" {{? it.content.dataset[i].select_value=='1_我的导师'}}selected="selected"{{?}}>我的导师</option>
+							<option value="1_签到" {{? it.content.dataset[i].select_value=='1_签到'}}selected="selected"{{?}}>签到</option>
+							<option value="1_社区代理" {{? it.content.dataset[i].select_value=='1_社区代理'}}selected="selected"{{?}}>社区代理</option>
+							<optgroup label="-----------推荐功能-----------"></optgroup>
+							<option value="2_推广排行榜" {{? it.content.dataset[i].select_value=='2_推广排行榜'}}selected="selected"{{?}}>推广排行榜</option>
+							<option value="2_授权证书" {{? it.content.dataset[i].select_value=='2_授权证书'}}selected="selected"{{?}}>授权证书</option>
+                            <option value="2_赠送码" {{? it.content.dataset[i].select_value=='2_赠送码'}}selected="selected"{{?}}>赠送码</option>
+							<option value="2_我的慈善" {{? it.content.dataset[i].select_value=='2_我的慈善'}}selected="selected"{{?}}>我的慈善</option>
+							<option value="2_修改邀请人" {{? it.content.dataset[i].select_value=='2_修改邀请人'}}selected="selected"{{?}}>修改邀请人</option>
+							<option value="2_头部引导" {{? it.content.dataset[i].select_value=='2_头部引导'}}selected="selected"{{?}}>头部引导</option>
+							<option value="2_外卖配送" {{? it.content.dataset[i].select_value=='2_外卖配送'}}selected="selected"{{?}}>外卖配送</option>
+							<option value="2_安装预约" {{? it.content.dataset[i].select_value=='2_安装预约'}}selected="selected"{{?}}>安装预约</option>
+							<option value="2_我的赠送" {{? it.content.dataset[i].select_value=='2_我的赠送'}}selected="selected"{{?}}>我的赠送</option>
+							<option value="2_我的佣金" {{? it.content.dataset[i].select_value=='2_我的佣金'}}selected="selected"{{?}}>我的佣金</option>
+							<option value="2_店铺龙虎榜" {{? it.content.dataset[i].select_value=='2_店铺龙虎榜'}}selected="selected"{{?}}>店铺龙虎榜</option>
+                             <?php if($is_travelcard == 1){ ?>
+                             <option value="2_我的旅游卡" {{? it.content.dataset[i].select_value=='2_我的旅游卡'}}selected="selected"{{?}}>我的旅游卡</option>
+                            <option value="2_旅游卡办卡首页" {{? it.content.dataset[i].select_value=='2_旅游卡办卡首页'}}selected="selected"{{?}}>旅游卡办卡首页</option>
+                            <?php } ?>
+							<optgroup label="-----------自定义功能-----------"></optgroup>
+                            <option value="3_队列活动" {{? it.content.dataset[i].select_value=='3_队列活动'}}selected="selected"{{?}}>队列活动</option>
+							<?php 
+							$query_custom	 ="select id,subscribe_id,need_score,imgurl from weixin_commonshop_subscribes where isvalid=true  and customer_id=".$customer_id." ORDER BY id desc";
+							$result_custom = _mysql_query($query_custom) or die('Query failed167: ' . mysql_error());
+								//自定义功能
+							$imgurl ='';
+							while ($row_c = mysql_fetch_object($result_custom)) {
+								$cs_id = $row_c->id;
+								$subscribe_id = $row_c->subscribe_id;
+								$need_score = $row_c->need_score;
+								$imgurl =$row_c->imgurl;                        
+								if($imgurl == '' ){
+
+									$imgurl='/weixinpl/mshop/images/info_image/function.png';
+								}                       
+								$imgurl = $new_baseurl.$imgurl;
+								$query = "SELECT id,title,website_url,coupon_id FROM weixin_subscribes where  id=".$subscribe_id;
+								$result = _mysql_query($query) or die('Query failed: ' . mysql_error());
+								$website_url="";
+								$title="";
+								while ($row = mysql_fetch_object($result)) {
+									$website_url = $row->website_url;
+									$title = $row->title;
+									$coupon_id = $row->coupon_id;
+								}
+								if($coupon_id>0){
+									continue;
+								}
+								$pos = strpos($website_url,"?"); 
+								if($pos>0){
+									$website_url = $website_url."&C_id=".$customer_id."&fromuser=".$weixin_fromuser;
+								}else{
+									$website_url = $website_url."?C_id=".$customer_id."&fromuser=".$weixin_fromuser;
+								}
+								$mppos= strstr($title,"{weixin_title}");
+								if(!empty($mppos)){
+									$title = str_replace("{weixin_title}",$weixin_name,$title);
+								}
+									$mppos= strstr($title,"{weixin_parent_title}");
+								if(!empty($mppos) and $parent_id>0){
+									$query="select weixin_name from weixin_users where  isvalid=true and id=".$parent_id." limit 0,1";
+									$result = _mysql_query($query) or die('Query failed: ' . mysql_error());
+									$parent_weixin_name="";
+									while ($row = mysql_fetch_object($result)) {
+										$parent_weixin_name = $row->weixin_name;
+									}
+										$title = str_replace("{weixin_parent_title}",$parent_weixin_name,$title);
+								}
+							?>
+							<option value="3_<?php echo $title; ?>" {{? it.content.dataset[i].select_value=='3_<?php echo $title; ?>'}}selected="selected"{{?}}><?php echo $title; ?></option>
+							<?php } ?>
+							<optgroup label="-----------专区版块-----------"></optgroup>
+							<option value="4_大礼包" {{? it.content.dataset[i].select_value=='4_大礼包'}}selected="selected"{{?}}>大礼包</option>
+							<option value="4_VP产品" {{? it.content.dataset[i].select_value=='4_VP产品'}}selected="selected"{{?}}>VP产品</option>
+							<option value="4_积分专区" {{? it.content.dataset[i].select_value=='4_积分专区'}}selected="selected"{{?}}>积分专区</option>
+							<option value="4_续费专区" {{? it.content.dataset[i].select_value=='4_续费专区'}}selected="selected"{{?}}>续费专区</option>
+							<option value="4_电商直播" {{? it.content.dataset[i].select_value=='4_电商直播'}}selected="selected"{{?}}>电商直播</option>
+							<option value="4_语音直播" {{? it.content.dataset[i].select_value=='4_语音直播'}}selected="selected"{{?}}>语音直播</option>
+							<option value="4_拼团专区" {{? it.content.dataset[i].select_value=='4_拼团专区'}}selected="selected"{{?}}>拼团专区</option>
+							<option value="4_限时抢购" {{? it.content.dataset[i].select_value=='4_限时抢购'}}selected="selected"{{?}}>限时抢购</option>
+							<option value="4_特权专区" {{? it.content.dataset[i].select_value=='4_特权专区'}}selected="selected"{{?}}>特权专区</option>
+							<option value="4_艺人服务" {{? it.content.dataset[i].select_value=='4_艺人服务'}}selected="selected"{{?}}>艺人服务</option>
+							<optgroup label="-----------数据版块-----------"></optgroup>
+							<option value="5_零钱" {{? it.content.dataset[i].select_value=='零钱'}}selected="selected"{{?}}>零钱</option>
+							<option value="5_会员卡积分" {{? it.content.dataset[i].select_value=='5_会员卡积分'}}selected="selected"{{?}}>会员卡积分</option>
+							<option value="5_会员卡余额" {{? it.content.dataset[i].select_value=='5_会员卡余额'}}selected="selected"{{?}}>会员卡余额</option>
+							<option value="5_消费总额" {{? it.content.dataset[i].select_value=='5_消费总额'}}selected="selected"{{?}}>消费总额</option>
+							<option value="5_购物币" {{? it.content.dataset[i].select_value=='5_购物币'}}selected="selected"{{?}}>购物币</option>
+							<option value="5_优惠券" {{? it.content.dataset[i].select_value=='5_优惠券'}}selected="selected"{{?}}>优惠券</option>
+							<option value="5_分享卡" {{? it.content.dataset[i].select_value=='5_分享卡'}}selected="selected"{{?}}>分享卡</option>
+							<option value="5_红积分" {{? it.content.dataset[i].select_value=='5_红积分'}}selected="selected"{{?}}>红积分</option>
+							<option value="5_红包" {{? it.content.dataset[i].select_value=='5_红包'}}selected="selected"{{?}}>红包</option>
+							<option value="5_商城积分" {{? it.content.dataset[i].select_value=='5_商城积分'}}selected="selected"{{?}}>商城积分</option>
+							<option value="5_我的足迹" {{? it.content.dataset[i].select_value=='5_我的足迹'}}selected="selected"{{?}}>我的足迹</option>
+							<option value="5_我的收藏" {{? it.content.dataset[i].select_value=='5_我的收藏'}}selected="selected"{{?}}>我的收藏</option>
+							<option value="5_排队奖励" {{? it.content.dataset[i].select_value=='5_排队奖励'}}selected="selected"{{?}}>排队奖励</option>
+                            <option value="5_积分单元总量"  {{? it.content.dataset[i].select_value=='5_积分单元总量'}}selected="selected" {{? }}  {{? it.content.has_red_score_member == -1}}style="display:none" {{?}}>积分单元总量</option>
+                            <option value="5_单元转换率"  {{? it.content.dataset[i].select_value=='5_单元转换率'}}selected="selected" {{? }}  {{? it.content.has_red_score_member == -1}}style="display:none" {{?}}>单元转换率</option>
+                            <option value="5_红积分总量"  {{? it.content.dataset[i].select_value=='5_红积分总量'}}selected="selected" {{? }}  {{? it.content.has_red_score_member == -1}}style="display:none" {{?}}>红积分总量</option>
+                            <option value="5_区块链积分记录" {{? it.content.dataset[i].select_value=='5_区块链积分记录'}}selected="selected"{{?}}>区块链积分记录</option>
+                            <option value="5_区块链奖励详情" {{? it.content.dataset[i].select_value=='5_区块链奖励详情'}}selected="selected"{{?}}>区块链奖励详情</option>
+                            <option value="5_门店积分" {{? it.content.dataset[i].select_value=='5_门店积分'}}selected="selected"{{?}}>门店积分</option>
+							<optgroup label="-----------订单版块-----------"></optgroup>
+							<option value="6_全部订单" {{? it.content.dataset[i].select_value=='6_全部订单'}}selected="selected"{{?}}>全部订单</option>
+							<option value="6_商城订单" {{? it.content.dataset[i].select_value=='6_商城订单'}}selected="selected"{{?}}>商城订单</option>
+							<option value="6_大礼包订单" {{? it.content.dataset[i].select_value=='6_大礼包订单'}}selected="selected"{{?}}>大礼包订单</option>
+							<option value="6_订餐订单" {{? it.content.dataset[i].select_value=='6_订餐订单'}}selected="selected"{{?}}>订餐订单</option>
+							<option value="6_外卖订单" {{? it.content.dataset[i].select_value=='6_外卖订单'}}selected="selected"{{?}}>外卖订单</option>
+							<option value="6_KTV订单" {{? it.content.dataset[i].select_value=='6_KTV订单'}}selected="selected"{{?}}>KTV订单</option>
+							<option value="6_酒店订单" {{? it.content.dataset[i].select_value=='6_酒店订单'}}selected="selected"{{?}}>酒店订单</option>
+							<option value="6_线下商城-自提订单" {{? it.content.dataset[i].select_value=='6_线下商城-自提订单'}}selected="selected"{{?}}>线下商城-自提订单</option>
+							<option value="6_线下商城-配送订单" {{? it.content.dataset[i].select_value=='6_线下商城-配送订单'}}selected="selected"{{?}}>线下商城-配送订单</option>
+							<option value="6_线下商城-社区订单" {{? it.content.dataset[i].select_value=='6_线下商城-社区订单'}}selected="selected"{{?}}>线下商城-社区订单</option>
+							<option value="6_金融订单" {{? it.content.dataset[i].select_value=='6_金融订单'}}selected="selected"{{?}}>金融订单</option>
+							<option value="6_教练服务订单" {{? it.content.dataset[i].select_value=='6_教练服务订单'}}selected="selected"{{?}}>教练服务订单</option>
+							<option value="6_线下收银订单" {{? it.content.dataset[i].select_value=='6_线下收银订单'}}selected="selected"{{?}}>线下收银订单</option>
+							<option value="6_拼团订单" {{? it.content.dataset[i].select_value=='6_拼团订单'}}selected="selected"{{?}}>拼团订单</option>
+							<option value="6_票务订单" {{? it.content.dataset[i].select_value=='6_票务订单'}}selected="selected"{{?}}>票务订单</option>
+							<option value="6_到店付订单" {{? it.content.dataset[i].select_value=='6_到店付订单'}}selected="selected"{{?}}>到店付订单</option>
+							<option value="6_艺人订单" {{? it.content.dataset[i].select_value=='6_艺人订单'}}selected="selected"{{?}}>艺人订单</option>
+						</select>
+						<input type="text" id="search_input_{{=i}}" value="" class="input search-input" /><button class="search-input-btn" id="search_btn_{{=i}}">搜索</button>
+                    </div>
+                    <input type="hidden" class="j-verify" name="item_id" value="">
+                    <span class="fi-help-text j-verify-linkType"></span>
+                </div>
+            </div>
+			<div class="formitems">
+				<label class="fi-name"><input type="radio" class="sel_link_type" name="sel_link_type_{{=i}}" id="sel_link_type_{{=i}}" value="2" {{? it.content.dataset[i].sel_link_type == 2}}checked{{?}}/>填写链接：</label>
+				<div class="form-controls">
+					<input type="text" name="custom_link" id="custom_link_{{=i}}" value="{{= it.content.dataset[i].link}}" class="input xlarge" />
+				</div>
+			</div>
+            <div class="formitems">  
+                <label class="fi-name">建议尺寸：</label>
+                <label class="note">宽度1080 px，大小不超过200K</label>
+            </div>
+            <!--<div class="formitems">  
+                <label class="fi-name">标题：</label>
+                <div class="form-controls">
+                    <input type="text" name="title" class="input xlarge" value="{{=it.content.dataset[i].title}}" maxlength="10">
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+			-->
+        </div>
+    </li>
+    {{ } }}
+</ul>
+</script>  
+<!--分割线-->
+
+
+<!--滚动公告栏-->
+<script type="text/j-template" id="type_con_13">
+<div class="con_display" {{? it.content.padding}}style="padding:{{= it.content.padding}}px 0;"{{?}}>
+<div style="height:40px;line-height:40px;background:#FFF;padding-left:34px;background-image:url({{? it.content.icon_pic== undefined || it.content.icon_pic == ''}}/weixinpl/back_newshops/Base/personalization/personal_center/images/horn.png {{??}}{{=it.content.icon_pic}}{{?}});background-repeat:no-repeat;background-position:10px 9px;background-size:20px 20px;">
+	<div id="marquee{{= it.id}}" class="marquee">
+		<ul>
+		{{for (var j=0,k=it.content.dataset.length;j<k;j++) { }}
+			<li style="{{? it.content.rolling_direction==1}}display:inline-block;width:{{= it.content.dataset[j].title.length*16+314-34}}px;{{?}}color:#ffaf74;"><a href="javascript:#;" style="color:#000000;font-size:16px;">{{= it.content.dataset[j].title}}</a></li>
+		{{ } }}
+		</ul>
+	</div>
+</div>
+
+</div>
+</script>
+<script type="dot-template" id="type_ctrl_13">
+<div class="formitems">
+    <label class="fi-name">模块上下边距：</label> 
+    <div class="form-controls">
+        <div id='slider' class="fl diy-slider j-slider2 ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2">{{? it.content.padding}}{{=it.content.padding+'px'}}{{??}}0px{{?}}</span>
+    </div>
+</div>
+<div class="formitems">  
+	<label class="fi-name">滚动方向：</label>   
+    <div class="form-controls">
+		<div class="radio-group">
+			<label><input type="radio" name="rolling_direction" value="1"{{? it.content.rolling_direction==1}} checked{{?}}>从右往左</label>
+            <label><input type="radio" name="rolling_direction" value="2"{{? it.content.rolling_direction==2}} checked{{?}}>从下往上</label>
+        </div>
+	</div>
+</div>
+{{? it.content.rolling_direction==1}}
+<div class="formitems">
+    <label class="fi-name">滚动速度：</label>
+    <div class="form-controls">
+        <div  id='slider_speed' class="fl diy-slider j-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" style="width:250px;"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2-speed">{{? it.content.rolling_speed}}{{=it.content.rolling_speed}}{{??}}1{{?}}（数值越大速度越慢）</span>
+    </div>
+</div>
+{{?? it.content.rolling_direction==2}}
+<div class="formitems">  
+	<label class="fi-name">每条公告显示时间：</label>   
+    <div class="form-controls">
+			<input type="text" name="show_time_limit" value="{{= it.content.show_time_limit}}" size="5" style="text-align:center;">（秒）
+	</div>
+</div>
+{{?}}
+<!--滚动栏上传图标-->
+<div class="formitems">  
+	<label class="fi-name">上传图标：</label>   
+    <div class="form-controls">
+		<div class="fl" style="margin-right:20px;">
+			<div class="imgnav j-selectimg">
+				<form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img10" enctype="multipart/form-data" method="post" onsubmit="return saveReport(10);">
+					<input type="hidden" name="getImg" id='getImg10' value="{{=it.content.icon_pic}}">
+					<p class="imgnav-select">
+						<input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+                        {{? it.content.icon_pic== undefined || it.content.icon_pic == ''}}
+                        <img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/horn.png" />
+                        {{??}}
+						<img src="{{=it.content.icon_pic}}">
+                            {{?}}
+					</p>
+					<input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+					<input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+					<input type="hidden" name="img_sort" value="0">
+					<input type="hidden" name="uptypes" value="image/jpg,image/jpeg,image/png,">
+
+				</form>
+				</div>
+			<span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+		</div>		
+    </div>
+    <div class="form-controls">
+      <p>建议尺寸：36px*36px</p>
+      <p>格式：jpg、png、bmp</p>
+      <p>大小：24K以下</p>
+    </div>
+</div>
+
+<ul class="ctrl-item-list"> 
+{{ for(var i=0,l=it.content.dataset.length;i<l;i++) { }}
+    <li class="ctrl-item-list-li clearfix">
+        <div class="fl imgnav-info">
+			<div class="formitems">  
+                <label class="fi-name">公告内容：</label>
+                <div class="form-controls">
+                    <input type="text" name="title" class="input xlarge" autocomplete="off" value="{{= it.content.dataset[i].title}}">{{=it.content.dataset[i].text_length}}/50                  
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">  
+                <label class="fi-name"><input type="radio" class="sel_link_type" name="sel_link_type_{{=i}}" id="sel_link_type_{{=i}}" value="1" {{? it.content.dataset[i].sel_link_type == 1}}checked{{?}} style="display:none" />链接到：</label>  
+                <div class="form-controls">
+                    <div class="droplist">
+                        <select  name="type_id_2"  id="type_id_2"  class="input xlarge" style="height:28px;">
+                        {{? it.fixed_link}}
+                        	{{? it.content.dataset[i].select_value}}
+                        	{{
+                        		selv=it.content.dataset[i].select_value.split("_");
+                        		select_value=selv[0];
+                        	}}
+                        	{{??}}
+                        	{{ select_value=it.content.dataset[i].select_value; }}
+                        	{{?}}
+                            {{for (k=0,m=it.fixed_link.length;k<m;k++) { 
+                                fl=it.fixed_link[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}" {{? fl[0]==select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.template_link}}
+							<optgroup label="---------------自定义模板---------------"></optgroup>
+							{{for (k=0,m=it.template_link.length;k<m;k++){
+								fl = it.template_link[k].split("_");
+							}}
+							<option value="{{=fl[0]}}_10" {{? fl[0]+'_10'==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+							{{ } }}
+						{{?}}
+                        {{? it.type_arr}}
+                        <optgroup label="---------------产品分类---------------"></optgroup>
+							{{
+								product_type_linktype = -1;
+								product_type_val = -1;
+							}}
+							{{? it.content.dataset[i].select_value}}
+							{{	selv=it.content.dataset[i].select_value.split("_");
+								product_type_linktype=selv[1];
+								product_type_val=selv[0];
+                            }}
+							{{?}}
+                        <option value="-40"{{? product_type_linktype==1 && product_type_val>0}} selected="selected"{{?}}>多级分类</option>
+                        {{?}}
+                        {{? it.img_info}}
+                        <optgroup label="---------------图文消息---------------"></optgroup>
+                            {{for (k=0,m=it.img_info.length;k<m;k++) { 
+                                fl=it.img_info[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_2"{{? fl[0]+'_2'==it.content.dataset[i].select_value}} selected="selected"{{?}} >{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.coupon_info && it.is_coupon>0}}
+                        <optgroup label="---------------优惠券---------------"></optgroup>
+						 <option value="0_60"{{? '0_60'==it.content.dataset[i].select_value}} selected="selected"{{?}} >优惠券全部</option>
+                            {{for (k=0,m=it.coupon_info.length;k<m;k++) { 
+                                fl=it.coupon_info[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_60"{{? fl[0]+'_60'==it.content.dataset[i].select_value}} selected="selected"{{?}} >{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+                        {{? it.is_cityarea_caterer>0  && it.city_food}}
+                        <optgroup label="-----------城市商圈（美食）-----------"></optgroup>
+                            {{for (k=0,m=it.city_food.length;k<m;k++) { 
+                                fl=it.city_food[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_3" {{? fl[0]+'_3'==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.is_cityarea_ktv>0  && it.city_ktv}}
+                        <optgroup label="-----------城市商圈（KTV）-----------"></optgroup>
+                            {{for (k=0,m=it.city_ktv.length;k<m;k++) { 
+                                fl=it.city_ktv[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_6" {{? fl[0]+'_6'==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.is_cityarea_hotel>0  && it.city_hotel}}
+                        <optgroup label="-----------城市商圈（酒店）-----------"></optgroup>
+                            {{for (k=0,m=it.city_hotel.length;k<m;k++) { 
+                                fl=it.city_hotel[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_7" {{? fl[0]+'_7'==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.is_cityarea_shop>0  && it.city_shop}}
+                        <optgroup label="-----------城市商圈（线下商城）-----------"></optgroup>
+                            {{for (k=0,m=it.city_shop.length;k<m;k++) { 
+                                fl=it.city_shop[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_8" {{? fl[0]+'_8'==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.is_cityarea>0}}
+                        <optgroup label="-----------商圈行业列表-----------"></optgroup>
+                            {{for (k=0,m=it.cityarea_industry.length;k<m;k++) { 
+                                fl=it.cityarea_industry[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_4_{{=fl[2]}}" {{? fl[0]+'_4_'+fl[2]==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.brand_arr}}
+                        <optgroup label="-------------品牌供应店铺-------------"></optgroup>
+                            {{for (k=0,m=it.brand_arr.length;k<m;k++) { 
+                                fl=it.brand_arr[k].split("_");
+                            }}
+                        <option value="{{=fl[0]}}_5"{{? fl[0]+'_5'==it.content.dataset[i].select_value}} selected="selected"{{?}} >{{=fl[1]}}</option>
+                            {{ } }}
+                        {{?}}
+						{{? it.room_link}}
+                        <optgroup label="-------------商城直播系统-------------"></optgroup>
+							{{
+								product_type_linktype = -1;
+								product_type_val = -1;
+							}}
+							{{? it.content.dataset[i].select_value}}
+								{{	selv=it.content.dataset[i].select_value.split("_");
+									product_type_linktype=selv[1];
+									product_type_val=selv[0];
+								}}
+							{{?}}
+						<option value="weishi"{{? product_type_linktype==9 && product_type_val>0}} selected="selected"{{?}} >直播房间</option>
+                        {{?}}	
+                        </select>
+						<!--<input type="text" id="search_input_{{=i}}" value="" class="input search-input" /><button class="search-input-btn" id="search_btn_{{=i}}">搜索</button>-->
+						{{? it.type_arr[-1]}}
+						<select  name="product_type_2"  id="product_type_2_{{=i}}"  class="input xlarge" style="{{? product_type_linktype!=1 || product_type_val<=0}}display:none;{{?}}height:28px;">
+							{{for (k=0,m=it.type_arr[-1].length;k<m;k++) {
+								type_id_name=it.type_arr[-1][k].split("_");
+								type_id=type_id_name[0];
+								type_name=type_id_name[1];
+							}}
+						<option value="{{=type_id}}_1"{{? type_id+'_1'==it.content.dataset[i].select_value}} selected="selected"{{?}} >{{=type_name}}</option>
+							{{? it.type_arr[type_id]}}
+								{{for (j=0,n=it.type_arr[type_id].length;j<n;j++) {
+									ctype_id_name=it.type_arr[type_id][j].split("_");
+									ctype_id=ctype_id_name[0];
+									ctype_name=ctype_id_name[1];
+								}}
+								<option value="{{=ctype_id}}_1"{{? ctype_id+'_1'==it.content.dataset[i].select_value}} selected="selected"{{?}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{=ctype_name}}</option>
+									{{? it.type_arr[ctype_id]}}
+										{{for (h=0,b=it.type_arr[ctype_id].length;h<b;h++) {
+											ctype_id_name3=it.type_arr[ctype_id][h].split("_");
+											ctype_id3=ctype_id_name3[0];
+											ctype_name3=ctype_id_name3[1];
+										}}
+										<option value="{{=ctype_id3}}_1"{{? ctype_id3+'_1'==it.content.dataset[i].select_value}} selected="selected"{{?}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{=ctype_name3}}</option>
+										{{? it.type_arr[ctype_id3]}}
+											{{for (g=0,v=it.type_arr[ctype_id3].length;g<v;g++) {
+												ctype_id_name4=it.type_arr[ctype_id3][g].split("_");
+												ctype_id4=ctype_id_name4[0];
+												ctype_name4=ctype_id_name4[1];
+											}}
+											<option value="{{=ctype_id4}}_1"{{? ctype_id4+'_1'==it.content.dataset[i].select_value}} selected="selected"{{?}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{=ctype_name4}}</option>
+											{{ } }}
+										{{?}}
+										{{ } }}
+									{{?}}
+								{{ } }}
+							{{?}}
+							{{ } }}
+						</select>
+						{{?}}
+						{{? it.room_link}}
+						<select name="room_link" id="room_link_{{=i}}" class="input xlarge" style="{{? product_type_linktype!=9 || product_type_val<=0}}display:none;{{?}}height:28px;" >
+							{{for ( k=0,m=it.room_link.length; k<m; k++ ) {
+								room_id_name = it.room_link[k].split("_");
+							}}
+							<option value="{{= room_id_name[0]}}_9" {{? room_id_name[0]+'_9'==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{= room_id_name[1]}}</option> 
+							{{ } }}
+						</select>
+						{{?}}	
+                        <div id="div_products_2_{{=i}}" style="display:none;" >
+                            <select name="product_detail_id_2" id="product_detail_id_2_{{=i}}" class="input xlarge" style="height:28px;">
+                                <option value="1"></option>
+                            </select>
+                        </div>
+                    </div>
+					
+                    <input type="hidden" class="j-verify" name="item_id" value="">
+                    <span class="fi-help-text j-verify-linkType"></span>
+                </div>
+            </div>
+            {{? it.content.dataset[i].select_value}}
+			{{	selv=it.content.dataset[i].select_value.split("_");
+				select_val=selv[0];
+            }}
+			{{? select_val==-11}}
+			<div class="formitems">  
+			    <label class="fi-name"></label>  
+			    <div class="form-controls">
+			        <div class="droplist">
+			            <select  name="type_id_3"  id="type_id_3"  class="input xlarge" style="height:28px;">
+			                <option value="-11">全部</option>
+			                {{? it.package_lists}}
+			                {{for (k=0,m=it.package_lists.length;k<m;k++) { 
+			                fl=it.package_lists[k].split("_");
+			            }}
+			            <option value="-11_{{=fl[0]}}" {{? '-11_'+fl[0]==it.content.dataset[i].select_value}} selected="selected"{{?}}>{{=fl[1]}}</option>
+			            {{ } }}
+			            {{?}}
+			        </select>
+			    </div>
+			</div>
+			{{?}}
+			{{?}}
+        </div>
+		<div class="ctrl-item-list-actions">
+            <a href="javascript:;" title="上移" class="j-moveup"><i class="gicon-arrow-up"></i></a>
+            <a href="javascript:;" title="下移" class="j-movedown"><i class="gicon-arrow-down"></i></a>
+            <a href="javascript:;" title="删除" class="j-del"><i class="gicon-remove"></i></a>
+        </div>
+    </li>
+    {{ } }}
+	<li class="ctrl-item-list-add" title="添加">+</li>
+</ul>
+</script>
+<!--滚动公告栏-->
+
+<!-- 个人中心头部 -->
+ <script type="text/j-template" id="type_con_17">
+<div class="con_display" {{? it.content.padding}}style="padding:{{= it.content.padding}}px 0;"{{?}}> 
+      {{? it.content.css_type==1}}
+      <div class="top-main01 back-img" style="{{? it.content.icon_pic!=''}}background-image:url({{=it.content.icon_pic}}){{?}}">
+			<span class="top-set">设置</span>
+			<div class="top-imgBox">
+				<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/head_img.png"/>
+			</div>
+			<p class="top-userName">微信昵称</p>
+			<div class="top-info">
+				<p>用户ID</p>
+				<p>推荐人</p>
+			</div>
+            <div class="id-area01">
+				<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/er_icon13.png"/>
+				<span>我的身份</span>
+				<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/er_icon13.png"/>
+				<span>店铺</span>
+			</div>
+           </div> 
+          {{?? it.content.css_type==2}}
+            <div class="top-main02 back-img" style="{{? it.content.icon_pic!=''}}background-image:url({{=it.content.icon_pic}}){{?}}">
+              <span class="top-set">设置</span>
+			<div class="top-imgBox02">
+				<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/head_img.png"/>
+			</div>
+			<div class="top-info02">
+				<p class="top-name02">微信昵称</p>
+				<p>用户ID     推荐人</p>
+				<p>我的身份 | 店铺</p>
+			</div>
+		</div>
+          {{?? it.content.css_type==3}}
+          <div class="top-main03 back-img" style="{{? it.content.icon_pic!=''}}background-image:url({{=it.content.icon_pic}}){{?}}">
+			<div class="top-mainInner">
+				<span class="top-set">设置</span>
+			<div class="top-imgBox">
+				<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/head_img.png"/>
+			</div>
+			<div class="top-info03">
+				<p class="top-name02">微信昵称</p>
+				<p>用户ID  推荐人</p>
+		    </div>
+			</div>
+		    <div class="top-status">
+		    	我的身份
+		    </div>
+		</div>
+          {{?? it.content.css_type==4}}
+          <div class="top-main04 back-img" style="{{? it.content.icon_pic!=''}}background-image:url({{=it.content.icon_pic}}){{?}}">
+			<span class="top-set">设置</span>
+			<div class="top-imgBox">
+				<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/head_img.png"/>
+			</div>
+			<div class="name04">
+				<p class="top-userName04">微信昵称</p>
+			</div>
+			<div class="top-info04">
+				<p class="id04">用户ID</p>
+				<p>推荐人</p>
+			</div>
+			<div class="top-status04">
+		    	我的身份
+		    </div>
+		</div>
+        {{?? it.content.css_type==5}}
+        <div class="top-main05" style="{{? it.content.icon_pic!=''}}background-image:url({{=it.content.icon_pic}}){{?}}">
+			<div class="topimg" style="background: {{? it.content.icon_pic == undefined || it.content.icon_pic == ''}}url(/weixinpl/back_newshops/Base/personalization/personal_center/images/back05.png);background-size: 100% 100%;{{?}}">
+				<div class="top-set05">
+					设置
+				</div>
+				<div class="status05">
+					<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/er_icon13.png"/>
+					<span>推广员</span>
+					<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/er_icon13.png"/>
+					<span>店铺</span>
+					<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/er_icon13.png"/>
+					<span>合作商</span>
+					<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/er_icon13.png"/>
+					<span>代理商</span>
+				</div>
+				<div class="status05">
+					<span>用户ID</span>
+					<span style="margin-left: 8px;">推荐人</span>
+				</div>
+			</div>
+			<div class="head-img05">
+				<div class="head-content">
+					<img src="/weixinpl/back_newshops/Base/personalization/personal_center/images/head_img.png"/>
+				</div>
+			</div>
+			<div class="name05">
+				微信昵称
+			</div>
+		</div>
+          {{?}}
+          
+		</div>
+</script>
+<script type="dot-template" id="type_ctrl_17">
+<div class="formitems" style="margin-top:10px;">
+    <label class="fi-name">模块上下边距：</label>
+    <div class="form-controls">
+        <div  id='slider' class="fl diy-slider j-slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"></span></div>
+        <span class="fl mgl10 mgt5 ftsize14 j-ctrl-showheight2">{{? it.content.padding}}{{=it.content.padding+'px'}}{{??}}0px{{?}}</span>
+    </div>         
+</div>
+<div class="formitems">
+       <label class="fi-name">显示方式：</label>   
+        <div class="form-controls">
+            <div class="radio-group">
+                <label><input type="radio" name="css_type" value="1"{{? it.content.css_type==1}} checked{{?}}>样式一</label>
+                <label><input type="radio" name="css_type" value="2"{{? it.content.css_type==2}} checked{{?}}>样式二</label>
+                <label><input type="radio" name="css_type" value="3"{{? it.content.css_type==3}} checked{{?}}>样式三</label>
+                <label><input type="radio" name="css_type" value="4"{{? it.content.css_type==4}} checked{{?}}>样式四</label>
+                <label ><input type="radio" name="css_type" value="5"{{? it.content.css_type==5}} checked{{?}}>样式五<span class="size05">(查看规格图)
+                  <img class="size-img" src="/weixinpl/back_newshops/Base/personalization/personal_center/images/size05.png"/>
+                </span>
+                 
+                </label>
+                
+            </div>
+        </div>
+    </div>
+<div class="formitems">  
+    <label class="fi-name">更换背景：</label>  
+    <div class="form-controls">
+    <div class="formitems">                 
+	    <label class="note">上传背景图</label>
+    </div>
+		<div class="fl" style="margin-right:20px;">
+			<div class="imgnav j-selectimg">
+				<form action="/weixinpl/back_newshops/Base/personalization/personal_center/save_img.php?customer_id=<?php echo $customer_id; ?>&type_id=<?php echo $type_id; ?>" id="frm_img10" enctype="multipart/form-data" method="post" onsubmit="return saveReport(10);">
+					<input type="hidden" name="getImg" id='getImg10' value="{{=it.content.icon_pic}}">
+					<p class="imgnav-select add-img">
+						<input type="file" size="20" name="upfile2" id="upfile2" class="up" >
+                        {{? it.content.icon_pic == undefined || it.content.icon_pic == ''}}
+                        <div style="font-size:45px;line-height:83px;color:gray;">+
+                        </div>
+                        {{??}}
+						<img src="{{=it.content.icon_pic}}">
+                        <span class="head-delete">删除</span>
+                        {{? }}
+					</p>
+					<input type="hidden" name="diy_tem_contid" value="{{=it.id}}">
+					<input type="hidden" name="diy_temid" value="<?php echo $diy_temid?>">
+					<input type="hidden" name="img_sort" value="0">
+					<input type="hidden" name="uptypes" value="image/jpg,image/jpeg,image/png,">
+
+				</form>
+				</div>
+			<span class="fi-help-text txtCenter mgt5 j-verify-pic"></span>
+		</div>	
+        
+    </div>
+</div>
+<div class="formitems">  
+   {{? it.content.css_type==1}}               
+	<label class="fi-name">建议尺寸：</label> <label class="note">750*396px，大小不超过200K</label> 
+    {{?}}
+    {{? it.content.css_type==2}}               
+	<label class="fi-name">建议尺寸：</label> <label class="note">750*208px，大小不超过200K</label> 
+    {{?}}
+    {{? it.content.css_type==3}}               
+	<label class="fi-name">建议尺寸：</label> <label class="note">750*252px，大小不超过200K</label> 
+    {{?}}
+    {{? it.content.css_type==4}}               
+	<label class="fi-name">建议尺寸：</label> <label class="note">750*322px，大小不超过200K</label> 
+    {{?}}
+    {{? it.content.css_type==5}}               
+	<label class="fi-name">建议尺寸：</label> <label class="note">750*388px，大小不超过200K</label> 
+    {{?}}
+</div>
+</script>
+<!-- 个人中心头部-->
+
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/doT.min.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/colorpicker.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/custom.events.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/custom.core.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/custom.init.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/layer/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/jquery.touchSlider.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/slider.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/custom.display.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/Marquee.js"></script>
+<script charset="utf-8" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/region_select.js"></script>
+<script charset="utf-8" src="/weixinpl/common/js/jquery.jsonp-2.2.0.js"></script>
+<script type="text/javascript" src="/weixinpl/back_commonshop/js/global.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Common/js/Base/personalization/shop.js"></script>
+<script type="text/javascript" src="/weixinpl/back_commonshop/js/lean-modal.min.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Common/js/Product/product/jquery.uploadify-3.1.min.js?ver=<?php echo rand(0,9999);?>"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/jquery.form.js"></script><!--ajaxform 插件-->
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/WdatePicker.js"></script><!--添加时间插件-->
+<!--<script type="text/javascript" src="js/region_select.js"></script>--><!--选择地区插件-->
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/select_area.js"></script><!--选择地区插件-->
+<!--<script src="//malsup.github.io/jquery.form.js"></script>-->
+<script>
+	var action ="<?php echo $action;?>";
+    var customer_id =<?php echo $customer_id;?>;
+    var diy_temid   =<?php echo $diy_temid;?>;
+	var is_cityarea_caterer =<?php echo $is_cityarea_caterer;?>    //城市商圈（美食），渠道开关
+	var is_cityarea_ktv =<?php echo $is_cityarea_ktv;?>            //城市商圈（ktv），渠道开关
+	var is_cityarea_hotel =<?php echo $is_cityarea_hotel;?>        //城市商圈（酒店），渠道开关
+	var is_cityarea_shop =<?php echo $is_cityarea_shop;?>          //城市商圈（线下商城），渠道开关
+	var is_cityarea =<?php echo $is_cityarea;?>                    //城市商圈，渠道开关
+    var is_travelcard =<?php echo $is_travelcard;?>                //旅游卡，渠道开关
+    var has_red_score_member = <?php echo $has_red_score_member;?>  //是否有红积分会员卡
+	
+$(function() {  
+    var customarr       =<?php echo json_encode($customarr);?>;//模块内容
+    typearr             =<?php echo json_encode($type_arr);?>; //产品分类  
+    imginfo             =<?php echo json_encode($imginfo);?>;//图文消息数组
+    couponinfo          =<?php echo json_encode($couponinfo);?>;//优惠券数组
+    cityfood            =<?php echo json_encode($cityfood);?>;//城市商圈美食
+    is_coupon           =<?php echo json_encode($is_coupon);?>;//城市商圈美食
+    cityktv             =<?php echo json_encode($cityktv);?>;//城市商圈ktv
+    cityhotel           =<?php echo json_encode($cityhotel);?>;//城市商圈酒店
+    cityshop            =<?php echo json_encode($cityshop);?>;//城市商圈线下商城
+    fixedlink           =<?php echo json_encode($fixedlink);?>;//固定连接数组  
+	cityarea_industry   =<?php echo json_encode($cityarea_industry);?>;//商圈-行业
+	brandarr            =<?php echo json_encode($brandarr);?>; //品牌供应商
+	areaData            = <?php echo json_encode($areaData);?>; //省、市
+	room_link           = <?php echo json_encode($room_link);?>; //微视直播系统
+	template_link       = <?php echo json_encode($template_link);?>; //已启用的模板
+	cityarea_shop_protype_arr  = <?php echo json_encode($cityarea_shop_protype_arr);?>; //线下商城产品分类
+	cityarea_shop_type_arr     = <?php echo json_encode($cityarea_shop_type_arr);?>; //线下商城店铺分类
+	cityarea_shop_arr          = <?php echo json_encode($cityarea_shop_arr);?>; //线下商城店铺
+	oldstr = $('#con_15_placeholder').val(); //已启用的模板
+	 //console.log(customarr);
+    package_lists           = <?php echo json_encode($package_lists);?>;//固定连接数组    
+	red_score_member_link   = <?php echo json_encode($red_score_member_link);?> //红积分会员卡
+    
+    var new_baseurl   ="<?php echo $new_baseurl;?>";//拼接链接
+    var test = eval(customarr);//   JSON转化为数组 
+    
+    var titleArr=new Array();
+    var imgArr=new Array();
+    var select_value_arr= new Array();
+    var detail_value_arr= new Array();
+    var detail_name_arr=  new Array();
+    var member_id_arr  =  new Array();
+	var color_arr=new Array();
+	var color1_arr=new Array();
+	var sel_link_type_arr=new Array();
+	var link_arr=new Array();
+ //读取数据库数组生成页面
+    for(i=0;i<test.length;i++)
+    {   
+		if ( test[i] == '' ) {
+			continue;
+		}
+        var module={
+                id:null,//模块ID 
+                type:null,//模块类型
+                sort:null, //排序
+                content:null,//模块内容
+                fixed_link:null,//固定
+                type_arr:null,//产品分类
+                img_info:null,//图文
+                coupon_info:null,//优惠券
+                city_food:null,//城市商圈美食
+                is_coupon:null,//优惠券
+                city_ktv:null,//城市商圈ktv
+                city_hotel:null,//城市商圈酒店
+                city_shop:null,//城市商圈线下商城
+				is_cityarea_caterer:null,//城市商圈（美食）
+				is_cityarea_ktv:null,//城市商圈（ktv）
+				is_cityarea_hotel:null,//城市商圈（酒店）
+                is_travelcard:null,//旅游卡，渠道开关
+				is_cityarea_shop:null,//城市商圈（线下商城）
+				is_cityarea:null,//城市商圈，渠道开关
+				cityarea_industry:null,//商圈-行业
+				brand_arr:null,//品牌供应商
+				areaData:null,//省、市
+				room_link:null,//微视直播系统
+				template_link:null,//已启用的模板
+				cityarea_shop_protype_arr:null,//线下商城产品分类
+				cityarea_shop_type_arr:null,//线下商城店铺分类
+				cityarea_shop_arr:null,//线下商城店铺
+                red_score_member_link:null//红积分会员卡
+
+          };
+          module.content={
+                css_type:null,
+                placeholder:null,
+                padding:null,
+                margin:null,
+                pro_title_show:null,
+                pro_title_twoline:null,
+                pro_numshow:null,
+                show_sale:null,
+                foot_position:null,
+                video_link:null,
+				bg_color:null,
+				color:null,
+				rolling_direction:null,
+				rolling_speed:null,
+				show_time_limit:null,
+				city_name:null,
+				location_p:null,
+                dataset:[],
+                shop_type:null,//商城类型
+				sort_type:null,//排序类型
+				divide_type:null,//划分类型
+                has_red_score_member:-1,//是否有红积分卡
+                };
+
+            if(test[i].title){
+                 titleArr=test[i].title.split("|");
+            }
+           if(test[i].imgurl){
+                 imgArr=test[i].imgurl.split("|");
+            }
+            if(test[i].select_value){
+                 select_value_arr=test[i].select_value.split("|");
+            }
+            if(test[i].rs_member_id){
+                 member_id_arr=test[i].rs_member_id.split("|");
+            }
+            if(test[i].detail_value){
+                 detail_value_arr=test[i].detail_value.split("|");
+            }
+            if(test[i].detail_name){
+                 detail_name_arr=test[i].detail_name.split("|");
+            }
+			if(test[i].start_time){
+                 start_time_arr=test[i].start_time.split("|");
+            }
+			if(test[i].end_time){
+                 end_time_arr=test[i].end_time.split("|");
+            }
+			if(test[i].color){
+                 color_arr=test[i].color.split("|");
+            }
+			if(test[i].color1){
+                 color1_arr=test[i].color1.split("|");
+            }
+			if(test[i].link){
+                 link_arr=test[i].link.split("|");
+            }
+			if(test[i].sel_link_type){
+                 sel_link_type_arr=test[i].sel_link_type.split("|");
+            }
+			
+         module.id=test[i].diy_tem_contid;
+         module.type=test[i].type;
+         module.fixed_link=fixedlink;
+         module.package_lists=package_lists;
+         module.room_link=room_link;
+         module.template_link=template_link;
+         module.type_arr=typearr;
+         module.img_info=imginfo;
+         module.coupon_info=couponinfo;
+         module.city_food=cityfood;
+         module.is_coupon=is_coupon;
+         module.city_ktv=cityktv;
+         module.city_hotel=cityhotel;
+         module.city_shop=cityshop;
+		 module.is_cityarea_caterer=is_cityarea_caterer;    
+		 module.is_cityarea_ktv=is_cityarea_ktv;    
+		 module.is_cityarea_hotel=is_cityarea_hotel;    
+		 module.is_cityarea_shop=is_cityarea_shop;  
+         module.is_travelcard=is_travelcard;  
+		 module.is_cityarea=is_cityarea;
+		 module.cityarea_industry=cityarea_industry;
+		 module.brand_arr=brandarr;
+		 module.areaData=areaData;
+         module.red_score_member_link=red_score_member_link;
+		 module.cityarea_shop_protype_arr=cityarea_shop_protype_arr;
+		 module.cityarea_shop_type_arr=cityarea_shop_type_arr;
+		 module.cityarea_shop_arr=cityarea_shop_arr;
+         module.content.css_type=test[i].css_type;
+         module.content.placeholder=test[i].placeholder;
+         module.content.padding=test[i].mod_padding;
+         module.content.margin=test[i].mod_img_padding;
+         module.content.pro_title_show=test[i].pro_title_show;
+         module.content.pro_title_twoline=test[i].pro_title_twoline;
+         module.content.pro_numshow=test[i].pro_numshow;
+         module.content.show_sale=test[i].show_sale;
+         module.content.foot_position=test[i].foot_position;
+         module.content.video_link=test[i].video_link;
+		 module.content.bg_color=test[i].bg_color;
+		 module.content.color=test[i].color;
+		 module.content.rolling_direction=test[i].rolling_direction;
+		 module.content.rolling_speed=test[i].rolling_speed;
+		 module.content.show_time_limit=test[i].show_time_limit;
+		 module.content.city_name=test[i].city_name;
+		 module.content.location_p=test[i].province;
+		 module.content.shop_type=test[i].shop_type;
+		 module.content.sort_type=test[i].sort_type;
+		 module.content.divide_type=test[i].divide_type;
+		 module.content.icon_pic=test[i].icon_pic;
+		 module.content.li_title=test[i].li_title;
+		 module.content.data_num=test[i].data_num;
+		 module.content.css_show=test[i].css_show;
+         module.content.has_red_score_member = has_red_score_member;
+
+		 if(module.type==21){
+			module.content.select_value=select_value_arr[0];
+		 }
+		 // console.log(titleArr.length-1,0<titleArr.length-1)
+		
+	//	console.log(titleArr);
+         for(j=0;j<titleArr.length-1;j++)
+           {      
+            var newdata={
+                    mod_sort:null,
+                    link:"",
+                    title:"",
+                    color:"",
+                    pic:"",
+                    foreign_id:'-1',
+                    detail_id:'',
+                    link_type:'',
+                    select_value:"",
+                    detail_value:'',
+                    detail_name:"",
+					start_time:"",
+					end_time:'',
+					sel_link_type:1
+                };
+            module.content.dataset.push(newdata);
+            module.content.dataset[j].title         =titleArr[j];
+            module.content.dataset[j].select_value  =select_value_arr[j];
+            module.content.dataset[j].detail_value  =detail_value_arr[j];
+            module.content.dataset[j].detail_name   =detail_name_arr[j];
+			module.content.dataset[j].color         =color_arr[j];
+			module.content.dataset[j].color1        =color1_arr[j];
+			module.content.dataset[j].sel_link_type =sel_link_type_arr[j];
+			module.content.dataset[j].text_length   =titleArr[j].length;
+            module.content.dataset[j].member_id     =member_id_arr[j];
+
+			if( sel_link_type_arr[j] == 2 ){
+				if( link_arr[j] == 'javascript:' || link_arr[j] == undefined ){
+					module.content.dataset[j].link='';
+				} else {
+					module.content.dataset[j].link=link_arr[j];
+				}
+			}
+			if(module.type == 12){
+				module.content.dataset[j].start_time=start_time_arr[j];
+				module.content.dataset[j].end_time=end_time_arr[j];
+			}
+			
+            var picUrl=new_baseurl+imgArr[j];
+            if(picUrl.indexOf("weixinpl")>0){ //判断图片路径
+                module.content.dataset[j].pic=picUrl;
+            }
+            else{
+            	if(imgArr[j]!=""){
+            		//var defUrl=new_baseurl+"/weixinpl/common_shop/common/custom_temp/"+imgArr[j];
+            		var defUrl=imgArr[j];
+                	module.content.dataset[j].pic=defUrl;
+            	}
+                
+            }
+        }	
+	//	console.log(module);
+        custom_query(module);
+		var select_value_arr=[];
+		var detail_value_arr=[];
+		var detail_name_arr=[];
+    }
+
+});
+function num_check(obj){
+	var val = $(obj).val();
+	if(isNaN(val) || val < 0){
+		$(obj).val(1);
+	}
+}
+
+function clearNoNum(obj){
+	//先把非数字的都替换掉，除了数字和.
+	obj.value = obj.value.replace(/[^\d.]/g,"");
+	//必须保证第一个为数字而不是.
+	obj.value = obj.value.replace(/^\./g,"");
+	//保证只有出现一个.而没有多个.
+	obj.value = obj.value.replace(/\.{2,}/g,".");
+	//保证.只出现一次，而不能出现两次以上
+	obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+	//只能输入两个小数
+	obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); 
+}
+</script>
+
+<!--选择链接的JS开始-->
+<script>
+//var p_detail_id = -1;
+function changeProductType(selv,sort,detail_id){
+  document.getElementById("div_products_2_"+sort).style.display="none";
+  if(selv.indexOf("_1")!=-1){
+     //是产品分类
+	 var pro_typeid= selv.substring(0,selv.indexOf("_1"));
+	 // console.log(pro_typeid);
+	 if(pro_typeid>0){
+		 document.getElementById("div_products_2_"+sort).style.display="block";
+		 
+		 if( detail_id != '' ){
+			 url='/weixinpl/back_newshops/Base/personalization/personal_center/get_product_list.php?callback=jsonpCallback_get_product_list&type_id='+pro_typeid+'&sort='+sort+'&detail_id='+detail_id;
+		 }else{
+			 url='/weixinpl/back_newshops/Base/personalization/personal_center/get_product_list.php?callback=jsonpCallback_get_product_list&type_id='+pro_typeid+'&sort='+sort;
+		 }
+		 $.jsonp({
+			url:url,
+			callbackParameter: 'jsonpCallback_get_product_list'
+		});
+	 }
+  }
+}
+//var detail_id=<?php echo $detail_id; ?>;
+// var detail_id=-1;
+function jsonpCallback_get_product_list(results){
+	var len = results.length;
+	var sort=results[2].sort;
+	var detail_id = results[3].detail_id;
+	//console.log("sort="+sort);
+	var sel_pro = document.getElementById("product_detail_id_2_"+sort);
+	
+	sel_pro.options.length = 0;
+   
+    var new_option = new Option("---请选择一个产品---",-1);
+    sel_pro.options.add(new_option);
+	
+    for(i=4;i<len;i++){
+      var pid = results[i].pid;
+      var pname = results[i].pname;
+
+      var new_option = new Option(pname,pid);
+       sel_pro.options.add(new_option);
+      if(pid==detail_id){
+         new_option.selected=true;
+      }
+   }
+   
+}
+
+function saveReport(o) {   
+        $("#frm_img"+o).ajaxSubmit(function(msg) {   
+          // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容 
+          var imgurl=msg;
+          if( imgurl.substr(imgurl.length-1, 1) == '！' ){
+          	 layer.alert(imgurl, {icon: 5},function(index){
+				  layer.close(index);
+				});
+			 $("#upfile2").val("");
+          }else{
+          	$('#getImg'+o).val(imgurl);
+          	$('#getImg'+o).change();
+          }
+       });
+
+    return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转   
+}
+
+// 检测字节数
+function checktext(obj){
+	var str = $(obj).val();
+	var trim_str = $.trim(str);
+	bytesCount = 0;
+	for (var i = 0; i < str.length; i++){
+		var c = str.charAt(i);
+		if (/^[\u0000-\u00ff]$/.test(c)){
+			bytesCount += 1;
+		}else{
+			bytesCount += 3;
+		}
+	}
+	if(bytesCount>36){
+		$(obj).val(oldstr);
+	}else if( trim_str != str ){
+		$(obj).val(trim_str);
+	}
+	oldstr = $.trim($(obj).val());
+}
+
+</script>
+
+<!--选择链接的JS结束-->
+</body>
+</html>

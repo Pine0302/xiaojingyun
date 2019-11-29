@@ -1,0 +1,102 @@
+.con{
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 10px;
+	width: 300px;
+}	
+.input{
+    padding-left: 50px;
+    padding-right: 50px;
+	position: relative;
+    bottom: 19px;
+}
+label{	
+    margin: 0 auto;
+    width: 142px;
+	margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    vertical-align: 2px;
+}
+label img{
+	height:250px;
+}
+.WSY_list h1{
+    padding-left: 40px;
+    margin-top: 10px;
+}
+.WSY_list h1 strong{
+	position: relative;
+    top: 14px;	
+}
+.input{
+    padding-left: 127px;
+}
+.input dt{
+    margin-bottom: 15px;
+}
+.WSY_member input[name='template_type_bg']{
+	    margin-top: 4px;
+}
+dl.WSY_remind_dl02{
+	width: 200px;
+    float: left;
+	}
+.WSY_remind_main{
+	height: 60px;
+}	
+dl.WSY_remind_dl02 dd{
+	float: left;	
+    margin-right: 10px;
+}
+.con{	
+	width: 150px;
+    margin-right: 0;
+}
+.con  input{
+    float: none !important;
+    display: inline-block !important;
+}
+.model {
+	margin-bottom: 20px;
+    width: 1150px;
+    border: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    padding-right: 20px;
+    padding-left: 20px;
+	position: relative;
+	overflow: visible;
+	display: inline-block;
+}
+.left{
+    position: absolute;
+    top: -13px;
+    left: 57px;
+}
+.left dt{
+    background:#fbfbfb;
+    text-align: center;
+    font-size: 16px;
+    font-family: '微软雅黑';
+    width: 130px;	
+	}
+.right{
+	position: absolute;
+    top: -22px;
+    left: 34em;
+}	
+.right dt{
+    width: 220px;
+    text-align: center;
+    background: url(../../../images/Base/personal_center/dituimg.png)no-repeat;
+    background-size: 220px;
+}
+.right dt a {	
+    text-align: center;
+    font-size: 15px;
+    font-family: '微软雅黑';
+    font-weight: bold;
+    color: white;
+	
+}

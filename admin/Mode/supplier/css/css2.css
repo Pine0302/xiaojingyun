@@ -1,0 +1,381 @@
+a{text-decoration:none; color:#333333; cursor:pointer;}
+a:hover{text-decoration:underline; color:#333333; cursor:pointer;}
+a:active{text-decoration:none; color:#ff0000; cursor:pointer;}
+.subscibe_one{
+   width:100%;
+   height:30px;
+   margin-left:10px;
+}
+.subscibe_one_l{
+   width:10%;
+   float:left;
+   height:100%;
+   line-height:30px;
+}
+.subscibe_one_r{
+   width:90%;
+   float:left;
+   height:100%;
+   text-align:left;
+}
+.sub_text{
+   width:100%;
+   height:300px;
+   margin-bottom:20px;
+   margin-left:10px;
+   
+}
+.div_text_l{
+   width:40%;
+   height:100%;
+   float:left;
+}
+.div_text_m{
+   width:5%;
+   height:100%;
+   float:left;
+}
+.div_text_r{
+   width:55%;
+   height:100%;
+   float:left;
+}
+
+.div_text_r_t{
+   width:100%;
+   height:30px;
+}
+.div_text_r_b{
+   width:100%;
+   height:auto;
+}
+.sub_btn{
+   width:100%;
+   height:80px;
+}
+
+.sub_btn_con{
+
+   width:100px;
+   height:40px;
+   background:#63b551;
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b551), color-stop(100%,#59b144)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Opera 11.10+ */
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;	
+	
+	text-align:center;
+	line-height:40px;
+	color:#fff;
+	font-size:18px;
+	cursor:hand;
+}
+
+.div_new_content{
+  width:90%;
+  height:1024px;
+  height:auto;
+  margin:0 auto;
+  background:#fff;
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,#f8f8f8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fff 0%,#f8f8f8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fff 0%,#f8f8f8 100%); /* Opera 11.10+ */
+	
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;	
+  padding-left:20px;
+  padding-right:20px;
+  
+  font-size:12px;
+  padding-top:10px;
+  
+}
+
+.fuwubase_td{
+	margin-left:20px;
+	
+}
+.fuwubase_area{
+	margin-left:20px;
+	width:400px;
+	height:80px;
+}
+.fuwubase_logo{
+	margin-left:20px;
+	margin-top:10px;
+	width:60px;
+	height:60px;
+}
+
+.fuwubase_logo img{
+	width:100%;
+	height:100%;
+}
+
+.fuwubase_qr{
+	margin-left:20px;
+	margin-top:10px;
+	width:180px;
+	height:180px;
+}
+
+.fuwubase_qr img{
+	width:100%;
+	height:100%;
+}
+
+.fuwubase_table td{
+ font-size:14px;
+ color:#000;
+ border:1px #dddddd solid;
+}
+.tb_class{
+	font-size:12px;
+	text-align:center;
+    margin:0 auto;
+}
+.tb_class span{
+  cursor:hand;   
+}
+.getmore{
+  width:300px;
+  margin:0 auto;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  font-size:13px;
+  
+}
+.getmore_l{
+   float:left;
+   width:120px;
+   height:100%;
+   background:#63b551;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b551), color-stop(100%,#59b144)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Opera 11.10+ */
+	-moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+
+
+    -moz-box-shadow:0 0 1px #fff inset;
+    -webkit-box-shadow:0 0 1px #fff inset;
+    box-shadow:0 0 1px #fff inset;
+	color:#fff;
+}
+
+.getmore_r{
+   float:right;
+   width:120px;
+   height:100%;
+   background:#63b551;
+   
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b551), color-stop(100%,#59b144)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Opera 11.10+ */
+	-moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+
+
+    -moz-box-shadow:0 0 1px #fff inset;
+    -webkit-box-shadow:0 0 1px #fff inset;
+    box-shadow:0 0 1px #fff inset;
+	color:#fff;
+   
+}
+
+.add_content_one{
+  width:90%;
+  
+  margin:0 auto;
+  margin-top:10px;
+  height:30px;
+  line-height:30px;
+  font-size:13px;
+  text-align:left;
+  font-weight:bolder;
+}
+.split_line{
+	width:100%;
+	/*border-bottom: 1px solid  #d4d4d4;
+	border-top:none;*/
+	border-bottom:1px solid #ccc;
+	border-top:1px solid #fff;
+}
+.add_content_con_one{
+   width:90%;
+   margin:0 auto;
+   margin-top:10px;
+   height:40px;
+   line-height:20px;
+}
+.add_content_con_one_img{
+   width:90%;
+   margin:0 auto;
+   margin-top:10px;
+   height:220px;
+   line-height:20px;
+}
+.add_content_con_l{
+
+   width:10%;
+   float:left;
+   heigth:100%;
+   text-align:right;
+   
+}
+.add_content_con_r{
+
+   width:90%;
+   float:left;
+   heigth:100%;
+   text-align:left;
+}
+
+.add_content_con_two{
+   width:90%;
+   margin:0 auto;
+   margin-top:10px;
+   height:220px;
+}
+
+.add_content_con_three{
+
+  width:90%;
+  margin:0 auto;
+  text-align:left;
+  height:100px;;
+}
+
+.add_content_con_three_con{
+  margin-left:80px;
+}
+.add_content_con_one_big{
+   width:90%;
+   margin:0 auto;
+   margin-top:10px;
+   height:250px;
+   line-height:20px;
+}
+.add_content_con_one_mid{
+   width:90%;
+   margin:0 auto;
+   margin-top:10px;
+   height:80px;
+   line-height:20px;
+}
+.add_content_con_one_big_big{
+   width:90%;
+   margin:0 auto;
+   margin-top:10px;
+   height:350px;
+   line-height:20px;
+}
+
+.button{
+    font:15px Calibri, Arial, sans-serif;
+    /* A semi-transparent text shadow */
+    /*text-shadow:1px 1px 0 rgba(255,255,255,0.4);*/
+    /* Overriding the default underline styling of the links */
+    text-decoration:none !important;
+    white-space:nowrap;
+    display:inline-block;
+    vertical-align:baseline;
+    position:relative;
+    cursor:pointer;
+
+
+    background-repeat:no-repeat;
+
+    /* The following two rules are fallbacks, in case
+       the browser does not support multiple backgrounds. */
+
+    background-position:bottom left;
+    background-image:url('../pic/button_bg.png');
+
+    /* CSS3 background positioning property with multiple values. The background
+       images themselves are defined in the individual color classes */
+
+  
+
+    /* Applying a default border radius of 8px */
+
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+
+
+    -moz-box-shadow:0 0 1px #fff inset;
+    -webkit-box-shadow:0 0 1px #fff inset;
+    box-shadow:0 0 1px #fff inset;
+
+
+    -webkit-transition:background-position 1s;
+    -moz-transition:background-position 1s;
+    -o-transition:background-position 1s;
+    transition:background-position 1s;
+	
+	width:150px;
+	height:30px;
+	color:#fff;
+	background-color:#63b551;
+	 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b551), color-stop(100%,#59b144)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #63b551 0%,#59b144 100%); /* Opera 11.10+ */
+}
+.disable{
+background:#717171;
+}
+.button:hover{
+
+    /* The first rule is a fallback, in case the browser
+       does not support multiple backgrounds
+    */
+
+    background-position:top left;
+    background-position:top left, bottom right, 0 0, 0 0;
+}
+.search_s{
+
+   height:30px;
+   line-height:30px;
+   width:95%;
+   margin:0 auto;
+   font-size:12px;
+   margin-bottom:5px;
+}
+.search_s_big{
+
+   height:110px;
+   line-height:30px;
+   width:95%;
+   margin:0 auto;
+   font-size:12px;
+   padding-left:20px;
+}
+
+.search_s_small{
+
+   height:50px;
+   line-height:50px;
+   width:95%;
+   margin:0 auto;
+   font-size:12px;
+   padding-left:20px;
+}
+.search_one{
+   height:20px;
+   line-height:20px;
+   padding-left:10px;
+}
+.search_one_item{
+   width:250px;
+   height:100%;
+   float:left;
+   margin-bottom:0px;
+}

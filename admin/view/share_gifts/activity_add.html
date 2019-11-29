@@ -1,0 +1,1983 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme;?>.css">
+        <script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+        <script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/utility.js"></script> 
+        <script type="text/javascript" src="/weixinpl/common/js/jscolor.js" ></script>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <style>
+         .spa{display:flex !important;align-items:center;margin-top:10px;}
+         .spa input{margin:0 5px;}
+         .spa label{margin-right:10px;float:left;}
+         .WSY_member dt{width:169px;}
+         .WSY_member{display:flex;align-items:center;}
+         .share-reward{display:flex !important;align-items:center;}
+         .share-reward input[type="checkbox"]{margin:0 5px;}
+         .share-reward label{margin-right:10px;}
+         .choose-btn{background-color:#06a7e1;color:#f9fdff;border:solid 1px #06a7e1;width:60px;padding:5px;text-align:center;float:left;margin-left: 5px;}
+         input[type="text"]{height:28px !important;line-height:28px;}
+         .WSY_text_input01 .WSY_text_input{margin-right:40px;}
+         .WSY_member dd input[type="text"]{margin-left:5px;}
+         .WSY_text_input01{margin-left:253px;}
+         #red_bag_type{display:flex;}
+        </style>
+    </head>
+    <body>
+        <div class="div_new_content">
+            <form action="/mshop/admin/index.php?m=share_gifts&a=activity_save&customer_id=<?php echo $customer_id;?>" enctype="multipart/form-data" method="post" id="upform" name="upform">
+            <input type="hidden" name="act_id" value="<?php if(!empty($activity_info)){echo $activity_info['id'];} ?>" />
+            <div class="WSY_content">
+                <div class="WSY_columnbox">
+                    <div class="WSY_column_header">
+                        <div class="WSY_columnnav">
+                            <a class="white1">添加活动</a>
+                        </div>
+                    </div>
+
+                    <div class="WSY_remind_main">
+                        <div class="tap1">
+                            <dl class="WSY_member">
+                                <dt>活动名称</dt>
+                                <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['name'];} ?>" name="name" id="name" style="width:250px;" 
+                                <?php if(!empty($activity_info)){ 
+                                    echo 'disabled="disabled"';                                 
+                                   }
+                                ?> /></dd>
+                            </dl>
+                            <dl class="WSY_member">
+                                <dt>活动时间</dt>
+                                <dd>
+                                    <input class="login-input-username" type=text id=begin_time name=begin_time value="<?php if(!empty($activity_info)){echo $activity_info['begin_time'];} ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(dp){
+                                        var begin_time = $dp.$('begin_time').value
+                                         <?php if(empty($activity_info)){  ?>
+                                              $('#red_envelopes_begin_time_text').val(begin_time);
+
+                                              $('#coupon_begin_time_text').val(begin_time);
+
+                                              $('#red_envelopes_begin_time').val(begin_time);
+
+                                              $('#coupon_begin_time').val(begin_time);
+
+                                              $('#red_envelopes_begin_time').prop('disabled',true);
+                                              $('#coupon_begin_time').prop('disabled',true);
+                                         <?php } ?>
+                                        }});"  readonly="readonly" 
+                                        <?php if(!empty($activity_info)){ 
+                                            echo 'disabled="disabled"';                                 
+                                           }
+                                        ?>/>
+                                    至
+                                    <input  class="login-input-username" type=text id=end_time name=end_time value="<?php if(!empty($activity_info)){echo $activity_info['end_time'];} ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(dp){
+                                        var end_time = $dp.$('end_time').value
+                                         <?php if(empty($activity_info)){  ?>
+                                              $('#red_envelopes_end_time_text').val(end_time);
+
+                                              $('#coupon_end_time_text').val(end_time);
+
+                                              $('#red_envelopes_end_time').val(end_time);
+
+                                              $('#coupon_end_time').val(end_time);
+
+                                              $('#red_envelopes_end_time').prop('disabled',true);
+                                              $('#coupon_end_time').prop('disabled',true);
+                                         <?php } ?>
+                                        }});"
+                                         readonly="readonly" 
+                                         <?php if(!empty($activity_info)){ 
+                                            echo 'disabled="disabled"';                                 
+                                           }
+                                        ?>/>
+                                </dd>
+                            </dl>
+                            <dl class="WSY_member">                 
+                                <div>
+                                   <div class="share-reward">
+                                    <dt>分享获奖限制</dt>
+                                       <input type="hidden" name="is_bind_phone" value="<?php if(!empty($activity_info)){echo $activity_info['is_bind_phone'];}else{echo 1;} ?>" id="is_bind_phone_open" />
+                                        
+                                        <input name="share_reward_limit" onclick="checkbox_bind_phone(this)" type="checkbox" value="1" id="is_bind_phone" <?php if(!empty($activity_info)){ 
+                                           if($activity_info['is_bind_phone'] == '1'){
+                                                echo 'checked="checked"';
+                                               }
+                                               echo 'disabled="disabled"';
+                                           }else{
+                                                echo 'checked="checked"';
+                                           } 
+                                        ?>
+                                         /><label for="is_bind_phone">绑定手机号</label>
+                                        <input type="hidden" name="is_subscription" value="<?php if(!empty($activity_info)){echo $activity_info['is_subscription'];}else{echo 1;} ?>" id="is_subscription_open" />
+                                        <input name="share_reward_limit" onclick="checkbox_subscription(this)" type="checkbox" value="2" id="is_subscription" <?php if(!empty($activity_info)){ 
+                                           if($activity_info['is_subscription'] == '1'){
+                                                echo 'checked="checked"';
+                                               }
+                                               echo 'disabled="disabled"';
+                                           }else{
+                                                echo 'checked="checked"';
+                                           } 
+                                        ?> 
+                                        /><label for="is_subscription">关注公众号</label>
+                                      </div>
+                                </div>
+                            </dl>
+                            <div class="WSY_text_input01">
+                                <div class="WSY_text_input"><input type="button" class="WSY_button" value="取消" onclick="javascript:history.go(-1);" style="cursor:pointer;" style="cursor:pointer;"/></div>
+                            </div>
+                            <div class="WSY_text_input01">
+                                <div class="WSY_text_input"><input type="button" class="WSY_button" value="下一步" onclick="next(this);" style="cursor:pointer;"/></div>
+                            </div>
+                        </div>
+                        <div class="tap2" style="display:none;">
+                            <dl class="WSY_member">                 
+                                <div>
+                                    <dt>分享人奖励</dt>
+                                       <div class="share-reward">
+                                        <input type="hidden" name="share_is_coupon" value="<?php if(!empty($activity_info)){echo $activity_info['share_is_coupon'];}else{echo 1;} ?>" id="share_is_coupon_open" />
+                                        <input name="share_reward" onclick="checkbox_share_is_coupon(this)" type="checkbox" value="1" name="share_is_coupon" id="share_is_coupon" 
+                                        <?php if(!empty($activity_info)){ 
+                                           if($activity_info['share_is_coupon'] == '1'){
+                                                echo 'checked="checked"';
+                                               }
+                                               echo 'disabled="disabled"';
+                                           }else{
+                                               echo 'checked="checked"';
+                                           } 
+                                        ?>  
+                                        /><label for="share_is_coupon">优惠券</label>
+                                        <input type="hidden" name="share_is_red_envelopes" value="<?php if(!empty($activity_info)){echo $activity_info['share_is_red_envelopes'];}else{echo 1;} ?>" id="share_is_red_envelopes_open" />
+                                        <input name="share_reward" onclick="checkbox_share_is_red_envelopes(this)" type="checkbox" value="2" name="share_is_red_envelopes" id="share_is_red_envelopes"   
+                                        <?php if(!empty($activity_info)){ 
+                                           if($activity_info['share_is_red_envelopes'] == '1'){
+                                                echo 'checked="checked"';
+                                               }
+                                               echo 'disabled="disabled"';
+                                           }else{
+                                                echo 'checked="checked"';
+                                           } 
+                                        ?>  
+                                        /><label for="show_type2">红包</label>
+                                       </div>
+                                </div>
+                            </dl>
+                            <?php 
+                              $time_type_show = 0;
+                              if(!empty($activity_info)){
+                                if($activity_info['share_is_coupon'] == '1' && $activity_info['share_is_red_envelopes'] == '1'){
+                                  $time_type_show =1;
+                                }
+                              }else{
+                                  $time_type_show =1;
+                              }
+                            ?>
+                            <?php if($time_type_show == 1){?>
+                                <dl id="time_type" class="WSY_member">                 
+                                    <div>
+                                        <dt>奖励时间设置</dt>
+                                        <div>
+                                        <dd class="spa">
+                                            <input type="radio" style="border-radius:0% 0%;" value="1" name="share_activity_time_type" id="share_activity_time_column" <?php if(!empty($activity_info)){
+                                               if($activity_info['time_type'] == '1'){
+                                                 echo 'checked="checked"';
+                                               }
+                                                echo 'disabled="disabled" ';
+                                            }else{
+                                                 echo 'checked="checked"';
+                                            } ?> /><label for="share_activity_time_column">同步进行</label>
+                                            <input type="radio" style="border-radius:0% 0%;" value="2" name="share_activity_time_type" id="share_activity_time_radam" 
+                                            <?php if(!empty($activity_info)){
+                                               if($activity_info['time_type'] == '2'){
+                                                 echo 'checked="checked"';
+                                               }
+                                                echo 'disabled="disabled" ';
+                                            } ?>
+                                            /><label for="share_activity_time_radam">自定义</label>
+                                        </dd>
+                                        </div>
+                                    </div>
+                                </dl>
+                            <?php }?>
+
+                            <?php 
+                              $share_coupon_display_show = 0;
+                              if(!empty($activity_info)){
+                                if($activity_info['share_is_coupon'] == '1'){
+                                  $share_coupon_display_show =1;
+                                }
+                              }else{
+                                  $share_coupon_display_show =1;
+                              }
+                            ?>
+                            <?php if($share_coupon_display_show == 1){?>
+                            <dl class="WSY_member" id="share_coupon_display"">
+                                <dt>优惠券活动时间</dt>
+                                <dd>
+                                    <input class="login-input-username" type=hidden id=coupon_begin_time_text name=coupon_begin_time_text value="<?php if(!empty($activity_info)){echo date('Y-m-d',$activity_info['coupon_begin_time_int']);} ?>" />
+
+                                    <input class="login-input-username" type=text id=coupon_begin_time name=coupon_begin_time value="<?php if(!empty($activity_info)){echo date('Y-m-d',$activity_info['coupon_begin_time_int']);} ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(dp){
+                                        //计算前一天,后一天,活动时间前一天的日期
+                                        var date      = new Date($dp.$('coupon_begin_time').value);
+                                        var yesterday = new Date(date.getTime()-24*60*60*1000);
+                                        var tomorrow  = new Date(date.getTime()+24*60*60*1000);
+                                        var coupon_data = new Date($('#coupon_end_time').val());
+                                        var coupon_tomorrow  = new Date(coupon_data.getTime()+24*60*60*1000);
+                                        var last_day  = new Date(new Date($('#end_time').val()).getTime()-24*60*60*1000);
+                                        var yesterday_time = yesterday.getFullYear()+'-'+(yesterday.getMonth()+1)+'-'+yesterday.getDate();
+                                        var tomorrow_time  = tomorrow.getFullYear()+'-'+(tomorrow.getMonth()+1)+'-'+tomorrow.getDate();
+                                        var last_day_time  = last_day.getFullYear()+'-'+(last_day.getMonth()+1)+'-'+last_day.getDate();
+                                        var coupon_tomorrow_time  = coupon_tomorrow.getFullYear()+'-'+(coupon_tomorrow.getMonth()+1)+'-'+coupon_tomorrow.getDate();
+
+                                        if($dp.$('coupon_begin_time').value < $('#begin_time').val()){
+                                                $(this).val($('#begin_time').val());
+                                                layer.alert('优惠券开始时间不能小于活动开始时间');
+                                                return;
+                                        }else if($dp.$('coupon_begin_time').value > $('#begin_time').val() && $('#coupon_end_time').val() < $('#end_time').val() && $('#coupon_end_time').val() != ''){
+                                            $(this).val($('#begin_time').val());
+
+                                            $('#red_envelopes_begin_time').val(coupon_tomorrow_time);
+                                            $('#red_envelopes_end_time').val($('#end_time').val());
+
+                                            $('#red_envelopes_begin_time_text').val(coupon_tomorrow_time);
+                                            $('#red_envelopes_end_time_text').val($('#end_time').val());
+
+                                            layer.alert('优惠券活动时间不能取中间时间段');
+                                            return;
+                                        }else if($dp.$('coupon_begin_time').value > $('#end_time').val()){
+                                                $(this).val($('#end_time').val());
+
+                                                if($('#begin_time').val() < $('#end_time').val()){
+                                                    $('#red_envelopes_begin_time').val($('#begin_time').val());
+                                                    $('#red_envelopes_end_time').val(last_day_time);
+
+                                                    $('#red_envelopes_begin_time_text').val($('#begin_time').val());
+                                                    $('#red_envelopes_end_time_text').val(last_day_time);
+                                                }
+                                                layer.alert('优惠券开始时间不能大于活动结束时间');
+                                                return;
+                                        }
+
+                                        if($dp.$('coupon_begin_time').value == $('#begin_time').val()  && $('#coupon_end_time').val() != ''){  //优惠券开始时间是活动开始时间
+                                            if($('#coupon_end_time').val() < $('#end_time').val()){
+                                                 
+                                                $('#red_envelopes_begin_time').val(tomorrow_time);
+                                                $('#red_envelopes_end_time').val($('#end_time').val());
+
+                                                $('#red_envelopes_begin_time_text').val(tomorrow_time);
+                                                $('#red_envelopes_end_time_text').val($('#end_time').val());
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }else{
+                                                $('#red_envelopes_begin_time').val('不可用');
+                                                $('#red_envelopes_end_time').val('不可用');
+
+                                                $('#red_envelopes_begin_time_text').val(0);
+                                                $('#red_envelopes_end_time_text').val(0);
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }
+                                        }
+
+                                        if($('#coupon_end_time').val() == $('#end_time').val()  && $('#coupon_end_time').val() != ''){  //优惠券结束时间是活动结束时间
+                                            if($dp.$('coupon_begin_time').value > $('#begin_time').val()){
+                                                 
+                                                $('#red_envelopes_begin_time').val($('#begin_time').val());
+                                                $('#red_envelopes_end_time').val(yesterday_time);
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }else{
+                                                $('#red_envelopes_begin_time').val('不可用');
+                                                $('#red_envelopes_end_time').val('不可用');
+
+                                                $('#red_envelopes_begin_time_text').val(0);
+                                                $('#red_envelopes_end_time_text').val(0);
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }
+                                        }
+
+                                        }});" <?php if(!empty($activity_info)){ 
+                                                echo 'disabled="disabled"';
+                                            }
+                                        ?>   />
+                                    至
+                                    <input class="login-input-username" type=hidden id=coupon_end_time_text name=coupon_end_time_text value="<?php if(!empty($activity_info)){echo date('Y-m-d',$activity_info['coupon_end_time_int']);} ?>" />
+
+                                    <input  class="login-input-username" type=text id=coupon_end_time name=coupon_end_time value="<?php if(!empty($activity_info)){echo date('Y-m-d',$activity_info['coupon_end_time_int']);} ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',onpicked:function(dp){
+                                        //计算前一天,后一天,活动时间前一天的日期
+                                        var date      = new Date($dp.$('coupon_end_time').value);
+                                        var coupon_date = new Date($('#coupon_begin_time').val());
+                                        var begin_date= new Date($('#begin_time').val());
+                                        var yesterday = new Date(date.getTime()-24*60*60*1000);
+                                        var coupon_yesterday = new Date(coupon_date.getTime()-24*60*60*1000);
+                                        var tomorrow  = new Date(date.getTime()+24*60*60*1000);
+                                        var begin_tomorrow  = new Date(begin_date.getTime()+24*60*60*1000);
+                                        var last_day  = new Date(new Date($('#end_time').val()).getTime()-24*60*60*1000);
+                                        var yesterday_time = yesterday.getFullYear()+'-'+(yesterday.getMonth()+1)+'-'+yesterday.getDate();
+                                        var tomorrow_time  = tomorrow.getFullYear()+'-'+(tomorrow.getMonth()+1)+'-'+tomorrow.getDate();
+                                        var begin_tomorrow_time  = begin_tomorrow.getFullYear()+'-'+(begin_tomorrow.getMonth()+1)+'-'+begin_tomorrow.getDate();
+                                        var last_day_time  = last_day.getFullYear()+'-'+(last_day.getMonth()+1)+'-'+last_day.getDate();
+                                        var coupon_yesterday_time  = coupon_yesterday.getFullYear()+'-'+(coupon_yesterday.getMonth()+1)+'-'+coupon_yesterday.getDate();
+
+                                        if($dp.$('coupon_end_time').value > $('#end_time').val()){
+                                                $(this).val($('#end_time').val());
+
+                                                if($('#coupon_begin_time').val()== $('#begin_time').val()){
+                                                    $('#red_envelopes_begin_time').val('不可用');
+                                                    $('#red_envelopes_end_time').val('不可用');
+
+                                                    $('#red_envelopes_begin_time_text').val(0);
+                                                    $('#red_envelopes_end_time_text').val(0);
+
+                                                    $('#red_envelopes_begin_time').prop('disabled',true);
+                                                    $('#red_envelopes_end_time').prop('disabled',true);
+                                                }
+                                                layer.alert('优惠券结束时间不能大于活动结束时间');
+                                                return;
+                                        }else if($dp.$('coupon_end_time').value < $('#end_time').val() && $('#coupon_begin_time').val() > $('#begin_time').val() && $('#coupon_begin_time').val() != ''){
+                                            $(this).val($('#end_time').val());
+
+                                            $('#red_envelopes_begin_time').val($('#begin_time').val());
+                                            $('#red_envelopes_end_time').val(coupon_yesterday_time);
+
+                                            $('#red_envelopes_begin_time_text').val($('#begin_time').val());
+                                            $('#red_envelopes_end_time_text').val(coupon_yesterday_time);
+
+                                            layer.alert('优惠券活动时间不能取中间时间段');
+                                            return;
+                                        }else if($dp.$('coupon_end_time').value < $('#begin_time').val()){
+                                                $('#coupon_begin_time').val($('#begin_time').val());
+                                                $(this).val($('#begin_time').val());
+
+                                                $('#red_envelopes_begin_time').val(begin_tomorrow_time);
+                                                $('#red_envelopes_end_time').val($('#end_time').val());
+
+                                                $('#red_envelopes_begin_time_text').val(begin_tomorrow_time);
+                                                $('#red_envelopes_end_time_text').val($('#end_time').val());
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                          
+                                                layer.alert('优惠券结束时间不能小于活动开始时间');
+                                                return;
+                                        }
+
+                                        if($('#coupon_begin_time').val()== $('#begin_time').val()  && $('#coupon_begin_time').val() != ''){  //优惠券开始时间是活动开始时间
+                                            if($dp.$('coupon_end_time').value < $('#end_time').val()){
+                                                 
+                                                $('#red_envelopes_begin_time').val(tomorrow_time);
+                                                $('#red_envelopes_end_time').val($('#end_time').val());
+
+                                                $('#red_envelopes_begin_time_text').val(tomorrow_time);
+                                                $('#red_envelopes_end_time_text').val($('#end_time').val());
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }else{
+                                                $('#red_envelopes_begin_time').val('不可用');
+                                                $('#red_envelopes_end_time').val('不可用');
+
+                                                $('#red_envelopes_begin_time_text').val(0);
+                                                $('#red_envelopes_end_time_text').val(0);
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }
+                                        }
+
+                                        if($dp.$('coupon_end_time').value == $('#end_time').val()  && $('#coupon_begin_time').val() != ''){  //优惠券结束时间是活动结束时间
+                                            if($('#coupon_begin_time').val() > $('#begin_time').val()){
+                                                 
+                                                $('#red_envelopes_begin_time').val($('#begin_time').val());
+                                                $('#red_envelopes_end_time').val(yesterday_time);
+
+                                                $('#red_envelopes_begin_time_text').val($('#begin_time').val());
+                                                $('#red_envelopes_end_time_text').val(yesterday_time);
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }else{
+                                                $('#red_envelopes_begin_time').val('不可用');
+                                                $('#red_envelopes_end_time').val('不可用');
+                                                
+                                                $('#red_envelopes_begin_time_text').val(0);
+                                                $('#red_envelopes_end_time_text').val(0);
+
+                                                $('#red_envelopes_begin_time').prop('disabled',true);
+                                                $('#red_envelopes_end_time').prop('disabled',true);
+                                            }
+                                        }
+
+                                        }});" <?php if(!empty($activity_info)){ 
+                                                echo 'disabled="disabled"';                                               
+                                           }
+                                        ?>  />
+                                </dd>
+
+                            </dl>
+                             <?php }?>
+
+                            <?php 
+                              $share_red_bag_display_show = 0;
+                              if(!empty($activity_info)){
+                                if($activity_info['share_is_red_envelopes'] == '1'){
+                                  $share_red_bag_display_show =1;
+                                }
+                              }else{
+                                  $share_red_bag_display_show =1;
+                              }
+                            ?>
+                            <?php if($share_red_bag_display_show == 1){?>
+                            <dl class="WSY_member" id="share_red_bag_display">
+                                <dt>红包活动时间</dt>
+                                <dd>
+                                    <input class="login-input-username" type=hidden id=red_envelopes_begin_time_text name=red_envelopes_begin_time_text value="<?php if(!empty($activity_info)){if(!empty($activity_info['red_envelopes_begin_time_int'])){echo date('Y-m-d',$activity_info['red_envelopes_begin_time_int']);}} ?>" />
+
+                                    <input class="login-input-username" type=text id=red_envelopes_begin_time name=red_envelopes_begin_time value="<?php if(!empty($activity_info)){
+                                      if(!empty($activity_info['red_envelopes_begin_time_int'])){
+                                         echo date('Y-m-d',$activity_info['red_envelopes_begin_time_int']);
+                                      }else{
+                                          echo '不可用';
+                                      }                                      
+                                    } ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});" disabled="disabled"/>
+                                    至
+                                    <input  class="login-input-username" type=hidden id=red_envelopes_end_time_text name=red_envelopes_end_time_text value="<?php if(!empty($activity_info)){if(!empty($activity_info['red_envelopes_end_time_int'])){echo date('Y-m-d',$activity_info['red_envelopes_end_time_int']);}                                      
+                                    } ?>" />
+
+                                    <input  class="login-input-username" type=text id=red_envelopes_end_time name=red_envelopes_end_time value="<?php if(!empty($activity_info)){
+                                        if(!empty($activity_info['red_envelopes_end_time_int'])){
+                                          echo date('Y-m-d',$activity_info['red_envelopes_end_time_int']);
+                                        }else{
+                                           echo '不可用';
+                                        }                                       
+                                    } ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});" disabled="disabled" />
+                                </dd>
+                            </dl>
+
+                            <dl id="red_bag_type" class="WSY_member">                 
+                                <div>
+                                    <dt>红包方式</dt>
+                                    <dd class="spa">
+                                        <input type="radio" style="border-radius:0% 0%;" value="1" name="share_red_envelopes_type" id="share_red_envelopes_type_column"  
+                                        <?php if(!empty($activity_info)){ 
+                                           if($activity_info['share_red_envelopes_type'] == '1'){
+                                                echo 'checked="checked"';
+                                               }
+                                               echo 'disabled="disabled"';
+                                           }else{
+                                                echo 'checked="checked"';
+                                           } 
+                                        ?>   
+                                        /><label for="share_red_envelopes_type_column">固定数值</label>
+                                        <input type="radio" style="border-radius:0% 0%;" value="2" name="share_red_envelopes_type" id="share_red_envelopes_type_radom" 
+                                        <?php if(!empty($activity_info)){ 
+                                           if($activity_info['share_red_envelopes_type'] == '2'){
+                                                echo 'checked="checked"';
+                                               }
+                                               echo 'disabled="disabled"';
+                                           }
+                                        ?>   
+                                        /><label for="share_red_envelopes_type_radom">随机数值</label>
+                                    </dd>
+                                </div>
+                            </dl>
+                            <?php }?>
+                           
+                            <dl class="WSY_member">
+                                <dt>分享人奖励</dt>
+                            </dl>
+                             <?php if($share_coupon_display_show == 1){?>
+                            <div id="share_coupon" style="display:block;">
+                                <input type="hidden" value="<?php if(!empty($activity_info)){echo $activity_info['share_coupon_ids'];}else{echo -1;} ?>" name="share_link_coupons_save" id="share_link_coupons_save"/>
+                                <dl class="WSY_bulkdl coupons WSY_member" id="" >
+                                    <dt>请选择优惠券:</dt>
+                                    <div>
+                                    <dd>
+                                    <button class="choose-btn" id="" type="button" onclick="share_select_coupons()">选择</button>
+                                    <span onclick='show_check_cous()' style="margin-left:10px;color:#06a7e1;">已经选择<span style="color:#06a7e1;float:none;display:inline-block;" class='share_cous_length'><?php if($is_open_share_coupon){ echo count($share_coupon_array);}else{echo 0;} ?></span>张优惠券</span>
+                                    </dd>
+                                   </div>
+                                </dl>
+                                <!--优惠券列表-->
+                                <dl class="share_coupons_list" style="width:80%;display:none;">
+                                <dl style="margin-left:50%;font-size:17px;margin-top:10px;">选择关联优惠券</dl>
+                                <dl class="WSY_bulkdl WSY_bulkdldt w90px" style="margin-top:15px;margin-left: 35px;"><dt>优惠券名称:<dd><input style="width:160px;height: 24px;line-height: 24px;"  id="share_search_cou_name" name="title" /></dd></dt>
+                                <dt>使用场景:</dt><dd>
+                                <select id="share_user_scene">
+                                <option value="-1">全部</option>
+                                <option value="0">平台通用</option>
+                                <option value="1">指定单品</option>
+                                </select></dd>
+
+                               <dt>选择时间:</dt>
+                               <dd>
+                                <select class="share_time_search">
+                                <option value="-1">全部</option>
+                                <option value="1">创建时间</option>
+                                <option value="2">领取时间</option>
+                                <option value="3">使用时间</option>
+                                </select>
+                                </dd>
+                                <dd class="show_time_search" style="display:none;"><input style="width:150px;"  type=text id="cou_starttime" name="cou_starttime" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"  /><span>-</span><input style="width:150px;margin-left:5px" class="login-input-username" type=text id="cou_endtime" name="cou_endtime" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"  /></dd>
+                               <dd style="float:left;" class="WSY_bulkdldd dd_margin"><input style="margin-top:3px;width:30px;height:13px;" class="show_check" id="share_check_all" type="checkbox"><label >全选</label>
+                               <button style="background-color:#06a7e1;color:#f9fdff;border:solid 1px #06a7e1;width:60px;line-height: 24px;margin-top: -3px;margin-left: 15px" onclick="share_search_coupons()" id="search" type="button" >搜索</button>
+                               </dd>
+                                </dl>
+                                <dl>
+                                <div id="coupons_load" style="width:100%;height:320px;overflow: auto;">
+                                  <table  class="WSY_table WSY_t2 share_cou_table" id="WSY_t1" >
+                                  <thead class="WSY_table_header">
+                                    <th width="3%">券号</th>
+                                    <th width="7%">名称</th>
+                                    <th width="6%">优惠金额</th>
+                                    <th width="7%">使用场景</th>
+                                    <th width="20%">有效期</th>
+                                    <th width="7%">是否有效</th>
+                                    <th width="9%">选择</th>
+                                  </thead>
+                                  <?php if(!empty($result_coupons)){ 
+                                      foreach($result_coupons as $k=>$v){
+                                  ?>
+                                    <tr class="pro_tr" >
+                                        <td align="center" align="center"><?php echo $v['id']; ?></td>
+                                        <td align="center" align="center"><?php echo $v['title']; ?></td>
+                                        <td align="center" align="center"><?php if(!$v['$MoneyType']){echo $v['MaxMoney'];}else{echo $v['MinMoney'].'-'.$v['MaxMoney'];} ?></td>
+                                        <td align="center">
+                                        <dt><?php if($v['user_scene'] == 1){ echo "指定单品";}else{echo "平台通用";} ?></dt>
+                                            <?php if(!empty($v['p_name'])){ ?>
+                                                <dt><?php echo $v['p_name']; ?></dt>
+                                            <?php } ?>
+                                        </td>
+                                        <td align="center">
+                                            <dt>创建时间：<?php echo $v['createtime']; ?></dt>
+                                            <dt>领取时间：<?php echo $v['getStartTime']; ?>至<?php echo $v['getEndTime']; ?></dt>
+                                            <?php if($v['DaysType']){ ?>
+                                            <dt>使用时间：<?php echo $v['startline']; ?>至<?php echo $v['Days']; ?></dt>
+                                            <?php }else{ ?>
+                                                <dt>使用时间：<?php echo date("Y-m-d H:i:s",time()); ?>至<?php echo date('Y-m-d H:i:s',strtotime("+".$Days." day")); ?></dt>
+                                            <?php } ?>
+                                        </td>
+                                        <td><?php 
+                                             if($DaysType==1){
+                                                if(strtotime($Days)>=time()){
+                                                   $is_use="有效";
+                                                }else{
+                                                   $is_use="失效";
+                                                }
+                                              }else{
+                                                $is_use="有效";
+                                              }
+                                         ?></td>
+                                        <td align="center" id=""><input style="height:13px;" <?php if(in_array($v['id'], $share_coupon_array)){ ?>checked="checked" <?php } ?> type="checkbox" onchange="share_add_value(this)" name="share_check_cous[]" class=" <?php if(in_array($v['id'], $share_coupon_array)){ ?>save_check<?php } ?>"  value="<?php echo $v['id']; ?>" /></td>
+                                    </tr>
+                                    <?php } }?>
+                                </table>
+                                </div>
+                                </dl>
+                                <dl class="WSY_bulkdl"><input style="margin-left:20%;visibility: hidden;"><button style="background-color:#06a7e1;color:#f9fdff;border:solid 1px #06a7e1;width: 80px;height: 30px;margin-left:10%;font-size:15px;" id="share_open_list" type="button" >保存</button>
+                                <button style="color:#111;width: 80px;height: 30px;margin-left:10%;font-size: 15px;" id="share_cancel_list" type="button" >取消</button>
+                                </dl>
+                                </dl>
+                                <!--优惠券列表-->
+                                <!--关联优惠券-->
+                                <!--<dl class="WSY_member">
+                                    <dt>优惠券领取后引导链接</dt>
+                                    <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['share_url'];} ?>" id="share_url" style="width:250px;" disabled="disabled" /></dd>
+                                    <dd class="choose-btn" onclick="showSelector(this)">请选择</dd>
+                                    <input type="hidden" name="share_coupon_guide_url" id="selector_id" value="<?php if(!empty($activity_info)){echo $activity_info['share_coupon_guide_url'];} ?>">
+                                </dl>-->
+                            </div>
+                            <?php }?>
+                            <?php if($share_red_bag_display_show == 1){?>
+                            <div id="share_red_bag">
+                                <dl class="WSY_member">
+                                    <dt>微信红包次数限制</dt>
+                                    <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['share_red_envelopes_time_limit'];}else{echo -1;} ?>" name="share_red_envelopes_time_limit" id="share_red_envelopes_time_limit" style="width:250px;" oninput="check_text(this,1)" /></dd>
+                                    <span>每人每天最多可领次数(-1表示不限制)</span>
+                                </dl>
+                                <dl class="WSY_member">
+                                    <dt>微信红包金额限制</dt>
+                                    <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['share_red_envelopes_money_limit'];}else{echo -1;} ?>" name="share_red_envelopes_money_limit" id="share_red_envelopes_money_limit" style="width:250px;" oninput="check_text(this,2)" /></dd>
+                                    <span>每人每天最高可领金额(-1表示不限制)</span>
+                                </dl>
+                                <dl class="WSY_member">
+                                    <dt>微信红包人数限制</dt>
+                                    <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['share_red_envelopes_people_limit'];}else{echo -1;} ?>" name="share_red_envelopes_people_limit" id="share_red_envelopes_people_limit" style="width:250px;" oninput="check_text(this,3)" /></dd>
+                                    <span>每天每次可参与的人数(-1表示不限制)</span>
+                                </dl>                               
+                                <dl class="WSY_member" id="red_bag_column">
+                                    <dt>微信红包</dt>
+                                    <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['share_red_envelopes_fixed_value'];}else{echo 1;} ?>" name="share_red_envelopes_fixed_value" id="share_red_envelopes_fixed_value" style="width:250px;" oninput="check_text(this,4)" /></dd>
+                                    <span>每人/元，微信红包最大面值不能高于每人每天最高可领金额</span>
+                                </dl>
+                                <div class="red_bag_random_block">
+                                    <?php if(!empty($share_with_prize_info)){?>
+                                        <?php                                       
+                                           foreach($share_with_prize_info as $k => $v){
+                                          
+                                        ?>
+                                        <dl class="WSY_member" id="red_bag_random">
+                                            <dt <?php if($k != 0){?>style="visibility:hidden;"<?php }?>>微信红包</dt>
+                                            <dd>
+                                                <input type=hidden value="<?php echo $v['bag_id'];?>" name="bag_id[]" id="bag_id"  />
+                                                <input type=text value="<?php echo $v['min_money'];?>" name="min_money[]" id="min_money" style="width:150px;" oninput="check_text(this,5)" />至<input type=text value="<?php echo $v['max_money'];?>" name="max_money[]" id="max_money" style="width:150px;" oninput="check_text(this,6)"/>概率：<input type=text value="<?php echo $v['probability'];?>" name="probability[]" id="probability" style="width:150px;" oninput="check_text(this,7)" />%
+
+                                                <?php if($k == 0){?>
+                                                   <span><a href="javascript:void(0);" class="WSY_search_01" onclick="diy_add(1);">+</a></span>
+                                                <?php }else{?>
+                                                  <span><a href="javascript:void(0);" class="WSY_search_01" onclick="diy_add(1);">+</a></span>
+                                                  <span><a href="javascript:void(0);" class="WSY_search_01" onclick="diy_add(2,this);">-</a></span>
+                                                <?php }?>
+
+                                            </dd>                                   
+                                        </dl>
+                                    <?php }}else{ ?>
+                                    <dl class="WSY_member" id="red_bag_random" style="display:none;">
+                                        <dt>微信红包</dt>
+                                        <dd>
+                                            <input type=hidden value="-1" name="bag_id[]" id="bag_id"  />
+                                            <input type=text value="" name="min_money[]" id="min_money" style="width:150px;" oninput="check_text(this,5)" />至<input type=text value="" name="max_money[]" id="max_money" style="width:150px;" oninput="check_text(this,6)"/>概率：<input type=text value="1" name="probability[]" id="probability" style="width:150px;" oninput="check_text(this,7)" />%<span><a href="javascript:void(0);" class="WSY_search_01" onclick="diy_add(1);">+</a></span>
+                                        </dd>                                   
+                                    </dl>
+                                    <?php }?>
+                                </div>
+                            </div> 
+                            <?php }?>   
+                                <dl class="WSY_member">
+                                    <dt>自定义邀请语</dt>
+                                    <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['share_invitations'];}else{echo '邀请好友赚大礼';} ?>" name="share_invitations" id="share_invitations" style="width:250px;" /></dd>
+                                </dl>                           
+                            <dl class="WSY_member">
+                                <dt>新人奖励</dt>
+                            </dl>
+                            
+                            <input type="hidden" value="<?php if(!empty($activity_info)){echo $activity_info['new_coupon_ids'];}else{echo -1;} ?>" name="new_link_coupons_save" id="new_link_coupons_save"/>
+                            <dl class="WSY_bulkdl coupons WSY_member" id="">
+                                <dt>请选择优惠券:</dt>
+                                <div>
+                                <dd>
+                                <button class="choose-btn" id="" type="button" onclick="new_select_coupons()">选择</button>
+                                <span onclick='show_check_cous()' style="margin-left:10px;color:#06a7e1;">已经选择<span style="color:#06a7e1;float:none;display:inline-block;" class='new_cous_length'><?php if($is_open_new_coupon){ echo count($new_coupon_array);}else{echo 0;} ?></span>张优惠券</span>
+                                </dd>
+                                </div>
+                            </dl>
+                            <!--优惠券列表-->
+                            <dl class="new_coupons_list" style="width:80%;display:none;">
+                            <dl style="margin-left:50%;font-size:17px;margin-top:10px;">选择关联优惠券</dl>
+                                 <dl class="WSY_bulkdl WSY_bulkdldt w90px" style="margin-top:15px;margin-left: 35px;"><dt>优惠券名称:<dd><input style="width:160px;height: 24px;line-height: 24px;"  id="new_search_cou_name" name="title" /></dd></dt>
+                            <dt>使用场景:</dt><dd>
+                            <select id="new_user_scene">
+                            <option value="-1">全部</option>
+                            <option value="0">平台通用</option>
+                            <option value="1">指定单品</option>
+                            </select></dd>
+
+                           <dt>选择时间:</dt>
+                           <dd>
+                            <select class="new_time_search">
+                            <option value="-1">全部</option>
+                            <option value="1">创建时间</option>
+                            <option value="2">领取时间</option>
+                            <option value="3">使用时间</option>
+                            </select>
+                            </dd>
+                            <dd class="show_time_search" style="display:none;"><input style="width:150px;"  type=text id="cou_starttime" name="cou_starttime" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"  /><span>-</span><input style="width:150px;margin-left:5px" class="login-input-username" type=text id="cou_endtime" name="cou_endtime" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});"  /></dd>
+                           <dd style="float:left;" class="WSY_bulkdldd dd_margin"><input style="margin-top:3px;width:30px;height:13px;" class="show_check"  id="new_check_all" type="checkbox"><label >全选</label>
+                           <button style="background-color:#06a7e1;color:#f9fdff;border:solid 1px #06a7e1;width:60px;line-height: 24px;margin-top: -3px;margin-left: 15px" onclick="new_search_coupons()" id="search" type="button" >搜索</button>
+                           </dd>
+                            </dl>
+                            <dl>
+                            <div id="coupons_load" style="width:100%;height:320px;overflow: auto;">
+                              <table  class="WSY_table WSY_t2 new_cou_table" id="WSY_t1" >
+                              <thead class="WSY_table_header">
+                                <th width="3%">券号</th>
+                                <th width="7%">名称</th>
+                                <th width="6%">优惠金额</th>
+                                <th width="7%">使用场景</th>
+                                <th width="20%">有效期</th>
+                                <th width="7%">是否有效</th>
+                                <th width="9%">选择</th>
+                              </thead>
+                              <?php if(!empty($result_coupons)){ 
+                                  foreach($result_coupons as $k=>$v){
+                              ?>
+                                <tr class="pro_tr" >
+                                    <td align="center" align="center"><?php echo $v['id']; ?></td>
+                                    <td align="center" align="center"><?php echo $v['title']; ?></td>
+                                    <td align="center" align="center"><?php if(!$v['$MoneyType']){echo $v['MaxMoney'];}else{echo $v['MinMoney'].'-'.$v['MaxMoney'];} ?></td>
+                                    <td align="center">
+                                    <dt><?php if($v['user_scene'] == 1){ echo "指定单品";}else{echo "平台通用";} ?></dt>
+                                        <?php if(!empty($v['p_name'])){ ?>
+                                            <dt><?php echo $v['p_name']; ?></dt>
+                                        <?php } ?>
+                                    </td>
+                                    <td align="center">
+                                        <dt>创建时间：<?php echo $v['createtime']; ?></dt>
+                                        <dt>领取时间：<?php echo $v['getStartTime']; ?>至<?php echo $v['getEndTime']; ?></dt>
+                                        <?php if($v['DaysType']){ ?>
+                                        <dt>使用时间：<?php echo $v['startline']; ?>至<?php echo $v['Days']; ?></dt>
+                                        <?php }else{ ?>
+                                            <dt>使用时间：<?php echo date("Y-m-d H:i:s",time()); ?>至<?php echo date('Y-m-d H:i:s',strtotime("+".$Days." day")); ?></dt>
+                                        <?php } ?>
+                                    </td>
+                                    <td><?php 
+                                         if($DaysType==1){
+                                            if(strtotime($Days)>=time()){
+                                               $is_use="有效";
+                                            }else{
+                                               $is_use="失效";
+                                            }
+                                          }else{
+                                            $is_use="有效";
+                                          }
+                                     ?></td>
+                                    <td align="center" id=""><input style="height:13px;" <?php if(in_array($v['id'], $new_coupon_array)){ ?>checked="checked" <?php } ?> type="checkbox" onchange="new_add_value(this)" name="new_check_cous[]" class=" <?php if(in_array($v['id'], $new_coupon_array)){ ?>save_check<?php } ?>"  value="<?php echo $v['id']; ?>" /></td>
+                                </tr>
+                                <?php } }?>
+                            </table>
+                            </div>
+                            </dl>
+                            <dl class="WSY_bulkdl"><input style="margin-left:20%;visibility: hidden;"><button style="background-color:#06a7e1;color:#f9fdff;border:solid 1px #06a7e1;width: 80px;height: 30px;margin-left:10%;font-size:15px;" id="new_open_list" type="button" >保存</button>
+                            <button style="color:#111;width: 80px;height: 30px;margin-left:10%;font-size: 15px;" id="new_cancel_list" type="button" >取消</button>
+                            </dl>
+                            </dl>
+                            <!--优惠券列表-->
+                            <!--关联优惠券-->
+                            <dl class="WSY_member">
+                                <dt>优惠券领取后引导链接</dt>
+                                <dd><input type=text value="<?php if(!empty($activity_info)){echo $activity_info['new_url'];} ?>" id="share_url" style="width:250px;" disabled="disabled" /></dd>
+                                <dd class="choose-btn" onclick="showSelector(this)">请选择</dd>
+                                <input type="hidden" name="new_coupon_guide_url" id="selector_id" value="<?php if(!empty($activity_info)){echo $activity_info['new_coupon_guide_url'];} ?>">
+                            </dl>
+                            <div class="WSY_text_input01">
+                                <div class="WSY_text_input"><input type="button" class="WSY_button" value="上一步" onclick="back(this);" style="cursor:pointer;"/></div>
+                            </div>
+                            <div class="WSY_text_input01">
+                                <div class="WSY_text_input"><input type="button" class="WSY_button" value="下一步" onclick="next(this);" style="cursor:pointer;"/></div>
+                            </div>
+                       </div>
+                       <div class="tap3" style="display:none;">
+                        <dl class="WSY_member">
+                            <dt>分享页背景</dt>
+                            <div class="WSY_memberimg">
+                                <?php if(!empty($activity_info['share_background_img'])){                             
+                                ?>
+                                <img src="<?php echo $activity_info['share_background_img']; ?>" style="width:300px;height:225px;">
+                                <?php }else{ ?>
+                                <img src="/mshop/web/static/share_gifts/img/bg3top.png" style="width:300px;height:225px;">
+                                <?php } ?>
+                                <span>(图片尺寸：1024*768）</span>
+                                <!--上传文件代码开始-->
+                                <div class="uploader white">
+                                    <input type="text" class="filename" readonly/>
+                                    <input type="button" name="file" class="button" value="上传..."/>
+                                    <input size="17" name="share_background_img" id="share_background_img" type=file value="<?php if(!empty($activity_info)){echo $activity_info['share_background_img'];} ?>">
+                                    <input type=hidden value="<?php if(!empty($activity_info)){echo $activity_info['share_background_img'];} ?>" name="share_background_img" id="share_background_img" /> 
+                                </div>
+                                <!--上传文件代码结束-->
+                            </div>
+                            <!--分享页背景颜色-->
+                            <dd>
+                              <input type="hidden" name="color" id="item_color" value="<?php if(!empty($activity_info)){echo $activity_info['color'];}else{ echo 'F76313';} ?>" />
+                              <input type=text name="color" id ="color" class="color"  value="<?php if(!empty($activity_info)){echo $activity_info['color'];}else{ echo 'F76313';} ?>"  onchange="changeColor(this)" style="width:100px;"/><button type="reset" onclick="clearColor(event)">默认颜色</button>
+                           </dd>
+                        </dl>
+                        <dl class="WSY_member">
+                            <dt>领取页背景</dt>
+                            <div class="WSY_memberimg">
+                                <?php if(!empty($activity_info['receive_background_img'])){                          
+                                ?>
+                                <img src="<?php echo $activity_info['receive_background_img']; ?>" style="width:300px;height:225px;">
+                                <?php }else{ ?>
+                                <img src="/mshop/web/static/share_gifts/img/bg1top.png" style="width:300px;height:225px;">
+                                <?php } ?>
+                                <span>(图片尺寸：1024*768）</span>
+                                <!--上传文件代码开始-->
+                                <div class="uploader white">
+                                    <input type="text" class="filename" readonly/>
+                                    <input type="button" name="file" class="button" value="上传..."/>
+                                    <input size="17" name="receive_background_img" id="receive_background_img" type=file value="<?php if(!empty($activity_info)){echo $activity_info['receive_background_img'];} ?>">
+                                    <input type=hidden value="<?php if(!empty($activity_info)){echo $activity_info['receive_background_img'];} ?>" name="receive_background_img" id="receive_background_img" /> 
+                                </div>
+                                <!--上传文件代码结束-->
+                            </div>
+                             <!--领取页背景颜色-->
+                            <dd>
+                              <input type="hidden" name="receive_color" id="receive_color" value="<?php if(!empty($activity_info)){echo $activity_info['receive_color'];}else{ echo 'F76313';} ?>" />
+                              <input type=text name="receive_color" id ="receive_color2" class="color"  value="<?php if(!empty($activity_info)){echo $activity_info['receive_color'];}else{ echo 'F76313';} ?>"  onchange="changeColor2(this)" style="width:100px;"/><button type="reset" onclick="clearColor2(event)">默认颜色</button>
+                            </dd>
+                        </dl>
+                        <dl class="WSY_member">
+                            <dt>已领取页背景</dt>
+                            <div class="WSY_memberimg">
+                                <?php if(!empty($activity_info['have_receive_background_img'])){                             
+                                ?>
+                                <img src="<?php echo $activity_info['have_receive_background_img']; ?>" style="width:300px;height:225px;">
+                                <?php }else{ ?>
+                                <img src="/mshop/web/static/share_gifts/img/bg2top.png" style="width:300px;height:225px;">
+                                <?php } ?>
+                                <span>(图片尺寸：1024*768）</span>
+                                <!--上传文件代码开始-->
+                                <div class="uploader white">
+                                    <input type="text" class="filename" readonly/>
+                                    <input type="button" name="file" class="button" value="上传..."/>
+                                    <input size="17" name="have_receive_background_img" id="have_receive_background_img" type=file value="<?php if(!empty($activity_info)){echo $activity_info['have_receive_background_img'];} ?>">
+                                    <input type=hidden value="<?php if(!empty($activity_info)){echo $activity_info['have_receive_background_img'];} ?>" name="have_receive_background_img" id="have_receive_background_img" /> 
+                                </div>
+                                <!--上传文件代码结束-->
+                            </div>
+                             <!--已领取页背景颜色-->
+                            <dd>
+                              <input type="hidden" name="have_receive_color" id="have_receive_color" value="<?php if(!empty($activity_info)){echo $activity_info['have_receive_color'];}else{ echo 'F76313';} ?>" />
+                              <input type=text name="have_receive_color" id ="have_receive_color2" class="color"  value="<?php if(!empty($activity_info)){echo $activity_info['have_receive_color'];}else{ echo 'F76313';} ?>"  onchange="changeColor3(this)" style="width:100px;"/><button type="reset" onclick="clearColor3(event)">默认颜色</button>
+                            </dd>
+                        </dl>
+                        <dl class="WSY_member">
+                            <dt>排行榜</dt>
+                            <div class="WSY_memberimg">
+                                <?php if(!empty($activity_info['leaderboards_background_img'])){                             
+                                ?>
+                                <img src="<?php echo $activity_info['leaderboards_background_img']; ?>" style="width:300px;height:225px;">
+                                <?php }else{ ?>
+                                <img src="/mshop/web/static/share_gifts/img/phbg.png" style="width:300px;height:225px;">
+                                <?php } ?>
+                                <span>(图片尺寸：1024*768）</span>
+                                <!--上传文件代码开始-->
+                                <div class="uploader white">
+                                    <input type="text" class="filename" readonly/>
+                                    <input type="button" name="file" class="button" value="上传..."/>
+                                    <input size="17" name="leaderboards_background_img" id="leaderboards_background_img" type=file value="<?php if(!empty($activity_info)){echo $activity_info['leaderboards_background_img'];} ?>">
+                                    <input type=hidden value="<?php if(!empty($activity_info)){echo $activity_info['leaderboards_background_img'];} ?>" name="leaderboards_background_img" id="leaderboards_background_img" /> 
+                                </div>
+                                <!--上传文件代码结束-->
+                            </div>
+                             <!--排行榜背景颜色-->
+                            <dd>
+                              <input type="hidden" name="leaderboards_color" id="leaderboards_color" value="<?php if(!empty($activity_info)){echo $activity_info['leaderboards_color'];}else{ echo 'F76313';} ?>" />
+                              <input type=text name="leaderboards_color" id ="leaderboards_color2" class="color"  value="<?php if(!empty($activity_info)){echo $activity_info['leaderboards_color'];}else{ echo 'F76313';} ?>"  onchange="changeColor4(this)" style="width:100px;"/><button type="reset" onclick="clearColor4(event)">默认颜色</button>
+                            </dd>
+                        </dl>
+                        <dl class="WSY_member"> 
+                            <dt>分享说明</dt>
+                            <dd>
+                            <?php 
+                               $is_share_instruction = 0;
+
+                               if(!empty($activity_info)){
+                                  $is_share_instruction =  (int)$activity_info['is_share_instruction'];
+                               }
+                            ?>
+                                <?php if($is_share_instruction==1){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li onclick="change_share_instruction(0)" class="WSY_bot" style="left: 0px;"></li>
+                                    <span onclick="change_share_instruction(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+                                </ul>
+                                <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="change_share_instruction(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span onclick="change_share_instruction(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>                       
+                                <?php } ?>
+                            </dd>
+                            <input type="hidden" name="is_share_instruction" id="is_share_instruction" value="<?php if(!empty($activity_info)){echo $activity_info['is_share_instruction'];} ?>" />
+                        </dl>
+                        <dl class="WSY_member" id="share_instruction_show" <?php if($is_share_instruction == 0){ ?>style="display:none;" <?php }?>>
+                            <dt>分享说明</dt>
+                            <dd >
+                            <textarea id="share_instruction" name="share_instruction"><?php if(!empty($activity_info)){echo $activity_info['share_instruction'];} ?></textarea>
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl class="WSY_member"> 
+                            <dt>领取说明</dt>
+                            <dd>
+                                <?php 
+                                   $is_receive_instruction = 0;
+
+                                   if(!empty($activity_info)){
+                                      $is_receive_instruction =  (int)$activity_info['is_receive_instruction'];
+                                   }
+                                ?>
+                                <?php if($is_receive_instruction==1){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li onclick="change_receive_instruction(0)" class="WSY_bot" style="left: 0px;"></li>
+                                    <span onclick="change_receive_instruction(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+                                </ul>
+                                <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="change_receive_instruction(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span onclick="change_receive_instruction(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>                       
+                                <?php } ?>
+                            </dd>
+                            <input type="hidden" name="is_receive_instruction" id="is_receive_instruction" value="<?php if(!empty($activity_info)){echo $activity_info['is_receive_instruction'];} ?>" />
+                        </dl>
+                        <dl class="WSY_member" id="receive_instruction_show" <?php if($is_receive_instruction == 0){ ?>style="display:none;" <?php }?>>
+                            <dt>领取说明</dt>
+                            <dd >
+                            <textarea id="receive_instruction" name="receive_instruction"><?php if(!empty($activity_info)){echo $activity_info['receive_instruction'];} ?></textarea>
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <dl class="WSY_member"> 
+                            <dt>排行榜说明</dt>
+                            <dd>
+                                <?php 
+                                   $is_leaderboards_instruction = 0;
+
+                                   if(!empty($activity_info)){
+                                      $is_leaderboards_instruction =  (int)$activity_info['is_leaderboards_instruction'];
+                                   }
+                                ?>
+                                <?php if($is_leaderboards_instruction==1){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li onclick="change_leaderboards_instruction(0)" class="WSY_bot" style="left: 0px;"></li>
+                                    <span onclick="change_leaderboards_instruction(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+                                </ul>
+                                <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="change_leaderboards_instruction(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span onclick="change_leaderboards_instruction(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>                       
+                                <?php } ?>
+                            </dd>
+                            <input type="hidden" name="is_leaderboards_instruction" id="is_leaderboards_instruction" value="<?php if(!empty($activity_info)){echo $activity_info['is_leaderboards_instruction'];} ?>" />
+                        </dl>
+                        <dl class="WSY_member" id="leaderboards_instruction_show" <?php if($is_leaderboards_instruction == 0){ ?>style="display:none;" <?php }?>>
+                            <dt>排行榜说明</dt>
+                            <dd >
+                            <textarea id="leaderboards_instruction" name="leaderboards_instruction"><?php if(!empty($activity_info)){echo $activity_info['leaderboards_instruction'];} ?></textarea>
+                            </dd>
+                            <div class="clear"></div>
+                        </dl>
+                        <div class="WSY_text_input01">
+                            <div class="WSY_text_input"><input type="button" class="WSY_button" value="上一步" onclick="back(this);" style="cursor:pointer;"/></div>
+                        </div>
+                        <div class="WSY_text_input01">
+                            <div class="WSY_text_input"><input type="button" class="WSY_button" value="提交" onclick="submitV(this);" style="cursor:pointer;"/></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div style="width:100%;height:20px;"></div>
+        </div>  
+        <!--内容框架结束-->
+        <script type="text/javascript" src="/weixinpl/common/js_V6.0/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+
+        <script type="text/javascript">
+            var share_last_save_arr = "";
+            var new_last_save_arr   = "";
+
+            var share_is_lock       = 0;
+            var new_is_lock         = 0;
+                    
+            var share_link_coupons  = "<?php echo $share_coupon_ids; ?>";
+            var new_link_coupons    = "<?php echo $new_coupon_ids; ?>";
+
+           if(share_link_coupons==-1){
+              var share_link_coupons_arr = new Array();
+           }else{
+              var share_link_coupons_arr = share_link_coupons.split(',');
+           }
+
+           if(new_link_coupons==-1){
+              var new_link_coupons_arr = new Array();
+           }else{
+              var new_link_coupons_arr = new_link_coupons.split(',');
+           }
+
+            var tap_num         = 1; //页面编号                      
+
+            var share_red_envelopes_type = "<?php if(!empty($activity_info)){echo $activity_info['share_red_envelopes_type'];}else{echo 1;} ?>";
+
+            if(share_red_envelopes_type == "1"){
+                $("#red_bag_column").show();
+                $(".red_bag_random_block").hide();
+                $("#red_bag_random").hide();
+            }else if(share_red_envelopes_type == "2"){
+                $("#red_bag_column").hide();
+                $(".red_bag_random_block").show();
+                $("#red_bag_random").show();
+            }else{
+                $("#red_bag_column").show();
+                $(".red_bag_random_block").hide();
+                $("#red_bag_random").show();
+            }
+
+
+            function changeColor(e){
+              document.getElementById('item_color').value=e.value;
+            } 
+            function changeColor2(e){
+              document.getElementById('receive_color').value=e.value;
+            }
+            function changeColor3(e){
+              document.getElementById('have_receive_color').value=e.value;
+            } 
+            function changeColor4(e){
+              document.getElementById('leaderboards_color').value=e.value;
+            }  
+
+            function clearColor(e){
+              document.getElementById('color').value='F76313';
+              document.getElementById('item_color').value='F76313';
+              //alert('清除背景颜色成功！');
+              e.preventDefault();
+              return false;
+            }
+            function clearColor2(e){
+              document.getElementById('receive_color2').value='F76313';
+              document.getElementById('receive_color').value='F76313';
+              //alert('清除背景颜色成功！');
+              e.preventDefault();
+              return false;
+            }
+            function clearColor3(e){
+              document.getElementById('have_receive_color2').value='F76313';
+              document.getElementById('have_receive_color').value='F76313';
+              //alert('清除背景颜色成功！');
+              e.preventDefault();
+              return false;
+            }
+            function clearColor4(e){
+              document.getElementById('leaderboards_color').value='F76313';
+              document.getElementById('leaderboards_color').value='F76313';
+              //alert('清除背景颜色成功！');
+              e.preventDefault();
+              return false;
+            }
+            //活动时间方式
+            
+            /*var time_type = "<?php if(!empty($activity_info)){echo $activity_info['time_type'];}else{echo 1;} ?>";
+
+            if(time_type == "1"){
+               $("#red_envelopes_begin_time_text").val($("#begin_time").val());
+               $("#red_envelopes_end_time_text").val($("#end_time").val());
+
+               $("#coupon_begin_time_text").val($("#begin_time").val());
+               $("#coupon_end_time_text").val($("#end_time").val());
+
+               $("#red_envelopes_begin_time").val($("#begin_time").val());
+               $("#red_envelopes_end_time").val($("#end_time").val());
+
+               $("#coupon_begin_time").val($("#begin_time").val());
+               $("#coupon_end_time").val($("#end_time").val());
+
+               $("#red_envelopes_begin_time").prop("disabled",true);
+               $("#red_envelopes_end_time").prop("disabled",true);
+               $("#coupon_begin_time").prop("disabled",true);
+               $("#coupon_end_time").prop("disabled",true);
+            }else if(time_type == "2"){
+                <?php if(!empty($activity_info)){?>
+                 var coupon_begin_time_or        = "<?php echo date('Y-m-d',$activity_info['coupon_begin_time_int']);?>";
+                 var coupon_end_time_or          = "<?php echo date('Y-m-d',$activity_info['coupon_end_time_int']);?>";
+                 var red_envelopes_begin_time_or = "<?php echo date('Y-m-d',$activity_info['red_envelopes_begin_time_int']);?>";
+                 var red_envelopes_end_time_or   = "<?php echo date('Y-m-d',$activity_info['red_envelopes_end_time_int']);?>";
+
+                  $("#red_envelopes_begin_time_text").val(red_envelopes_begin_time_or);
+                  $("#red_envelopes_end_time_text").val(red_envelopes_end_time_or);
+
+                  $("#red_envelopes_begin_time").val(red_envelopes_begin_time_or);
+                  $("#red_envelopes_end_time").val(red_envelopes_end_time_or);
+
+                  $("#coupon_begin_time").val(coupon_begin_time_or);
+                  $("#coupon_end_time").val(coupon_end_time_or);
+
+                  $("#red_envelopes_begin_time").prop("disabled",true);
+                  $("#red_envelopes_end_time").prop("disabled",true);
+                <?php }?>
+            }*/
+
+            $('input[name="share_activity_time_type"]').click(function(){
+               var share_activity_time_type = $('input[name=share_activity_time_type]:checked').val();
+               
+               if(share_activity_time_type == 1){
+                  $("#red_envelopes_begin_time_text").val($("#begin_time").val());
+                  $("#red_envelopes_end_time_text").val($("#end_time").val());
+
+                  $("#coupon_begin_time_text").val($("#begin_time").val());
+                  $("#coupon_end_time_text").val($("#end_time").val());
+
+                  $("#red_envelopes_begin_time").val($("#begin_time").val());
+                  $("#red_envelopes_end_time").val($("#end_time").val());
+
+                  $("#coupon_begin_time").val($("#begin_time").val());
+                  $("#coupon_end_time").val($("#end_time").val());
+
+                  $("#red_envelopes_begin_time").prop("disabled",true);
+                  $("#red_envelopes_end_time").prop("disabled",true);
+                  $("#coupon_begin_time").prop("disabled",true);
+                  $("#coupon_end_time").prop("disabled",true);
+               }else{
+                  $("#red_envelopes_begin_time_text").val(0);
+                  $("#red_envelopes_end_time_text").val(0);
+
+                  $("#red_envelopes_begin_time").val('不可用');
+                  $("#red_envelopes_end_time").val('不可用');
+
+                  $("#coupon_begin_time").val($("#begin_time").val());
+                  $("#coupon_end_time").val($("#end_time").val());
+
+                  $("#red_envelopes_begin_time").prop("disabled",true);
+                  $("#red_envelopes_end_time").prop("disabled",true);
+                  $("#coupon_begin_time").prop("disabled",false);
+                  $("#coupon_end_time").prop("disabled",false);
+               }
+            });
+
+            //分享人奖励--优惠券
+            $("#share_is_coupon").click(function(){
+                var share_is_coupon = $("#share_is_coupon").is(':checked');
+                
+                var share_reward_value =[]; 
+                $('input[name="share_reward"]:checked').each(function(){ 
+                   share_reward_value.push($(this).val()); 
+                }); 
+
+                if(share_reward_value.length == ""){
+                    $("#share_is_coupon").prop("checked",true);
+                    layer.alert('分享人奖励必须选择一种');
+                    return;
+                }
+                if(share_is_coupon){
+                   if(share_reward_value.length == 2){
+                      $("#red_envelopes_begin_time").val("不可用");
+                      $("#red_envelopes_end_time").val("不可用");
+
+                      $("#red_envelopes_begin_time_text").val(0);
+                      $("#red_envelopes_end_time_text").val(0);
+
+                      $("#coupon_begin_time").val($("#begin_time").val());
+                      $("#coupon_end_time").val($("#end_time").val());
+
+                      $("#red_envelopes_begin_time").prop("disabled",true);
+                      $("#red_envelopes_end_time").prop("disabled",true);
+                      $("#coupon_begin_time").prop("disabled",false);
+                      $("#coupon_end_time").prop("disabled",false);
+
+                      $("#time_type").show();
+                   }
+                   $("#share_coupon_display").show();
+                   $("#share_coupon").show();
+                }else{
+
+                   $("#red_envelopes_begin_time").prop("disabled",true);
+                   $("#red_envelopes_end_time").prop("disabled",true);
+
+                   $("#red_envelopes_begin_time").val($("#begin_time").val());
+                   $("#red_envelopes_end_time").val($("#end_time").val());
+
+                   $("#red_envelopes_begin_time_text").val($("#begin_time").val());
+                    $("#red_envelopes_end_time_text").val($("#end_time").val());
+
+                   $("#coupon_begin_time").val();
+                   $("#coupon_end_time").val();
+
+                   $("#share_coupon_display").hide();
+                   $("#share_coupon").hide();
+                   $("#time_type").hide();
+
+                   $("input[name='share_activity_time_type']:eq(1)").prop("checked",'checked'); 
+                }
+            });
+            
+
+            //分享人奖励--红包
+            $("#share_is_red_envelopes").click(function(){
+                var share_is_red_envelopes = $("#share_is_red_envelopes").is(':checked');
+                
+                var share_reward_value =[]; 
+                $('input[name="share_reward"]:checked').each(function(){ 
+                   share_reward_value.push($(this).val()); 
+                }); 
+
+                if(share_reward_value.length == ""){
+                    $("#share_is_red_envelopes").prop("checked",true);
+                    layer.alert('分享人奖励必须选择一种');
+                    return;
+                }
+
+                if(share_is_red_envelopes){
+                   if(share_reward_value.length == 2){
+                      $("#red_envelopes_begin_time").val("不可用");
+                      $("#red_envelopes_end_time").val("不可用");
+                      $("#coupon_begin_time").val($("#begin_time").val());
+                      $("#coupon_end_time").val($("#end_time").val());
+                      
+                      $("#coupon_begin_time").prop("disabled",false);
+                      $("#coupon_end_time").prop("disabled",false);
+                      $("#red_envelopes_begin_time").prop("disabled",true);
+                      $("#red_envelopes_end_time").prop("disabled",true);
+                      $("#red_bag_type").show();
+                      $("#time_type").show();
+                   }
+
+                   $("#share_red_bag_display").show();
+                   $("#share_red_bag").show();
+                }else{
+                   $("#coupon_begin_time").prop("disabled",true);
+                   $("#coupon_end_time").prop("disabled",true);
+
+                   $("#coupon_begin_time").val($("#begin_time").val());
+                   $("#coupon_end_time").val($("#end_time").val());
+                   $("#red_envelopes_begin_time").val(0);
+                   $("#red_envelopes_end_time").val(0);
+
+                   $("#red_envelopes_begin_time_text").val(0);
+                   $("#red_envelopes_end_time_text").val(0);
+
+                   $("#share_red_bag_display").hide();
+                   $("#share_red_bag").hide();
+
+                   $("#red_bag_type").hide();
+                   $("#time_type").hide();
+                   
+                   $("input[name='share_activity_time_type']:eq(1)").prop("checked",'checked');
+                }
+            });
+            
+            //红包方式
+            $("input[name='share_red_envelopes_type']").click(function(){
+               var red_type = $(this).val();
+
+               if(red_type == 1){ // 固定数值
+                  $("#red_bag_column").show();
+                  $(".red_bag_random_block").hide();               
+                  $("#red_bag_random").hide();
+               }else{ //随机数值                
+                  $("#red_bag_column").hide();
+                  $(".red_bag_random_block").show();
+                  $("#red_bag_random").show();
+               }
+            });
+            function checkbox_bind_phone(obj){
+                if ( obj.checked == true){
+                    $("#is_bind_phone_open").val(1);
+                }else{
+                    $("#is_bind_phone_open").val(0);
+                }
+            }
+            function checkbox_subscription(obj){
+                if ( obj.checked == true){
+                    $("#is_subscription_open").val(1);
+                }else{
+                    $("#is_subscription_open").val(0);
+                }
+            }
+            function checkbox_share_is_coupon(obj){
+                if ( obj.checked == true){
+                    $("#share_is_coupon_open").val(1);
+                }else{
+                    $("#share_is_coupon_open").val(0);
+                }
+            }
+            function checkbox_share_is_red_envelopes(obj){
+                if ( obj.checked == true){
+                    $("#share_is_red_envelopes_open").val(1);
+                }else{
+                    $("#share_is_red_envelopes_open").val(0);
+                }
+            }
+            //红包输入框文本限制
+            function check_text(obj,type){
+                clearNoNum(obj,type);
+                 var text = obj.value;
+          
+                 if(!isNaN(text)){
+                    if(text <= -1 && type !=7){
+                        $(obj).val(-1);
+                    }
+                    if(type == 7 && text< 0){
+                        $(obj).val(0);
+                    }
+                    if((type ==5 || type == 6) && text < 0){
+                       $(obj).val(1);
+                    }
+                    if((type ==5 || type == 6) && text >4999){
+                       $(obj).val(4999);
+                    }
+                }else{
+                    if(text != "-"){
+                       $(obj).val("");
+                    }                   
+                }
+            }
+            
+            function clearNoNum(obj,type)
+            {
+                //先把非数字的都替换掉，除了数字和.
+                obj.value = obj.value.replace(/[^-\d.]/g,"");
+                //必须保证第一个为数字而不是.
+                //obj.value = obj.value.replace(/^\./g,"");
+                //保证只有出现一个.而没有多个.
+                obj.value = obj.value.replace(/\.{2,}/g,".");
+                
+                //保证.只出现一次，而不能出现两次以上
+                obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+
+                if((type == 1 || type ==3)){
+                    if(obj.value != "-"){
+                         var text_value = Math.floor(obj.value);
+                         if((text_value == "" || text_value == 0 || text_value == null)){
+                            obj.value  = '';
+                         }else{
+                            obj.value  = text_value;
+                         }                         
+                     }                   
+                }else{
+                    if(obj.value.indexOf(".") > 0 && obj.value !=""){
+                       obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
+                    }                   
+                }
+            }
+
+            //分享说明
+            function change_share_instruction(type){
+               $("#is_share_instruction").val(type);
+               if(type == 1){
+                  $("#share_instruction_show").show();
+               }else{
+                  $("#share_instruction_show").hide();
+               }
+            }
+            //领取说明
+            function change_receive_instruction(type){
+               $("#is_receive_instruction").val(type);
+               if(type == 1){
+                  $("#receive_instruction_show").show();
+               }else{
+                  $("#receive_instruction_show").hide();
+               }
+            }
+            //排行榜说明
+            function change_leaderboards_instruction(type){
+               $("#is_leaderboards_instruction").val(type);
+               if(type == 1){
+                  $("#leaderboards_instruction_show").show();
+               }else{
+                  $("#leaderboards_instruction_show").hide();
+               }
+            }
+            function submitV(a){
+                if($(a).hasClass("disable")){
+                    return;
+                }
+
+                var is_share_instruction        = $("#is_share_instruction").val();  
+                var is_receive_instruction      = $("#is_receive_instruction").val();
+                var is_leaderboards_instruction = $("#is_leaderboards_instruction").val();
+                
+                var share_instruction           = $("#share_instruction").val();
+                var receive_instruction         = $("#receive_instruction").val();
+                var leaderboards_instruction    = $("#leaderboards_instruction").val();
+                
+                if(is_share_instruction == 1 && share_instruction == ""){
+                    layer.alert('分享说明不能为空');
+                    return false;
+                }
+                if(is_receive_instruction == 1 && receive_instruction == ""){
+                    layer.alert('领取说明不能为空');
+                    return false;
+                }
+                if(is_leaderboards_instruction == 1 && leaderboards_instruction == ""){
+                    layer.alert('排行榜说明不能为空');
+                    return false;
+                }
+                $("input[disabled=disabled]").each(function() {
+                    //if (parseInt($(this).val()) != -1) {
+                        $(this).attr("disabled", false);
+                    //}
+                });
+                $(a).addClass('disable').val("提交中...");
+                document.getElementById("upform").submit();
+            }
+            
+             //添加自定义随机红包
+            function diy_add(type,obj){
+                if(type == 1){  //添加
+                    var html    = "";
+   
+                    html += '<dl class="WSY_member" id="red_bag_random">';
+                    html += '<dt style="visibility:hidden;">微信红包</dt>';
+                    html += '<dd>';
+                    html += '<input type=hidden value="-1" name="bag_id[]" id="bag_id"  />';
+                    html += '<input type=text value="" name="min_money[]" id="min_money" style="width:150px;" oninput="check_text(this,5)" />';
+                    html += '至';
+                    html += '<input type=text value="" name="max_money[]" id="max_money" style="width:150px;" oninput="check_text(this,6)"/>';
+                    html += '概率：';
+                    html += '<input type=text value="1" name="probability[]" id="probability" style="width:150px;" oninput="check_text(this,7)" />%';
+                    html += '<span><a href="javascript:void(0);" class="WSY_search_01" onclick="diy_add(1);">+</a></span>';
+                    html += '<span><a href="javascript:void(0);" class="WSY_search_01" onclick="diy_add(2,this);">-</a></span>';
+                    html += '</dd>';                                    
+                    html += '</dl>';
+
+                    $(".red_bag_random_block").append(html);
+
+                }else{   //删除
+                    var index = $(obj).parent().parent().parent().index();
+
+                   $(".red_bag_random_block dl:eq("+index+")").remove();
+                }
+
+            }
+            // 翻页动作
+            function next(that){
+                if($(that).hasClass("disable")){//防止多次点击
+                    return;
+                }
+                
+                if(tap_num == 1){
+                    var name        = $('#name').val();
+                    var begin_time  = $('#begin_time').val();               
+                    var end_time    = $('#end_time').val();
+                    
+                    if(name==""){
+                        layer.alert('活动名称不能为空');
+                        return;
+                    }
+                    if(name.length > 10){
+                        layer.alert('活动名称不能超过10个字符');
+                        return;
+                    }
+                    
+                    if(begin_time =="" || end_time == ""){
+                        layer.alert('活动时间不能为空');
+                        return;
+                    }
+                    if(begin_time > end_time){
+                        layer.alert('活动开始时间不能大于结束时间');
+                        return;
+                    }
+                    
+                    var share_way_value =[]; 
+
+                    $('input[name="share_reward_limit"]:checked').each(function(){ 
+                       share_way_value.push($(this).val()); 
+                    });                    
+
+                    if(share_way_value.length == ""){
+                        layer.alert('分享获奖限制必须选择一种');
+                        return;
+                    } 
+
+                    //判断活动时间是否有重叠，有重叠则不能添加
+                    <?php if(empty($activity_info)){ ?>
+                      var is_overlap = 0;
+
+                      $.ajax({
+                          type: 'POST',
+                          url: '/mshop/admin/index.php?m=share_gifts&a=check_activity_overlap&customer_id=<?php echo $customer_id_en;?>',
+                          async:false,
+                          data:{
+                             begin_time:begin_time,
+                             end_time:end_time
+                          },
+                          dataType: 'json',
+                          success: function(data){
+                              if(data){
+                                is_overlap = 1                          
+                              }
+                          },
+                          error: function(type){
+                              alert('Ajax error!');
+                          }
+                      });
+
+                      if(is_overlap != 0){
+                        layer.alert('活动有重叠，请重新设置');
+                        return;
+                      }
+                    <?php } ?>
+                }else if(tap_num == 2){
+                    var coupon_begin_time         = $('#coupon_begin_time').val();
+                    var coupon_end_time           = $('#coupon_end_time').val();              
+                    var red_envelopes_begin_time  = $('#red_envelopes_begin_time').val();
+                    var red_envelopes_end_time    = $('#red_envelopes_end_time').val(); 
+                    
+                    var share_is_coupon           = $("#share_is_coupon").is(':checked');
+                    var share_is_red_envelopes    = $("#share_is_red_envelopes").is(':checked');
+                    
+                    var share_link_coupons_save   = $("#share_link_coupons_save").val();
+
+                    var share_red_envelopes_time_limit   = $("#share_red_envelopes_time_limit").val();
+                    var share_red_envelopes_money_limit  = $("#share_red_envelopes_money_limit").val();
+                    var share_red_envelopes_people_limit = $("#share_red_envelopes_people_limit").val();
+                    
+                    //红包方式
+                    var share_red_envelopes_type = $("input[name='share_red_envelopes_type']:checked").val();
+                    
+                    var share_red_envelopes_fixed_value = $("#share_red_envelopes_fixed_value").val();                                       
+
+                    var probability = 0;  //随机红包概率
+                    $("input[name='probability[]']").each(function(){
+                       probability += parseFloat($(this).val());
+                    });
+
+                    var share_invitations     = $("#share_invitations").val();
+                    var new_link_coupons_save = $("#new_link_coupons_save").val();
+
+                    if(((coupon_begin_time == "" && coupon_end_time == "") ||(red_envelopes_begin_time == "" && red_envelopes_end_time=="")) && share_is_coupon && share_is_red_envelopes){
+                        layer.alert('优惠券活动时间和红包活动时间至少设置一个');
+                        return;
+                    }else if(share_is_coupon && share_link_coupons_save == "-1"){
+                        layer.alert('请选择分享人奖励优惠券');
+                        return;
+                    }else if(share_is_red_envelopes && share_red_envelopes_time_limit == ""){
+                        layer.alert('微信红包次数限制不能为空');
+                        return;
+                    }else if(share_is_red_envelopes && share_red_envelopes_money_limit == ""){
+                        layer.alert('微信红包金额限制不能为空');
+                        return;
+                    }else if(share_is_red_envelopes && share_red_envelopes_people_limit == ""){
+                        layer.alert('微信红包人数限制不能为空');
+                        return;
+                    }else if(share_red_envelopes_type == 1 && share_is_red_envelopes &&share_red_envelopes_fixed_value == ""){
+                        layer.alert('微信红包不能为空');
+                        return;
+                    }else if(share_red_envelopes_type == 1 && share_is_red_envelopes && share_red_envelopes_fixed_value < 1){
+                        layer.alert('微信红包不能小于1');
+                        return;
+                    }else if(share_is_red_envelopes && share_red_envelopes_type == 1 && share_red_envelopes_fixed_value > share_red_envelopes_money_limit && share_red_envelopes_money_limit !=-1){
+                        layer.alert('微信红包不能大于微信红包金额限制');
+                        return;
+                    }else if(share_is_red_envelopes && share_red_envelopes_type == 2 && probability != 100){
+                        layer.alert('微信红包概率不等于100%,请重新设置');
+                        return;
+                    }else if(share_invitations == ""){
+                        layer.alert('自定义邀请语不能为空');
+                        return;
+                    }else if(share_invitations.length >100){
+                        layer.alert('自定义邀请语不能大于100个字符');
+                        return;
+                    }else if(new_link_coupons_save == "-1"){
+                        layer.alert('请选择新人奖励优惠券');
+                        return;
+                    } 
+   
+                    var min_money_arr = [];
+                    var is_min_go     = 1;
+                    $("input[name='min_money[]']").each(function(){
+                          if($(this).val() == "" || $(this).val() == null){
+                             is_min_go = 0;
+                          }
+                          min_money_arr.push($(this).val());
+                    });
+
+                    var max_money_arr = [];
+                    var is_max_go     = 1;
+
+                    $("input[name='max_money[]']").each(function(){
+                          if($(this).val() == "" || $(this).val() == null){
+                             is_max_go = 0;
+                          }
+                          max_money_arr.push($(this).val());
+                    }); 
+
+                    if((is_min_go == 0 || is_max_go == 0) && share_red_envelopes_type ==2 && share_is_red_envelopes){
+                        layer.alert('微信红包范围不能为空');
+                        return;
+                    }  
+
+                    if(share_red_envelopes_type == 2 && share_is_red_envelopes){
+                        for(var i=0;i<=min_money_arr.length;i++){
+                            console.log(parseFloat(min_money_arr[i]))
+                            console.log(parseFloat(max_money_arr[i]))
+                            if(parseFloat(min_money_arr[i]) >= parseFloat(max_money_arr[i])){
+                               layer.alert('微信红包范围最小值不能大于最大值');
+                               return; 
+                            }
+                        }
+                    }                   
+                }
+
+                $(that).addClass('disable');
+                $('div .tap'+tap_num).hide()
+                tap_num ++;
+                $('div .tap'+tap_num).show()
+                $(that).removeClass('disable');
+            }
+            // 返回上一步
+            function back(that){
+                if($(that).hasClass("disable")){//防止多次点击
+                    return;
+                }
+
+                $(that).addClass('disable');
+                $('div .tap'+tap_num).hide()
+                tap_num --;
+                $('div .tap'+tap_num).show()
+                $(that).removeClass('disable');
+            }
+            
+            //分享人选取优惠券
+            function share_add_value(obj){
+                if($(obj).is(':checked')){
+                    if(share_link_coupons_arr.indexOf(obj.value)<1){
+                        share_link_coupons_arr.push(obj.value);
+                    }
+                }else{
+                    if(share_link_coupons_arr.indexOf(obj.value)>-1){
+                        $.each(share_link_coupons_arr,function(index,item){
+                            // index是索引值（即下标）   item是每次遍历得到的值；
+                        if(item==obj.value){
+                          share_link_coupons_arr.splice(index,1);
+                        }
+                        });
+                    }
+                }
+            }
+
+            //新人选取优惠券
+            function new_add_value(obj){
+                if($(obj).is(':checked')){
+                    if(new_link_coupons_arr.indexOf(obj.value)<1){
+                        new_link_coupons_arr.push(obj.value);
+                    }
+                }else{
+                    if(new_link_coupons_arr.indexOf(obj.value)>-1){
+                        $.each(new_link_coupons_arr,function(index,item){
+                            // index是索引值（即下标）   item是每次遍历得到的值；
+                        if(item==obj.value){
+                          new_link_coupons_arr.splice(index,1);
+                        }
+                        });
+                    }
+                }
+            }
+
+            //优惠劵引导链接
+            function showSelector(obj){ 
+                that = obj; 
+
+                var selector_id = $(obj).parent().find('#selector_id').val();  
+                         
+                layer.open({
+                      type: 2,
+                      area: ['1500px', '720px'],
+                      fixed: false, //不固定
+                      maxmin: true,
+                      resize:true,
+                      title: '选择链接页面',
+                      content: '/mshop/admin/index.php?m=plug_link_selector&a=selector_list&customer_id=<?php echo $customer_id_en ?>&selector_id='+selector_id,
+                });
+            }
+
+            function showSelectorCallback(selector_id,selector_title){                
+                $(that).parent().find('#selector_id').val(selector_id); 
+                $(that).parent().find('#share_url').val(selector_title);
+            }
+            
+            //分享人打开优惠券
+            function share_select_coupons(){
+                $(".share_coupons_list").show('slow');
+            }
+            
+            $("#share_check_all").click(function(){
+              $("input[name='share_check_cous[]']").each(function(){
+                if($('#share_check_all').is(":checked")){
+                  $(this).prop("checked","true");
+                  share_link_coupons_arr="<?php echo $all_coupons_id; ?>".split(',');
+                }else{
+                  $(this).removeAttr("checked");
+                  share_link_coupons_arr=new Array();
+                }
+              })
+            });
+
+            //新人打开优惠券
+            function new_select_coupons(){
+                $(".new_coupons_list").show('slow');
+            }
+            
+            $("#new_check_all").click(function(){
+              $("input[name='new_check_cous[]']").each(function(){
+                if($('#new_check_all').is(":checked")){
+                  $(this).attr("checked","true");
+                  new_link_coupons_arr="<?php echo $all_coupons_id; ?>".split(',');
+                }else{
+                  $(this).removeAttr("checked");
+                  new_link_coupons_arr=new Array();
+                }
+              })
+            });
+
+            $("#share_cancel_list").click(function(){
+                $("#share_link_coupons_save").val(share_last_save_arr);
+                share_link_coupons_arr=share_last_save_arr.split(',');
+
+                $("input[name='share_check_cous[]']").each(function(i){//将后来选中的取消保存
+                  if($(this).hasClass('save_check')||$(this).hasClass('save_check_1')){
+                  $(this).attr('checked','checked');
+                  }else{
+                  $(this).attr("checked", false);
+                  }
+                });
+                $(".share_coupons_list").hide('slow');
+                $("#share_check_all").attr('checked',false);
+
+            });
+
+            $("#new_cancel_list").click(function(){
+                $("#new_link_coupons_save").val(new_last_save_arr);
+                new_link_coupons_arr=new_last_save_arr.split(',');
+
+                $("input[name='new_check_cous[]']").each(function(i){//将后来选中的取消保存
+                  if($(this).hasClass('save_check')||$(this).hasClass('save_check_1')){
+                  $(this).attr('checked','checked');
+                  }else{
+                  $(this).attr("checked", false);
+                  }
+                });
+                $(".new_coupons_list").hide('slow');
+                $("#new_check_all").attr('checked',false);
+
+            });
+
+            $("#share_open_list").click(function(){
+                for(var i=0;i<share_link_coupons_arr.length;i++){
+                  if(share_link_coupons_arr[i]==''){
+                    share_link_coupons_arr.splice(i,1);
+                  }
+                }
+                var share_check_cous=share_link_coupons_arr.length;
+                $("input[name='share_check_cous[]']").each(function(i){//将后来选中的保存
+                  if($(this).attr('checked')){
+                    $(this).addClass('save_check');
+                  }else{
+                    $(this).removeClass('save_check');
+                  }
+                });
+                $(".share_cous_length").html(share_check_cous);
+                $(".share_coupons_list").hide('slow');
+                $("#coupons_count").css('display','block');
+                $("#share_link_coupons_save").val(share_link_coupons_arr.join(','));
+
+                share_last_save_arr=share_link_coupons_arr.join(',');
+
+            });
+
+            $("#new_open_list").click(function(){
+                for(var i=0;i<new_link_coupons_arr.length;i++){
+                  if(new_link_coupons_arr[i]==''){
+                    new_link_coupons_arr.splice(i,1);
+                  }
+                }
+                var new_check_cous=new_link_coupons_arr.length;
+                $("input[name='new_check_cous[]']").each(function(i){//将后来选中的保存
+                  if($(this).attr('checked')){
+                    $(this).addClass('save_check');
+                  }else{
+                    $(this).removeClass('save_check');
+                  }
+                });
+                $(".new_cous_length").html(new_check_cous);
+                $(".new_coupons_list").hide('slow');
+                $("#coupons_count").css('display','block');
+                $("#new_link_coupons_save").val(new_link_coupons_arr.join(','));
+
+                new_last_save_arr=new_link_coupons_arr.join(',');
+
+            });
+            
+            //分享人优惠券搜索
+            function share_search_coupons(){
+                var search_coupons_name = $('#share_search_cou_name').val();//搜索产品名字
+                var user_scene = $('#share_user_scene').val();
+                if($('.show_check').is(':checked')){
+                    if(share_link_coupons_arr.join(",")==""){
+                        idsStr=-1;
+                    }else{
+                        idsStr=share_link_coupons_arr.join(",");
+                    }
+                }else{
+                        idsStr = "";
+                }
+                var cou_starttime=$('#cou_starttime').val();
+                var cou_endtime=$('#cou_endtime').val();
+                if(cou_endtime<cou_starttime){
+                alert('开始时间必须大于结束时间');
+                return;
+                }
+                share_page=0;
+                share_show_coupons(idsStr);
+                $("#share_check_all").removeAttr("checked");
+            }
+            
+            //新人优惠券搜索
+            function new_search_coupons(){
+                var search_coupons_name = $('#new_search_cou_name').val();//搜索产品名字
+                var user_scene = $('#new_user_scene').val();
+                if($('.show_check').is(':checked')){
+                    if(new_link_coupons_arr.join(",")==""){
+                        idsStr=-1;
+                    }else{
+                        idsStr=new_link_coupons_arr.join(",");
+                    }
+                }else{
+                        idsStr = "";
+                }
+                var cou_starttime=$('#cou_starttime').val();
+                var cou_endtime=$('#cou_endtime').val();
+                if(cou_endtime<cou_starttime){
+                alert('开始时间必须大于结束时间');
+                return;
+                }
+                new_page=0;
+                new_show_coupons(idsStr);
+                $("#new_check_all").removeAttr("checked");
+            }
+            
+            //分享人
+            function share_show_coupons(idsStr){
+                var search_coupons_name = $('#share_search_cou_name').val();//搜索产品名字
+                var user_scene= $('#share_user_scene').val();
+                var cou_starttime=$('#cou_starttime').val();
+                var cou_endtime=$('#cou_endtime').val();
+                var time_search=$('.share_time_search').val();
+                if(!new_is_lock){
+                    new_is_lock = 1;
+                    $.ajax({
+                        type: 'POST',
+                        url: '/weixinpl/back_newshops/Product/product/ajax_coupon_list.php?customer_id=<?php echo $customer_id_en; ?>',
+                        async:false,
+                        data:{
+                            page:share_page,
+                            search_cou_name : search_coupons_name,
+                            user_scene:user_scene,
+                            time_search:time_search,
+                            cou_starttime:cou_starttime,
+                            cou_endtime:cou_endtime,
+                            product_id:-1,
+                            idsStr:idsStr
+                        },
+                        dataType: 'json',
+                        success: function(data){
+                            if(share_page==0){
+                                 $('.share_cou_table .pro_tr').remove();
+                            }
+                            var result = '';
+                            var i = 0;
+                            for(i=0;i<data.coupons.length;i++){
+                                result+='<tr class="pro_tr">';
+                                result+='<td align="center">'+data.coupons[i].coupons_id+'</td>';
+                                result+='<td align="center">'+data.coupons[i].cou_title+'</td>';
+                                result+='<td align="center">'+data.coupons[i].coupons_money+'</td>';
+                                var set='<dt>'+data.coupons[i].user_scene_str+'</dt>';
+                                if(data.coupons[i].p_name!=""){
+                                set+='<dt>'+data.coupons[i].p_name+'</dt>';
+                                }
+                                result+='<td align="center">'+set+'</td>';
+                                result+='<td align="center"><dt>创建时间：'+data.coupons[i].createtime+'</dt><dt>'+data.coupons[i].get_time+'</dt><dt>'+data.coupons[i].use_time+'</dt></td>';
+                                result+='<td align="center">'+data.coupons[i].is_use+'</td>';
+                                if(data.coupons[i].is_check==1){
+                                if($.inArray(data.coupons[i].coupons_id,share_link_coupons_arr)!=-1){
+                                result+='<td align="center" id=""><input type="checkbox" onchange="share_add_value(this)"  style="height:13px;" class="save_check" checked="checked" name="share_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }else{
+                                result+='<td align="center" id=""><input type="checkbox" onchange="share_add_value(this)" style="height:13px;"  name="share_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }
+                                }else{
+                                if($.inArray(data.coupons[i].coupons_id,share_link_coupons_arr)!=-1){
+                                result+='<td align="center" id=""><input type="checkbox" onchange="share_add_value(this)" class="save_check" style="height:13px;" checked="checked" name="share_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }else{
+                                result+='<td align="center" id=""><input type="checkbox" onchange="share_add_value(this)"  style="height:13px;" name="share_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }
+                                }
+                                result+='</tr>';
+                            }
+
+                            $('.share_cou_table').append(result);
+                            share_is_lock = 0;
+                            share_page++;
+                        },
+                        error: function(type){
+                            alert('Ajax error!');
+                        }
+                    });
+                }
+            }
+            //新人
+            function new_show_coupons(idsStr){
+                var search_coupons_name = $('#new_search_cou_name').val();//搜索产品名字
+                var user_scene= $('#new_user_scene').val();
+                var cou_starttime=$('#cou_starttime').val();
+                var cou_endtime=$('#cou_endtime').val();
+                var time_search=$('.new_time_search').val();
+                if(!new_is_lock){
+                    new_is_lock = 1;
+                    $.ajax({
+                        type: 'POST',
+                        url: '/weixinpl/back_newshops/Product/product/ajax_coupon_list.php?customer_id=<?php echo $customer_id_en; ?>',
+                        async:false,
+                        data:{
+                            page:new_page,
+                            search_cou_name : search_coupons_name,
+                            user_scene:user_scene,
+                            time_search:time_search,
+                            cou_starttime:cou_starttime,
+                            cou_endtime:cou_endtime,
+                            product_id:-1,
+                            idsStr:idsStr
+                        },
+                        dataType: 'json',
+                        success: function(data){
+                            if(new_page==0){
+                                $('.pro_tr').remove();
+                            }
+                            var result = '';
+                            var i = 0;
+                            for(i=0;i<data.coupons.length;i++){
+                                result+='<tr class="pro_tr">';
+                                result+='<td align="center">'+data.coupons[i].coupons_id+'</td>';
+                                result+='<td align="center">'+data.coupons[i].cou_title+'</td>';
+                                result+='<td align="center">'+data.coupons[i].coupons_money+'</td>';
+                                var set='<dt>'+data.coupons[i].user_scene_str+'</dt>';
+                                if(data.coupons[i].p_name!=""){
+                                set+='<dt>'+data.coupons[i].p_name+'</dt>';
+                                }
+                                result+='<td align="center">'+set+'</td>';
+                                result+='<td align="center"><dt>创建时间：'+data.coupons[i].createtime+'</dt><dt>'+data.coupons[i].get_time+'</dt><dt>'+data.coupons[i].use_time+'</dt></td>';
+                                result+='<td align="center">'+data.coupons[i].is_use+'</td>';
+                                if(data.coupons[i].is_check==1){
+                                if($.inArray(data.coupons[i].coupons_id,new_link_coupons_arr)!=-1){
+                                result+='<td align="center" id=""><input type="checkbox" onchange="new_add_value(this)"  style="height:13px;" class="save_check" checked="checked" name="new_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }else{
+                                result+='<td align="center" id=""><input type="checkbox" onchange="new_add_value(this)" style="height:13px;"  name="new_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }
+                                }else{
+                                if($.inArray(data.coupons[i].coupons_id,new_link_coupons_arr)!=-1){
+                                result+='<td align="center" id=""><input type="checkbox" onchange="new_add_value(this)" class="save_check" style="height:13px;" checked="checked" name="new_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }else{
+                                result+='<td align="center" id=""><input type="checkbox" onchange="new_add_value(this)"  style="height:13px;" name="new_check_cous[]" value="'+data.coupons[i].coupons_id+'"   /></td>';
+                                }
+                                }
+                                result+='</tr>';
+                            }
+
+                            $('.new_cou_table').append(result);
+                            new_is_lock = 0;
+                            new_page++;
+                        },
+                        error: function(type){
+                            alert('Ajax error!');
+                        }
+                    });
+                }
+            }
+        </script>
+    </body>
+</html>

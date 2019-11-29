@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>大转盘用户明细列表</title>
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/js/layer/V2_1/skin/layer.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Product/product.css"><!--内容CSS配色·蓝色-->
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+	<style type="text/css">
+		.form-btn{width:auto!important;padding:0 10px!important;cursor:pointer;color:#fff!important;border:0!important;}
+		.form-add-btn{display:inline-block;line-height:24px;border-radius:3px;}
+		.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+	</style>
+</head>
+<body>
+	<!--内容框架开始-->
+	<div class="WSY_content" id="WSY_content_height">
+	    <!--列表内容大框开始-->
+		<div class="WSY_columnbox">	
+			<div class="WSY_column_header">
+				<?php 
+					if($data['user_statistics']==1){
+					$head = 4;
+					}else{
+					$head = 3;
+					}
+
+					include("action_head.html");
+				?>
+			</div>
+		    <!--产品管理代码开始-->
+		    <div class="WSY_data">
+		    	<div class="WSY_agentsbox">
+					<form class="search" id="ac_frm" style="display:block" method="get" action="/mshop/admin/index.php?m=slyder_adventures&a=statis_action_list">
+						<input type="hidden" id="m" name="m" value="slyder_adventures">
+						<input type="hidden" id="a" name="a" value="statis_action_user_list">
+						<input type="hidden" id="user_statistics" name="user_statistics" value="1">
+						<input type="hidden" id="slyder_id" name="slyder_id" value="<?php echo $data['slyder_id'] ?>">
+						<ul class="WSY_search_q">
+							<li>用户微信名：<input type="text" name="weixin_name" id="weixin_name" value="<?php echo $data['weixin_name'] ?>" class="form_input"></li>
+							<li>用户ID：<input type="text" name="user_id" id="user_id" value="<?php echo $data['user_id']?>" class="form_input"></li>
+							<li>注册时间：
+								<input class="form_input" type="text" id="createtime" name="createtime" value="<?php echo $data['createtime']?>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px" />
+								-
+								<input class="form_input" type="text" id="createtime_end" name="createtime_end" value="<?php echo $data['createtime_end']?>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px" />
+							</li>
+							<li><input type="submit" class="WSY-skin-bg form-btn"  value="搜索" ></li>
+							<li><a class="WSY-skin-bg form-btn form-add-btn" onclick="jump_url('<?php echo $customer_id ?>',2);">导出</a></li>
+						</ul> 
+					</form>
+
+		            <table width="97%" class="WSY_table" id="WSY_t1">
+						<thead class="WSY_table_header">
+							<th width="10%" nowrap="nowrap"align="center">用户头像</th>
+							<th width="10%" nowrap="nowrap"align="center">用户名称</th>
+							<th width="10%" nowrap="nowrap"align="center">用户ID</th>
+							<th width="10%" nowrap="nowrap"align="center">注册时间</th>
+							<th width="10%" nowrap="nowrap"align="center">参与次数</th>
+							<?php if($jump_page!=1){ ?>
+							<th width="15%" nowrap="nowrap"align="center">操作</th>
+							<?php } ?>
+						</thead>
+						<tbody class="tbody-main">
+							<?php foreach ($data2 as $key => $row) { 								
+								?>
+								<tr>
+									<td style="text-align:center;"><img width="20%" src="<?php echo $row['weixin_headimgurl'] ?>"></td>
+									<td style="text-align:center;"><?php echo $row['weixin_name'] ?></td>
+									<td style="text-align:center;"><?php echo $row['user_id'] ?></td>
+									<td style="text-align:center;"><?php echo $row['createtime'] ?></td>
+									<td style="text-align:center;"><?php echo $row['num'] ?></td>
+									<?php if($jump_page!=1){ ?>
+									<td style="text-align:center;">
+										<button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $data['slyder_id']."&user_id=".$row['user_id']?>&status=-1',1);">查看</button>
+									</td>
+									<?php } ?>
+								</tr>
+							
+							<?php }?>							
+						</tbody>
+						
+					</table>
+				</div>
+		        <!--翻页开始-->
+		        <div class="WSY_page">
+		        	
+		        </div>
+		        <!--翻页结束-->
+		    </div>
+		    <!--产品管理代码结束-->
+		</div>
+		<div style="width:100%;height:20px;"></div>
+	</div>
+	<!--内容框架结束-->
+</body>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script><!--添加时间插件-->
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript">
+var customer_id      =<?php echo $data['customer_id'] ?>;
+var weixin_name      =$("#weixin_name").val();
+var user_id          = $("#user_id").val();
+var createtime       = $("#createtime").val();
+var createtime_end   = $("#createtime_end").val();
+var slyder_id        = '<?php echo $data['slyder_id'] ?>';
+var user_statistics  ='<?php echo $data['user_statistics'] ?>';
+var data2 = "";
+if (slyder_id!="") {
+	data2+="/slyder_id/"+slyder_id;
+}
+if (weixin_name!="") {
+	data2+="/weixin_name/"+weixin_name;
+}
+if (user_id!="") {
+	data2+="/user_id/"+user_id;
+}
+if (createtime!="") {
+	data2+="/createtime/"+createtime;
+}
+if (createtime_end!="") {
+	data2+="/createtime_end/"+createtime_end;
+}
+if (user_statistics==1) {
+	data2+="/user_statistics/"+user_statistics;
+}
+
+<!-- 分页 start -->
+var pagenum = <?php echo $pageNum ?>;//当前页
+var count =<?php echo $pageCount ?>;//总页数	
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+	pageCount:count,
+	current:pagenum,
+	backFn:function(p){
+	var url="/mshop/admin/index.php?m=slyder_adventures&a=statis_action_user_list&pagenum="+p+"&user_statistics="+user_statistics;	
+
+	location.href = url;
+   }
+});
+
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a>count) || isNaN(a)){
+		layer.alert('没有下一页了');
+		return false;
+	}else{
+		var url="/mshop/admin/index.php?m=slyder_adventures&a=statis_action_user_list&pagenum="+a+"&user_statistics="+user_statistics;	
+		location.href = url;
+	}
+}
+<!-- 分页 end -->
+
+
+function jump_url(id,type){
+	//type : 1-用户明细 2-导出
+	var url = "";
+	if(type==1 && user_statistics!=1){
+		url = "/mshop/admin/index.php?m=slyder_adventures&a=name_list&slyder_id="+id;
+	}else if (type==2) {
+		url = "/weixin/plat/app/index.php/Excel/excel_statis_action_user_list/customer_id/"+id+data2;
+	}else if (type==1 && user_statistics==1) {
+		url = "/mshop/admin/index.php?m=slyder_adventures&a=action_user_statis&slyder_id="+id;
+	}
+	location.href = url;
+}
+
+</script>	
+</html>

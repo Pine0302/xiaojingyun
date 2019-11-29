@@ -1,0 +1,208 @@
+body{background:#f6f6f6;}
+		.liveroom{position: relative;width: 100%;height: 150px;overflow: hidden;}
+		.invite{position: absolute;top: 5px;right: 5%;background: rgba(0,0,0,.5);border-radius: 30px;padding: 5px 4%;color: #fff;}
+		.invite img{display: inline-block;vertical-align: sub; width: 15px;margin-right: 2px;}
+		.live_bannernum{position: absolute;bottom:3px;left: 47%;color: #fff;font-size: 1.2rem;}
+		.chatarea{margin-bottom: 50px;}
+		.livechat_date{height: 45px;line-height: 45px;text-align: center;color: #c1c1c1;font-size: 1.1rem;}
+		.single_message{overflow: hidden;margin-bottom: 25px;}
+		.txbox{float: left;width: 20%;text-align: center;padding-top: 5px;}
+		.tx{width: 30px;height: 30px; border-radius: 50%;}
+		.shang{ width: 20px;height: 20px;line-height:20px;border-radius: 50%;background: #f5cd19;color:#ab8c00;text-align: center;margin-left: 35%;margin-top: 2px; }
+		.messagebox{float: left;width:70%;}
+		.zbname{font-size: 1.4rem;color: #333;margin-bottom: 5px;}
+		.msg{position: relative; width: 70%;height: 37px;line-height: 37px; background: #fff;border-radius: 3px;}
+		.msg01{position: relative;width: 80%; background: #fff;border-radius: 3px;padding:5px 5%;font-size: 1.3rem;color: #333;}
+		.msg img{display: inline-block;vertical-align: middle;}
+		.play{width: 11px;margin: 0 5%;}
+		.jindu{position: relative; display: inline-block;width: 75%;}
+		.second{position: absolute;right: -12%;font-size: 1.4rem;color: #333;}
+		.quan{position: absolute;left:0;top:40%;z-index:5;display: inline-block;width: 8px;height: 8px;border:1px solid #9be1bf;border-radius: 50%;background: #fff;}
+		/*.sendbox{width: 100%; position: fixed;bottom: 0;left: 0;height: 50px;background: #fff;overflow: hidden;}
+		.shuru{float: left;width:75%;height: 36px;margin: 7px 3%;background: #f1f1f1;font-size: 1.4rem;text-indent: 5%;  }
+		.send{float: left;width: 15%;height: 36px;border:1px solid #dedede;background: #fff;margin-top: 7px;font-size: 1.4rem;color: #888;}*/
+		.sidebar{position: fixed;bottom: 60px;right: 3%;width: 9%;}
+		.sanjiaoleft{width:0;height:0;border-width:7px 7px 7px 0;border-style:solid;border-color:transparent #fff transparent transparent;position:absolute;left: -7px;top: 3px}
+		.sanjiaoright{width:0;height:0;border-width:4px 0  4px 4px ;border-style:solid;border-color:transparent transparent transparent #7b7b7b;position:absolute;right: -4px;top: 2px}
+		.viewchat{width: 50%; position: absolute;top: 165px;right: 3%;text-align: right;}
+		.viewnums{position: relative; display: inline-block; width: 70%;text-align: left; background: rgba(0,0,0,.5);border-radius: 30px; color: #fff;padding: 2px;margin-bottom: 10px;}
+		.msggive{position:absolute;right: -16%;top: 0; }
+		.msggive img{width: 60%;}
+		.vm01{width: 10%;}
+		.vm02{width: 8%;}
+		.viewsinglemsg{overflow: hidden;margin-bottom: 5px;}
+		.viewtx{float: right;width: 20px;height: 20px;border-radius: 50%;}
+		.viewmsg{position: relative; float: right;max-width: 70%; display: inline-block; background: rgba(0,0,0,.5);border-radius: 2px;color: #fff;padding: 3px 4%;margin-right: 5%;text-align: left;}
+		.mylivesend{position: fixed;bottom: 0;left: 0;width: 100%; background: #fff;border-top: 1px solid #f1f1f1;overflow: hidden;}
+		.mylivesend li{float: left;width: 50%;height: 50px;line-height: 50px; text-align: center;font-size: 1.3rem;color: #888;}
+		.mylivesend li img{width: 25px;display: inline-block;vertical-align: -6px;margin-right: 3%;}
+		.voiceline{display: inline-block;height: 50px;width: 1px ;background: #f1f1f1;position:absolute;right: 50%;top: 0;}
+		.speechbox{display: none; position: absolute;bottom: 51px;right: 0;z-index: 30; width: 100%;background: #fff;}
+		.speechp01{height: 50px;line-height: 50px;margin-bottom: 50px; text-align: center;font-size: 1.4rem;color: #888;}
+		.dowmclose{position: absolute;right: 3%;top: 5px;width: 17px;}
+		.voicetext{position: relative; width: 60%;height: 1px ;background: #f1f1f1;margin-left: 20%;margin-bottom: 60px;}
+		.v_send{position: absolute;top: -20px;left:-15%;z-index: 50; width: 35px;background: #fff;}
+		.v_speak{width: 70px;position: absolute;top: -38px;left:34%;z-index: 50;}
+		.v_del{width: 35px;position: absolute;top: -20px;right:-15%;z-index: 50;background: #fff;}
+		.writebox{display:none; position:fixed;bottom:51px;left:0;width:100%;}
+		.writebox .writed{float: left; width:85%;height:45px;text-indent: 5%;}
+		.writebox .send{float: left;width:15%;height:45px;font-size: 1.4rem;background:#31c27c;color:#fff;}
+
+
+
+		.invitebox{overflow: hidden;}
+		.invited{float: left;margin-left: 5%;margin-top: 15px;width: 19px;}
+		.invitedp01{float: left;height: 50px;line-height: 50px;font-size: 1.3rem;color: #333;margin-left: 3%;}
+		.xright{float: right;margin-right: 5%;width: 15px;margin-top: 15px;}
+		.fline{width: 100%;height: 10px; background: #f6f6f6;}
+		.adminp01{font-size: 1.3rem;color: #888;text-align: center;margin:15px 0;}
+		.administrator{overflow: hidden;}
+		.administrator li{position: relative; float: left;width: 33.3%;text-align: center;margin-bottom: 15px;}
+		.creattu{width: 70px;height: 70px;border-radius: 50%;}
+		.adminname{font-size: 1.2rem;color: #666;margin-top: 10px;}
+		.creater{position: absolute;top: 57px;left: 29%;display: inline-block;background: #f5cd19;color: #fff;font-size: 1.1rem;padding: 3px 6%;border-radius: 20px;}
+		.manager{position: absolute;top: 57px;left: 29%;display: inline-block;background: #31c27c;color: #fff;font-size: 1.1rem;padding: 3px 6%;border-radius: 20px;}
+		.invitedtanbox{display: none;}
+		.heidi{position: fixed;top:0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,.5);}
+		.invited_explain{position: absolute;top: 130px;left: 15%;width: 70%;background: #fff;border-radius: 2px;}
+		.invitedtanboxp01{font-size: 1.5rem;color: #888;margin:15px 0 25px;text-align: center;}
+		.invitedtanboxp02{font-size: 1.2rem;color: #888;line-height: 25px;width: 82%;padding: 0 9%;}
+		.invitedknow{width: 100%;height: 45px;font-size: 1.4rem;color: #fff;background: #31c27c;border-radius: 0 0 2px 2px;margin-top: 20px;}
+		.invited_jian{position: absolute;top: 10px;right: 10%;width: 25%;max-width: 80px;}
+
+
+
+		.openreward{background: #fff;padding: 0 5% 0 2%;overflow: hidden;margin-bottom: 10px;}
+		.setp01{float: left;width: 20%;text-align: right; height: 45px;line-height: 45px; font-size: 1.3rem;color: #333;}
+		.setp02{float: left;width: 20%;text-align: right; height: 45px;line-height: 45px; font-size: 1.3rem;color: #666;}
+		.anniu{float: right;padding-top:13px;height: 35px; }
+		.anniu input{display: none;}
+		.chk_3 + label{
+			background-color: #fff;
+			padding-top: 9px;
+			padding-bottom: 9px;
+			border-radius: 50px;
+			display: inline-block;
+			position: relative;
+			margin-right: 30px;
+			-webkit-transition: all 0.1s ease-in;
+			transition: all 0.1s ease-in;
+			width: 45px;
+			height: 33px;
+			margin-right: 2%;
+		}
+		.chk_3:checked + label:before {
+			content: ' ';
+			position: absolute;
+			left: 21px;
+			border-radius: 100px;
+		}
+		.chk_3 + label:before {
+			content: ' ';
+			position: absolute;
+			background: white;
+			top: 0;
+			left: 0;
+			z-index: 999999;
+			width: 23px;
+			-webkit-transition: all 0.1s ease-in;
+			transition: all 0.1s ease-in;
+			height: 23px;
+			border-radius: 100px;
+			box-shadow: 0 0px 0px rgba(0,0,0,0.05), 0 0px 1px rgba(0,0,0,0.3);
+		}	
+		.chk_3:checked + label:after {
+			content: ' ';
+			font-size: 1.5em;
+			position: absolute;
+			background: #1ad473;
+			box-shadow: 0 0 1px #1ad473;
+
+		}	
+		.chk_3 + label:after {
+			content: ' ';
+			position: absolute;
+			top: 0;
+			-webkit-transition: box-shadow 0.1s ease-in;
+			transition: box-shadow 0.1s ease-in;
+			left: 0;
+			width: 100%;
+			height: 45%;
+			border-radius: 100px;
+			box-shadow: inset 0 0 0 0 #eee, 0 0 1px rgba(0,0,0,0.4);
+		}
+		.bilibox{display: none;}
+		.pingtai{background: #fff;overflow: hidden;padding: 0 5% 0 2%;margin-bottom: 10px;}
+		.tgbili{background: #fff;overflow: hidden;padding: 0 5% 0 2%;}
+		.bilikuang{float: left;width: 55%;height: 30px;border:1px solid #d1d1d1!important;margin-top: 7px;margin-left: 5%;text-indent: 5px;}
+		.baifen{float: left;margin:15px 3%;}
+		.bilisafe{position: fixed;bottom: 20px;left: 10%; width: 80%;height: 45px;background: #31c27c;color: #fff;font-size: 1.5rem;border-radius: 30px;}
+
+
+
+		.edit_list input{color: #333;}
+	.edit_listbox{margin-bottom: 10px;background: #fff;}
+	.edit_list{width: 100%;padding: 0 5%;box-sizing:border-box;overflow: hidden;border-bottom: 1px solid #f1f1f1;}
+	.edit_listleft{float: left;height: 65px;line-height: 65px;font-size: 1.3rem;color: #333;}
+	.edit_jian{float: right;text-align: right;margin-top: 10px;}
+	.editr{float: right;text-align: right;margin-top: 15px;}
+	.jt{width: 5%;margin-top: 25px;}
+	.jt01{width: 5%;margin-top: 32px;}
+	.edit_nicheng{float: left;height: 45px;line-height: 45px;font-size: 1.3rem;color: #333;}
+	.edit_listbei{float: left;padding: 25px 0 20px;}
+	.edit_listbeip01{font-size: 1.3rem;color: #333;}
+	.edit_listbeip02{font-size: 1.1rem;color: #a1a1a1;}
+	.freeback-img{background: #FFFFFF;width: 50%;}
+	.freeback-img01{background: #FFFFFF;width: 100%;}
+	.area-one{width: 100%;display: inline-block;position: relative;z-index: 1;}
+	.frame_image_select{width: 100%;height: 100%;opacity: 0;position: absolute;top: 0;left: 0;z-index: 2;}
+	#img_1312_0{width: 45px;height: 45px;border-radius: 50%;}
+	#img_1312_1{height: 55px;width: 90px;}
+	#img_1312_2,#img_1312_3{width: 80%;height: 80px;}
+	.jianright{width: 5%;margin-top: 15px;}
+	.nobor{border-bottom: none;}
+	.uploadzj{padding: 10px 0 15px 5%;font-size: 1.3rem;color: #333;}
+	.upload_idcard{overflow: hidden;}
+	.zheng,.fan{float: left;width: 50%;text-align: center;}
+	.idp01{font-size: 1.2rem;color: #888;padding: 10px 0 20px;}
+	.sure{position: fixed;bottom: 20px;right: 10%; width: 80%;height: 45px;font-size: 1.5rem;color: #fff;background: #31c27c;border-radius: 30px;}
+	.xieyi{text-align: center;font-size: 1.2rem;color: #888;}
+	.chakan{color: #31c27c;}
+	.gou{background: url(img/per_con23.png) center center no-repeat;background-size: 100%;}
+	.gou input{opacity: 0;}
+	.android-ics .dwv {border-bottom: 1px solid #1ad473;background: #1AD473}
+	.android-ics .dw .dwwol{color: #1ad473;border-top: 2px solid #1ad473;border-bottom: 2px solid #1ad473;}
+	.wancheng{width: 40%;height: 35px;color: #fff;border-radius: 20px;font-size: 1.25rem;margin: 15px 0;background:#1ad473;}
+	.android-ics.light .dww .dw-li.dw-sel{color: #1ad473}
+
+
+
+
+	.profit_head{background:#31c27c;color: #fff;margin-bottom: 10px; }
+		.liveprofit_headp01{font-size: 1.2rem;text-align: center;}
+		.liveprofit_headp02{font-size:4.5rem;font-weight: 700;text-align: center }
+		.liveprofit_headp01 span{display: inline-block;font-size: 1.1rem;border:1px solid #fff; border-radius: 30px;padding: 3px 3%;margin-bottom: 15px;}
+		.shouyibox{width: 100%;height:65px;overflow: hidden;}
+		.shouyibox li{float: left;width: 50%;text-align: center;padding-top: 15px;}
+		.shouyibox span{font-size: 1.4rem;color: #fff;}
+		.shouliselect{background: rgba(255,255,255,.2);border-radius: 30px;padding:5px 15%;}
+
+
+		.tixianbox{width: 100%;background: rgba(0,0,0,.1);box-sizing:border-box;padding:0 5%;overflow: hidden;}
+		.tixianleft{float: left;padding: 10px 0;}
+		.tixianright{float: right;font-size: 1.4rem;color: #fff;margin-top: 17px;}
+		.tixianleftp01{font-size: 1.5rem;color: #fff;}
+		.tixianleftp02{font-size: 1.2rem;color: #a7dcc3;}
+		.you{width: 5%;margin-top: 20px;}
+		.profit_box{width: 100%; background: #fff;}
+		.profit_shaixuan{padding: 0 3%;overflow: hidden;border-bottom: 1px solid #f1f1f1;}
+		.profit_date{float: left;height: 40px;line-height: 40px;font-size: 1.3rem;color: #888;}
+		.profit_sx{float: right;display: inline-block;font-size: 1.3rem;color: #31c27c;border:1px solid #31c27c;border-radius: 30px;padding: 3px 4%;margin-top: 7px;}
+
+		.profit_list{padding: 0 3%;overflow: hidden;border-bottom: 1px solid #f1f1f1; }
+		.profit_listleft{float: left;width: 35px;height: 35px;border-radius: 50%;margin:10px 3% 10px 0;}
+		.profit_listmid{float: left;width: 65%; margin-top: 8px;}
+		.profit_listright{float: right;font-size: 1.5rem;color: #ff6868;margin-top: 15px;}
+		.profit_listright01{float: right;font-size: 1.5rem;color: #333;margin-top: 15px;}
+		.profit_listmidp01{font-size: 1.3rem;color: #333;margin-bottom: 2px;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+		.profit_listmidp02{font-size: 1.1rem;color: #888;}

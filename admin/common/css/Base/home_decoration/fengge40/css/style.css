@@ -1,0 +1,84 @@
+/* Body、顶部界面开始*/
+*{margin: 0;padding: 0;}
+img{max-width: 100%;}
+a{text-decoration: none;color: black;}
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;}
+input[type="submit"], input[type="reset"], input[type="button"],button{ -webkit-appearance: none; /*去掉苹果的默认UI来渲染按钮*/}
+.clear{clear: both; display: block; height: 0; overflow: hidden; visibility: hidden; width: 0;}
+/* 样式*/
+.header{width: 100%;overflow: hidden;position: relative;border-bottom:1px solid #c9c9c9;}
+.bg-green{background: #fff;width: 100%;height: 130px!important;position: relative;}
+.head-photo{position: absolute;left: 10px;bottom: 15px;width: 80px;height: 80px;border:2px solid #fff;z-index:999;}
+.bg-white{background: #fff;width: 100%;height: 70px;}
+.op{width: 23%;float:right;height: 50px;text-align: center;margin-top: 10px;overflow: hidden;}
+.text-grey{font-size: 16px;color:grey;text-overflow:clip;white-space:nowrap;}
+.op img{width: 25px;}
+.text-green{font-size: 21px;color:#64b83c;}
+.br-right{border-right: 1px solid #c9c9c9;}
+.search-box{width:100%;height: 60px;border-bottom: 1px solid #c9c9c9;}
+.search-text{text-indent: 5px;font-size:15px;margin-left: 2%;width: 72%;height: 40px;margin-top: 10px;border-radius:3px;border:1px solid #c9c9c9;background: #f2efef;}
+.search-button{width: 22%;margin-left: 1%;height: 40px;margin-top: 10px;border:0 none;border-radius:3px;background: #64b83c;color: #fff;font-size: 16px;font-weight: 700;text-align: center;}
+.item-box{width: 100%;}
+.item-box .content-box{margin:0 auto;width: 94%;margin-top: 10px;text-align: center;}
+.item-box .content-box .icon-box{width: 25%;float: left;margin-bottom: 8px;overflow: hidden;}
+.item-box .content-box .icon-box img{width: 55px;}
+.item-box .content-box .icon-box p{font-size: 12px;text-overflow:clip;white-space:nowrap;}
+.bg-grey{height: 25px;width: 100%;background: #dedede;}
+.hotimg{height:160px;}
+.hotimg2{height:80px;}
+.hot-market .title-box{position: relative;height: 30px;border-bottom: 1px solid #c9c9c9;}
+.hot-market .title{background: url('../images/rmsc.png') no-repeat;background-size: 100% 100%;width: 80px;height: 25px;position: absolute;top: -4px;color:#fff;font-size: 14px;text-align: left;text-indent: 5px;line-height: 26px;}
+.hot-market .half-box{width: 50%;float: left;position: relative;height: 160px;}
+.hot-market .half-box .name{position: absolute;top: 10px;left: 10px;font-size: 13px;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;width: 90%;}
+.hot-market .half-box .second{position: absolute;top: 25px;left: 10px;font-size: 12px;color: #c9c9c9;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;width: 90%;}
+.hot-market .half-box img{width: 160px;height: 160px;position: absolute;/*right: 10px;*/bottom:0px;}
+.border-r{border-right: 1px solid #c9c9c9;margin-left: -1px;}
+.hot-market .four-box{width: 25%;float: left;position: relative;height: 80px;border-top: 1px solid #c9c9c9;}
+.hot-market .four-box .name{position: absolute;top: 10px;left: 10px;font-size: 13px;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;width: 90%;}
+.hot-market .four-box .second{position: absolute;top: 25px;left: 10px;font-size: 12px;color: #c9c9c9;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;width: 90%;}
+.hot-market .four-box img{width: 80px;height: 80px;position: absolute;left: 2px;/*bottom:10px;*/}
+.ad-img{width: 100%;height: 70px;}  
+.like-box .title-box{position: relative;height: 25px;border-bottom: 1px solid #c9c9c9;}
+.like-box .title{background: url('../images/cnxh.png') no-repeat;background-size: 100% 100%;width: 80px;height: 25px;position: absolute;top: -8px;color:#fff;font-size: 14px;text-align: left;text-indent: 5px;line-height: 26px;}
+.like-box .product-box{width: 100%;height: 120px;border-bottom: 1px solid #c9c9c9;overflow:hidden;}
+.like-box .product-box img{width:320px;height: 120px;}
+.like-market{height:120px;}
+.like-box .product-box .right-box {width: 65%;float: right;margin-top: 20px;text-align: left;position: relative;}
+.like-box .product-box .right-box .name{font-size: 16px;color: #232222;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+.like-box .product-box .right-box .second{font-size: 14px;color: #c2c2c2;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+.like-box .product-box .right-box .price{display: inline-block;margin-top: 10px;}
+.like-box .product-box .right-box .price .text{font-size: 12px;}
+.like-box .product-box .right-box .price .num{color:#ee6d53;}
+.like-box .product-box .right-box .red-button{display: inline-block;background: #ee6d53;padding: 4px 9px;border-radius: 3px;font-size: 14px;position: absolute;right: 10px;bottom:0px;}
+.like-box .product-box .right-box .red-button a{color:#fff;}
+.footer{/*position: fixed;*/bottom: 0px;left: 0px;width: 100%;height: 45px;background:#f0f0f0;}
+.footer .footer-box{margin:0 auto;width: 92%;height: 45px;}
+.footer .footer-box .weidian{width: 25%;height: 35px;float: left;text-align: center;margin-top: 5px;}
+.footer .footer-box .weidian img{width: 20px;height: 20px;}
+.footer .footer-box .weidian p{font-size: 12px;}
+.footer .footer-box .weidian.active p{color:#64b83c;white-space:nowrap;text-overflow:clip;overflow: hidden;}
+.clear-fix{width: 100%;height: 45px;}
+
+
+
+#shop_skin_index .header {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#shop_skin_index .banner {
+  height: 130px;
+}
+#shop_skin_index .shop_skin_index_list {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+	#shop_skin_index{width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  background: #eaeaea;}
+  
+.market-box{overflow:hidden;height:100%;display:block;}  
+     

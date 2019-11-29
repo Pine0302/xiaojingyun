@@ -1,0 +1,437 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>名片规则</title>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $this->theme;?>.css">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Product/product.css"><!--内容CSS配色·蓝色-->
+
+
+<link rel="stylesheet" type="text/css" href="./static/css/public.css">
+<link rel="stylesheet" type="text/css" href="./static/css/modal.css">
+ <link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/custom/css/com.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/custom/css/mod.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/custom/css/custom.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/custom/css/custom2.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/custom/css/jquery-ui.css">
+<link href="/weixinpl/back_commonshop/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/back_commonshop/css/main.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/back_commonshop/css/style.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/back_commonshop/css/operamasks-ui.css" rel="stylesheet" type="text/css"> 
+<link rel="stylesheet" media="screen" type="text/css" href="/weixinpl/back_newshops/Base/personalization/custom/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Base/personalization/custom/css/colorpicker.css">
+
+<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+</head>
+<style>
+body{  
+    background-color:white;  
+} 
+.operation-btn{display:inline-block;padding:0 15px;background-color:#06a7e1;color:#fff;border-radius:3px;cursor:pointer;height:30px;line-height:30px;}
+.WSY_list{width:97%;margin-left:18px;}
+.header-left{float:left;}
+.header-left span,.header-left input,.header-left select{vertical-align:middle;}
+a:hover{text-decoration: none!important;}
+.tips{margin-left:40px;position: absolute;margin-top: 13px;}
+.tips span{font-size:15px;margin-left: 10px;}
+table#WSY_t1 td{text-align: center;}
+.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+.delivery_font{font-size: 15px;font-weight: bold;width:140px;text-align:right;display:inline-block;margin-right: 50px;}
+.page-title{font-size:16px;color:#494949;line-height:45px;border-bottom:solid 1px #e1e1e1;}
+.order-content{padding:0 7%;background:#fff;}
+.order-content .list{display:flex;padding:10px 0 20px 0;align-items:center;}
+.order-content .list .ring-box{position:relative;width:87px;height:87px;box-sizing:border-box;padding:8px 9px 8px 3px;}
+.order-content .list .ring-box .default-bg{position:absolute;left:0;top:0;}
+.order-content .list .ring-box .img-box{width:75px;height:75px;border-radius:50%;overflow:hidden;}
+.order-content .list .ring-box .ring-img.rotate{animation:rotate 3s linear infinite;}
+.order-content .list .ring-text{width:calc(100% - 87px);box-sizing:border-box;padding-left:5px;}
+.order-content .list .ring-text .title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;color:#494949;display:block;}
+.order-content .list .ring-text .center{display:flex;justify-content:space-between;}
+.order-content .list .ring-text .price{font-size:15px;color:#f93c42;align-self:flex-end;}
+.order-content .list .ring-text .tips-box{margin-top:5px;padding-bottom:11px;}
+.order-content .list .ring-text .label{background-color:#f8f8f8;font-size:11px;color:#b2b2b2;border:solid 1px #e1e1e1;border-radius:10px;padding:2px 4px;}
+.order-content .list .ring-text .btn-box>button{line-height:1;border-radius:3px;height:26px;padding:0 15px;font-size:13px;}
+.order-content .list .ring-text .btn-box .hear-btn{border:solid 1px #d2d2d2;color:#b2b2b2;margin-right:16px;background:none;}
+.order-content .list .ring-text .btn-box .order-btn{border:0;color:#fff;}
+
+.page-main{background-color:#ff8430;padding:0 15px;margin-bottom:10px;}
+.page-main .page-top{text-align:right;font-size:0;padding:15px 0;}
+.page-main .page-top>a{font-size:13px;color:#fff;padding:0 9px 0 9px;border-right:solid 1px #e6e6e6;}
+.page-main .page-top>a:last-child{border-right:0;}
+.page-center{display:flex;justify-content:space-between;align-items:center;}
+.page-center .head-img{width:96px;height:96px;border-radius:50%;border:solid 1px #d2d2d2;overflow:hidden;}
+.page-center .text-box{width:calc(100% - 96px);box-sizing:border-box;padding-left:15px;}
+.page-center .text-box .name{font-size:18px;color:#fff;}
+.page-center .text-box .name .label{font-size:9px;color:#fff;border-radius:15px;background:-webkit-linear-gradient(left,#727790,#42475d);background: linear-gradient(to right,#727790,#42475d);padding:2px 5px;line-height:1;margin:-2px 0 0 5px;display:inline-block;vertical-align:middle;}
+.page-center .text-box .weixin{font-size:13px;color:#fff;margin:5px 0 15px 0;}
+.page-center .text-box .group{display:flex;align-items:flex-start;font-size:12px;margin-top:5px;}
+.page-center .text-box .group>label{color:#fff;white-space:nowrap;}
+.page-center .text-box .group>div{color:#fff;word-break:break-all;}
+.page-center .text-box .group .brief{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;}
+.page-center .text-box .group .address{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.control-main{display:flex;justify-content:space-between;align-items:flex-end;margin-top:10px;padding-bottom:15px;border-bottom:dashed 1px #e1e1e1;}
+.control-main .left{width:96px;box-sizing:border-box;padding:0 5px;}
+.control-main .left>button{color:#fff;width:100%;border:solid 1px #fff;height:30px;line-height:1;border-radius:4px;font-size:14px;}
+.control-main .right{width:calc(100% - 96px);display:flex;justify-content:center;align-items:center;box-sizing:border-box;padding-left:15px;}
+.control-main .right .list{width:33.3333%;text-align:center;box-sizing:border-box;border-right:solid 1px #e1e1e1;}
+.control-main .right .list:last-child{border-right:0;}
+.order-tips{display:flex;flex-wrap:wrap;padding:5px 0 15px 0;}
+.order-tips span{width:60px;background-color:#f8f8f8;line-height:23px;border-radius:3px;text-align:center;font-size:12px;color:#888;margin-right:calc(33.3333% - 80px);margin-top:10px;}
+.order-tips span:nth-child(4n){margin-right:0;}
+#export_button {
+    display: inline-block;
+    padding: 0 15px;
+    background-color: #06a7e1;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+}
+.btn_grey{
+	color: #fff;
+	background-color: #d9534f;
+	line-height: 1.35;
+    text-align: center;
+    border-color: #d43f3a;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 2px solid transparent;
+}
+.btn_success{
+	color: #fff;
+	background-color: #5cb85c;
+	line-height: 1.35;
+    text-align: center;
+    border-color: #4cae4c;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 2px solid transparent;
+}
+.guanzhu{
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 12px;
+	border-color:#ff6f3c;
+	text-align: center;
+	padding:4px 0px;
+	background-color:#ff6f3c;
+	margin-left: 15px;
+	margin-top:15px;
+}
+.shenfen{
+	width: 70%;
+	margin-left: 58px;
+	line-height: 25px;
+	
+}
+ .one{
+	width: 60px;
+	height: 20px;
+	line-height: 20px;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 4px;
+	text-align: center;
+	float: left;
+}
+.checkbox-main label{margin-left:3px;margin-right:10px;}
+.checkbox-main  .checkbox-list{margin-bottom:10px;}
+</style>
+<body>
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+
+	<div style="margin-top:20px;margin-left:330px;overflow:hidden;">
+		<label class="delivery_font" style="float:left;margin-top:2px;">申请特权</label>
+		<div style="float:left;" class="checkbox-main">
+			<input style="vertical-align:middle;" type="checkbox" class="user_level" id="user_level1" name="user_level[]" value="-1" <?php if(in_array('-1',$result['pass_level'])){echo 'checked';}?> /><label for="user_level1" style="vertical-align:middle;">粉丝</label>
+			<input style="vertical-align:middle;" type="checkbox" class="user_level" id="user_level2" name="user_level[]" value="1" <?php if(in_array('1',$result['pass_level'])){echo 'checked';}?> /><label for="user_level2" style="vertical-align:middle;">推广员</label>
+
+			<input style="vertical-align:middle;" type="checkbox" class="user_level" id="user_level3" name="user_level[]" value="2" <?php if(in_array('2',$result['pass_level'])){echo 'checked';}?> /><label for="user_level3" style="vertical-align:middle;"><?php echo empty($shareholder_name['d_name'])?'青铜':$shareholder_name['d_name'];?></label>
+			<input style="vertical-align:middle;" type="checkbox" class="user_level" id="user_level4" name="user_level[]" value="3" <?php if(in_array('3',$result['pass_level'])){echo 'checked';}?> /><label for="user_level4" style="vertical-align:middle;"><?php echo empty($shareholder_name['c_name'])?'白银':$shareholder_name['c_name'];?></label>
+			<input style="vertical-align:middle;" type="checkbox" class="user_level" id="user_level5" name="user_level[]" value="4" <?php if(in_array('4',$result['pass_level'])){echo 'checked';}?> /><label for="user_level5" style="vertical-align:middle;"><?php echo empty($shareholder_name['b_name'])?'黄金':$shareholder_name['b_name'];?></label>
+			<input style="vertical-align:middle;" type="checkbox" class="user_level" id="user_level6" name="user_level[]" value="5" <?php if(in_array('5',$result['pass_level'])){echo 'checked';}?> /><label for="user_level6" style="vertical-align:middle;"><?php echo empty($shareholder_name['a_name'])?'白金':$shareholder_name['a_name'];?></label>
+		</div>
+	</div>
+	<div style="margin-top:20px;margin-left:330px;">
+		<label class="delivery_font">非特权引导链接</label>
+		<input type="text" style="height:20px;" name="selector_title" id="selector_title" value="<?php echo $result['jump_title']; ?>" disabled />
+		<button type="button" class="WSY_button" onclick="showSelector(this)" style="height:20px;cursor:pointer;margin-top:0px;float:none;font-size:14px;width:40px;">链接</button>
+		<input type=hidden name="selector_id" id="selector_id" value="<?php echo $result['jump_linktype'];?>" />
+
+	</div>
+	<div style="margin-top:20px;margin-left:330px;height:100%;overflow:hidden; ">
+		<label class="delivery_font" style="float:left; vertical-align:middle;">必填信息</label>
+		<div style="float:left;" class="checkbox-main">
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="name_onoff" name="name_onoff" onclick="changeValue(this)" value="<?php echo $result['name_onoff'];?>" <?php if($result['name_onoff']){echo 'checked';}?>/><label style="vertical-align:middle;">用户姓名</label></p>
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="level_onoff" name="level_onoff" onclick="changeValue(this)" value="<?php echo $result['level_onoff'];?>" <?php if($result['level_onoff']){echo 'checked';}?> /><label style="vertical-align:middle;">用户身份</label></p>
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="address_onoff" name="address_onoff" onclick="changeValue(this)" value="<?php echo $result['address_onoff'];?>" <?php if($result['address_onoff']){echo 'checked';}?> /><label style="vertical-align:middle;">常驻地址</label></p>
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="weixin_onoff" name="weixin_onoff" onclick="changeValue(this)" value="<?php echo $result['weixin_onoff'];?>" <?php if($result['weixin_onoff']){echo 'checked';}?> /><label style="vertical-align:middle;">微信</label></p>
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="qq_onoff" name="qq_onoff" onclick="changeValue(this)" value="<?php echo $result['qq_onoff'];?>" <?php if($result['qq_onoff']){echo 'checked';}?> /><label style="vertical-align:middle;">QQ</label></p>
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="phone_onoff" name="phone_onoff" onclick="changeValue(this)" value="<?php echo $result['phone_onoff'];?>" <?php if($result['phone_onoff']){echo 'checked';}?> /><label style="vertical-align:middle;">手机号</label></p>
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="tip_onoff" name="tip_onoff" onclick="changeValue(this)" value="<?php echo $result['tip_onoff'];?>" <?php if($result['tip_onoff']){echo 'checked';}?> /><label style="vertical-align:middle;">个人标签</label></p>
+			<p class="checkbox-list"><input style="vertical-align:middle;" type="checkbox" class="user_level1" id="introduce_onoff" name="introduce_onoff" onclick="changeValue(this)" value="<?php echo $result['name_onoff'];?>" <?php if($result['introduce_onoff']){echo 'checked';}?> /><label style="vertical-align:middle;">个人简介</label></p>
+		</div>
+	</div>
+
+	<div style="margin-top:-10px;margin-left:330px;" >
+	   <label class="delivery_font" style="float: left;margin-top:2px;">关注公众号</label>
+		<div class="WSY_remind_main">
+	        <dl style="display:block;overflow: hidden;">
+	            <dt></dt>
+	            <dd style="float: left;">
+	               <?php if($result['follow_onoff']==1){ ?>
+	                    <ul style="background-color: rgb(255, 113, 112);">
+	                        <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+	                        <li  onclick="alone_onoff1(0)" class="WSY_bot"  style="left: 0px;"></li>
+	                        <span onclick="alone_onoff1(1)" class="WSY_bot2"  style="display: none; left: 0px;"></span>
+	                    </ul>
+	                <?php }else{ ?>
+	                    <ul style="background-color: rgb(203, 210, 216);">
+	                        <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+	                        <li onclick="alone_onoff1(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+	                        <span onclick="alone_onoff1(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+	                    </ul>
+	                <?php } ?>
+	                <input type="hidden" name="follow_onoff" id="follow_onoff" value="<?php echo $result['follow_onoff'];?>" />
+	            </dd>
+
+	        </dl>
+	    </div>
+	</div>  
+	 <div style="margin-top:20px;margin-left:330px;height:100%;overflow:hidden; ">
+		<label class="delivery_font" style="float:left;">展示样式</label>
+<!-- 		<div class="con_display" style="float:left;width:500px;height:100%;overflow:hidden;">
+			<nav class="headguide_nav">
+				<div class="navright" >
+					<div style="margin-left:71%;display:inline-block;"></div>
+					<img src="/weixinpl/back_newshops/Base/personalization/custom/images/edit_banner.png">
+					<img src="/weixinpl/back_newshops/Base/personalization/custom/images/edit_banner.png">
+					<img src="/weixinpl/back_newshops/Base/personalization/custom/images/edit_banner.png">
+				</div>
+				<div class="navportrait">
+					<div class="headportrait">
+						<div class="navimg">
+							<img src="/weixinpl/back_newshops/Base/personalization/custom/images/headportrait.png" alt="">
+						</div>
+					</div>
+					<div class="navdescribe">
+						<span style="color: #ffffff;">姓名...</span>
+						<div class="navtag" style="color: #ffffff;">标签</div>
+						<p class="navintroduce" style="color: #ffffff;">用户名...</p>
+						<p class="navintroduce" style="color: #ffffff;">用户地址...</p>
+					</div>
+				</div>
+				<div style="width:100%;height:60px;">
+					<div style="height:60px;width:15%;float:left;">
+					    <div class="guanzhu">+ 关注</div>
+					</div>
+					<div class="shenfen" style="float:left;">
+						<span style="width:100%;">
+							<p class="one">身份1</p>
+							<p class="one" style="margin-left:20px;">身份1</p>
+							<p class="one" style="margin-left:20px;">身份1</p>
+							<p class="one" style="margin-left:20px;">身份1</p>
+						</span>
+						<br/>
+						<span style="width:100%;margin-top:10px;">
+							<p class="one">身份1</p>
+							<p class="one" style="margin-left:20px;">身份1</p>
+							<p class="one" style="margin-left:20px;">身份1</p>
+							<p class="one" style="margin-left:20px;">身份1</p>
+						</span>
+					</div>
+				</div>
+				<div class="bian"></div>
+				<div class="contacttypediv">
+					<div class="qtypebtu">
+						<img src="/weixinpl/back_newshops/Base/personalization/custom/images/qqw.png" alt=""><span style="color: #ffffff;">QQ</span>
+					</div>
+					<div class="wtypebtu">
+						<img src="/weixinpl/back_newshops/Base/personalization/custom/images/weixinw.png" alt=""><span style="color: #ffffff;">微信</span>
+					</div>
+					<div class="ptypebtu">
+						<img src="/weixinpl/back_newshops/Base/personalization/custom/images/dianhuaw.png" alt=""><span style="color: #ffffff;">电话</span>
+					</div>
+					<div style="margin-left:20px;color:white;height:30px;">个人简介：用户个人简介</div>	
+				</div>
+			</nav>
+		</div> -->
+		<div class="page-main" style="float:left;width:500px;height:100%;overflow:hidden;">
+			<div class="page-top">
+				<a>编辑</a>
+				<a>预览</a>
+			</div>
+			<div class="page-center">
+				<div class="head-img"><img  src="/weixinpl/back_newshops/Base/personalization/custom/images/headportrait.png"></div>
+				<div class="text-box">
+					<p class="name">欧阳啦啦<span class="label">型男</span></p>
+					<p class="weixin">微信：Luo-xia@en</p>
+					<div class="group">
+						<label>简介：</label>
+						<div class="brief">跟着我 左手右手 一个慢动作，右手左手慢动作重播, 你有没... </div>
+					</div>
+					<div class="group">
+						<label>地址：</label>
+						<div class="address">广东省深圳市龙岗区上塘龙塘新...</div>
+					</div>
+				</div>
+			</div>
+			<div class="control-main">
+				<div class="left"><button type="button" class="skin-bg">+ 关注</button></div>
+				<div class="right">
+					<div class="list" ><img src="./static/images/icon-qq.png" width="20"></div>
+					<div class="list" ><img src="./static/images/icon-weixin.png" width="26"></div>
+					<div class="list" ><img src="./static/images/icon-tel.png" width="21"></div>
+				</div>
+			</div>
+			<div class="order-tips">
+				<span>推广员</span>
+				<span>店铺</span>
+				<span>区代</span>
+				<span>合作商</span>
+				<span>代理商</span>
+				<span>VIP</span>
+				<span>大鱼会员</span>
+				<span>经销商</span>
+			</div>
+		</div>	
+
+	</div>	
+	<div class="submit_div" style="margin-top:-10px;margin-left:600px;float:left;">
+		<input type="button" class="WSY_button" value="提交" onclick="return saveData(this);" style="cursor:pointer;">
+	</div>    
+</div>
+<!--内容框架结束-->
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+ <!-- 新选择链接 -->
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script>
+function alone_onoff1(obj){
+	$("#follow_onoff").val(obj);
+}
+function changeValue(obj){
+	if($(obj).prop("checked")){
+		$(obj).val(1);
+	}else{
+		$(obj).val(0);
+	}
+}
+function saveData(obj){
+	var $user_level = $('.user_level:checked'),
+		user_level = '';
+	if( $user_level == undefined || $user_level.length == 0 ){
+/*		alert('请选择用户等级！');
+		return;*/
+		user_level = 0;
+	} else {
+		$user_level.each(function(){
+			user_level += $(this).val()+'_';
+		});
+		user_level = user_level.slice(0,-1);
+	}
+	var selector_id = $('#selector_id').val();
+	if( selector_id == undefined || selector_id == '' ){
+		selector_id = -1;
+	}
+	var name_onoff = $('#name_onoff').val();
+	if( name_onoff == undefined || name_onoff == '' ){
+		name_onoff = 0;
+	}
+	var level_onoff = $('#level_onoff').val();
+	if( level_onoff == undefined || level_onoff == '' ){
+		level_onoff = 0;
+	}
+	var address_onoff = $('#address_onoff').val();
+	if( address_onoff == undefined || address_onoff == '' ){
+		address_onoff = 0;
+	}
+	var weixin_onoff = $('#weixin_onoff').val();
+	if( weixin_onoff == undefined || weixin_onoff == '' ){
+		weixin_onoff = 0;
+	}
+	var qq_onoff = $('#qq_onoff').val();
+	if( qq_onoff == undefined || qq_onoff == '' ){
+		qq_onoff = 0;
+	}	
+	var phone_onoff = $('#phone_onoff').val();
+	if( phone_onoff == undefined || phone_onoff == '' ){
+		phone_onoff = 0;
+	}
+	var tip_onoff = $('#tip_onoff').val();
+	if( tip_onoff == undefined || tip_onoff == '' ){
+		tip_onoff = 0;
+	}
+	var introduce_onoff = $('#introduce_onoff').val();
+	if( introduce_onoff == undefined || introduce_onoff == '' ){
+		introduce_onoff = 0;
+	}
+
+	var follow_onoff = $('#follow_onoff').val();
+	if( follow_onoff == undefined || follow_onoff == '' ){
+		follow_onoff = 0;
+	}
+		$.ajax({
+		url:'/mshop/admin/index.php?m=promoter_card&a=save_card_setting&customer_id='+customer_id_en,
+		data:{'pass_level':user_level,'selector_id':selector_id,'name_onoff':name_onoff,'level_onoff':level_onoff,'address_onoff':address_onoff,'weixin_onoff':weixin_onoff,'qq_onoff':qq_onoff,'phone_onoff':phone_onoff,'tip_onoff':tip_onoff,'introduce_onoff':introduce_onoff,'follow_onoff':follow_onoff},
+		type:'POST',
+		async: false,
+		success:function(res){
+			var json_return = eval('(' + res + ')');
+			console.log(json_return);
+			if(json_return.errcode == 0){
+				layer.msg("设置成功!", {
+					icon: 1,
+					time: 2000,
+					end: function () {
+						var index = parent.layer.getFrameIndex(window.name);
+						parent.layer.close(index);
+					}
+				}); 
+			}else{
+				layer.alert(json_return.errmsg);
+			}
+			
+		} 
+	});
+}
+
+
+</script>
+<script>
+   var that;//标签选择
+   var customer_id_en = '<?php echo $customer_id_en; ?>';
+   var selector_id    = $('#selector_id').val();
+	//选择优惠劵
+	function showSelector(obj){
+		that = obj;
+		layer.open({
+			  type: 2,
+			  area: ['1200px', '600px'],
+			  fixed: false, //不固定
+			  maxmin: true,
+			  resize:true,
+			  title: '选择链接页面',
+			  content: '/mshop/admin/index.php?m=plug_link_selector&a=selector_list&customer_id='+customer_id_en+'&selector_id='+selector_id,
+		});
+	}
+	//选择链接回调函数
+	//[int] selector_id 链接组成ID [string] selector_title 链接名称
+	function showSelectorCallback(selector_id,selector_title){
+		console.log(selector_id);
+		console.log(selector_title);
+	//	$(that).parents().find("#selector_title").attr("disabled",false);
+		$(that).parent().find("#selector_title").val(selector_title);
+		$(that).parent().find("#selector_id").val(selector_id);
+	}
+
+</script>

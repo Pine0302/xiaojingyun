@@ -1,0 +1,629 @@
+ 
+ <!DOCTYPE html>
+<html>
+	<head>
+		<title>活动管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/contentblue.css">
+
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+    <style type="text/css">
+    	 /* Body、顶部界面开始*/
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+img{max-width: 100%;border:none;}
+a{text-decoration: none;color: black;}
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;-webkit-text-size-adjust:none;}
+input[type='text'],input[type='number'],input[type='password'],input[type='reset'],input[type='submit'],input[type='button'],input[type='tel'],button,textarea{-webkit-appearance:none; border-radius:0; border:none;} /*去掉苹果的默认UI来渲染按钮*/
+ol,ul {list-style: none;} 
+h1,h2,h3,h4,h5,h6 {font-weight: normal;} 
+textarea{overflow:auto;resize:none;} 
+
+.wheell-all{
+    margin: 25px 38px;
+	border-radius: 5px;
+	border: 1px solid #d8d8d8;
+	color: #646464;
+	font-size: 14px;overflow:hidden;
+}
+.nav-list{
+	width: 100%;
+	height: 54px;
+	border-bottom: 1px solid #dddddd;
+    background:#fafafa;
+    display:flex;
+    padding:0 10px;box-sizing:border-box;
+}
+.nav-list span{
+   width:88px;
+   font-size:14px;
+   text-align:center;
+   line-height:54px;cursor:pointer;
+}
+.we-name{
+	font-size: 14px;
+	color: #646464;
+}
+.we-content{
+	padding-left: 27px;
+	padding-top: 29px;
+}
+.wel-detail{
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
+}
+.wel-detail-limit{
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 30px;
+}
+.wel-detail-limit>*{
+	margin-right: 10px;
+}
+.wel-detail-limit input[type="text"]{
+	width: 177px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #dddddd;
+	padding-left: 7px;
+	color: #000;
+}
+.wel-detail-limit input[type="number"]{
+	width: 177px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #dddddd;
+	padding-left: 7px;
+	color: #000;
+}
+.wel-detail-limit input[type="number"][disabled],.wel-detail-limit input[type="text"][disabled]{
+	color: #969696;
+}
+.wel-detail-limit .one-limit{
+	margin-bottom: 10px;
+}
+.wel-detail >*{
+	margin-right: 10px;
+}
+.wel-detail input[type="text"]{
+	width: 233px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #dddddd;
+	padding-left: 7px;
+	color: #000;
+}
+.wel-detail input[type="text"][disabled]{
+	color: #969696;
+}
+.wel-detail input[type="number"]{
+	width: 233px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #dddddd;
+	padding-left: 7px;
+	color: #000;
+}
+.wel-detail input[type="number"][disabled]{
+	color: #969696;
+}
+.red-tip{
+	font-size: 14px;
+	color: #e74c3c;
+}
+.btn-group{
+	margin-bottom: 28px;
+}
+.save-btn , .cancle-btn{
+	width: 122px;
+	height: 37px;
+	text-align: center;
+	background: #06a7e1;
+	color: #FFF;
+	font-size: 16px;
+	margin-right: 38px;
+}
+.two-limit{
+	display: flex;
+}
+.t-group{
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.t-group span{
+	display: inline-block;
+	margin: 0 7px;
+}
+.t-group p{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	font-size: 22px;
+	text-align: center;
+	font-weight: bold;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.t-group input[type="text"]{
+	width: 100px;
+	padding-left: 7px;
+	color: #969696;
+}
+.nav-active{
+  color:#06A7E1;
+  border-bottom:1px solid #06A7E1;
+}
+.save-btn[disabled]{
+    box-shadow: none;
+    opacity: .65;
+}
+.careful{
+	display: inline-block;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.total_paymenet{    margin-bottom: 10px;}
+.total_paymenet ul{z-index: 1;overflow: hidden;background-color: #cbd2d8;width: 50px; height: 20px;border-radius: 300px;position: relative;}
+.total_paymenet p{position: absolute;font-size: 12px;font-family: "Arial";color: #7f8a97;margin: 0 0 0 22px;line-height: 20px;}
+.total_paymenet li{width: 16px;height: 16px;border-radius: 300px;background: #fff;position: absolute;z-index: 999;margin-left: 2px;margin-top: 2px;cursor: pointer;}
+.total_paymenet ul.button_on{background-color: #ff7170 !important;transition:300ms}
+.total_paymenet ul.button_on p{color: #fff !important;margin: 0px 0px 0px 27px !important;transition:300ms}
+.total_paymenet ul.button_on li{display: list-item;left: 0px;transition:300ms}
+.total_paymenet ul.button_on span{display: none;left: 0px;transition:300ms}
+.total_paymenet ul.button_off{background-color: #cbd2d8 !important;transition:300ms}
+.total_paymenet ul.button_off p{color: #7f8a97 !important;margin: 0px 0px 0px 13px !important;transition:300ms}
+.total_paymenet ul.button_off li{left: 30px;transition:300ms}
+.total_paymenet ul.button_off span{display: block;left: 30px;transition:300ms}
+    </style>
+	</head>
+	<body>
+       <!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+    	<!--列表头部切换开始-->
+    	<?php 
+			$head = 1;
+			include("action_head.html");
+		?>
+            
+		<div class="wheell-all">
+			<div class="nav-list">
+				<span class="nav-active">活动设置</span>
+                <span id="award_edit">奖项设置</span>
+			</div>
+			<div class="we-content">
+				<form class="form-horizontal" name="action_edit" id="action_edit" method="post" action="/mshop/admin/index.php?m=slyder_adventures&a=action_save">
+					<input type="hidden" name="slyder_id" id="slyder_id" value="<?php echo $slyder_id; ?>" />
+					<div class="wel-detail">
+						<span class="red-tip">*</span>
+						<span class="we-name">活动名称：</span>
+						<input type="text" name="title" id="title" maxlength="10" value="<?php echo htmlspecialchars($list["title"]); ?>" <?php if($list['status'] == '1') { echo 'disabled';}?> />
+						<span class="limit-num">0/10</span>
+					</div>
+					<div class="wel-detail">
+						<span class="red-tip">*</span>
+						<span class="we-name">开始时间：</span>
+						<input type="text" name="begin_time" id="begin_time" value="<?php echo $list["begin_time"]; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" <?php if($list['status'] == '1') { echo 'disabled';}?> />
+					</div>
+					<div class="wel-detail">
+						<span class="red-tip">*</span>
+						<span class="we-name">结束时间：</span>
+						<input onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" type="text" name="end_time" id="end_time" value="<?php echo $list["end_time"]; ?>" <?php if($list['status'] == '1') { echo 'disabled';}?> />
+					</div>
+					<!--转盘抽奖设置-->
+					<div class="wel-detail-limit">
+						<span class="red-tip">*</span>
+						<span class="we-name">转盘抽奖限制：</span>
+						<div class="m-limit">
+							<div class="one-limit">
+								<input type="radio" id="" name="type" value="1" <?php if($list["type"]==1){ echo "checked"; } ?> <?php if($list['status'] == '1') { echo 'disabled';}?> onclick="sel_type(1)" />
+								<span class="we-name">每人每天次数限制（-1为不限制）:</span>
+								<input class="cf_type2" type="number" name="limit_every_day" id="limit_every_day" value="<?php echo $list["limit_every_day"]; ?>"  onblur="formatNum(this,1);" <?php if($list['status'] == '1') { echo 'disabled';}?> />
+							</div>
+							<div class="one-limit">
+								<input type="radio" id="" name="type" value="2" <?php if($list["type"]==2){ echo "checked"; } ?> <?php if($list['status'] == '1') { echo 'disabled';}?> onclick="sel_type(2)" />
+								<span class="we-name">每人每单次数限制（-1为不限制）:</span>
+							</div>
+							<div class="total_paymenet is_fact" style="<?php if($list["type"]==1){echo "display:none;";} ?>">
+								<span class="we-name">&ensp;&ensp;订单实付款累计：</span>
+								<ul class="<?php if($list["is_fact_pay"]==1){echo "button_on";} else {echo "button_off";}?>" style="display: inline-block;vertical-align: -5px;">
+									<p class="buttom-text"><?php if($list["is_fact_pay"]==1){echo "开";} else {echo "关";}?></p>
+									<li class="WSY_bot"></li>
+									<input type="hidden" name="is_fact_pay" id="is_fact_pay" value="<?php echo $list["is_fact_pay"]?>" />
+								</ul>
+							</div>
+							<div class="two-limit cf_type" style="<?php if($list["type"]==1){echo "display:none;";} ?>">
+								<div class="m-name">
+									<span class="we-name">转盘抽奖门槛设置：</span>
+								</div>
+								<div class="set-group">
+									<?php 
+											if(empty($limit_order_arr)){
+									?>
+										<div class="t-group">
+											<input type="number" name="limit_money[]" id="<?php echo "limit_money".$k ?>" value="<?php echo $item_arr[0]; ?>" onblur="formatNum(this,1);" <?php if($list['status'] == '1') { echo 'disabled';}?> /><span>元</span>
+											<input type="number" name="limit_times[]" id="<?php echo "limit_times".$k ?>" value="<?php echo $item_arr[1]; ?>" onblur="formatNum(this,1);" <?php if($list['status'] == '1') { echo 'disabled';}?> /><span>次</span>
+											<p class="add" onclick='add(this)'>
+                                              <img src="/mshop/admin/static/images/add.png" />
+                                            </p>
+										</div>
+									<?php
+										}else{
+											foreach($limit_order_arr AS $k=>$v){
+												$item_arr = explode("_",$v);
+												if($k == 0){	
+									?>
+										<div class="t-group">
+											<input type="number" name="limit_money[]" <?php if($list['status'] == '1') { echo 'disabled';}?> id="<?php echo "limit_money".$k ?>" value="<?php echo $item_arr[0]; ?>" onblur="formatNum(this,1);" /><span>元</span>
+											<input type="number" name="limit_times[]" <?php if($list['status'] == '1') { echo 'disabled';}?> id="<?php echo "limit_times".$k ?>" value="<?php echo $item_arr[1]; ?>" onblur="formatNum(this,1);" /><span>次</span>
+											<?php if($list['status'] < '1'){ ?>
+											<p class="add" onclick='add(this)'>
+                                               <img src="/mshop/admin/static/images/add.png" />
+                                            </p>
+											<?php } ?>
+										</div>
+									<?php 		}else{ ?>
+										<div class="t-group">
+											<input type="number" name="limit_money[]" <?php if($list['status'] == '1') { echo 'disabled';}?> id="<?php echo "limit_money".$k ?>" value="<?php echo $item_arr[0]; ?>" onblur="formatNum(this,1);" /><span>元</span>
+											<input type="number" name="limit_times[]" <?php if($list['status'] == '1') { echo 'disabled';}?> id="<?php echo "limit_times".$k ?>" value="<?php echo $item_arr[1]; ?>" onblur="formatNum(this,1);" /><span>次</span>
+											<?php if($list['status'] < '1'){ ?>
+											<p class="add" onclick='add(this)'><img src="/mshop/admin/static/images/add.png" /></p>
+											<p class="cut" onclick="cut(this)"><img src="/mshop/admin/static/images/cut.png" /></p>
+											<?php } ?>
+										</div>
+									<?php 		} 
+											} 
+										} ?>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="wel-detail">
+						<span class="red-tip">*</span>
+						<span class="we-name">奖品领取截止日期：</span>
+						<input onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" <?php if($list['status'] == '1') { echo 'disabled';}?> type="text" name="award_expiry_date" id="award_expiry_date" value="<?php echo $list["award_expiry_date"]; ?>" />
+					</div>
+					<div class="wel-detail">
+						<span class="red-tip">*</span>
+						<span class="we-name">参与人数限制：</span>
+						<input type="number" name="limit_of_participation" <?php if($list['status'] == '1') { echo 'disabled';}?> id="limit_of_participation" value="<?php echo $list["limit_of_participation"]; ?>" onblur="formatNum(this,1);" />
+						<span class="">（-1为不限制）</span>
+					</div>
+					<div class="wel-detail">
+						<span class="red-tip">*</span>
+						<span class="we-name">显示中奖名单：</span>
+						<input type="radio" name="display_list_of_winner" <?php if($list['status'] == '1') { echo 'disabled';}?> id="" value="1" <?php if($list["display_list_of_winner"]==1){ echo "checked"; } ?> /><span>显示</span>
+						<input type="radio" name="display_list_of_winner" <?php if($list['status'] == '1') { echo 'disabled';}?> id="" value="0" <?php if($list["display_list_of_winner"]==0){ echo "checked"; } ?> /><span>隐藏</span>
+					</div>
+					<div class="wel-detail">
+						<span class="red-tip">*</span>
+						<span class="we-name">领取奖励设置：</span>
+						<input type="radio" name="auto_receive_rewards" id="" <?php if($list['status'] == '1') { echo 'disabled';}?> value="1" <?php if($list["auto_receive_rewards"]==1){ echo "checked"; } ?> /><span>自动</span>
+						<input type="radio" name="auto_receive_rewards" id="" <?php if($list['status'] == '1') { echo 'disabled';}?> value="0" <?php if($list["auto_receive_rewards"]==0){ echo "checked"; } ?> /><span>手动</span>
+						<span class=""></span>
+						<span class="careful">？</span>
+					</div>
+					<div class="wel-detail cf_type" style="<?php if($list["type"]==1){echo "display:none;";} ?>" >
+						<span class="red-tip">*</span>
+						<span class="we-name">抽奖次数累计：</span>
+						<input type="radio" name="cumulative_frequency_type" id="" <?php if($list['status'] == '1') { echo 'disabled';}?> value="1" <?php if($list["cumulative_frequency_type"]==1){ echo "checked"; } ?> /><span>当天可累计</span>
+						<input type="radio" name="cumulative_frequency_type" id="" <?php if($list['status'] == '1') { echo 'disabled';}?> value="2" <?php if($list["cumulative_frequency_type"]==2){ echo "checked"; } ?> /><span>当前活动累计</span>
+						<input type="radio" name="cumulative_frequency_type" id="" <?php if($list['status'] == '1') { echo 'disabled';}?> value="3" <?php if($list["cumulative_frequency_type"]==3){ echo "checked"; } ?> /><span>不可累计</span>
+					</div>
+					<div class="btn-group">
+						<?php if($list['status'] == '0'){ ?>
+					   <input type="submit" class="save-btn" value="保存" />
+					   <?php } ?>
+					   <a class="cancle-btn" style="padding: 10px 50px;" href="/mshop/admin/index.php?m=slyder_adventures&a=action_list&customer_id=<?php echo $customer_id_en; ?>">取消</a>
+					</div>
+				</form>
+			</div>
+			
+		</div>
+			
+	</div>
+
+</body>
+	
+</html>
+<script type="text/javascript" src="/mshop/admin/static/js/jquery.form.js"></script>
+<script type="text/javascript" src="/weixinpl/back_newshops/Base/personalization/personal_center/js/layer/layer.js"></script>
+<script type="text/javascript">
+	var slyder_id = <?php echo $slyder_id; ?>;
+	var action = "<?php echo $action; ?>";		//新增add；编辑edit
+	
+	$(function() {
+		var textLength = $("#title").val().length;
+		$(".limit-num").html(textLength+"/10");
+
+		//复选框
+		$(".WSY_bot").click(function(){
+			console.log(123)
+        if ($(this).parent().hasClass("button_on")){
+            $(this).parent().removeClass("button_on").addClass("button_off");
+            $(this).parent().find("p.buttom-text").text("关");
+            $(this).parent().find("input").val(0);
+        }else{
+            $(this).parent().removeClass("button_off").addClass("button_on");
+            $(this).parent().find("p.buttom-text").text("开");
+            $(this).parent().find("input").val(1);
+        }
+    });
+
+	});
+	//标题字数数量监控
+	$("#title").on('keyup', function(){
+		var textLength = $(this).val().length;
+		$(".limit-num").html(textLength+"/10");
+	});
+	
+	function add(obj){
+		$('.t-group').find('.add').remove();
+		var is_cut = $('.set-group .t-group').eq(0).find('.cut').length;
+		if(is_cut === 0){
+			$('.set-group .t-group').eq(0).append('<p class="cut" onclick="cut(this)"><img src="/mshop/admin/static/images/cut.png" /></p>');
+		}
+		var text = '<div class="t-group">';
+	 	    text += '<input type="number" name="limit_money[]" id="" value="" onblur="formatNum(this,1);" /><span>元</span>';
+	 	    text += '<input type="number" name="limit_times[]" id="" value="" onblur="formatNum(this,1);" /><span>次</span>';
+	 	    text += '<p class="add" onclick="add(this)"><img src="/mshop/admin/static/images/add.png" /></p>';
+	 	    text += '<p class="cut" onclick="cut(this)"><img src="/mshop/admin/static/images/cut.png" /></p>';	 	    
+	 	    text += '</div>';
+
+ 	    $('.set-group').append(text);
+	}
+	function cut(obj){
+		var len = $('.set-group .t-group').length;
+		var box = $(obj).parent('.t-group');
+
+		if(box.find('.add').length === 1){
+			box.prev().find('.cut').before('<p class="add" onclick="add(this)"><img src="/mshop/admin/static/images/add.png" /></p>');
+		}
+		box.remove();
+		if(len === 2){
+			$('.t-group').find('.cut').remove();
+		}
+		
+	}
+	
+	function formatNum(obj,type){
+		var thisval = $(obj).val();
+		if( type == 1 ){			//可输入-1的非0正整数
+			if( thisval != -1 ){
+				obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+				obj.value = obj.value.replace(/\./g,""); 
+			}
+			if( thisval == 0 ){
+				obj.value = "";
+			}
+		}
+		
+	}
+	
+	function my_array_name(m){
+		var valArr = new Array;
+		$("input[name='"+m+"[]']").each(function(i){
+			valArr[i] = $(this).val();
+		});
+			//var priv = valArr.join(',');
+		return valArr;
+	}
+	
+	
+	$("#award_edit").click(function(){
+		if(slyder_id > 0){
+			window.location.href="/mshop/admin/index.php?m=slyder_adventures&a=award_edit&customer_id=<?php echo $customer_id_en; ?>&slyder_id="+slyder_id;
+		}else{
+			layer.alert('请先设置活动信息！', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#title').focus();
+			});
+			return false;
+		}
+	});
+	/*问号提示*/
+	var care_tip;
+	$('.careful').hover(
+		function(){
+			care_tip = layer.tips('自动领取只适用于优惠券', this,{
+				time: 0
+			});
+		},function(){
+			layer.close(care_tip);
+		}
+	);
+	
+
+	function sel_type(t){
+		if(t == 1){
+			$(".cf_type2").show();
+			$(".cf_type").hide();
+			$(".is_fact").hide();
+		}else if(t==2){
+			$(".cf_type2").hide();
+			$(".cf_type").show();
+			$(".is_fact").show();
+		}
+	}
+	
+//表单提交-----start
+	$('#action_edit').ajaxForm({
+	  beforeSubmit: checkForm, // 此方法主要是提交前执行的方法，根据需要设置
+	  success: complete, // 这是提交后的方法
+	  dataType: 'json'
+	});
+
+	function checkForm(){
+		if($(".save-btn").hasClass("disabled")){
+			return false;
+		}
+		var title                      = $.trim($('#title').val());
+		var begin_time                 = $.trim($('#begin_time').val());
+		var end_time                   = $.trim($('#end_time').val());
+		var type                       = $("input[name='type']:checked").val();
+		var limit_every_day            = $.trim($('#limit_every_day').val());
+		var award_expiry_date          = $.trim($('#award_expiry_date').val());
+		var limit_of_participation     = $.trim($('#limit_of_participation').val());
+		var display_list_of_winner     = $("input[name='display_list_of_winner']:checked").val();
+		var auto_receive_rewards       = $("input[name='auto_receive_rewards']:checked").val();
+		var cumulative_frequency_type  = $("input[name='cumulative_frequency_type']:checked").val();
+		var limit_money_arr = my_array_name("limit_money");
+		var limit_times_arr = my_array_name("limit_times");
+		//console.log("type="+type+"display_list_of_winner="+display_list_of_winner+"auto_receive_rewards="+auto_receive_rewards+"cumulative_frequency_type="+cumulative_frequency_type);
+
+		if( title == "" ){
+			layer.alert('活动名称不能为空', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#title').focus();
+			});
+			return false;
+		}
+		if( begin_time == "" ){
+			layer.alert('开始时间不能为空', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#begin_time').focus();
+			});
+			return false;
+		}
+		if( end_time == "" ){
+			layer.alert('结束时间不能为空', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#end_time').focus();
+			});
+			return false;
+		}
+		if( begin_time > end_time ){
+			layer.alert('结束时间必须大于开始时间', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#end_time').focus();
+			});
+			return false;
+		}
+		if( $.inArray( type, ['1','2'] ) < 0  ){
+			layer.alert('请选择转盘抽奖限制', {icon: 5},function(index){
+				  layer.close(index);
+			});
+			return false;
+		}
+		if( type==1 && (limit_every_day == "" || limit_every_day < -1 ) ){
+			layer.alert('请输入正确的每人每天次数限制', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#limit_every_day').focus();
+			});
+			return false;
+		}
+		if( type == 2 ){
+			 for(var i=0;i<limit_money_arr.length;i++){
+				if( limit_money_arr[i] == "" || limit_money_arr[i] == 0 || limit_money_arr[i] < -1 ){
+					layer.alert('转盘抽奖门槛设置有误！设置的数值要高于上一条，并且正整数，-1为不限制', {icon: 5},function(index){
+						  layer.close(index);
+					});
+					return false;
+				}
+				var m1 = parseInt(limit_money_arr[i]);
+				if(limit_money_arr.length > 1 && i+1<limit_money_arr.length){
+					var m2 = parseInt(limit_money_arr[i+1]);
+					if( m2<=m1 ){
+						layer.alert('转盘抽奖门槛设置有误！设置的数值要高于上一条，并且正整数，-1为不限制', {icon: 5},function(index){
+							  layer.close(index);
+						});
+						return false;
+					}
+				}
+
+			}
+			for(var i=0;i<limit_times_arr.length;i++){
+				if( limit_times_arr[i] == "" || limit_times_arr[i] == 0 || limit_times_arr[i] < -1 ){
+					layer.alert('转盘抽奖门槛设置有误！设置的数值要高于上一条，并且正整数，-1为不限制', {icon: 5},function(index){
+						  layer.close(index);
+					});
+					return false;
+				}
+				var t1 = parseInt(limit_times_arr[i]);
+				if(limit_times_arr.length > 1 && i+1<limit_times_arr.length){
+					var t2 = (limit_times_arr[i+1]);
+					if( t2<=t1 ){
+						layer.alert('转盘抽奖门槛设置有误！设置的数值要高于上一条，并且正整数，-1为不限制', {icon: 5},function(index){
+							  layer.close(index);
+						});
+						return false;
+					}
+				}
+			}
+		}
+		if( award_expiry_date == "" ){
+			layer.alert('奖品领取截止日期', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#award_expiry_date').focus();
+			});
+			return false;
+		}
+		if( award_expiry_date < end_time ){
+			layer.alert('奖品领取截止日期不能小于活动结束时间', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#award_expiry_date').focus();
+			});
+			return false;
+		}
+		if( limit_of_participation == "" || limit_of_participation < -1 ){
+			layer.alert('请输入正确的参与人数限制', {icon: 5},function(index){
+				  layer.close(index);
+				  $('#limit_of_participation').focus();
+			});
+			return false;
+		}
+		if( $.inArray( display_list_of_winner, ['0','1'] ) < 0  ){
+			layer.alert('请选择显示中奖名单', {icon: 5},function(index){
+				  layer.close(index);
+			});
+			return false;
+		}
+		if( $.inArray( auto_receive_rewards, ['0','1'] ) < 0  ){
+			layer.alert('请选择领取奖励设置', {icon: 5},function(index){
+				  layer.close(index);
+			});
+			return false;
+		}
+		if( $.inArray( cumulative_frequency_type, ['1','2','3'] ) < 0  ){
+			layer.alert('请选择抽奖次数累计', {icon: 5},function(index){
+				  layer.close(index);
+			});
+			return false;
+		}
+		
+	}
+	function complete(res){
+		if(res.errcode==0){
+			layer.msg("保存成功", {icon: 6, time:1000}, function(index){
+				if(action=="add" && res.slyder_id>0){
+					window.location.href="/mshop/admin/index.php?m=slyder_adventures&a=award_edit&customer_id=<?php echo $customer_id_en; ?>&slyder_id="+res.slyder_id;
+				}else{
+					window.location.href="/mshop/admin/index.php?m=slyder_adventures&a=action_list&customer_id=<?php echo $customer_id_en; ?>";
+				}
+				
+			});
+		}else{
+			layer.alert(res.errmsg, {icon: 5},function(index){
+				  layer.close(index);
+			});
+			return false;
+		}
+	}
+//表单提交-----end
+
+</script>
+ 
+
+            

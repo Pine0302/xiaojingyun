@@ -1,0 +1,45 @@
+.people, .crew_list{
+	float: left;
+	border: 3px solid #d8d8d8;
+	height: 500px;
+	width: 500px;
+	margin-left:50px;
+}
+.identity{
+	background-color: #f4f4f4;
+}
+.identity_ul{
+	float: left;
+	background: #d8d8d8;
+	height: 35px;
+	width: 100%;
+}
+.identity_ul li{
+	float: left;
+	line-height: 35px;
+	width: 25%;
+	text-align: center
+}
+.identity_ul .white{
+	background-color: #fff;
+	border-bottom: solid 2px #06a7e1;
+}
+.zj{
+	float: left;
+	height: 500px;
+}
+.zj span{
+	margin-top:200px;
+	display: inline-block;
+}
+.people_list{
+	float: left;
+	width: 100%;
+	background: red;
+}
+td{
+	text-align:center;
+}
+table,tr{
+	width:100%;
+}

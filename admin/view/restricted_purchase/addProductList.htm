@@ -1,0 +1,444 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/css2.css" media="all">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/shop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<style type="text/css">
+a:hover{text-decoration: none;}   
+.button_blue{cursor: pointer;margin-left: 10px;font-size: 14px;line-height: 30px;background-color: #06a7e1;padding-left: 15px;padding-right: 15px;border-radius: 3px 3px 3px 3px;margin-top:20px;color: #fff;}
+.button_blue:hover{background:#0e98c9;}
+.name{  margin-top: 10px;height: 30px;line-height: 30px;font-size: 13px;text-align: left;font-weight: bolder;margin-left: 19px;}
+.button_box{width: 296px;display: block;text-align: right;}
+.button_box .WSY_button{border-radius:2px;border:none;}    
+.delivery-button{padding: 3px 15px;background-color: #06a7e1;color: #fff;border-radius: 2px;cursor:pointer;}
+.product-box{width:95%;margin-top: 15px;padding: 15px;border: 1px #ccc solid;display:none;}
+.header-left{float:left;}
+.header-right{float:right;}
+.search-box{height: 22px;line-height: 22px;} 
+.delivery_time{margin: 5px 35px;}
+.delivery_time input{margin: 0 20px;}
+.delivery_limit_box{margin: 15px 35px;position: relative;} 
+.delivery_font{font-size: 15px;font-weight: bold;width:140px;text-align:right;display:inline-block;}
+.delivery_limit_box input[type=text]{margin: 0 20px;}
+.selected-date-content{display: block;margin-left: 30px;margin-top: 10px;}
+.page-box1{margin-left:30px;}
+.page-box1,.page-box2{margin-top:15px;margin-left: 70px;}
+.show-data-num{margin:0 20px;}
+.page-box1 input,.page-box2 input{width:30px;text-align:center;}
+.show-data-num-btn{margin-right:30px;}
+.current-page{margin: 0 20px;}
+.go-page-btn{margin-left:15px;}
+#to-page-num1,#to-page-num2{margin-left:20px;}
+.relation_table th,.list_table th{text-align:center;}
+.activity_title{width:100%;border-bottom:1px #DEDBDB solid;padding: 3px 0 3px 20px;margin-top: 15px;}
+.activity_title_span{padding: 5px 10px;background-color: #DEDBDB;}
+.operation-button{height: 50px;line-height: 50px;text-align: center;}
+.back-button,.close-float-table{padding:5px 40px;;background-color:#ADABAB;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+.save-button,.add-selected-product{padding:5px 40px;;background-color:#06a7e1;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+.float-table{position: fixed;top: 0;height: 100%;width: 100%;background-color: #fff;overflow: scroll;}
+.float-table-title-box{text-align: center;background-color: #E0E0E0;height: 40px;line-height: 40px;}
+.float-table-title{font-size: 18px;font-weight: bold;}
+.selected-table td,.selected-table input{font-size: 12px !important;}
+table#WSY_t1 td{word-wrap: break-word;text-align:center;}
+.product-name{width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.curr_return1{
+    float: left;
+}
+.curr_return2{
+    float: left;
+    margin-left: 50px;
+}
+.curr_return3{
+    float: left;
+    width: 20px;
+}
+.curr_return4{
+    float: left;
+}
+.curr_return5{
+    float: left;
+    width: 50px;
+}
+.curr_return6{
+    float: left;
+}
+#search-button {
+    width: 70px;
+    height: 27px;
+    background: #2eade8;
+    border-radius: 2px;
+    color: #fff;
+    margin-left: 40px;
+    margin-top: 19px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div>  
+    <div class="WSY_content" style="height: 100%;">
+		<div class="WSY_columnbox" style="min-height: 100px;">
+			<div class="WSY_column_header">
+					<div class="WSY_columnnav">
+						<a <?php if($search_class == 0){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list">活动管理</a>
+						<a <?php if($search_class == 1){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=product_sales_statistics">销量统计</a>
+						<a <?php if($search_class == 2){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list">用户管理</a>
+						<a <?php if($search_class == 3){echo 'class="white1"';} ?> href="/weixinpl/back_newshops/Order/order/order.php?customer_id=<?php echo passport_encrypt($customer_id)?>&from_page=<?php echo $from_page;?>&f2c_id=<?php echo $f2c_id;?>&orgin_type=5">订单管理</a>
+					</div>
+			</div>
+			<div class="WSY_data">
+				<div class="WSY_list">
+					<div class="header-left" style="margin-left:10px;margin-top:10px;">
+						<span>产品编号：</span><input type="text" id="search_product_id" value="<?php echo $search_product_id; ?>" onkeyup="ValidateValue(this)" />
+						<span>产品名称：</span><input type="text" id="search_product_name" value="<?php echo $search_product_name; ?>" onkeyup="ValidateValue(this)" />
+						<span>合作商ID：</span><input type="text" id="search_supply_id" value="<?php echo $search_supply_id; ?>" onkeyup="ValidateValue(this)" />
+						<span>产品分类：</span>
+						              <select name="search_type_id" id="search_type_id">
+                        <option value="-1">--请选择--</option>
+						<?php
+							foreach( $type_arr['-1'] as $key => $value ){
+								$option_arr = explode('_',$value);
+								$option_val = $option_arr[0];
+								$option_name = $option_arr[1];
+						?>
+						<option value="<?php echo $option_val;?>" <?php if($search_type_id == $option_val){ echo 'selected';}?>><?php echo $option_name;?></option>
+							<?php
+								if( !empty($type_arr[$option_val]) ){
+									foreach( $type_arr[$option_val] as $key2 => $value2 ){
+										$option_arr = explode('_',$value2);
+										$option_val = $option_arr[0];
+										$option_name = $option_arr[1];
+							?>
+						<option value="<?php echo $option_val;?>" <?php if($search_type_id == $option_val){ echo 'selected';}?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $option_name;?></option>
+							<?php
+								if( !empty($type_arr[$option_val]) ){
+									foreach( $type_arr[$option_val] as $key3 => $value3 ){
+										$option_arr = explode('_',$value3);
+										$option_val = $option_arr[0];
+										$option_name = $option_arr[1];
+							?>
+						<option value="<?php echo $option_val;?>" <?php if($search_type_id == $option_val){ echo 'selected';}?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $option_name;?></option>
+							<?php
+								if( !empty($type_arr[$option_val]) ){
+									foreach( $type_arr[$option_val] as $key4 => $value4 ){
+										$option_arr = explode('_',$value4);
+										$option_val = $option_arr[0];
+										$option_name = $option_arr[1];
+							?>
+						<option value="<?php echo $option_val;?>" <?php if($search_type_id == $option_val){ echo 'selected';}?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $option_name;?></option>
+							<?php
+									}
+								}
+									}
+								}
+									}
+								}
+							}
+						?>
+                    </select>
+						
+					</div>
+					<div class="header-left" style="margin-left:10px;margin-top:10px;">
+						<span>产品来源：</span>
+						<select id="search_source">
+							<option value="-1">--所有--</option>
+							<option value="1" <?php if($search_source==1){?>selected <?php } ?>>平台</option>		
+							<option value="2" <?php if($search_source==2){?>selected <?php } ?>>合作商</option>	
+						</select>
+						<span>产品标签：</span>
+						<select id="search_other_id">
+							<option value="-1">--请选择--</option>	
+							<option value="2" <?php if($search_other_id==2){?>selected <?php } ?>>新品</option>		
+							<option value="3" <?php if($search_other_id==3){?>selected <?php } ?>>热卖</option>	
+							<option value="4" <?php if($search_other_id==4){?>selected <?php } ?>>vp产品</option>	
+							<option value="5" <?php if($search_other_id==5){?>selected <?php } ?>>抢购</option>	
+							<option value="6" <?php if($search_other_id==6){?>selected <?php } ?>>虚拟产品</option>	
+							<option value="7" <?php if($search_other_id==7){?>selected <?php } ?>>购物币产品</option>	
+							<option value="8" <?php if($search_other_id==8){?>selected <?php } ?>>猜您喜欢产品</option>	
+							<option value="9" <?php if($search_other_id==9){?>selected <?php } ?>>包邮</option>	
+							<option value="10" <?php if($search_other_id==10){?>selected <?php } ?>>积分专区</option>	
+							<option value="11" <?php if($search_other_id==11){?>selected <?php } ?>>限购</option>	
+							<option value="12" <?php if($search_other_id==12){?>selected <?php } ?>>首次推广奖励</option>
+							<option value="13" <?php if($search_other_id==13){?>selected <?php } ?>>特权专区</option>	
+							<option value="14" <?php if($search_other_id==14){?>selected <?php } ?>>关联礼包</option>
+							<option value="15" <?php if($search_other_id==15){?>selected <?php } ?>>微信小程序</option>
+						</select>
+					</div>
+					<span class="delivery-button search-button" style="float:right;margin-right: 10%;margin-top: 10px;" onclick="searchProduct()">搜索</span>
+			</div>
+			<table width="93%" class="WSY_table list_table" id="WSY_t1" >
+				<thead class="WSY_table_header">
+					<th width="7%"><input type="checkbox" id="ck_all" style="vertical-align: middle;" /><label for="select-all">全选</label></th>
+					<th width="15%">产品图</th>
+					<th width="8%">产品编号</th>
+					<th width="20%">产品名称</th>
+					<th width="10%">产品分类</th>
+					<th width="8%">产品原价</th>
+					<th width="8%">产品现价</th>
+					<th width="8%">销量</th>
+					<th width="8%">库存</th>
+					<th width="8%">标签</th>
+					<th width="8%">来源</th>
+					<th width="8%">合作商ID</th>
+					<th width="10%">创建时间</th>
+				</thead>
+				<tbody>
+				<?php	
+					foreach($result['product_list'] as $key => $val){
+				?>
+					<tr class="product_list" style="border:1px solid #D8D8D8">
+						<td><input type="checkbox" name="pro_ids" class="product-info-checkbox" value="<?php echo $val['id'];?>" /></td>
+						<td><img src="<?php echo $val['default_imgurl'];?>" style="width:50px;height:50px;"/></td>
+						<td><?php echo $val['id'];?></td>
+						<td><?php echo $val['name'];?></td>
+						<td><?php echo $val['typename'];?></td>
+						<td><?php echo $val['orgin_price'];?></td>
+						<td><?php echo $val['now_price'];?></td>
+						<td><?php echo $val['sell_count'];?></td>
+						<td><?php echo $val['storenum'];?></td>
+						<td><?php echo $val['otherstr'];?></td>
+						<td><?php echo $val['source_name'];?></td>
+						<td><?php echo $val['is_supply_id'];?></td>
+						<td><?php echo $val['createtime'];?></td>
+						<input type="hidden" name="product_id" id="product_id" value="<?php echo $val['id']; ?>" />
+						<input type="hidden" name="now_price" id="now_price" value="<?php echo $val['now_price']; ?>" />
+					</tr>
+				<?PHP }?> 
+				
+				</tbody>
+				
+			</table>
+			<!--翻页开始-->
+			<div class="WSY_page">
+				
+			</div>
+			<!--翻页结束-->
+			<div class="operation-button">
+				<span class="close-float-table">返回</span>
+				<span class="add-selected-product" onclick="addProduct()">批量添加</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script charset="utf-8" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script>
+var customer_id = '<?php echo $customer_id;?>';
+var customer_id_en = '<?php echo passport_encrypt((string)$customer_id); ?>';
+var activity_id	= '<?php echo $activity_id; ?>';
+
+var pagenum = <?php echo $result['pagenum']; ?>;
+var count =   <?php echo $result['page']; ?>;//总页数
+
+var search_product_id   = $('#search_product_id').val();
+var search_product_name = $('#search_product_name').val();
+var search_supply_id    = $('#search_supply_id').val();
+var search_type_id 		= $('#search_type_id').val();
+var search_other_id 	= $('#search_other_id').val();
+var search_source 		= $('#search_source').val();
+
+function ValidateValue(textbox)
+{
+	 var IllegalString = "\ `~@#;,.!#$%^&*()+{}|\\:\"<>?-=/,\'";
+	 var textboxvalue = textbox.value;
+	 var index = textboxvalue.length - 1;
+	 
+	 var s = textbox.value.charAt(index);
+	 
+	 if(IllegalString.indexOf(s)>=0)
+	 {
+		s = textboxvalue.substring(0,index);
+		textbox.value = s;
+	 }
+}
+  	//pageCount：总页数
+	//current：当前页
+	$(".WSY_page").createPage({
+        pageCount:count,
+        current:pagenum,
+        backFn:function(p){
+			var url = "/mshop/admin/index.php?m=restricted_purchase&a=get_product_list&pagenum="+p+"&activity_id="+activity_id+"&customer_id=<?php echo $data['customer_id']; ?>";
+			if( search_product_id != ''){
+				url += '&search_product_id='+search_product_id;
+			}
+			if( search_product_name != '' ){
+				url += '&search_product_name='+search_product_name;
+			}
+			if( search_supply_id != '' ){
+				url += '&search_supply_id='+search_supply_id;
+			}
+			if( search_type_id > 0 ){
+				url += '&search_type_id='+search_type_id;
+			}
+			if( search_other_id > 0 ){
+				url += '&search_other_id='+search_other_id;
+			}
+			if( search_source > 0 ){
+				url += '&search_source='+search_source;
+			}
+			document.location= url;
+	   }
+    });
+
+  var pagenum = <?php echo $result['pagenum']; ?>;
+  var page =   <?php echo $result['page']; ?>;//总页数
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a==pagenum) || isNaN(a)){
+		return false;
+	}else{
+		var url = "/mshop/admin/index.php?m=restricted_purchase&a=get_product_list&pagenum="+a+"&activity_id="+activity_id+"&customer_id=<?php echo $data['customer_id']; ?>";
+		if( search_product_id != ''){
+			url += '&search_product_id='+search_product_id;
+		}
+		if( search_product_name != '' ){
+			url += '&search_product_name='+search_product_name;
+		}
+		if( search_supply_id != '' ){
+			url += '&search_supply_id='+search_supply_id;
+		}
+		if( search_type_id > 0 ){
+			url += '&search_type_id='+search_type_id;
+		}
+		if( search_other_id > 0 ){
+			url += '&search_other_id='+search_other_id;
+		}
+		if( search_source > 0 ){
+			url += '&search_source='+search_source;
+		}
+		document.location= url;
+	}
+}
+//返回
+$('.close-float-table').click(function(){
+	history.go(-1);
+});
+
+//输入框按回车键触发搜索
+$('.header-left').find('input').on('keydown',function(){
+	if( event.keyCode == 13 ){
+		$('.search-button').click();
+	}
+});
+
+function addProduct(){
+	var temp = new Array();
+	var arr  = new Array();
+	$('.product-info-checkbox:checked').each(function(i){
+		var product_id = $(this).parents('.product_list').find('#product_id').val();
+		var now_price  = $(this).parents('.product_list').find('#now_price').val();
+		temp.push(product_id,now_price);
+		arr.push(temp);
+		temp = new Array();
+	});
+	if(arr.length == 0){
+		alert('产品不能为空，请选择产品');
+		return false;
+	}
+
+	$.ajax({
+		url:'/mshop/admin/index?m=restricted_purchase&a=add_activity_product',
+		dataType: 'json',
+		type: 'post',
+		data: {
+			product_ids  : arr,
+			activity_id : activity_id
+		},
+		success: function(res){
+			if( res.errcode == '0' ){
+				alert(res.errmsg);
+				window.location="/mshop/admin/index?m=restricted_purchase&a=activity_product_list&activity_id="+activity_id;
+			}else{
+				alert(res.errmsg);
+			}
+		}
+	});
+}
+
+function searchProduct(){
+    var search_product_id   = $('#search_product_id').val();
+	var search_product_name = $('#search_product_name').val();
+	var search_supply_id    = $('#search_supply_id').val();
+	var search_type_id 		= $('#search_type_id').val();
+	var search_other_id 	= $('#search_other_id').val();
+	var search_source 		= $('#search_source').val();
+	var url = "/mshop/admin/index.php?m=restricted_purchase&a=get_product_list&activity_id="+activity_id+"&customer_id=<?php echo $data['customer_id']; ?>";
+	if( search_product_id != ''){
+		url += '&search_product_id='+search_product_id;
+	}
+	if( search_product_name != '' ){
+		url += '&search_product_name='+search_product_name;
+	}
+	if( search_supply_id != '' ){
+		url += '&search_supply_id='+search_supply_id;
+	}
+	if( search_type_id != "" ){
+		url += '&search_type_id='+search_type_id;
+	}
+	if( search_other_id > 0 ){
+		url += '&search_other_id='+search_other_id;
+	}
+	if( search_source > 0 ){
+		url += '&search_source='+search_source;
+	}
+	document.location= url;
+}
+
+//全选操作
+$("#ck_all").click(function(){
+	$("input[name='pro_ids']").attr("checked",this.checked);
+});
+$("input[name='pro_ids']").click(function(){
+	if(!this.checked){
+		$("#ck_all").attr("checked",this.checked);
+	}
+});
+
+//正整数
+function clearInt(obj){
+	if(obj.value.length==1){obj.value=obj.value.replace(/[^1-9]/g,'')}else{obj.value=obj.value.replace(/\D/g,'')}
+}
+function clearInt2(obj){
+	obj.value=obj.value.replace(/[^1-9]/g,'');
+	if(obj.value !=''){
+		if(obj.value<1){
+			obj.value=1;
+		}else if(obj.value>5){
+			obj.value=5;
+		}
+	}
+	
+}
+//两位小数
+function clearFloat(obj){
+	obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+	obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字而不是
+	obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+	obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+	obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
+}
+
+function change_pro(obj){
+	$("#change_pro").val(obj);
+}
+function if_refund(obj){
+	$("#if_refund").val(obj);
+}
+function if_return_pro(obj){
+	$("#if_return_pro").val(obj);
+}
+</script>
+
+</body>
+</html>

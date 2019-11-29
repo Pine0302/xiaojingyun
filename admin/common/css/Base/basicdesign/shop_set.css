@@ -1,0 +1,38 @@
+input{
+	width:100px;
+	height:24px;
+	border:1px solid #e7e7e7;
+	border-radius: 2px;
+	text-align:center;
+	margin-right:5px;
+	margin-left: 10px;
+}  
+.WSY_remind_main dl .no_left{
+	margin-left:0px;
+}
+.WSY_remind_main dl span{
+	line-height: 24px;
+	margin-left:20px;
+	margin-right:5px;
+	color:#727272;
+}
+.WSY_remind_main dl ul{
+	float:left;
+} 
+.WSY_remind_main  .WSY_remind_dl02{
+	margin-left:0px;
+}
+.WSY_remind_dl02 dt{
+	line-height: 24px;
+	width: 235px;
+	font-weight: normal; 
+	font-size: 14px;
+	text-align: right;
+}
+.submit_div{
+	text-align:center;
+	margin-bottom: 50px;
+}
+.submit_div input{
+	float:none;
+}

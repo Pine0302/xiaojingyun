@@ -1,0 +1,24 @@
+#share{position:fixed;bottom:62px;left:90%;width:30px;zoom:1;z-index:9000;opacity: 0.8;}
+#share a{
+	background-image:url(/weixinpl/mshop/images/list_image/wa4.png);background-repeat:no-repeat;display:block;width:30px;height:30px;overflow:hidden;text-indent:-999px;
+	background-size: cover;margin:0;
+}
+#share .hideicon{background-position:0 0;}
+#share a.hideicon:hover{background-position:0 0;}
+#share .hideicon.close{bottom:60px;transform:rotate(180deg);-webkit-transform:rotate(180deg);}
+#share .homepage{background-position:0 -30px;}
+#share a.homepage:hover{background-position:0 -30px;}
+#share .personal{background-position:0 -60px;}
+#share a.personal:hover{background-position:0 -60px;}
+#share .pingtuan{background-position:0 -232px;height: 30px;}
+#share a.pingtuan:hover{background-position:0 -232px;}
+#share .eye{background-position:0 -90px;}
+#share a.eye:hover{background-position:0 -90px;}
+#share .heart{background-position:0 -120px;}
+#share a.heart:hover{background-position:0 -120px;}
+#share .chat{background-position:0 -182px;}
+#share a.chat:hover{background-position:0 -182px;}
+#share .supply_chat{background-position:0 -182px;}
+#share a.supply_chat:hover{background-position:0 -182px;}
+#share a#totop{background-position:0 -210px;cursor:pointer;display: none;position:relative;bottom:none;}
+#share a#totop:hover{background-position:0 -210px;}

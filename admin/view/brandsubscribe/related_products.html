@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>关联产品</title>
+    <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+    <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+    <link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Product/product.css"><!--内容CSS配色·蓝色-->
+    <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+    <style type="text/css">
+        .form-btn{width:auto!important;padding:0 10px!important;cursor:pointer;color:#fff!important;border:0!important;}
+        .form-add-btn{display:inline-block;line-height:30px;border-radius:3px;margin:18px 0 0 18px;min-width:80px;font-size:14px;text-align:center;}
+        .table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+        .tbody-main td{text-align:center!important;}
+        .tbody-img{max-width:100%;max-height:80px;}
+        .tbody-main .ipt{border-radius:2px;border:solid 1px #ddd;box-sizing:border-box;padding:0 10px;height:28px;line-height:28px;text-align:center;}
+        .at-btn-content{margin:20px 0;text-align:center;}
+        .at-btn-content .hold-btn{float:none;}
+        .fixed_img{width: 60%;height: 60px;margin-top: 2px;}
+        .ellipsis{text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+    </style>
+</head>
+<body>
+    <!--内容框架开始-->
+    <div class="WSY_content" id="WSY_content_height">
+        <!--列表内容大框开始-->
+        <div class="WSY_columnbox"> 
+            <div class="WSY_column_header">
+                <div class="WSY_columnnav">
+                    <a class="white1">关联产品</a>
+                </div>
+            </div>
+            <!--产品管理代码开始-->
+            <div class="WSY_data">
+                <div class="WSY_agentsbox">
+                    <a onclick="baocun(1);" class="WSY-skin-bg form-btn form-add-btn">添加产品</a>
+                    <table width="97%" class="WSY_table" id="WSY_t1">
+                        <thead class="WSY_table_header">
+                            <th width="5%" nowrap="nowrap"align="center">序号</th>
+                            <th width="10%" nowrap="nowrap"align="center">产品图片</th>
+                            <th width="8%" nowrap="nowrap"align="center">产品编码</th>
+                            <th width="10%" nowrap="nowrap"align="center">产品名称</th>
+                            <th width="10%" nowrap="nowrap"align="center">产品分类</th>
+                            <th width="8%" nowrap="nowrap"align="center">产品现价</th>
+<!--                             <th width="8%" nowrap="nowrap"align="center">关联礼包</th> -->
+<!--                             <th width="8%" nowrap="nowrap"align="center">礼包时限</th> -->
+                            <th width="7%" nowrap="nowrap"align="center">复购价格</th>
+                            <th width="8%" nowrap="nowrap"align="center">限购数量
+                            <img style="width:15px;margin-top: 5px;background: #FFFfff;border-radius: 100%;" id="xiangou" src="/mshop/admin/Common/images/Base/help.png"></th>
+                            <th width="8%" nowrap="nowrap"align="center">每人每月限制
+                            <img style="width:15px;margin-top: 5px;background: #FFFfff;border-radius: 100%;" id="xianzhi2" src="/mshop/admin/Common/images/Base/help.png"></th>
+                            <th width="8%" nowrap="nowrap"align="center">每人每天限制
+                            <img style="width:15px;margin-top: 5px;background: #FFFfff;border-radius: 100%;" id="xianzhi" src="/mshop/admin/Common/images/Base/help.png"></th>
+                            <th width="10%" nowrap="nowrap"align="center">操作</th>
+                        </thead>
+                        <tbody class="tbody-main">
+                            <?php foreach ($data as $key => $row) { ?>
+                            <tr id="id_<?php echo $row['id'];?>">
+                                <td><?php echo $row['id'];?></td>
+                                <td><img src="<?php echo $row['default_imgurl'];?>" class="tbody-img fixed_img"></td>
+                                <td><?php echo $row['product_id'];?></td>
+                                <td class="str_name ellipsis"><?php echo $row['name'];?></td>
+                                <td class="str_type ellipsis"><?php echo $row['typename'];?></td>
+                                <td>￥<?php echo $row['now_price'];?></td>
+<!--                                 <td>
+                                    <select name="product_type" id="<?php echo 'search_type_id_'.$row['id'];?>" <?php if(($arr['status'] != 1) && $add_type!=1) { echo 'disabled';}?> onchange="pack('<?php echo $row['id'];?>')" style="width: 100%;height: 29px;">
+                                        <option value="">--请选择--</option>
+                                        <?php echo $row['type']; ?> 
+                                    </select>
+                                </td> -->
+<!--                                 <td></span><input <?php if($arr['status'] != 1 || ($row['limit_time']== 1 && $arr['package_type']==1) || ($row['limit_time'] == 2 && $arr['package_type']==2)) { echo 'disabled';}?> oninput='exint1(this)' onblur="saveExchange(this,'limit_time','<?php echo $row['id'];?>','<?php echo $row['limit_time'];?>','<?php echo $row['total_limit_num'];?>','<?php echo $row['day_limit_num'];?>')" type="text" data-val="<?php if($row['limit_time']== 1 && $arr['package_type']==1){echo '自然月';}else if($row['limit_time'] == 2 && $arr['package_type']==2){echo '自然年';}else{echo $row['limit_time'];}?>" name="limit_time" class="ipt" value="<?php if($row['limit_time']== 1 && $arr['package_type']==1){echo '自然月';}else if($row['limit_time'] == 2 && $arr['package_type']==2){echo '自然年';}else{echo $row['limit_time'];}?>" /></td> -->
+                                <td><input <?php if(($arr['status'] != 1) && $row['is_confirm']!= 0) { echo 'disabled';}?> oninput='checkint(this)' onblur="saveExchange(this,'activity_price','<?php echo $row['id'];?>')" type="text" data-val="<?php echo $row['activity_price'];?>" name="activity_price" class="ipt" value="<?php echo $row['activity_price'];?>"/></td>
+                                <td><input <?php if(($arr['status'] != 1) && $row['is_confirm']!= 0) { echo 'disabled';}?> oninput='exint2(this)' onblur="saveExchange(this,'total_limit_num','<?php echo $row['id'];?>','<?php echo $row['limit_time'];?>','<?php echo $row['total_limit_num'];?>','<?php echo $row['day_limit_num'];?>')" type="text" data-val="<?php echo $row['total_limit_num'];?>" name="total_limit_num" class="ipt" value="<?php echo $row['total_limit_num'];?>"/></td>
+                                <td><input <?php if(($arr['status'] != 1) && $row['is_confirm']!= 0) { echo 'disabled';}?> oninput='exint2(this)'  onblur="saveExchange(this,'month_limit_num','<?php echo $row['id'];?>','<?php echo $row['limit_time'];?>','<?php echo $row['total_limit_num'];?>','<?php echo $row['month_limit_num'];?>')" type="text" data-val="<?php echo $row['month_limit_num'];?>" name="month_limit_num" class="ipt" value="<?php echo $row['month_limit_num'];?>"/></td>
+                                <td><input <?php if(($arr['status'] != 1) && $row['is_confirm']!= 0) { echo 'disabled';}?> oninput='exint2(this)'  onblur="saveExchange(this,'day_limit_num','<?php echo $row['id'];?>','<?php echo $row['limit_time'];?>','<?php echo $row['total_limit_num'];?>','<?php echo $row['day_limit_num'];?>')" type="text" data-val="<?php echo $row['day_limit_num'];?>" name="day_limit_num" class="ipt" value="<?php echo $row['day_limit_num'];?>"/></td>
+                                <td>
+                                <?php if(($arr['status'] != 1) && $row['is_confirm']!= 0){ ?>
+                                    <button  class="table-btn" style="background-color:#a5a5a5;" disabled>删除</button>
+                                <?php }else{ ?>
+                                    <button onclick="delExchange('<?php echo $row['id'];?>',this)" class="table-btn WSY-skin-bg">删除</button>
+                                <?php } ?>
+                                </td>
+                            </tr>
+                            <?php }?>
+                        </tbody>
+                    </table>
+                    <div class="at-btn-content">
+                        <button onclick="baocun(2);" class="WSY_button hold-btn">保存</button>
+                    </div>
+                </div>
+                <!--翻页开始-->
+                <div class="WSY_page">
+                    
+                </div>
+                <!--翻页结束-->
+            </div>
+            <!--产品管理代码结束-->
+        </div>
+        <div style="width:100%;height:20px;"></div>
+    </div>
+    <!--内容框架结束-->
+</body>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script><!--添加时间插件-->
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript">
+var add_type = '<?php echo $add_type;?>'
+$("p").mouseleave(function(){
+  $("p").css("background-color","#E9E9E4");
+});
+
+$(".str_name").each(function(i,n){
+    var maxwidth=20;
+    if($(n).html().length>maxwidth){
+        $(n).html($(n).html().substring(0,maxwidth)+'…');
+    }
+});
+
+$(".str_type").each(function(i,n){
+    var maxwidth=5;
+    if($(n).html().length>maxwidth){
+        $(n).html($(n).html().substring(0,maxwidth)+'…');
+    }
+});
+
+<!-- 分页 start -->
+var customer_id = "<?php echo $customer_id;?>";
+var activity_id = "<?php echo $activity_id?>";
+var pagenum = <?php echo $pageNum ?>;//当前页
+var count =<?php echo $pageCount ?>;//总页数   
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+    pageCount:count,
+    current:pagenum,
+    backFn:function(p){
+    var url="/mshop/admin/index.php?m=brandsubscribe&a=related_products_list&activity_id="+activity_id+"&pagenum="+p+"&add_type="+add_type;    
+    location.href = url;
+   }
+});
+
+function offgo() {
+    window.location = "/mshop/admin/index.php?m=brandsubscribe&a=activity_management";
+}
+
+function jumppage(){
+    var a=parseInt($("#WSY_jump_page").val());
+    if((a<1) || (a>count) || isNaN(a)){
+        layer.alert('没有下一页了');
+        return false;
+    }else{
+        var url="/mshop/admin/index.php?m=brandsubscribe&a=related_products_list&activity_id="+activity_id+"&pagenum="+a+"&add_type="+add_type;    
+        location.href = url;
+    }
+}
+<!-- 分页 end -->
+
+function checkint(obj){
+    obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+    obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+    obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
+}
+
+function exint1(obj){
+    if (obj.value != '') {
+        // if (obj.value < 0) {
+        //     obj.value = 0;
+        // }
+
+        if (!isNaN(obj.value) && $.trim(obj.value) != "") {
+            obj.value = parseFloat(obj.value);
+        }
+    }
+}
+
+function exint2(obj){
+    if (obj.value != '') {
+        if (obj.value < -1) {
+            obj.value = -1;
+        }
+
+        if (!isNaN(obj.value) && $.trim(obj.value) != "") {
+            obj.value = parseFloat(obj.value);
+        }
+    }
+}
+
+function saveExchange(obj,str,id,lt,tln,dln) {
+    var activity_id  = "<?php echo $param['activity_id'];?>";
+    var ooo = $(obj);
+    var obj = $(obj).val();
+    var val = ooo.data('val');
+    var str = str;
+    var id  = id;
+    var aa  = '';
+    var sum_num = "";
+    switch(str) {
+        // case 'limit_time':
+        //         if($.trim(obj) == '') {
+        //             alert("请正确设置礼包时限");
+        //             $(ooo).val(val);
+        //             $(ooo).focus();
+        //             return false;
+        //         }
+
+        //         if($.trim(obj) == 0) {
+        //             alert("礼包时限不能为0");
+        //             $(ooo).val(val);
+        //             $(ooo).focus();
+        //             return false;
+        //         }
+
+        //         if(isNaN(obj) || (parseFloat(obj) < 0 || (0< parseFloat(obj) && parseFloat(obj) <0))){
+        //             alert("请正确设置礼包时限");
+        //             $(ooo).val(val);
+        //             $(ooo).focus();
+        //             return false;
+        //         }
+
+        //         if (obj == 1) {
+        //             sum_num = 30*Number(dln);
+        //         }else if(obj == 1){
+        //             sum_num = 365*Number(dln);
+        //         }else{
+        //             sum_num = Number(obj)*Number(dln);
+        //         }
+        //         // if (sum_num < tln && tln!=-1 && dln!=-1) {
+        //         //     alert("设置的数值*设置礼包时限必须大于或等于限购数量");
+        //         //     $(ooo).val(val);
+        //         //     $(ooo).focus();
+        //         //     return false;
+        //         // }
+        //         obj = parseFloat(obj);
+        //     break;
+        case 'activity_price':
+                // if (obj.substr(0,1)=='￥') {
+                //     obj=obj.substr(1);
+                // }
+
+                if($.trim(obj) == '') {
+                    alert("请正确设置复购价格");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }
+
+                if(isNaN(obj) || (parseFloat(obj) < 0 || (0< parseFloat(obj) && parseFloat(obj) <0))){
+                    alert("请正确设置复购价格");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }
+                aa = '￥';
+            break;
+        case 'total_limit_num':
+                if($.trim(obj) == '') {
+                    alert("请正确设置限购数量");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }
+
+                if(isNaN(obj) || (parseFloat(obj) < -1 || (-1< parseFloat(obj) && parseFloat(obj) <0))){
+                    alert("请正确设置限购数量");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }
+                if (lt == 1) {
+                    sum_num = 30*Number(dln);
+                }else if(lt == 1){
+                    sum_num = 365*Number(dln);
+                }else{
+                    sum_num = Number(lt)*Number(dln);
+                }
+                // if (sum_num < obj && obj!=-1 && dln!=-1) {
+                //     alert("设置的数值*设置礼包时限必须大于或等于限购数量");
+                //     $(ooo).val(val);
+                //     $(ooo).focus();
+                //     return false;
+                // }
+                if (obj<=0) {
+                    alert("限购数量不能小于0");
+                    $(ooo).val(1);
+                    $(ooo).focus();
+                    return false;
+                }
+            break;
+        case 'day_limit_num':
+                if($.trim(obj) == '') {
+                    alert("请正确设置每人每天限制");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }
+
+                if(isNaN(obj) || (parseFloat(obj) < -1 || (-1< parseFloat(obj) && parseFloat(obj) <0))){
+                    alert("请正确设置每人每天限制");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }  
+                if (lt == 1) {
+                    sum_num = 30*Number(obj);
+                }else if(lt == 1){
+                    sum_num = 365*Number(obj);
+                }else{
+                    sum_num = Number(lt)*Number(obj);
+                }
+                // if (sum_num < tln && tln!=-1 && obj!=-1) {
+                //     alert("设置的数值*设置礼包时限必须大于或等于限购数量");
+                //     $(ooo).val(val);
+                //     $(ooo).focus();
+                //     return false;
+                // }    
+            break;
+        case 'month_limit_num':
+                if($.trim(obj) == '') {
+                    alert("请正确设置每人每月限制");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }
+
+                if(isNaN(obj) || (parseFloat(obj) < -1 || (-1< parseFloat(obj) && parseFloat(obj) <0))){
+                    alert("请正确设置每人每月限制");
+                    $(ooo).val(val);
+                    $(ooo).focus();
+                    return false;
+                }  
+            break;
+    }
+
+    $.ajax({
+        url: '/mshop/admin/index.php?m=brandsubscribe&a=update_related',
+        dataType: 'json',
+        type: 'post',
+        data: {
+            activity_id:activity_id,
+            obj:obj,
+            id:id,
+            str:str,
+        },
+        success: function(res){
+            if( res.errcode == '1' ){
+                $(ooo).after('<span id="eximg" style="position: absolute;margin-top:-23px;margin-left: 20px"><img src="/weixin/plat/Public/img/loading/s_success.png"><span></span></span>');
+                setTimeout(function () { 
+                    $('#eximg').remove();
+                }, 1500);
+            }else{
+                alert("网络错误！");
+            }
+        }
+    });
+}
+
+//删除
+function delExchange(i,obj) {
+    var that = $(obj);
+    var activity_id  = "<?php echo $param['activity_id'];?>";
+    var id          = i;
+    var remark="您确定要删除该关联产品吗？";
+    layer.confirm(remark, {
+        title:'警告',
+        btn: ['确认','取消']
+    }, function(confirm){
+    $.ajax({
+        url: '/mshop/admin/index.php?m=brandsubscribe&a=del_related',
+        dataType: 'json',
+        type: 'post',
+        data: {
+            activity_id:activity_id,
+            id:id
+        },
+        success: function(res){
+            if( res.errcode == '1' ){
+                // alert(res.errmsg);
+                // window.location = "/mshop/admin/index?m=brandsubscribe&a=related_products_list&activity_id="+activity_id+"&pagenum=1";
+            layer.alert(res.errmsg);
+            that.parent('td').parent().remove();
+            }else{
+                alert(res.errmsg);
+            }
+        }
+    });
+    });
+}
+
+// $(document).ready(function() { 
+//     var ceshi = '<?php echo $_GET['pagenum'];?>';
+
+//     if (ceshi == '') {
+//         localStorage.clear();
+//     }
+
+//     var id = localStorage.getItem("add");
+//     // console.log(id);
+//     var arr = id.split(',');
+//     $.each(arr,function(n,value){
+//         // console.log($("#id_"+value));
+//         $("#id_"+value).find('input').removeAttr("disabled");
+//     });
+// });
+$('#xiangou').on('click', function(){
+    layer.tips('每个用户在礼包规定时限内可购买总量,只能设置大于0的整数','#xiangou');
+});
+$('#xianzhi').on('click', function(){
+    layer.tips('每个用户每天最多可买的数量，默认-1不限制，可输入正整数','#xianzhi');
+});
+$('#xianzhi2').on('click', function(){
+    layer.tips('每个用户每月最多可买的数量，默认-1不限制，可输入正整数','#xianzhi2');
+});
+// function pack(id){
+//     var package_id = $("#search_type_id_"+id).val();
+//     console.log(package_id);
+//     console.log(id);
+//     $.ajax({
+//         url: '/mshop/admin/index.php?m=brandsubscribe&a=upd_pack',
+//         dataType: 'json',
+//         type: 'post',
+//         data: {
+//             package_id:package_id,
+//             activity_id:activity_id,
+//             id:id
+//         },
+//         success: function(res){
+//             if( res.errcode == '1' ){
+//                 console.log(res.package_id);
+//                 console.log(res.pack_id);
+//                 layer.alert(res.errmsg);
+//                 // var url = "/mshop/admin/index?m=brandsubscribe&a=related_products_list&activity_id="+activity_id+"&pagenum=1&add_type="+add_type;
+//                 setTimeout("location.reload()",2000);
+//                 // window.location = "/mshop/admin/index?m=brandsubscribe&a=related_products_list&activity_id="+activity_id+"&pagenum=1&add_type="+add_type;
+//             }else{
+//                 layer.alert(res.errmsg);
+//                 setTimeout("location.reload()",2000);
+//                 // window.location = "/mshop/admin/index?m=brandsubscribe&a=related_products_list&activity_id="+activity_id+"&pagenum=1&add_type="+add_type;
+//             }
+//         }
+//     });
+// }
+function baocun(type){
+    if (type==1) {//添加产品
+        window.location = "index.php?m=brandsubscribe&a=related_products_add&activity_id=<?php echo $param['activity_id'];?>&add_type=<?php echo $add_type; ?>";
+    }else if(type==2){//保存
+        var activity_id  = "<?php echo $param['activity_id'];?>";
+        $.ajax({
+            url: '/mshop/admin/index.php?m=brandsubscribe&a=sava_relate_prod',
+            dataType: 'json',
+            type: 'post',
+            data: {
+                activity_id:activity_id,
+            },
+            success: function(res){
+                if( res.errcode == '1' ){
+                layer.msg(res.errmsg, {
+                      icon: 1,
+                      time: 2000
+                    },function(){
+                  window.location = "/mshop/admin/index.php?m=brandsubscribe&a=activity_management";
+                }); 
+                }else{
+                    alert(res.errmsg);
+                }
+            }
+        });
+    }
+}
+</script>   
+</html>

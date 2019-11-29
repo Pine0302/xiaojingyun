@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link type="text/css" rel="stylesheet" rev="stylesheet" href="css/css2.css" media="all">
+        <link href="css/add/css/global.css" rel="stylesheet" type="text/css">
+        <link href="css/add/css/main.css" rel="stylesheet" type="text/css">
+        <link href="css/add/css/shop.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/css_V6.0/content.css">
+        <link rel="stylesheet" type="text/css" href="css/css_V6.0/contentblue.css">
+
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <style type="text/css">
+            a:hover {
+                text-decoration: none;
+            }
+            
+            .button_blue {
+                cursor: pointer;
+                margin-left: 10px;
+                font-size: 14px;
+                line-height: 30px;
+                background-color: #06a7e1;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-radius: 3px 3px 3px 3px;
+                margin-top: 20px;
+                color: #fff;
+            }
+            
+            .button_blue:hover {
+                background: #0e98c9;
+            }
+            
+            .name {
+                margin-top: 10px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 13px;
+                text-align: left;
+                font-weight: bolder;
+                margin-left: 19px;
+            }
+            
+            .button_box {
+                width: 296px;
+                display: block;
+                text-align: right;
+            }
+            
+            .button_box .WSY_button {
+                border-radius: 2px;
+                border: none;
+            }
+            
+            .WSY_remind_dl02 {
+                margin: 15px 0 !important;
+            }
+            
+            .WSY_remind_dl02 dt {
+                min-width: 120px;
+                text-align: right;
+            }
+            
+            .WSY_remind_dl02 .img-right {
+                margin-right: 10px;
+            }
+            
+            .WSY_remind_dl02 input {
+                width: 400px;
+                height: 24px;
+                border: 1px solid #dddddd;
+                border-radius: 2px;
+                padding-left: 5px;
+            }
+            
+            .WSY_remind_dl02 dd ul {
+                float: left;
+                overflow: hidden;
+                background-color: #cbd2d8;
+                width: 50px;
+                height: 20px;
+                border-radius: 300px;
+                position: relative;
+            }
+            
+            .WSY_remind_dl02 dd ul p {
+                position: absolute;
+                font-size: 12px;
+                font-family: "Arial";
+                line-height: 20px;
+            }
+            
+            .WSY_remind_dl02 dd ul li {
+                width: 16px;
+                height: 16px;
+                border-radius: 300px;
+                background: #fff;
+                position: absolute;
+                z-index: 999;
+                margin-left: 2px;
+                margin-top: 2px;
+                cursor: pointer;
+            }
+            
+            .WSY_remind_dl02 dd ul span {
+                width: 16px;
+                height: 16px;
+                border-radius: 300px;
+                background: #fff;
+                position: absolute;
+                margin-left: 2px;
+                margin-top: 2px;
+                cursor: pointer;
+            }
+            
+            .kf_type_div i {
+                display: none;
+                float: left;
+                margin-right: 10px;
+                height: 20px;
+            }
+            
+            .kf_type {
+                margin-right: 2px;
+                margin-top: 6px;
+                display: block;
+                float: left;
+            }
+            
+            .kf_input {
+                width: 150px;
+                height: 24px;
+                border: solid 1px #ccc;
+                border-radius: 2px;
+                margin-left: 2px;
+            }
+            
+            .WSY_remind_dl01,
+            .WSY_remind_dl02,
+            .WSY_remind_dl03 {
+                margin: 10px 0px;
+            }
+            
+            .textcss {
+                width: 400px;
+                height: 200px;
+                border: 1px solid #dddddd;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="WSY_content">
+            <div class="WSY_columnbox">
+                <div class="WSY_column_header">
+                    <div class="WSY_columnnav">
+                        <a class="white1">品牌合作商申请资料</a>
+                    </div>
+                </div>
+                <form action="savebrand_supply.php?customer_id=<?php echo passport_encrypt((string)$customer_id) ?>&supply_id=<?php echo $supply_id; ?>" enctype="multipart/form-data" id="brand_supply" method="post">
+
+                    <div id="products" class="r_con_wrap">
+                        <div style="margin-top:20px">
+
+                            <dl class="WSY_remind_dl02">
+                                <dt>合作商编码</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>合作商姓名</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>合作商联系号码</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>身份证号</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>省市区</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>详细地址</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>公司名称</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>公司电话</dt>
+                                <dd>
+                                    <input type="text" name="" value="">
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>店铺简介</dt>
+                                <dd>
+                                    <textarea name="" id="" style="width:405px;height:100px;border:1px solid #dddddd;" maxlength="200"></textarea>
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>公司营业执照：</dt>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt></dt>
+                                <dd style="margin-left: 30px;">
+                                    <img class="img-right" src="img/gift.png" style="max-width:200px;" onMouseOver="toolTip('<img src=img/gift.png>')" onMouseOut="toolTip()" />
+                                    <img class="img-right" src="img/gift.png" style="max-width:200px;" onMouseOver="toolTip('<img src=img/gift.png>')" onMouseOut="toolTip()" />
+                                    <img class="img-right" src="img/gift.png" style="max-width:200px;" onMouseOver="toolTip('<img src=img/gift.png>')" onMouseOut="toolTip()" />
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>身份证正反两面：</dt>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt></dt>
+                                <dd style="margin-left: 30px;">
+                                    <img class="img-right" src="img/gift.png" style="max-width:200px;" onMouseOver="toolTip('<img src=img/gift.png>')" onMouseOut="toolTip()" />
+                                    <img class="img-right" src="img/gift.png" style="max-width:200px;" onMouseOver="toolTip('<img src=img/gift.png>')" onMouseOut="toolTip()" />
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>公司LOGO：</dt>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt></dt>
+                                <dd style="margin-left: 30px;">
+                                    <img class="img-right" src="img/gift.png" style="max-width:200px;" onMouseOver="toolTip('<img src=img/gift.png>')" onMouseOut="toolTip()" />
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>店铺二维码背景图：</dt>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt></dt>
+                                <dd style="margin-left: 30px;">
+                                    <img class="img-right" src="img/gift.png" style="max-width:200px;" onMouseOver="toolTip('<img src=img/gift.png>')" onMouseOut="toolTip()" />
+                                </dd>
+                            </dl>
+                            <dl class="WSY_remind_dl02">
+                                <dt>是否开启在线客服：</dt>
+                                <dd>
+                                    <ul style="background-color: rgb(203, 210, 216);">
+                                        <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                        <li  class="WSY_bot" style="display: none; left: 30px;"></li>
+                                        <span  class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                    </ul>
+                                    <div class="kf_type_div" id="kf_type_div">
+                                        <i class="kf_type_set" style="margin-left:5px ">
+                                            <input type="radio" class="kf_type" style="height:15px;width:15px;" value="1" name="kefu_type">
+                                            <span style="float:left">QQ客服</span>
+                                            <input class="kf_input" style="width:230px;height:20px;" type="text" value="" name="supply_qq" >
+                                        </i>
+                                        <i>
+                                            <input type="radio" class="kf_type" style="height:15px;width:15px;" value="2" name="kefu_type">
+                                            <span style="float:left">小能客服接待组</span><input class="kf_input" style="width:230px;height:20px;" type="text" value="" name="xiaoneng" >
+                                            <input type="hidden" name="is_kefu" id="is_kefu" value="<?php echo $is_kefu; ?>" />
+                                        </i>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <span class="button_box">
+                        <input type=button class="WSY_button"  value="提交" onclick="submitV();"  style="float:none"/>
+                        &nbsp;  
+                        <input type=button class="WSY_button"  value="取消" style="float:none" />
+                    </span>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="js/tis.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
+    <script language="javascript" src="js/ToolTip.js"></script>
+    <script>
+        function submitV() {
+            $("#brand_supply").submit();
+        }
+
+//      function set_need_kefu(obj) {
+//          $("#is_kefu").val(obj);
+//          //console.log('obj='+obj);
+//          if(obj == 0) {
+//              $("#kf_type_div").hide();
+//          } else {
+//              $("#kf_type_div").show();
+//          }
+//      }
+// --------显示控制开关效果
+    $(function(){
+    $(".WSY_bot").click(function(){
+        $(this).animate({left : '30px'});
+        $(this).parent().find(".WSY_bot2").animate({left : '30px'});
+        $(this).hide();
+        $(this).parent().find(".WSY_bot2").show();
+        $(this).parent().find("p").animate({margin : '0 0 0 13px'}, 500);
+        
+        $(this).parent().find("p").html('关');
+        $(this).parent().css({backgroundColor : '#cbd2d8'});
+        $(this).parent().find("p").css({color : '#7f8a97'});
+        $("#kf_type_div i").css('display','none');
+        })
+        
+    $(".WSY_bot2").click(function(){
+        $(this).parent().find(".WSY_bot").animate({left : '0px'});
+        $(this).animate({left : '0px'});
+        $(this).parent().find(".WSY_bot").show();
+        $(this).hide();
+        $(this).parent().find("p").animate({margin : '0 0 0 27px'}, 500);
+        
+        $(this).parent().find("p").html('开');
+        $(this).parent().css({backgroundColor : '#ff7170'});
+        $(this).parent().find("p").css({color : '#fff'});
+        $("#kf_type_div i").css('display','block');
+        })
+    })
+    </script>
+
+</html>

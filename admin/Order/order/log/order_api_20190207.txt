@@ -1,0 +1,19 @@
+
+batchcode=======NULL
+op======='attribution'
+
+batchcode=======NULL
+op======='attribution'
+
+batchcode======='3499721545878375760341072'
+op======='confirm'
+json=======array (
+  'status' => 0,
+  'line' => 820,
+  'msg' => '编号：3499721545878375760341072，确认完成',
+)
+json2=======array (
+  'status' => 0,
+  'line' => 820,
+  'msg' => '编号：3499721545878375760341072，确认完成',
+)

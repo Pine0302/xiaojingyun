@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>绑定微视页面</title>
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/content.css">
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/contentblue.css"><!--内容CSS配色·蓝色-->
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/base_set.css">
+    <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/addons/common/js/layer/V2_1/layer.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body style="background:#fff;">
+<!--内容框架-->
+<div class="WSY_content">
+    <div>
+        <div class="WSY_data" style="text-align:center; margin-top:100px;">
+            <div style="width:700px; height:370px; border-radius:10px; margin:0 auto; box-shadow:#666 0px 0px 5px;">
+                <div style="border-top-left-radius:10px; border-top-right-radius:10px; height:130px;">
+                    <img src="<?=$weishi_data['ws_logo']?>" style="margin-top:10px;width:150px">
+                </div>
+                <div style="margin-top:80px;margin-bottom:40px;">
+                    <div style="color:#20c13b; font-family:微软雅黑; font-size:26px;">已绑定"<?=$weishi_data['ws_name']?>"</div>
+                </div>
+                <div style="display:inline-block;vertical-align:top;line-height:28px;">授权说明：</div>
+                <div style="display:inline-block;text-align:left;width:80%;line-height:28px;">
+                    <div>1、绑定成功后商城与知识付费系统将共用同个公众账号和小程序，公众账号设置以知识付费系统为主；</div>
+                    <div>2、解绑请点击【<a style="color:#2894FF" href="<?=$url?>">知识付费>绑定知识付费</a>】，进行解绑；</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+
+</script>
+</body>
+</html>

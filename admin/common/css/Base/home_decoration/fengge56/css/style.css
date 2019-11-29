@@ -1,0 +1,40 @@
+/* Body、顶部界面开始*/
+*{margin: 0;padding: 0;}
+img{max-width: 100%;border:none;}
+a{text-decoration: none;color: black;}
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;-webkit-text-size-adjust:none;background: #fff;}
+input[type='number'],input[type='password'],input[type='reset'],input[type='submit'],input[type='button'],input[type='tel'],button,textarea{-webkit-appearance:none;border-radius: 0;border:1px solid #ddd;} /*去掉苹果的默认UI来渲染按钮*/
+.clear{clear: both; display: block; height: 0; overflow: hidden; visibility: hidden; width: 0;}
+ol,ul {list-style: none;}  
+h1,h2,h3,h4,h5,h6 {font-weight: normal;}   
+/* 样式home1*/
+.w100 img{width: 100%;}
+.scroll img{display: block;width: 100%;}
+.search-layer{width: 96%;background:#fafafa;border-radius: 3px;border:1px solid #c9c9c9;position: relative;height: 34px;margin:3px auto;}
+.search-button{float: right;width: 40px;height: 35px;background: url('../images/search.png') no-repeat;background-size: 18px;border: 0;background-position:center;}
+.search-input{float:left;width:80%;border-radius: 3px;text-indent: 15px;border:0 none;background:#fafafa;line-height: 34px;font-size: 15px;color: #fff;}
+.t-box{font-size: 0px;margin:5px 0;}
+.t-box .t-box-img{display:inline-block;width: 50%;}
+.f-box{font-size: 0px;margin:5px 0;}
+.f-box .f-box-img{display:inline-block;width:25%;}
+.k-box{font-size: 0px;margin:5px 0;}
+.k-box .k-box-img{display:inline-block;width: 49%;}
+.k-box img:first-child{margin-right: 2%;}
+.custom-line-wrap {height: 30px;position: relative;}
+.custom-line {border: 0;border-top: 1px dashed #ddd;margin: auto;padding: 0;height: 1px;width: 100%;position: absolute;left: 0; top: 0;right: 0;bottom: 0;}
+.floor{border-bottom:1px solid #c9c9c9;margin-bottom: 10px;}
+.img-floor{margin-bottom:10px;display: block;width: 100%;}
+.pro-box{box-sizing: border-box;border-top:1px solid #c9c9c9;border-left:1px solid #c9c9c9;width: 50%;float: left;position: relative;}
+.pro-box img{width: 100%;}
+p.goods-title {height: 22px;line-height: 22px;color: #333;font-size: 14px;width: 95%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;padding: 0 4px;}
+.goods-pirce {font-size: 16px;color: #f61d4b;font-weight: 700;margin:10px 0;display: block;text-indent: 5px;}
+.yen {font-size: 12px;}
+.addcart {height: 32px;width: 32px;position: absolute; bottom: 5px;right: 6px;background: #dd2727;border-radius: 50%; webkit-border-radius: 50%;}
+.addcart i {display: block;margin: 6px 0 0 6px;height: 20px;width: 20px;background: url('../images/ico-addcart.png') no-repeat;background-size: 100% 100%;}
+.clear-fix{height: 50px;width: 100%;}
+.footer{width: 100%;height: 50px;background:#fff;bottom: 0;left: 0;right: 0;}
+.footer .footer-box{margin:0 auto;width: 100%;height: 50px;position:relative;}
+.footer .footer-box .weidian{width: 25%;height: 45px;float: left;text-align: center;margin-top: 5px;}
+.footer .footer-box .weidian img{width: 25px;height: 25px;}
+.footer .footer-box .weidian p{font-size: 12px;color: #a6a6a6;}
+.footer .footer-box .weidian.active p{color:#64b83c;white-space:nowrap;text-overflow:clip;overflow: hidden;}

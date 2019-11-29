@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>活动管理－添加活动</title>
+	<link rel="stylesheet" type="text/css" href="../../../common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="../../../common/css_V6.0/content<?php echo $theme; ?>.css">
+	<script type="text/javascript" src="../../../common/js/jquery-1.7.2.min.js"></script>
+	<style type="text/css">
+		.at-main{margin:30px 0 0 30px;}
+		.at-main li{font-size:14px;color:#666;margin:15px 0;}
+		.at-main .ipt{border-radius:2px;border:solid 1px #ddd;box-sizing:border-box;padding:0 10px;height:28px;line-height:28px;}
+		.at-main .at-lable{display:inline-block;vertical-align:middle;margin:0 50px 0 0;}
+		.at-main .at-lable input{vertical-align:middle;margin:-2px 3px 0 3px;}
+		.at-main .at-tips{position:relative;}
+		.at-tips .tips-img{position:absolute;width:12px;right:-15px;top:0;cursor:pointer;}
+		.at-btn-content{margin:20px 60px 20px 150px;}
+		.at-btn-content .hold-btn{float:none;}
+	</style>
+</head>
+<body>
+	<!--内容框架开始-->
+	<div class="WSY_content" id="WSY_content_height">
+	    <!--列表内容大框开始-->
+		<div class="WSY_columnbox">	
+			<div class="WSY_column_header">
+				<div class="WSY_columnnav">
+					<a class="white1">添加活动</a>
+				</div>
+			</div>
+		    <!--产品管理代码开始-->
+		    <div class="WSY_data">
+				<ul class="at-main">
+					<li>活动名称：<input type="text" id="tit" name="title" class="ipt" style="min-width:150px;" /></li>
+					<li>活动时间：<input class="ipt" type="text" id="begintime" name="starttime" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px" />
+						 至
+						<input class="ipt" type="text" id="endtime" name="endtime" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px"/></li>
+					<li>每笔订单参与门槛，满 <input id="threshold" type="text" name="threshold" class="ipt">￥</li>
+					<li>每笔订单可换赠产品总量 <input id="exchange_num" type="text" name="exchange_num" class="ipt"></li>
+					<li>是否支持叠加活动：
+						<label class="at-lable at-tips">
+							<input type="radio" name="is_superposition" value="1">是
+							<img class="tips-img" src="../../Common/images/Base/help.png" data-tips="举例：满59元加3元换购，满160元加1元换购；当选择是，用户订单满160元，能换购满160元的1元产品，也能换购满59元的3元产品"/>
+						</label>
+						<label class="at-lable at-tips">
+							<input type="radio" name="is_superposition" value="2">否
+							<img class="tips-img" src="../../Common/images/Base/help.png" data-tips="举例：满59元加3元换购，满160元加1元换购；当选择否，用户订单满160元，只能换购满160元的1元产品"/>
+						</label>
+					</li>
+					<li>是否立即发布：
+						<label class="at-lable"><input type="radio" name="status" value="1">是</label>
+						<label class="at-lable"><input type="radio" name="status" value="2">否</label>
+					</li>
+				</ul>
+				<div class="at-btn-content">
+					<button id="btn" class="WSY_button hold-btn">保存</button>
+				</div>
+		    </div>
+		    <!--产品管理代码结束-->
+		</div>
+	</div>
+	<!--内容框架结束-->
+</body>
+<script type="text/javascript" src="../../../js/WdatePicker.js"></script><!--添加时间插件-->
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript">
+	$('.tips-img').on('click', function(){
+		var text = $(this).data('tips');
+		layer.tips(text,this);
+	});
+
+	//保存
+	$('#btn').click(function(){
+		var title              = $('#tit').val();
+		var begintime          = $('#begintime').val();
+		var endtime            = $('#endtime').val();
+		var threshold          = $('#threshold').val();
+		var exchange_num       = $('#exchange_num').val();
+		var is_superposition   = $('input:radio[name="is_superposition"]:checked').val();
+		var status      	   = $('input:radio[name="status"]:checked').val();
+
+		$.ajax({
+			url: '/mshop/admin/index.php?m=exchange&a=save_exchange',
+			dataType: 'json',
+			type: 'post',
+			data: {
+				title:title,
+				begintime:begintime,
+				endtime:endtime,
+				threshold:threshold,
+				exchange_num:exchange_num,
+				is_superposition:is_superposition,
+				status:status
+			},
+			success: function(res){
+				alert(res);
+				console.log(res);
+				// if( res.errcode == '0' ){
+				// 	alert(res.errmsg);
+				// 	window.location = "/mshop/admin/index?m=exchange&a=";
+				// }else{
+				// 	alert(res.errmsg);
+				// }
+			}
+		});
+	});
+</script>	
+</html>

@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户管理</title>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/inside.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+</head>
+<style>
+.operation-btn{display:inline-block;padding:0 15px;background-color:#06a7e1;color:#fff;border-radius:3px;cursor:pointer;height:30px;line-height:30px;}
+.WSY_list{width:97%;margin-left:18px;}
+.header-left{float:left;}
+.header-left span,.header-left input,.header-left select{vertical-align:middle;}
+a:hover{text-decoration: none!important;}
+.tips{margin-left:40px;position: absolute;margin-top: 13px;}
+.tips span{font-size:15px;margin-left: 10px;}
+table#WSY_t1 td{text-align: center;}
+#export_button {
+    display: inline-block;
+    padding: 0 15px;
+    background-color: #06a7e1;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+}
+</style>
+<body>
+<!--内容框架开始-->
+<div class="WSY_content" id="WSY_content_height">
+
+       <!--列表内容大框开始-->
+	<div class="WSY_columnbox">
+    <div class="WSY_column_header">
+        	<div class="WSY_columnnav">
+				<a <?php if($search_class == 0){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=get_activity_list">活动管理</a>
+				<a <?php if($search_class == 1){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=product_sales_statistics">销量统计</a>
+				<a <?php if($search_class == 2){echo 'class="white1"';} ?> href="/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list">用户管理</a>
+				<a <?php if($search_class == 3){echo 'class="white1"';} ?> href="/weixinpl/back_newshops/Order/order/order.php?customer_id=<?php echo passport_encrypt($customer_id)?>&from_page=<?php echo $from_page;?>&f2c_id=<?php echo $f2c_id;?>&orgin_type=5">订单管理</a>
+			</div>
+	</div>
+    <div class="WSY_data">
+    	<div class="WSY_list">
+			<div class="header-left">
+				<span>用户名:</span><input type="text" id="search_user_name" value="<?php echo $search_user_name; ?>" onkeyup="ValidateValue(this)" />
+				<span>用户ID：</span><input type="text" id="search_user_id" value="<?php echo $search_user_id; ?>" onkeyup="ValidateValue(this)"/>
+				<span>手机号：</span><input type="text" id="search_phone" value="<?php echo $search_phone; ?>" onkeyup="ValidateValue(this)" />
+			
+				<span>创建时间：</span><input class="date_picker" type="text" name="search_begintime" id="search_begintime" value="<?php echo $search_begintime; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+				&nbsp;&nbsp;-&nbsp;&nbsp;<input class="date_picker" type="text" name="search_endtime" id="search_endtime" value="<?php echo $search_endtime; ?>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});">
+					
+				<span class="operation-btn" id="search-button">搜索</span>
+				<span class="operation-btn" id="export_button" onclick="exportExcel();">导出</span>
+			</div>
+    </div>
+			<table width="97%" class="WSY_table" id="WSY_t1">
+				<thead class="WSY_table_header">
+					<th width="7%">用户编码</th>
+					<th width="5%">头像</th>
+					<th width="10%">用户名</th>
+					<th width="8%">微信号</th>
+					<th width="8%">手机</th>
+					<th width="15%">推荐人</th>
+					<th width="8%">注册时间</th>
+					<th width="8%">限购订单总额	</th>
+				</thead>
+				<?php
+					foreach($result['user_list'] as $v){
+				?>
+				<tr>
+					<td><?php echo $v['id']; ?></td>
+					<td><img src="<?php echo $v['weixin_headimgurl'];?>" style="width:50px;height:50px;" /></td>
+					<td><?php echo $v['name']; ?></td>
+					<td><?php echo $v['weixin_name']; ?></td>
+					<td><?php echo $v['phone']; ?></td>
+					<td><?php echo $v['parent_name']; ?></td>
+					<td><?php echo $v['createtime']; ?></td>
+					<td><?php echo $v['order_num']; ?></td>
+				</tr>
+				<?php }?>
+			</table>
+    	</div>
+        <!--翻页开始-->
+        <div class="WSY_page">
+        	
+        </div>
+        <!--翻页结束-->
+    </div>
+</div>
+<!--内容框架结束-->
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script>
+var customer_id = '<?php echo $data['customer_id'];?>';
+var search_user_name   = $('#search_user_name').val();
+var search_user_id     = $('#search_user_id').val();
+var search_phone       = $('#search_phone').val();
+var search_begintime   = $('#search_begintime').val();
+var search_endtime     = $('#search_endtime').val();
+
+  var pagenum = <?php echo $result['pagenum']; ?>;
+  var count =   <?php echo $result['page']; ?>;//总页数
+  	//pageCount：总页数
+	//current：当前页
+	$(".WSY_page").createPage({
+        pageCount:count,
+        current:pagenum,
+        backFn:function(p){
+			var url = "/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list&pagenum="+p+"&customer_id=<?php echo $data['customer_id']; ?>";
+			if( search_user_name != ''){
+				url += '&search_user_name='+search_user_name;
+			}
+			if( search_user_id != '' ){
+				url += '&search_user_id='+search_user_id;
+			}
+			if( search_phone != '' ){
+				url += '&search_phone='+search_phone;
+			}
+			if( search_begintime != '' ){
+				url += '&search_begintime='+search_begintime;
+			}
+			if( search_endtime != '' ){
+				if(search_endtime<search_begintime){
+					alert('结束时间不能小于开始时间');
+					return false;
+				}else{
+					url += '&search_endtime='+search_endtime;
+				}
+			}
+			document.location= url;
+	   }
+    });
+</script>
+
+<script>
+  var pagenum = <?php echo $result['pagenum']; ?>;
+  var page =   <?php echo $result['page']; ?>;//总页数
+function jumppage(){
+	var a=parseInt($("#WSY_jump_page").val());
+	if((a<1) || (a==pagenum) || isNaN(a)){
+		return false;
+	}else{
+		var url = "/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list&pagenum="+a+"&customer_id=<?php echo $data['customer_id']; ?>";
+		if( search_user_name != ''){
+				url += '&search_user_name='+search_user_name;
+			}
+			if( search_user_id != '' ){
+				url += '&search_user_id='+search_user_id;
+			}
+			if( search_phone != '' ){
+				url += '&search_phone='+search_phone;
+			}
+			if( search_begintime != '' ){
+				url += '&search_begintime='+search_begintime;
+			}
+			if( search_endtime != '' ){
+				if(search_endtime<search_begintime){
+					alert('结束时间不能小于开始时间');
+					return false;
+				}else{
+					url += '&search_endtime='+search_endtime;
+				}
+			}
+		document.location= url;
+	}
+}
+</script>
+<script>
+
+//输入框过滤特殊字符 用法：<input type="text" onkeyup="ValidateValue(this)" />
+function ValidateValue(textbox)
+{
+	 var IllegalString = "\ `~@#;,.!#$%^&*()+{}|\\:\"<>?-=/,\'";
+	 var textboxvalue = textbox.value;
+	 var index = textboxvalue.length - 1;
+	 
+	 var s = textbox.value.charAt(index);
+	 
+	 if(IllegalString.indexOf(s)>=0)
+	 {
+		s = textboxvalue.substring(0,index);
+		textbox.value = s;
+	 }
+}
+//导出
+function exportExcel(){
+	var url='/weixin/plat/app/index.php/Excel/restricted_purchase_user/customer_id/<?php echo $data['customer_id']; ?>';
+	
+	if( search_user_name != ''){
+		url += '/search_user_name/'+search_user_name;
+	}
+	if( search_user_id != '' ){
+		url += '/search_user_id/'+search_user_id;
+	}
+	if( search_phone != '' ){
+		url += '/search_phone/'+search_phone;
+	}
+	if( search_begintime != '' ){
+		url += '/search_begintime/'+search_begintime;
+	}
+	if( search_endtime != '' ){
+		if(search_endtime<search_begintime){
+			alert('结束时间不能小于开始时间');
+			return false;
+		}else{
+			url += '/search_endtime/'+search_endtime;
+		}
+	}
+	
+	document.location = url;
+}
+
+//输入框按回车键触发搜索
+$('.header-left').find('input').on('keydown',function(){
+	if( event.keyCode == 13 ){
+		$('#search-button').click();
+	}
+});
+
+//搜索
+$('#search-button').click(function(){
+	var search_user_name   = $('#search_user_name').val();
+	var search_user_id     = $('#search_user_id').val();
+	var search_phone       = $('#search_phone').val();
+	var search_begintime   = $('#search_begintime').val();
+	var search_endtime     = $('#search_endtime').val();
+	
+	var url = "/mshop/admin/index.php?m=restricted_purchase&a=activity_user_list";
+	if( search_user_name != ''){
+		url += '&search_user_name='+search_user_name;
+	}
+	if( search_user_id != '' ){
+		url += '&search_user_id='+search_user_id;
+	}
+	if( search_phone != '' ){
+		url += '&search_phone='+search_phone;
+	}
+	if( search_begintime != '' ){
+		url += '&search_begintime='+search_begintime;
+	}
+	if( search_endtime != '' ){
+		if(search_endtime<search_begintime){
+			alert('结束时间不能小于开始时间');
+			return false;
+		}else{
+			url += '&search_endtime='+search_endtime;
+		}
+	}
+	document.location= url;
+});
+
+
+//正整数
+function clearInt(obj){
+	if(obj.value.length==1){obj.value=obj.value.replace(/[^1-9]/g,'')}else{obj.value=obj.value.replace(/\D/g,'')}
+}
+</script>
+<?php
+	mysql_close($link);
+?>
+</body>
+</html>

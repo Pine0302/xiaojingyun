@@ -1,0 +1,116 @@
+/* Body、顶部界面开始*/
+*{margin: 0;padding: 0;}
+img{max-width: 100%;border:none;}
+a{text-decoration: none;color: black;}
+body{font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;-webkit-text-size-adjust:none;}
+input[type='text'],input[type='number'],input[type='password'],input[type='reset'],input[type='submit'],input[type='button'],input[type='tel'],button,textarea{-webkit-appearance:none; border-radius:0; border:1px solid #ddd;} /*去掉苹果的默认UI来渲染按钮*/
+.clear{clear: both; display: block; height: 0; overflow: hidden; visibility: hidden; width: 0;}
+ol,ul {list-style: none;}  
+h1,h2,h3,h4,h5,h6 {font-weight: normal;}   
+/* 样式*/
+.banner1{width: 100%;display: block;margin-bottom: 2px;}
+.search-box{/*background: url("../images/search-bg.jpg") no-repeat;*/background-size: 100% auto;height: 48px;overflow: hidden;margin-bottom: 5px;}
+.search-box .search-input{background: url("../images/search.jpg") no-repeat 0px center/auto 100%;border-radius:50px;border: 0 none;background-color:#fff;width: 80%;height: 38px;margin:5px auto 0;text-indent: 35px;font-size: 18px;display: block;border:1px solid #d9d9d9;}
+.banner2{width: 100%;display: block;}
+.content-box{margin:0 auto;width: 94%;margin-top: 10px;text-align: center;}
+.content-box .icon-box{width: 25%;float: left;margin-bottom: 8px;overflow: hidden;}
+.content-box .icon-box img{width: 65px;}
+.content-box .icon-box p{font-size: 14px;text-overflow:clip;white-space:nowrap;color:#858585;}
+.dapai{width: 100%;border-top:1px solid #c9c9c9;border-bottom:1px solid #c9c9c9;}
+.dapai .left-box{width: 50%;border-right: 1px solid #c9c9c9;margin-left: -1px;text-align: center;float: left;/*height: 160px;margin-top: 10px;*/margin:2px 0px;}
+.dapai .left-box .title{margin-left: 10px;text-align: left;}
+.dapai .left-box .title img{width: 20px;display: inline-block;margin-right: 5px;vertical-align: middle;}
+.dapai .left-box .title p{font-size: 22px;color: #f37b22;display: inline-block;}
+.dapai .left-box .second{font-size: 14px;color: #9c9c9c;margin-left: 10px;text-align: left;white-space:nowrap;overflow: hidden;}
+.dapai .left-box img{width: 90%;/*margin:5px auto 10px;*/height:183px;width:154px;}  
+.dapai .right-box{width: 49%;float: left;}
+.dapai .right-box .first-box{position: relative;height: 90px;border-bottom: 1px solid #c9c9c9;/*margin-left: 10px;*/margin:1px;}
+.dapai .right-box .first-box .title{top:22px;position: absolute;}
+.dapai .right-box .first-box .title .ico{border: 1px solid #d989b2;border-radius:20px;color: #d989b2;font-size: 16px;padding: 0 3px;display: inline-block;}
+.dapai .right-box .first-box .title .name{font-size: 16px;color: #d989b2;}
+.dapai .right-box .first-box .second{font-size: 12px;color: #9c9c9c;white-space:nowrap;overflow: hidden;text-overflow:clip;}
+.dapai .right-box .first-box img{/*position: absolute;bottom: 5px;right: 5px;width: 40%;max-width: 80px;*/ width:155px;height:90px;}
+.dapai .right-box .second-box{position: relative;height: 90px;margin:1px;}
+.dapai .right-box .second-box .title{right:10px;top:22px;position: absolute;text-align: right;}
+.dapai .right-box .second-box .title .ico{border: 1px solid #68c0bc;border-radius:20px;color: #68c0bc;font-size: 16px;padding: 0 3px;display: inline-block;}
+.dapai .right-box .second-box .title .name{font-size: 16px;color: #68c0bc;}
+.dapai .right-box .second-box .second{font-size: 12px;color: #9c9c9c;white-space:nowrap;overflow: hidden;text-overflow:clip;}
+.dapai .right-box .second-box img{/*position: absolute;bottom: 5px;left: 10px;width: 40%;max-width: 80px;*/ width:155px;height:90px;}
+.skin-care .title{margin-top: 10px;margin-bottom: 5px;}
+.skin-care .left-box{width: 50%;float: left;}
+.skin-care .left-box img{width: 94%;margin:0 auto;display: block;}
+.skin-care .right-box{width: 50%;float: left;}
+.skin-care .right-box .hufu2{width: 94%;margin:0 auto;display: block;margin-bottom: 5%;}
+.skin-care .right-box .hufu3{width: 94%;margin:0 auto;display: block;}
+.makeup .title{margin-top: 10px;margin-bottom: 5px;}
+.makeup .content-bg{background:#f4f0f6;padding-top: 15px;padding-bottom: 15px;}
+.makeup .content{width: 92%;margin:0 auto ;background: #fff;}
+.makeup .content .left-box{width: 60%;float: left;}
+.makeup .content .right-box{width: 40%;float: left;}
+.makeup .content .left-box .first-box{height: 122px;position: relative;}
+.makeup .content .left-box .first-box img{/*width: 90px;position: absolute;bottom: 0;left: 0;*/height:105px;}
+.makeup .content .left-box .second-box img{/*width: 90px;position: absolute;bottom: 0;left: 0;*/height:81px;}
+.makeup .content .left-box .third-box img{/*width: 90px;position: absolute;bottom: 0;left: 0;*/height:94px;}
+.makeup .content .right-box .first-box img{height:157px;}
+.makeup .content .right-box .second-box img{height:157px;}
+.makeup .content .left-box .first-box .potion{position: absolute;right: 0;top:10px;overflow: hidden;width: 48%;overflow: hidden;}
+.makeup .content .left-box .first-box .potion .name{font-size: 12px;}
+.makeup .content .left-box .first-box .potion .second{font-size: 12px;color: #9c9c9c;}
+.makeup .content .left-box .first-box .potion .price1{font-size: 13px;color: #8b2bc2;}
+.makeup .content .left-box .first-box .potion .price2{font-size: 12px;color: #9c9c9c;text-decoration: line-through;}
+.makeup .content .left-box .first-box .potion button{font-size: 12px;background-color: #000;color: #fff;border: 0 none;padding: 2px;}
+.makeup .content .left-box .second-box{height: 97px;position: relative;/*background: url('../images/cai2.jpg') no-repeat;*/background-size: 100% 100%;}
+.makeup .content .left-box .second-box .potion{position: absolute;left: 10px;top:10px;overflow: hidden;width: 54%;overflow: hidden;}
+.makeup .content .left-box .second-box .potion .name{font-size: 12px;}
+.makeup .content .left-box .second-box .potion .second{font-size: 12px;color: #9c9c9c;}
+.makeup .content .left-box .second-box .potion .price1{font-size: 13px;color: #8b2bc2;}
+.makeup .content .left-box .second-box .potion .price2{font-size: 12px;color: #9c9c9c;text-decoration: line-through;}
+.makeup .content .left-box .second-box .potion button{font-size: 12px;background-color: #000;color: #fff;border: 0 none;padding: 2px;}
+.makeup .content .left-box .third-box{height: 95px;position: relative;}
+.makeup .content .left-box .third-box img{/*width: 75px;position: absolute;bottom: 0;left: 0;*/}
+.makeup .content .left-box .third-box .potion{position: absolute;right: 0;top:10px;overflow: hidden;width: 52%;overflow: hidden;}
+.makeup .content .left-box .third-box .potion .name{font-size: 12px;}
+.makeup .content .left-box .third-box .potion .second{font-size: 12px;color: #9c9c9c;}
+.makeup .content .left-box .third-box .potion .price1{font-size: 13px;color: #8b2bc2;}
+.makeup .content .left-box .third-box .potion .price2{font-size: 12px;color: #9c9c9c;text-decoration: line-through;}
+.makeup .content .left-box .third-box .potion button{font-size: 12px;background-color: #000;color: #fff;border: 0 none;padding: 2px;}
+.makeup .content .right-box .first-box{height: 175px;position: relative;text-align: left;/*background: url('../images/cai4.jpg') no-repeat;*/background-size: 100% 100%;width: 90%;margin-left: 10%;margin-top:13px;}
+.makeup .content .right-box .first-box .potion{width: 90%;overflow: hidden;margin-left: 10%;}
+.makeup .content .right-box .first-box .potion .name{font-size: 12px;}
+.makeup .content .right-box .first-box .potion .second{font-size: 12px;color: #9c9c9c;}
+.makeup .content .right-box .first-box .potion .price1{font-size: 13px;color: #8b2bc2;}
+.makeup .content .right-box .first-box .potion .price2{font-size: 12px;color: #9c9c9c;text-decoration: line-through;}
+.makeup .content .right-box .first-box .potion button{font-size: 12px;background-color: #000;color: #fff;border: 0 none;padding: 2px;}
+.makeup .content .right-box .second-box{height: 160px;position: relative;text-align: left;/*background: url('../images/cai5.jpg') no-repeat;*/background-size: 100% 100%;width: 90%;margin-left: 10%;}
+.makeup .content .right-box .second-box .potion{width: 90%;overflow: hidden;margin-left: 10%;}
+.makeup .content .right-box .second-box .potion .name{font-size: 12px;}
+.makeup .content .right-box .second-box .potion .second{font-size: 12px;color: #9c9c9c;}
+.makeup .content .right-box .second-box .potion .price1{font-size: 13px;color: #8b2bc2;}
+.makeup .content .right-box .second-box .potion .price2{font-size: 12px;color: #9c9c9c;text-decoration: line-through;}
+.makeup .content .right-box .second-box .potion button{font-size: 12px;background-color: #000;color: #fff;border: 0 none;padding: 2px;}
+.new-product .title{height: 34px;width: 96%;background: #222222;margin:10px auto 0;}
+.new-product .title .name{margin-left: 10px;border-left:4px solid #fff;padding-left: 10px;color: #fff;display: inline-block;font-size: 18px;vertical-align: -webkit-baseline-middle;}
+.new-product .title .look{float: right;margin-right: 10px;color: #fff;font-size: 18px;margin-top: 5px;}
+.new-product .product-box{width: 90%;margin:0 auto;}
+.new-product .product-box .one-box{margin: 10px 2%;width: 46%;float: left;}
+.new-product .product-box .one-box img{width: 100%;}
+.new-product .product-box .one-box .name{width: 100%;overflow: hidden;font-size: 16px;color: #454545;}
+.new-product .product-box .one-box .price{margin-top:10px;color: #dd2727;display: inline-block;font-size: 13px;}
+.new-product .product-box .one-box .sale{margin-top:10px;color: #848484;display: inline-block;font-size: 13px;}
+
+#shop_skin_index{width: 100%;overflow: hidden;margin: 0 auto;background: #eaeaea;}
+
+#shop_skin_index .shop_skin_index_list {  overflow: hidden;  position: relative;  z-index: 1;}
+
+.icon-box img {height:65px;}
+
+
+
+.footer{/*position: fixed;*/bottom: 0px;left: 0px;width: 100%;height: 45px;background:#f0f0f0;}
+.footer .footer-box{margin:0 auto;width: 92%;height: 45px;}
+.footer .footer-box .weidian{width: 25%;height: 35px;float: left;text-align: center;margin-top: 5px;}
+.footer .footer-box .weidian img{width: 20px;height: 20px;}
+.footer .footer-box .weidian p{font-size: 12px;}
+.footer .footer-box .weidian.active p{color:#64b83c;white-space:nowrap;text-overflow:clip;overflow: hidden;}
+
+.top_box img{height:28px;}  

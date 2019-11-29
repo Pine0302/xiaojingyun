@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>品牌订阅－添加活动</title>
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/js/layer/V2_1/skin/layer.css">
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+	    <style>
+        .WSY_cashback_bg {display:block;background-color:#f5f5f5;border-style:solid;border-width:1px;border-color:#e5e5e5;width:320px;height:80px;padding:20px;}
+        .WSY_cashback_label {width:320px;height:50px;font-family:'微软雅黑'}
+        .input {width: 130px;height:24px;border:solid 1px #ccc;border-radius:2px;padding-left:5px;}
+        #condition_0,#condition_1,#condition_2,#cb_condition_0,#cb_condition_1,#permonth_condition_0,#permonth_condition_1,#permonth_condition_2{
+            display:none;
+        }
+        .ob span{padding-left: 3px;}
+        .w60{width: 60px}
+        .fl{margin-top: 2px; float: left; margin-right: 2px;}
+        i{display: inline-block;}
+        .form-btn{width:auto!important;padding:0 10px!important;cursor:pointer;color:#fff!important;border:0!important;}
+		.form-add-btn{display:inline-block;line-height:24px;border-radius:3px;}
+		.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+		input{display:inline;}
+    </style>
+</head>
+<body>
+	<!--内容框架开始-->
+	<div class="WSY_content" id="WSY_content_height">
+	    <!--列表内容大框开始-->
+		<div class="WSY_columnbox">	
+			<div class="WSY_column_header">
+                <div class="WSY_columnnav">
+                    <a class="white1">添加活动</a>
+                </div>  
+            </div>
+		<form action="/mshop/admin/index.php?m=brandsubscribe&a=activity_save" id="saveFrom" name="saveFrom" autocomplete="off">
+
+		<div class="WSY_remind_main">
+			<dl class="WSY_remind_dl02" style="margin-top:24px;"> 
+				<dt>活动名称：</dt>
+				<dd>
+					<input type="text" name="name" maxlength="20" placeholder="20个字以内" style="width: 260px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;text-align:center;" id="name" value="" />
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02" style="margin-top:24px;"> 
+				<dt>活动时间：</dt>
+				<dd>
+                    <i>
+                        <input type="radio" class="fl" id="time_type_1" value="1" name="time_type" checked="checked" onclick="self_define()" ><span>自定义时间段</span>&nbsp;&nbsp;
+                    </i>
+                    <i>
+                        <input type="radio" class="fl" id="time_type_2" value="2" name="time_type" onclick="forever()" ><span>永久</span>&nbsp;&nbsp;
+                    </i>
+                    <img style="width:15px;margin-top: 5px;" id="hint1" src="/mshop/admin/Common/images/Base/help.png">
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02" style="margin-top:24px;"> 
+				<dt>自定义时间段：</dt>
+				<dd>
+					<input class="" type="text" id="start_time" name="start_time" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px; border:solid 1px #ccc;" />
+					至
+					<input class="" type="text" id="end_time" name="end_time" value="" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="min-width:120px; border:solid 1px #ccc;"/>
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02" style="margin-top:24px;"> 
+				<dt>订阅礼包时限类型：</dt>
+				<dd>
+                    <i>
+                        <input type="radio" class="fl" id="package_type_1" value="1" name="package_type" checked="checked" onclick="natural();"><span>自然月</span>&nbsp;&nbsp;
+                    </i>
+                    <i>
+                        <input type="radio" class="fl" id="package_type_2" value="2" name="package_type" onclick="natural();"><span>自然年</span>&nbsp;&nbsp;
+                    </i>
+                    <i>
+                        <input type="radio" class="fl" id="package_type_3" value="3" name="package_type" onclick="self_set();"><span>自定义天数</span>&nbsp;&nbsp;
+                    </i>
+                    <img style="width:15px;margin-top: 5px;" id="hint2" src="/mshop/admin/Common/images/Base/help.png">
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02" style="margin-top:24px; display: none;" id="isdis_limit_time" > 
+				<dt>礼包时限：</dt>
+				<dd>
+					<input type="number" name="limit_time" id="limit_time" maxlength="11" placeholder="" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;text-align:center;" value="" />天
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02" style="margin-top:24px;"> 
+				<dt>是否立即发布：</dt>
+				<dd>
+                    <i>
+                        <input type="radio" class="fl" id="publish_1" value="1" name="publish" ><span>是</span>&nbsp;&nbsp;
+                    </i>
+                    <i>
+                        <input type="radio" class="fl" id="publish_0" value="0" name="publish" checked="checked" ><span>否</span>&nbsp;&nbsp;
+                    </i>
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02" style="margin-top:24px;"> 
+			<dt>关联礼包：</dt>
+            <select name="package_id" id="package_id">
+                <option value="">--请选择--</option>
+
+            </select>
+            </dd>
+		</dl>
+		</div>
+		<input type="hidden" name="activity_id">
+		<div style="clear:both;float:left;"></div>
+		<div class="submit_div" style="float:left;padding-left:30px;margin-left:auto;margin-right:auto;margin: 20px 10px 20px 300px;">
+			<input type="submit" class="WSY_button" value="保存"  />
+			<input type="button" class="WSY_button" onclick="goback();" value="返回" style="margin-right: 10px;" />
+		</div>	
+	</form>
+	</div>
+	</div>
+	<!--内容框架结束-->
+</body>
+<script type="text/javascript" src="/mshop/admin/static/js/jquery.form.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script><!--添加时间插件-->
+<script type="text/javascript">
+var activity_id = <?php echo isset($activity_id)?$activity_id:-1; ?>;
+$('input:hidden[name=activity_id]').val(activity_id);
+console.log(activity_id);
+
+if($('input:radio[name=package_type]:checked').val() != 3) {
+	$('#limit_time').val(-1);
+}
+
+//表单提交-----start
+$('#saveFrom').ajaxForm({
+	beforeSubmit: checkForm, // 此方法主要是提交前执行的方法，根据需要设置
+	success: complete, // 这是提交后的方法
+	error:error,
+	dataType: 'json',
+	type:'post'
+});
+
+function checkForm(){
+	var act_name = $('#name').val();
+	var start_time = $('#start_time').val();	
+	var end_time = $('#end_time').val();
+	var package_id = $('#package_id').val();
+	var limit_time = $('#limit_time').val();
+	if($.trim(act_name) == '') {
+		layer.alert('活动名称不能为空！');
+		return false;
+	}
+
+    if($.trim(start_time) == ""){
+        layer.alert("请正确设置开始时间！");
+        return false;
+    }
+
+    if($.trim(package_id) == ""){
+        layer.alert("请选择礼包！");
+        return false;
+    }
+	console.log('aa',$('input:radio[name=time_type]:checked').val());
+    if($('input:radio[name=time_type]:checked').val() == 1) {
+	    if($.trim(end_time) == ""){
+	        layer.alert("请正确设置到期时间！");
+	        return false;
+	    }
+
+        if(end_time<start_time){
+            alert("活动到期时间不能比开始时间早！");
+            return false;
+        }	    
+    }
+
+    console.log('dd',$('input:radio[name=package_type]:checked').val());
+    if($('input:radio[name=package_type]:checked').val() == 3) {
+	    if($.trim(limit_time) == ""){
+	        layer.alert("请输入礼包时限！");
+	        return false;
+	    } else if(Number($.trim(limit_time)) <= 0) {
+	        layer.alert("礼包时限必须大于0！");
+	        return false;	    	
+	    }
+    }
+
+}
+function complete(res){
+	console.log(res);
+	if(res.errcode != 0) {
+		layer.alert(res.errmsg);
+	} else {
+		layer.confirm(res.errmsg, {
+			btn: ['确认']
+		}, function(confirm){
+			layer.close(confirm);
+			if(activity_id != -1) { //编辑数据则返回列表
+				window.location.href = "/mshop/admin/index.php?m=brandsubscribe&a=activity_management";
+			} else { //第一次插入则跳转到添加商品
+				window.location.href = "/mshop/admin/index.php?m=brandsubscribe&a=related_products_add&activity_id="+res.data.id+"&add_type=1";
+			}
+		});		
+	}
+}
+
+function goback(){
+	window.location.href = "/mshop/admin/index.php?m=brandsubscribe&a=activity_management";
+}
+
+function error(){
+	layer.alert("系统出错！");
+}
+//表单提交-----end
+
+function self_define() {
+	$("#end_time").val('');
+	$("#end_time").attr('onclick','WdatePicker({dateFmt:\'yyyy-MM-dd HH:mm\'});');
+	$("#end_time").removeAttr('disabled');
+}
+
+function forever() {
+	$("#end_time").removeAttr('onclick');
+	$("#end_time").val('永久');
+	$("#end_time").attr('disabled','disabled');
+}
+
+
+function self_set() {
+	$("#isdis_limit_time").show();
+	$('#limit_time').val('');
+}
+
+function natural() {
+	$("#isdis_limit_time").hide();
+    $('#limit_time').val(-1);	
+}
+
+//如果是编辑活动则STERT
+
+if(activity_id != -1) {
+	$.get('/mshop/admin/index.php?m=brandsubscribe&a=activity_edit',{
+		'is_ajax':1,
+		'activity_id':activity_id
+	},function(res){
+		console.log(res);
+		if(res.errcode != 0) {
+			layer.alert(res.errmsg);
+			// window.history.go(-1);
+		} else {
+			$("#name").val(res.data.name);
+			$("#start_time").val(res.data.start_time);
+			$("#end_time").val(res.data.end_time);
+			$('input:radio').removeAttr('checked');
+			$("#package_id").html('<option value="'+res.data.data.package.id+'">'+res.data.data.package.package_name+'</option>');
+			var html = '';
+			for (var i = 0; i < res.data.data.packages.length; i++) {
+				html += '<option value="'+res.data.data.packages[i].id+'">'+res.data.data.packages[i].package_name+'</option>';
+			}
+			$("#package_id").append(html);
+			$("#time_type_"+res.data.time_type+"").prop('checked','true');
+			if(res.data.time_type == 2) {
+				$("#end_time").removeAttr('onclick');
+				$("#end_time").val('永久');
+				$("#end_time").attr('disabled','disabled');
+			}
+			$("#package_type_"+res.data.package_type+"").prop('checked','true');
+			$("#publish_"+res.data.publish+"").prop('checked','true');
+
+			if(res.data.package_type == 3) {
+				$("#limit_time").val(res.data.limit_time);
+				$("#isdis_limit_time").show();
+			} else {
+				$("#limit_time").val(-1);
+			}
+
+		}
+
+	},'json');
+} else {
+	//获取礼包
+	$.get('/mshop/admin/index.php?m=brandsubscribe&a=activity_edit',{
+		'is_ajax':2,
+	},function(res){
+		console.log(res);
+		if(res.errcode != 0) {
+			layer.alert(res.errmsg);
+			window.history.go(-1);
+		} else {
+			var html = '';
+			for (var i = 0; i < res.data.length; i++) {
+				html += '<option value="'+res.data[i].id+'">'+res.data[i].package_name+'</option>';
+			}
+			$("#package_id").append(html);
+		}
+
+	},'json');	
+}
+
+
+
+//如果是编辑活动则END
+$('#hint1').on('click', function(){
+	layer.tips('提示：活动时间不能少于礼包时限，到了结束时间，活动关联产品自动下架，无法再购买。','#hint1');
+});
+$('#hint2').on('click', function(){
+	layer.tips('提示：礼包时限即在活动时间内，你购买礼包后能参与这个活动的最长时间','#hint2');
+});
+
+</script>
+</html>

@@ -1,0 +1,122 @@
+.WSY_remind_dl02 input {
+	border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 220px;
+    height: 30px;
+    background-color: #F4F4F4;
+	padding-left: 8px;
+}
+/*.WSY_list .WSY_addto a {
+    cursor: pointer;
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 24px;
+    background-color: #06a7e1;
+    border: solid 1px #06a7e1;
+    color: #fff;
+    border-radius: 2px;
+    display: block;
+    float: left;
+    margin-left: 20px;
+    margin-top: 5px;
+}*/ 
+.WSY_t5 span {
+    display: block;
+    margin-top: 6px;
+} 
+#cke_editor1,#cke_editor2{
+    margin-left: 20px;
+    margin-right: 20px;
+}    
+input#search_batchcode ,#search_user_id , #search_name, #search_phone, #search_status, #mul_virtual_fans_nums{
+	border: 1px solid #ccc;
+    border-radius: 2px; 
+    width: 220px;
+    height: 24px;
+	margin-left: 10px;
+	padding-left: 8px;
+}
+/*input.search_btn{
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 24px;
+    background-color: #06a7e1;
+    border: solid 1px #06a7e1;
+    color: #fff;
+    border-radius: 2px;
+	margin-left: 15px;
+}*/
+.btn1 img { 
+    width: 18px;
+}
+input#begintime, #endtime{
+	border: 1px solid #ccc;
+    border-radius: 3px; 
+    width: 176px;
+    height: 30px;
+    background-color: #F4F4F4; 
+	padding-left: 8px;
+}
+.search {
+    margin-top: 18px;
+    margin-left: 18px;
+}
+.WSY_remind_main{ 
+	margin-bottom:18px;
+}
+a {
+    color: #06A7E1;
+}
+
+ .icon-comment{ 
+   display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../../../../../pic/icon/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    background-position: -240px -120px;
+	}
+	
+.am-btn {
+    display: inline-block;
+	
+	margin-left:2px;
+    margin-bottom: 0;
+    padding: .5em 1em;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    cursor: pointer;
+    outline: 0;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: background-color .3s ease-out,border-color .3s ease-out;
+    transition: background-color .3s ease-out,border-color .3s ease-out;
+}
+.am-radius {
+    height: 13px;
+    font-size: 10px;
+    padding: 2px;
+    color: #fff;
+}
+.am-btn.am-radius {
+    border-radius: 2px;
+    float:right;
+}
+.am-btn-danger {
+    color: #fff;
+    background-color: #dd514c;
+    border-color: #dd514c;
+}	

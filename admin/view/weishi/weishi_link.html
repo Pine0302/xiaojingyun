@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>接口绑定</title>
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/content.css">
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/contentblue.css"><!--内容CSS配色·蓝色-->
+    <link rel="stylesheet" type="text/css" href="/mshop/admin/Common/css/Weishi/base_set.css">
+    <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/addons/common/js/layer/V2_1/layer.js"></script>
+    <!-- <script type="text/javascript" src="../../../common/get.js"></script> -->
+    <!-- <script type="text/javascript" src="../common/js/Back_aliyun_setting.js"></script> -->
+    <style>
+
+    </style>
+</head>
+
+<body>
+<!--内容框架-->
+<div class="WSY_content">
+    <div class="WSY_columnbox">
+    <div class="WSY_column_header"></div>
+        <form>
+            <input type="hidden" name="id" id="id" value=""/>
+            <input type="hidden" id="save_msg" value=""/>
+            <!--<h2 style="padding-left: 150px;font-size: 20px;color: red;">以下填写，务必全部(电话二选一)填写且正确。<br/>
+                同意退货申请，会直接把以下信息发送给客户!</h2>-->
+            <div class="WSY_list">
+                <h3 style="font-size:16px;margin-left: 50px;">接口配置信息</h3>
+                <a style="font-size:16px;margin-left: 50px;">按知识付费系统后台【系统设置>商城>接口配置信息】URL、Token、server_id填入下方</a>
+            </div>
+            <div class="WSY_remind_main">
+                <dl class="WSY_remind_dl02">
+                    <dt>Token</dt>
+                    <dd>
+                        <input type="text" name="weishi_token" id="weishi_token"
+                               style="width:20%;min-width:120px;border: 1px solid #ccc;height: 26px;border-radius: 3px;" value=""/>
+                    </dd>
+                </dl>
+                <dl class="WSY_remind_dl02">
+                    <dt>URL</dt>
+                    <dd>
+                        <input type="text" name="weishi_url" id="weishi_url"
+                               style="width:20%;min-width:120px;border: 1px solid #ccc;height: 26px;border-radius: 3px;" value="<?php if(isset($ws_url)) echo $ws_url ?>"/>
+                    </dd>
+                </dl>
+                <dl class="WSY_remind_dl02">
+                    <dt>server_id</dt>
+                    <dd>
+                        <input type="text" name="weishi_server" id="weishi_server"
+                               style="width:20%;min-width:120px;border: 1px solid #ccc;height: 26px;border-radius: 3px;" value="<?php if(isset($server_id)) echo $server_id ?>"/>
+                    </dd>
+                </dl>
+                <h1 style="margin-left: 50px;font-size:16px;">备注</h1>
+                <div style="margin-left: 50px;"> 1、绑定成功后商城与知识付费系统将共用同个公众账号和小程序，公众账号设置以知识付费系统为主；</div>
+                <div style="margin-left: 50px;"> 2、商城建议采用【第一次邀请人锁定】，绑定后商城与"微云视平台"支持共用同个公众账号和小程序；</div>
+            </div>
+
+        </form>
+        <div class="submit_div">
+            <input type="button" class="WSY_button" value="绑定" onclick="save_weishi_link();return false;" style="cursor:pointer;">
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="/mshop/admin/static/js/admin_menu.js"></script>
+<script>
+    function save_weishi_link() {
+        var weishi_token = $('#weishi_token').val().trim();
+        var weishi_url = $('#weishi_url').val().trim();
+        var weishi_server = $('#weishi_server').val().trim();
+        var customer_id = '<?php echo $customer_id ?>';
+        if(weishi_token==''||weishi_url==''||weishi_server==''){
+            layer.alert('请填写正确的接口配置信息');
+            return false;
+        }
+        var token_reg = /^[a-zA-Z\d]{64}$/;
+        var url_reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+        var server_reg = /^[\d]{1,5}$/;
+        if(!token_reg.test(weishi_token)||!url_reg.test(weishi_url)||!server_reg.test(weishi_server)){
+            layer.alert('请填写正确格式');
+            return false;
+        }
+
+
+        var ajax_data = {
+            "weishi_token": weishi_token,
+            "weishi_url": weishi_url,
+            "weishi_server": weishi_server
+        };
+        // console.log(ajax_data);
+        $.ajax({
+            url: '/mshop/admin/index.php?m=weishi&a=add_link&customer_id=' + customer_id,
+            type: "POST",
+            dataType: "JSON",
+            data: ajax_data,
+            // async: false,
+            success: function (res) {
+                console.log(res);
+                if(res.errcode==0){
+                    layer.alert(res.errormsg, function(index){
+                      window.location.href='/mshop/admin/index.php?m=weishi&a=weishi_link&customer_id=' + customer_id; 
+                    }); 
+                }else{
+                    layer.alert(res.errormsg);
+                }
+            },
+            error: function (res) {
+                layer.alert(res.errormsg);
+            }
+        });
+    }
+</script>
+</body>
+</html>

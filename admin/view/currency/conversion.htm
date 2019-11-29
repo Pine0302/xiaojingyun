@@ -1,0 +1,393 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+<link rel="stylesheet" type="text/css" href="/weixin/plat/Public/css_V6.0/switching<?php echo $theme; ?>.css">
+<link rel="stylesheet" type="text/css" href="/weixinpl/back_newshops/Common/css/Base/basicdesign/base_set.css">
+<script type="text/javascript" src="/weixinpl/common/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/jquery.ui.datepicker.js"></script>
+<script type="text/javascript" src="/weixinpl/common/utility.js"></script>
+
+<link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/css2.css" media="all">
+<link href="/weixinpl/common/add/css/global.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/main.css" rel="stylesheet" type="text/css">
+<link href="/weixinpl/common/add/css/shop.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/weixinpl/js/tis.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script type="text/javascript" src="/weixinpl/js/WdatePicker.js"></script>
+
+<title>转换设置</title>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<style>
+.distr_type_div i{margin-top:7px;}
+.WSY_remind_dl02 .distr_type_div {height:35px;}
+.WSY_remind_dl02 input[type="text"] {float: none; width: 137px;}
+.navbox{z-index: 1000;}
+.open{display:<?php if($data['is_open']==1){ echo "block";}else{ echo "none";}?>}
+.WSY_remind_dl02 dt {
+    text-align: left;
+    width: 100px;
+}
+</style>
+</head>
+<body>
+<div class="WSY_content">
+	<div class="WSY_columnbox">
+
+<!-- 头部列表开始 -->
+<style  type="text/css">
+body{
+	margin:0;
+	font-family:'微软雅黑','Times New Roman', Times, serif;
+	}
+.WSY_columnbox{overflow: auto}
+.navi_head{
+	height:38px;
+    background:#F4F4F4;
+    border-bottom:1px solid #D8D8D8;
+}
+.navi_body{
+	height:50px;
+	cursor: pointer;
+	transition:height ease 0.5s;
+}
+.headbox li{float: left;width:150px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	font-size:14px;
+	vertical-align:top;}
+.headbox li p{height: 38px;line-height: 38px}
+.headbox li .navi_title{
+	font-size:15px;
+	line-height:38px;
+	margin-top:0;
+    color:#646464;
+    font-weight:normal;
+}
+.navbox{background:#06a7e1;display: none;position: absolute;border-bottom:2px solid #06A7E1;}
+.navbox li{float: none;height: 38px;line-height: 38px;background:#FFFFFF;color:#646464;font-weight:normal;}
+.navbox li:hover{background:#EBEBEB;}
+.navbox li:hover a{border:none;}
+.clear{clear:both;}
+.navi_title:hover{background:#FFFFFF;}
+.operation-button{height: 50px;line-height: 50px;text-align: center;}
+.save-button,.add-selected-product{padding:5px 40px;;background-color:#06a7e1;font-size:15px;color:#fff;margin: 0 10px;cursor:pointer;}
+</style>
+<div class="WSY_content" id="WSY_content_height">
+<div class="navi_body">
+	<div class="navi_head">
+		<ul class="headbox">
+		<li>
+			<p class="navi_title">零钱设置</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/payset.php?customer_id=<?php echo $customer_id; ?>"><li>支付设置</li></a>
+					<a href="/weixinpl/back_newshops/Base/moneybag/moneybag.php?customer_id=<?php echo $customer_id; ?>"><li>提现设置</li></a>
+					<a href="/mshop/admin/index.php?m=currency&a=money_conversion&customer_id=<?php echo $customer_id; ?>"><li>零钱转<?php echo defined('PAY_CURRENCY_NAME')? PAY_CURRENCY_NAME: '购物币'; ?></li></a>
+					<a href="/weixinpl/back_newshops/Base/moneybag/money_to_account.php?&customer_id=<?php echo $customer_id; ?>"><li>零钱转货款</li></a>
+					<a href="/mshop/admin/index.php?m=change_of_change&a=money_bag_change_setting&customer_id=<?php echo $customer_id_en; ?>"><li>零钱转赠</li></a>
+                    <a href="/mshop/admin/index.php?m=change_of_change&a=money_bag_change_block_chain_setting&customer_id=<?php echo $customer_id_en; ?>"><li>零钱转区块链积分</li></a>
+			</ul>
+		</li>
+
+		<li>
+			<p class="navi_title">待提现列表</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/cash_being.php?customer_id=<?php echo $customer_id; ?>"><li>待提现列表</li></a>	
+			</ul>
+		</li>
+
+		<li>
+			<p class="navi_title">零钱后台充值</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/shop_set.php?customer_id=<?php echo $customer_id; ?>"><li>零钱后台充值</li></a>
+			</ul>
+		</li>
+
+		<li>
+			<p class="navi_title">零钱日志</p>	
+			<ul class="navbox WSY-skin-bd">
+					<a href="/weixinpl/back_newshops/Base/moneybag/recharge_log.php?customer_id=<?php echo $customer_id; ?>"><li>零钱日志</li></a>
+			</ul>
+		</li>
+		<div class="clear"></div>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$(".headbox li").hover(function(){
+			$(this).find(".navbox").stop().slideDown(300)
+	},function(){
+			$(this).find(".navbox").stop().slideUp(300)
+	})
+</script>
+
+       <!-- 头部列表结束 -->
+
+		<div class="WSY_remind_main" style="margin-left: 20px;">
+			<div class="openAll">
+				<dl class="WSY_remind_dl02">
+					<dt>开启零钱转换：</dt>
+                        <dd>
+                           <?php if($result[0]['is_open']=="1"){ ?>
+                                <ul style="background-color: rgb(255, 113, 112);">
+                                    <p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+                                    <li onclick="is_open(0)" class="WSY_bot"  style="left: 0px;"></li>
+                                    <span onclick="is_open(1)" class="WSY_bot2"  style="display: none; left: 0px;"></span>
+                                </ul>
+                            <?php }else{ ?>
+                                <ul style="background-color: rgb(203, 210, 216);">
+                                    <p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+                                    <li onclick="is_open(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+                                    <span  onclick="is_open(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+                                </ul>						
+                            <?php } ?>
+                            <input type="hidden" name="is_open" id="is_open" value="<?php echo $result[0]['is_open'];?>" />
+                        </dd>
+				</dl>	
+			</div>
+				<dl class="WSY_remind_dl02">
+					<dt>转换类型选择：</dt>
+					<dd>
+					<?php if($result2[0]['type']){ ?>
+						<input type="checkbox" id="switch_type" name="switch_type" value="1" checked><?php echo defined('PAY_CURRENCY_NAME')? PAY_CURRENCY_NAME: '购物币'; ?> 
+					<?php }else{ ?>
+						<input type="checkbox" id="switch_type" name="switch_type" value="0"><?php echo defined('PAY_CURRENCY_NAME')? PAY_CURRENCY_NAME: '购物币'; ?> 
+					<?php } ?>
+                    
+
+					</dd>
+				</dl>
+
+				<dl class="WSY_remind_dl02">
+					<dt>最低转换价格：</dt>
+					<dd><input type="text" id="minimum" onkeyup ="decimal(this,'2');" name="minimum" value="<?php echo $result2[0]['minimum'];?>">(-1表示不限，不超过两位小数)</dd>
+				</dl>
+				
+				<dl class="WSY_remind_dl02">
+					<dt>转换倍数：</dt> 
+					<dd>
+						<input type="radio" id="multiple_type" name="multiple_type" value="1" <?php if($result2[0]['multiple_type'] == '1'){ ?>checked<?php } ?>>不限
+						<input type="radio" id="multiple_type" name="multiple_type" value="2" <?php if($result2[0]['multiple_type'] == '2' ){ ?>checked <?php } ?>>自定义:
+						按<input type="text" id="multiple_diy" name="multiple_diy" value="<?php if ($result2[0]['multiple_type'] == 1){echo '';}else{echo $result2[0]['multiple_diy'];}?>">的倍数（只能输入正整数，比如：整1、整10、整100等）
+					</dd>
+				</dl>
+				
+				<dl class="WSY_remind_dl02">
+					<dt>转换比例：</dt>
+					<dd>
+						零钱：<?php echo defined('PAY_CURRENCY_NAME')? PAY_CURRENCY_NAME: '购物币'; ?>=1：<input type="text" id="conversion_ratio" name="conversion_ratio" onkeyup ="decimal(this,'2');" value="<?php echo $result2[0]['conversion_ratio'];?>">(位大于0正数，不超过两位小数)
+					</dd>
+				</dl>
+				<dl class="WSY_remind_dl02">
+					<dt>转换规则：</dt>
+					<dd>
+						<textarea id="remark" name="remark" ><?php echo $result[0]['remark'];?></textarea>
+					</dd>
+				</dl>
+				<div class="submit_div ">
+					<input id="save_button" type="button" class="WSY_button" value="保存"  style="cursor:pointer;">
+				</div>
+		</div>
+	</div>
+</div> 
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script charset="utf-8" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script>
+	var id     = '<?php echo $result[0]['id'];?>';
+	var customer_id = '<?php echo $customer_id;?>';
+
+    //只能输入 数字，小数点，减号（-） 字符(无闪动)
+    $("input[name=minimum]").keypress(function (e) {
+        var code = parseInt(e.keyCode);
+        console.log(code);
+        if (code!=46 && code!=45 && (code<48 || code>57))  {
+            return false;
+        } else {
+            return true;
+        }
+    })
+
+    $("input[name=minimum]").bind('input propertychange', function() {
+        var keyWord = $(this).val();
+        var myReg = /[\u4e00-\u9fa5!@#\$%^&\*()+{}:;"|<>\?！￥……（）=——【】；‘’、，。《》：“”|？]+$/;   //判断汉字的正则表达式
+
+        if (myReg.test(keyWord)) {    //输入的是汉字
+            var result= keyWord.replace(myReg,'');
+            $(this).val(result);
+        }
+    });
+
+    //限制键盘只能按数字键、小键盘数字键、退格键 正整数
+    $("input[name=multiple_diy]").keypress(function (e) {
+        var code = parseInt(e.keyCode);
+        if (code >= 96 && code <= 105 || code >= 48 && code <= 57 || code == 8 ) {
+            return true;
+        } else {
+            return false;
+        }
+    })
+    $("input[name=multiple_diy]").bind('input propertychange', function() {
+        //只显示正整数
+        if ($(this).val() == 0){
+            $(this).val('');
+        }else{
+            $(this).val(parseInt($(this).val()));
+        }
+
+    });
+        function decimal(t,len){ //参数len表示可保留的小数点位数，len为2，只保留两位小数
+            var num = t.value;
+            var reg = /^[\+\-]?\d*?\.?\d*?$/ ;
+            var arr =  num.split('.'),ARR = [];
+            if(reg.test(num)){
+                if(arr[0] != ''){
+                    var integer = arr[0];
+                    if(arr.length > 1){
+                        for(var i = 1;i<arr.length;i++){
+                            ARR.push(arr[i]);
+                        }
+                        var txt = ARR.join().substring(0,len);
+                        t.value = integer+'.'+txt ;
+                    }else{
+                        t.value = integer;
+                    }
+                }
+            }else{
+                isNaN(parseFloat(num)) ? t.value ='' : t.value = parseFloat(num);
+            }
+        }
+    //限制键盘只能按数字键、小键盘数字键、退格键、点，零 正数
+    $("input[name=conversion_ratio]").keypress(function (e) {
+        var code = parseInt(e.keyCode);
+        console.log(code);
+        if (code!=46 && (code<48 || code>57))  {
+            return false;
+        } else {
+            return true;
+        }
+    })
+    $("input[name=conversion_ratio]").bind('input propertychange', function() {
+        var keyWord = $(this).val();
+        console.log(keyWord);
+        var myReg = /[\u4e00-\u9fa5!@#\$%^&\*()+{}:;"|<>\?！￥……（）\-=——【】；‘’、，。《》：“”|？\\]+$/;   //判断汉字的正则表达式
+
+        if (myReg.test(keyWord)) {    //输入的是汉字
+            var result= keyWord.replace(myReg,'');
+            $(this).val(result);
+        }
+    });
+//保存
+$('#save_button').click(function(){
+	var is_open            = $('#is_open').val();
+	var switch_type        = $('input:checkbox[name="switch_type"]:checked').val();
+	var minimum   	       = $('#minimum').val();
+	var conversion_ratio   = $('#conversion_ratio').val();
+	var remark             = $('#remark').val();
+	var multiple_type      = $('input:radio[name="multiple_type"]:checked').val();
+	var multiple_diy       = $('#multiple_diy').val();
+	var type               = $('#type').val();
+            
+	if(switch_type != "1" && is_open == "1"){
+		alert('请选择需要转换的类型');
+		return false;
+	}
+	if(minimum == "" && is_open == "1"){
+		alert('请设置最低转换价格');
+		return false;
+	}
+	if(multiple_type == "2" && multiple_diy=="" && is_open == "1"){
+		alert('请设置转换倍数');
+		return false;
+	}
+	if(conversion_ratio == "" && is_open == "1"){
+		alert('请填写转换比例');
+		return false;
+	}
+	if(conversion_ratio < 0.01 && is_open == "1"){
+		alert('请填写正确的转换比例，转换比例最小为0.01');
+		return false;
+	}
+
+	if(id>0){
+		$.ajax({
+			url: '/mshop/admin/index.php?m=currency&a=update_conversion',
+			dataType: 'json',
+			type: 'post',
+			data: {
+				is_open:is_open,
+				switch_type:switch_type,
+				minimum:minimum,
+				conversion_ratio:conversion_ratio,
+				remark:remark,
+				if_refund:if_refund,
+				multiple_type:multiple_type,
+				multiple_diy:multiple_diy,
+				type:type
+			},
+			success: function(res){
+			//	var obj = eval('(' + res + ')');
+				if( res.errcode == '0' ){
+					alert(res.errmsg);
+					window.location = "/mshop/admin/index?m=currency&a=money_conversion";
+				}else{
+					alert(res.errmsg);
+				}
+			}
+		});
+	}else{
+		$.ajax({
+			url: '/mshop/admin/index.php?m=currency&a=add_conversion',
+			dataType: 'json',
+			type: 'post',
+			data: {
+				is_open:is_open,
+				switch_type:switch_type,
+				minimum:minimum,
+				conversion_ratio:conversion_ratio,
+				remark:remark,
+				if_refund:if_refund,
+				multiple_type:multiple_type,
+				multiple_diy:multiple_diy,
+				type:type
+			},
+			success: function(res){
+			//	var obj = eval('(' + res + ')');
+				if( res.errcode == '0' ){
+					alert(res.errmsg);
+					window.location = "/mshop/admin/index?m=currency&a=money_conversion";
+				}else{
+					alert(res.errmsg);
+				}
+			}
+		});
+	}
+	
+
+});
+
+//正整数
+function clearInt(obj){
+	if(obj.value.length==1){obj.value=obj.value.replace(/[^-1-9]/g,'')}else{if(obj.value == -1){}else{obj.value=obj.value.replace(/\D/g,'')}}
+}
+function if_refund(obj){
+	$("#if_refund").val(obj);
+}
+function is_open(a){
+	$('#is_open').val(a);
+}
+$('input:checkbox[name="switch_type"]').on('click',function (){
+	if($(this).val()==1)
+	{
+		$(this).val(0);
+	}else{
+		$(this).val(1);
+	}
+});
+</script>
+</body>
+</html>

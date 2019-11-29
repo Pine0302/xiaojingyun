@@ -1,0 +1,26 @@
+		<div class="WSY_column_header">
+			<div class="WSY_columnnav">
+				<a class="white1" href="/mshop/admin/index.php?m=HyOrder_reward&a=setting&customer_id=<?php echo $customer_id_en; ?>">奖励设置</a>
+			</div>
+			<div class="WSY_columnnav">
+				<a class="" href="/mshop/admin/index.php?m=HyOrder_reward&a=statistics&header=1&type=1&customer_id=<?php echo $customer_id_en; ?>">已处理订单</a>
+			</div>
+			<div class="WSY_columnnav">
+				<a class="" href="/mshop/admin/index.php?m=HyOrder_reward&a=statistics&header=2&type=0&customer_id=<?php echo $customer_id_en; ?>">待处理订单</a>
+			</div>
+			<div class="WSY_columnnav">
+				<a class="" href="/mshop/admin/index.php?m=HyOrder_reward&a=statistics&header=3&type=-1&customer_id=<?php echo $customer_id_en; ?>">不处理订单</a>
+			</div>
+		</div>
+		<script>
+            (function ($) {
+                $.getUrlParam = function (name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                    var r = window.location.search.substr(1).match(reg);
+                    if (r != null) return decodeURI(r[2]); return '';
+                }
+            })(jQuery);
+            var header = $.getUrlParam('header')?$.getUrlParam('header'):0;
+            $(".WSY_columnnav").find("a").removeClass('white1');
+            $(".WSY_columnnav").find("a").eq(header).addClass('white1');
+		</script>	

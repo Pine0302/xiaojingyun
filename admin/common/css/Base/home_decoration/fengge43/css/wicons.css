@@ -1,0 +1,43 @@
+
+@font-face {font-family: "wiconfont";
+  src: url('../font/menu/iconfont.eot'); /* IE9*/
+  src: url('../font/menu/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/menu/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('../font/menu/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('../font/menu/iconfont.svg#wiconfont') format('svg'); /* iOS 4.1- */
+}
+
+*[class*="wicon-"] {
+  font-family:"wiconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wicon-cart:before { content: "\e600"; }
+
+.wicon-mark:before { content: "\e601"; }
+
+.wicon-info:before { content: "\e602"; }
+
+.wicon-phone:before { content: "\e603"; }
+
+.wicon-service:before { content: "\e604"; }
+
+.wicon-file:before { content: "\e605"; }
+
+.wicon-grid:before { content: "\e606"; }
+
+.wicon-home:before { content: "\e607"; }
+
+.wicon-heart:before { content: "\e608"; }
+
+.wicon-address:before { content: "\e609"; }
+
+.wicon-search:before { content: "\e60a"; }
+
+.wicon-balance:before { content: "\e60b"; }
+
+.wicon-vshoper:before { content: "\e60c"; }

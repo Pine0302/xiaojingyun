@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{font-family:微软雅黑,黑体;}
+
+/*操作*/
+.WSY_operation{overflow:hidden;padding:80px 0 40px 80px;}
+.WSY_operation,.WSY_operation_right{display:block;float:left;}
+.WSY_operation dl{display:block;overflow:hidden;}
+.WSY_operation_dl dd{display:block;float:left;margin-right:80px;}
+.WSY_operation_dl dd img{display:block;margin:9px 0 24px 9px;}
+.WSY_operation_dl dd.optn02 img{margin:10px 0 24px 10px;}
+.WSY_operation_dl dd span{display:block;text-align:center;font-size:18px;font-weight:600;}
+.WSY_operation_dl dd.optn01{width:130px;background:url(../images/weishang/app-bj.png) no-repeat;margin-top:40px;}
+.WSY_operation_dl dd.optn02{width:170px;background:url(../images/weishang/erwm-bj.png) no-repeat;}
+.WSY_operation_dl dd.optn03,.WSY_operation_dl dd.optn04{background:url(../images/weishang/ybimg.png) no-repeat;width:85px;height:85px;
+	text-align:center;line-height:85px;color:#fff;font-size:18px;margin:0px;margin:40px 10px 0 0;display:none;}
+
+.WSY_operation_btn{padding-top:30px;}
+.WSY_operation_btn input[type="button"]{width:360px;height:44px;background:#06a7e1;border:solid 1px #0b91c2;
+	border-radius:3px;font-size:24px;color:#fff;}
+	
+.WSY_operation_div{overflow:hidden;display:block;margin-top:40px;}
+.WSY_operation_div a,.WSY_operation_div dl{display:block;float:left;}
+.WSY_operation_div dl{margin-left:20px;}
+.WSY_operation_div dd input[type="text"]{background:url(../images/weishang/input-bj.png) no-repeat;
+	width:235px;height:16px;padding:5px 0px;padding-left:5px;line-height:16px;}
+.WSY_operation_div dd{display:block;margin-bottom:15px;}
+.WSY_operation_div dd span{font-size:14px;}
+.WSY_text_input07{margin-left:170px;}
+.WSY_text_input07 .WSY_buttondw{position:relative;}
+.WSY_text_input07 .WSY_text_input{margin-right:50px;}
+
+.WSY_solution{overflow:hidden;width:380px;height:230px;background:url(../images/weishang/open-bj.png) no-repeat;
+	position:absolute;left:-130px;bottom:40px;display:none;}
+.WSY_solution h1{display:block;padding:13px 0 0 16px;}
+.WSY_solution h1 i{width:16px;height:16px;background:url(../images/weishang/gb.png) no-repeat;display:block;float:right;
+	padding-right:15px;cursor:pointer;}
+.WSY_solution p.WSY_prompt{display:block;width:340px;height:20px;background:#fff2d8;border:solid 1px #ffedc9;margin:10px 0 0 19px;}
+.WSY_solution p.WSY_prompt a{background:url(../images/weishang/tishi.png) no-repeat left center;width:15px;height:12px;
+	padding-left:20px;margin-left:10px;line-height:20px;}
+	
+.WSY_solution ul.WSY_solution_ul{overflow:hidden;margin-left:40px;margin-top:20px;}
+.WSY_solution ul.WSY_solution_ul li a{display:block;float:left;}
+.WSY_solution ul.WSY_solution_ul .sltn_a{padding-left:12px;}
+.WSY_solution ul.WSY_solution_ul li input[type="button"]{background:#06a7e1;border:solid 1px #0b91c2;width:78px;height:22px;border-radius:2px;
+	display:block;float:left;margin-left:20px;margin-top:4px;color:#fff;cursor:pointer;}
+.WSY_solution ul.WSY_solution_ul li input[type="text"]{width:78px;height:10px;border:solid 1px #d0d0d0;padding:5px 0px;padding-left:2px;line-height:10px;
+	display:block;float:left;margin-top:5px;border-radius:2px;}
+.WSY_solution_btn{display:block;padding:20px 0 0 100px;}
+.WSY_solution_btn input[type="button"]{width:80px;height:24px;background:#06a7e1;border:solid 1px #0b91c2;color:#fff;border-radius:2px;font-size:14px;}
+
+.WSY_operation_right{width:468px;height:336px;background:#f6f6f6;border:solid 1px #eeeeee;border-radius:3px;margin-top:80px;}
+.WSY_operation_right h3{display:block;padding:24px 0 40px 14px;font-size:16px;}
+.WSY_operation_right .WSY_operation_red{padding-left:14px;}
+.WSY_operation_right .WSY_operation_red dd{overflow:hidden;margin-bottom:15px;}
+.WSY_operation_right .WSY_operation_red dd span{display:block;float:left;width:70px;font-size:16px;text-align:right;margin-right:5px;line-height:30px;}
+.WSY_operation_right .WSY_operation_red dd input[type="text"]{width:235px;height:20px;background:url(../images/weishang/input-bj01.png) no-repeat;
+	padding:5px 0px;padding-left:5px;line-height:20px;margin-right:5px;}
+.WSY_operation_right .WSY_operation_red dd i{color:#646464;}
+.WSY_operation_right .WSY_operation_red dd span.boundA{display:block;float:left;width:235px;height:20px;background:url(../images/weishang/input-bj01.png) no-repeat;
+	padding:5px 0px;padding-left:5px;line-height:20px;margin-right:5px;}
+.WSY_operation_right .WSY_operation_red dd span.boundA a{color:blue;text-decoration:underline;display:block;float:left;}
+.WSY_operation_red dd.red_btn{margin:60px 0 0 75px;}
+.WSY_operation_red dd.red_btn input[type="button"]{display:block;width:120px;height:36px;background:url(../images/weishang/btn_img.png) no-repeat;color:#fff;font-size:16px;
+	cursor:pointer;}

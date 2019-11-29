@@ -1,0 +1,446 @@
+ .b_white
+        {
+            background-color:#fff;
+            }
+        .swipe
+        {
+            overflow: hidden;
+            visibility: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .swipe-wrap
+        {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .swipe-wrap > div
+        {
+            width: 100%;
+            height: 100%;
+            float: left;
+            position: relative;
+        }
+        #image img
+        {
+            width: 100%;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+        #image .swipe-item img
+        {
+            display: block;
+            width: 100%;
+        }
+        #image .swipe-item .bottom
+        {
+            z-index: 1;
+            position: absolute;
+            bottom: 0px;
+            padding: 0px;
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            left: 0;
+            text-align: center;
+            text-align: left;
+            width: 100%;
+        }
+        #image .swipe-item .bottom .title
+        {
+            color: #FFF;
+            margin-left: 6px;
+        }
+        .app-design .app-preview
+        {
+            border: 0px solid #e5e5e5;
+        }
+        .ui-header
+        {
+            min-width: auto;
+            height: auto;
+            background: #f8f8f8;
+            margin-bottom: auto;
+            border-bottom: 0px solid #ddd;
+        }
+        .app-design .app-preview .app-entry
+        {
+            width: 100%;
+            margin: 0 auto;
+            padding-bottom: 0px;
+            min-height: 200px;
+            border: 0px solid #c5c5c5;
+            background: #f9f9f9;
+        }
+        body
+        {
+            max-width: 100%;
+            width: 100%;
+            font-size: 12px;
+            line-height: 1.5em;
+            font-family: Helvetica,STHeiti, "Microsoft YaHei" ,Verdana,Arial,Tahoma,sans-serif;
+            background-color: #fff;
+        }
+        .app-design .app-preview
+        {
+            position: relative;
+            float: left;
+            width: auto;
+            max-width: 100%;
+            border: 0px solid #e5e5e5;
+            border-bottom-width: 0;
+            box-sizing: border-box;
+            background: #fff;
+            -webkit-border-radius: 18px 18px 0 0;
+            -moz-border-radius: 18px 18px 0 0;
+            -ms-border-radius: 18px 18px 0 0;
+            -o-border-radius: 18px 18px 0 0;
+            border-radius: 18px 18px 0 0;
+        }
+        
+        .app-design .app-preview .actions
+        {
+            position: absolute;
+            display: none;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            border: 0px dashed rgba(255,0,0,0.5);
+            box-sizing: border-box;
+            z-index: 2;
+        }
+        
+        #icon
+        {
+            position: absolute;
+            margin-top: 6px;
+        }
+        #icon li
+        {
+            float: left;
+        }
+        .top {
+width: 30px;
+position: fixed;
+z-index:200;
+right: 20px;
+bottom: 80px;
+}
+#image *
+{
+    border:none;
+    }
+
+
+
+
+
+
+    .sc-goods-list .goods-card {
+position: relative;
+ margin-left: 2px; 
+ margin-right: 2px; 
+}
+.sc-goods-list {
+font-size: 12px;
+ padding: 0px; 
+list-style: none;
+margin: 0;
+}
+.sc-goods-list.pic .goods-card.small-pic {
+width: 48%;
+float: left;
+}
+.sc-goods-list.pic li.goods-card.small-pic.card, .sc-goods-list.pic li.goods-card.small-pic.normal, .sc-goods-list.pic li.goods-card.small-pic.promotion 
+{
+    width:46%;
+}
+
+
+ 
+ .sc-goods-list.pic .goods-card.small-pic.card 
+ {
+min-height: 240px;     
+max-height: 250px;
+border: 1px solid #f4f2ef;
+margin: 0px;
+margin-top: 3px;
+margin-bottom: 3px;
+margin-left: 2%;
+}
+ 
+
+ 
+
+.tpl-11-11-coupon li {
+width: 29%;
+}
+.tpl-11-11-coupon li {
+margin-left: 4%;
+}
+.sc-goods-list .link .photo-block {
+text-align: center;
+overflow: hidden;
+position: relative;
+background-image: none;
+background-size: 6px 6px;
+width: 100%;
+}
+
+
+.mod_corner_lt {top: 0px;left: 0px;}
+.mod_corner_ld {top: 125px;left: 0px;}
+.mod_corner_rt {top: 0px;right: 0px;}
+.mod_corner_rd {top: 125px;right: 0px;}
+.mod_corner_no {top: 8px;left: 8px; display:none;}
+
+.mod_rec {text-shadow: none;position: absolute;height: 40px;width: 40px;}
+.mod_rec_rt{right: 0px;top: 0px;background-image: url(/moban/default/img/tj_rt.png);}
+.mod_rec_lt{left: 0px;top: 0px;background-image: url(/moban/default/img/tj_lt.png);}
+.mod_rec_rd{right: 0px;margin-top:-120px;background-image: url(/moban/default/img/tj_rd.png);}
+.mod_rec_lb{left: 0px; margin-top:-120px;background-image: url(/moban/default/img/tj_ld.png);}
+.mod_rec_no{left: 0px; margin-top:-120px;display:none;}
+
+ 
+.mod_corner {
+text-shadow: none; 
+position: absolute;
+background: #f34;
+color: #fff;
+font-size: 14px; font-weight:normal;
+padding: 0 5px;
+z-index: 50;
+}
+#hd_weixin {
+font-size: 13px;
+text-indent: 25px;
+background-position: 0 2px;
+background-repeat: no-repeat;
+left: 35px;
+}
+.index_p8 {
+background-image: url(/moban/default/img/png_9.png);
+background-size: 21px;
+}
+.custom-nav-4 li img
+{
+    padding:0px;
+    width: auto;
+ height: auto; 
+    }
+    .custom-nav-4 {
+padding: 10px 5px;
+}
+
+
+/*.custom-nav-4 li {
+width: 118px;
+margin-right: 0px;
+}
+*/
+.custom-search {
+margin: 10px;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+    .wx_loading2
+        {
+            text-align: center;
+            padding: 5px;
+            height: 32px;
+            position: relative;
+        }
+        user agent stylesheetdiv
+        {
+            display: block;
+        }
+        Inherited from div#emptyTips.ju_list_null .ju_list_null
+        {
+            padding: 15px 0;
+            text-align: center;
+            font-size: 12px;
+        }
+        .wx_loading2 .wx_loading_icon
+        {
+            border-color: #237FE5;
+            top: 7px;
+        }
+ 
+ .sc-goods-list .goods-buy.btn1 
+ {
+     margin-top: -29px;
+right: 2px;
+bottom: auto;
+width: 60px;
+height: 18px;
+line-height:20px;
+color:#777777;
+}
+ .sc-goods-list.pic .photo-block img {
+max-height: 149px;
+max-width: 100%;
+}
+
+ 
+ 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-device-pixel-ratio: 1.5) {
+	.sc-goods-list .goods-buy.btn1 {
+		background-image: none;/* url('/moban/custom/img/icon_sc.png');*/
+		}
+
+	.sc-goods-list .goods-buy.btn2 {
+		background-image:none;/* url('/moban/custom/img/icon_sc.png');*/
+	}
+
+	.sc-goods-list .goods-buy.btn3 {
+		background-image: none;/* url('/moban/custom/img/icon_sc.png');*/
+	}
+
+	.sc-goods-list .goods-buy.btn4 {
+		background-image: none;/* url('/moban/custom/img/icon_sc.png');*/
+	}
+
+	.sc-goods-list .goods-buy.ajax-loading {
+		background-image: none;/* url('/moban/custom/img/icon_sc.png');*/
+	}
+}
+.custom-richtext {
+padding: 0 0px;
+}
+ 
+ 
+        .wx_loading_icon{position:absolute;top:15px;left:50%;margin-left:-16px;width:24px;height:24px;border:2px solid #fff;border-radius:24px;-webkit-animation:gif 1s infinite linear;animation:gif 1s infinite linear;clip:rect(0 auto 12px 0)}@keyframes gif{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}@-webkit-keyframes gif{0%{-webkit-transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);}}
+
+        
+.app-preview-anmin {
+    -webkit-animation: app-preview-anmin-s 1s forwards ease;
+    -webkit-animation-delay: 0;
+    -moz-animation-delay: 0;
+}
+@-webkit-keyframes app-preview-anmin-s {
+    0% {opacity:
+      0
+}
+  
+    100% {opacity:
+        1;
+      
+}
+}
+/*img {
+    -webkit-animation: app-preview-img-anmin-s 1s forwards ease;
+    -webkit-animation-delay: 0.5;
+    -moz-animation-delay: 0;
+}
+@-webkit-keyframes app-preview-img-anmin-s {
+    0% {opacity:
+      0
+}
+  
+}
+    100% {opacity:
+        1;
+      
+}
+}*/
+.mui-bar {position: fixed;right: 0;left: 0;z-index: 10;height: 44px;padding-right: 10px;padding-left: 10px;filter: alpha(opacity=50);background: rgba(49, 48, 48, 0.5) none repeat scroll 0 0 !important;border-bottom: 0;-webkit-backface-visibility: hidden;backface-visibility: hidden;}
+.mui-bar-tab {top: 0;display: table;width: 100%;height: 50px;padding: 0;table-layout: fixed;border-top: 0;border-bottom: 0;}
+.mui-btn {position: relative;top: 7px;z-index: 20;padding: 6px 12px 7px;margin-top: 0;font-weight: 400;}
+.mui-btn-warning {color: #fff;background-color: #f0ad4e;border: 1px solid #f0ad4e;float: right;margin-right: 5px;font-size: 15px;line-height: 21px;}
+
+ 
+                                    .tpl-11-11-notice {background: #ffffff;}
+.tpl-11-11-coupon li {background: #ff495b;}
+.tpl-11-11-coupon li:nth-child(2) {background: #ffcc66;}
+.tpl-11-11-coupon li:nth-child(3) {background: #a5da05;}
+                                    
+                                    .tpl-11-11-coupon-get {background: #d53a49; }
+.tpl-11-11-coupon li:nth-child(2) .tpl-11-11-coupon-get {background: #ff9900; }
+.tpl-11-11-coupon li:nth-child(3) .tpl-11-11-coupon-get {background: #79a003; }
+
+.tpl-11-11-notice {color: #39c12b;}
+.tpl-11-11-coupon-meta-desc {color: #d53a49;}
+
+.tpl-11-11-coupon li:nth-child(2) .tpl-11-11-coupon-meta-desc {color: #ff9900;}
+
+.tpl-11-11-coupon li:nth-child(3) .tpl-11-11-coupon-meta-desc {color: #79a003;}
+
+.sc-goods-list .link .info p.goods-price>em {color: #ff6600;}
+
+
+
+.notice_g {
+    -webkit-animation: anminnotice_g 10s forwards ease;
+    -webkit-animation-delay: 0;
+     
+    -moz-animation-delay: 0;
+}
+@-webkit-keyframes anminnotice_g {
+    0% {margin-left:50%;
+}
+    100% {margin-left:-20%;
+}
+}
+
+
+   .footer_icon
+    {
+        width: 41px;
+        height: 41px;
+    }
+    .footer_icon_0
+    {
+        background: url(/moban/xfc/img/menu1.png) no-repeat;
+        background-size: auto 100%;
+        background-position: 0px 0px;
+    }
+    .footer_icon_0.cur
+    {
+        background: url(/moban/xfc/img/menu1.png) no-repeat;
+        background-size: auto 100%;
+        background-position: -41px 0px;
+    }
+    
+    
+    
+    .footer_icon_1
+    {
+        background: url(/moban/xfc/img/menu2.png) no-repeat;
+        background-size: auto 100%;
+        background-position: 0px 0px;
+    }
+    .footer_icon_1.cur
+    {
+        background: url(/moban/xfc/img/menu2.png) no-repeat;
+        background-size: auto 100%;
+        background-position: -41px 0px;
+    }
+    
+    .footer_icon_2
+    {
+        background: url(/moban/xfc/img/menu3.png) no-repeat;
+        background-size: auto 100%;
+        background-position: 0px 0px;
+    }
+    .footer_icon_2.cur
+    {
+        background: url(/moban/xfc/img/menu3.png) no-repeat;
+        background-size: auto 100%;
+        background-position: -41px 0px;
+    }
+    
+    .footer_icon_3
+    {
+        background: url(/moban/xfc/img/menu4.png) no-repeat;
+        background-size: auto 100%;
+        background-position: 0px 0px;
+    }
+    .footer_icon_3.cur
+    {
+        background: url(/moban/xfc/img/menu4.png) no-repeat;
+        background-size: auto 100%;
+        background-position: -41px 0px;
+    }

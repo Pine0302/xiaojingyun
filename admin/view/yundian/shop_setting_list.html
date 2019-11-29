@@ -1,0 +1,700 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>云店奖励－基本信息</title>
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+	<link rel="stylesheet" type="text/css" href="/weixinpl/common/js/layer/V2_1/skin/layer.css">
+	<script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+	    <style>
+        .WSY_cashback_bg {display:block;background-color:#f5f5f5;border-style:solid;border-width:1px;border-color:#e5e5e5;width:320px;height:80px;padding:20px;}
+        .WSY_cashback_label {width:320px;height:50px;font-family:'微软雅黑'}
+        .input {width: 130px;height:24px;border:solid 1px #ccc;border-radius:2px;padding-left:5px;}
+        #condition_0,#condition_1,#condition_2,#cb_condition_0,#cb_condition_1,#permonth_condition_0,#permonth_condition_1,#permonth_condition_2{
+            display:none;
+        }
+        .ob span{padding-left: 3px;}
+        .w60{width: 60px}
+        .fl{margin-top: 2px; float: left; margin-right: 2px;}
+        i{display: inline-block;}
+        .form-btn{width:auto!important;padding:0 10px!important;cursor:pointer;color:#fff!important;border:0!important;}
+		.form-add-btn{display:inline-block;line-height:24px;border-radius:3px;}
+		.table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;}
+		input{display:inline;}
+    </style>
+</head>
+<body>
+	<!--内容框架开始-->
+	<div class="WSY_content" id="WSY_content_height">
+	    <!--列表内容大框开始-->
+		<div class="WSY_columnbox">	
+			<div class="WSY_column_header">
+				<?php $keyContent = '基本信息'; ?>
+                <?php include 'cloud_shop_switching.php'; ?>			
+            </div>
+		<form action="/mshop/admin/index.php?m=yundian&a=shop_setting_sava"  method="post" id="saveFrom" name="saveFrom">
+
+		<div class="WSY_remind_main">
+			<dl class="WSY_remind_dl02" style="margin-top:24px;"> 
+				<dt>开启云店奖励：</dt>
+				<dd>
+					<?php if($yundian_onoff==1){ ?>
+						<ul style="background-color: rgb(255, 113, 112);" id="kaiguan1">
+							<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;" id="kaiguan2">开</p>
+							<li onclick="yundian_onoff(0)" class="WSY_bot" style="left: 0px;" id="kaiguan3"></li>
+							<span onclick="yundian_onoff(1)" class="WSY_bot2" style="display: none; left: 0px;" id="kaiguan4"></span>
+						</ul>
+					<?php }else{ ?>
+						<ul style="background-color: rgb(203, 210, 216);" id="kaiguan1">
+							<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;" id="kaiguan2">关</p>
+							<li onclick="yundian_onoff(0)" class="WSY_bot" style="display: none; left: 30px;" id="kaiguan3"></li>
+							<span onclick="yundian_onoff(1)" class="WSY_bot2" style="display: block; left: 30px;" id="kaiguan4"></span>
+						</ul>						
+					<?php } ?>
+					<input type="hidden" name="yundian_onoff" id="yundian_onoff" value="<?php echo $yundian_onoff; ?>" />
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02"> 
+				<dt>开启云店奖励申请入口：</dt>
+				<dd>
+					<?php if($yundian_apply_onoff==1){ ?>
+						<ul style="background-color: rgb(255, 113, 112);">
+							<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+							<li onclick="yundian_apply_onoff(0)" class="WSY_bot" style="left: 0px;"></li>
+							<span onclick="yundian_apply_onoff(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+						</ul>
+					<?php }else{ ?>
+						<ul style="background-color: rgb(203, 210, 216);">
+							<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+							<li onclick="yundian_apply_onoff(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+							<span onclick="yundian_apply_onoff(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+						</ul>						
+					<?php } ?>
+					<input type="hidden" name="yundian_apply_onoff" id="yundian_apply_onoff" value="<?php echo $yundian_apply_onoff; ?>" />
+				</dd>
+			</dl>
+
+			<dl class="WSY_remind_dl02"> 
+				<dt>自营产品总抽成：</dt>
+				<dd> 
+					<input type="text" name="yundian_choucheng" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;text-align:center;" id="yundian_choucheng" value="<?php echo $yundian_choucheng; ?>" onkeyup="clearNoNum(this)" onafterpaste="clearNoNum(this)" />
+					(0-1之间)
+				</dd>
+			</dl>
+
+			<dl class="WSY_remind_dl02"> 
+				<dt>用户购买自营产品默认收货时间：</dt>
+				<dd>
+					<?php if($receipt_onoff==1){ ?>
+						<ul style="background-color: rgb(255, 113, 112);float:left;">
+							<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+							<li onclick="receipt_onoff(0)" class="WSY_bot" style="left: 0px;"></li>
+							<span onclick="receipt_onoff(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+						</ul>
+					<?php }else{ ?>
+						<ul style="background-color: rgb(203, 210, 216);float:left;">
+							<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+							<li onclick="receipt_onoff(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+							<span onclick="receipt_onoff(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+						</ul>						
+					<?php } ?>
+					<div id="receipt_time_div" <?php if($receipt_onoff==0){ ?>style="padding-left: 280px;display:none"<?php }else{ ?> style="padding-left: 280px;" <?php }?>>
+					<input type="text" name="receipt_time" id="receipt_time" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" value="<?php echo $receipt_time; ?>" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;text-align:center;"/>天
+					</div>
+					<input type="hidden" name="receipt_onoff" id="receipt_onoff" value="<?php echo $receipt_onoff; ?>" />
+				</dd>
+				<dd>
+				</dd>
+			</dl>
+
+			<dl class="WSY_remind_dl02"> 
+				<dt>用户购买自营产品订单失效时间：</dt>
+				<dd>
+					<?php if($invalid_onoff==1){ ?>
+						<ul style="background-color: rgb(255, 113, 112);float:left;">
+							<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+							<li onclick="invalid_onoff(0)" class="WSY_bot" style="left: 0px;"></li>
+							<span onclick="invalid_onoff(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+						</ul>
+					<?php }else{ ?>
+						<ul style="background-color: rgb(203, 210, 216);float:left;">
+							<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+							<li onclick="invalid_onoff(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+							<span onclick="invalid_onoff(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+						</ul>						
+					<?php } ?>
+					<div id="invalid_time_div" <?php if($invalid_onoff==0){ ?>style="padding-left: 280px;display:none"<?php }else{ ?> style="padding-left: 280px;" <?php }?>>
+					<input type="text" name="invalid_time" id="invalid_time" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" value="<?php echo $invalid_time; ?>" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;text-align:center;" />分
+					</div>
+					<input type="hidden" name="invalid_onoff" id="invalid_onoff" value="<?php echo $invalid_onoff; ?>" />
+				</dd>
+			</dl>
+
+			<dl class="WSY_remind_dl02"> 
+				<dt>自营产品订单是否收货自动结算：</dt>
+				<dd>
+					<?php if($clearing_onoff==1){ ?>
+						<ul style="background-color: rgb(255, 113, 112);">
+							<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+							<li onclick="clearing_onoff(0)" class="WSY_bot" style="left: 0px;"></li>
+							<span onclick="clearing_onoff(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+						</ul>
+					<?php }else{ ?>
+						<ul style="background-color: rgb(203, 210, 216);">
+							<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+							<li onclick="clearing_onoff(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+							<span onclick="clearing_onoff(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+						</ul>						
+					<?php } ?>
+					<input type="hidden" name="clearing_onoff" id="clearing_onoff" value="<?php echo $clearing_onoff; ?>" />
+				</dd>
+			</dl>	
+
+			<dl class="WSY_remind_dl02"> 
+				<dt>自营产品订单申请售后，店主点击确定退款后，需要由平台确认打款：</dt>
+				<dd style="display:inline">
+					<?php if($playmoney_onoff==1){ ?>
+						<ul style="background-color: rgb(255, 113, 112);float:left;">
+							<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+							<li onclick="playmoney_onoff(0)" class="WSY_bot" style="left: 0px;"></li>
+							<span onclick="playmoney_onoff(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+						</ul>
+					<?php }else{ ?>
+						<ul style="background-color: rgb(203, 210, 216);float:left;">
+							<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+							<li onclick="playmoney_onoff(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+							<span onclick="playmoney_onoff(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+						</ul>						
+					<?php } ?>
+					<input type="hidden" name="playmoney_onoff" id="playmoney_onoff" value="<?php echo $playmoney_onoff; ?>" />
+					<img style="width:15px;margin-top: 5px;" id="hint" src="/mshop/admin/Common/images/Base/help.png">
+				</dd>
+			</dl>	
+
+			<dl class="WSY_remind_dl02"> 
+				<dt>自营产品订单申请退款或退货，完成退款之后，自动完成订单：</dt>
+				<dd>
+					<?php if($complete_onoff==1){ ?>
+						<ul style="background-color: rgb(255, 113, 112);">
+							<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px;">开</p>
+							<li onclick="complete_onoff(0)" class="WSY_bot" style="left: 0px;"></li>
+							<span onclick="complete_onoff(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+						</ul>
+					<?php }else{ ?>
+						<ul style="background-color: rgb(203, 210, 216);">
+							<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 6px;">关</p>
+							<li onclick="complete_onoff(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+							<span onclick="complete_onoff(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+						</ul>						
+					<?php } ?>
+					<input type="hidden" name="complete_onoff" id="complete_onoff" value="<?php echo $complete_onoff; ?>" />
+				</dd>
+			</dl>
+			<dl class="WSY_remind_dl02"> 
+				<dt>店主有效期设置：</dt>
+				<dd>
+					初次有效时长:<input type="text" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;text-align:center;" name="shop_valid_time" id="shop_valid_time" value="<?php echo $shop_valid_time; ?>" onkeyup="zhengshu(this)" onafterpaste="zhengshu(this)" />天
+				</dd>
+				<dd style="margin-left:120px">
+					过期提示时间设置:过期前<input type="text" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;text-align:center;" name="shop_notice_time" id="shop_notice_time" value="<?php echo $shop_notice_time; ?>" onkeyup="zhengshu(this)" onafterpaste="zhengshu(this)" />天，开始提示
+				</dd>
+			</dl>
+			
+			<dl class="WSY_remind_dl02"> 
+				<dt>云店总奖励设置：</dt>
+				<dd>
+					<input type="text" name="yundian_reward" id="yundian_reward" style="width: 50px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;text-align:center" value="<?php echo $yundian_reward; ?>" onkeyup="clearNoNum2(this)" onafterpaste="clearNoNum2(this)" />(0-1)之间
+				</dd>
+			</dl>
+			
+			<!-- 分佣奖励表 开始 -->
+			<table width="33%" class="WSY_table" id="WSY_t1" style="width: 640px;margin-top:15px;">			          
+				 <thead class="WSY_table_header">
+				 		<?php if($reward_data['is_team'] == 1){ ?>
+						<th width="15%"style="color:#fff">区域奖励</th>
+						<?php } ?>
+						<?php if($reward_data['is_shareholder'] == 1){ ?>
+						<th width="15%"style="color:#fff">店铺奖励</th>
+						<?php } ?>
+						<?php if($reward_data['isOpenGlobal'] == 1){ ?>
+						<th width="15%"style="color:#fff">绩效奖励</th>
+						<?php } ?>
+						<?php if($reward_data['isvalid'] == 1){ ?>
+						<th width="15%"style="color:#fff">招商奖励</th>
+						<?php } ?>
+						<?php if($yundian_onoff == 1){ ?>
+						<th class="yundian_jl" width="15%"style="color:#fff">云店奖励</th>
+						<?php } ?>
+						<?php if($reward_data['block_chain_on_off'] == 1){ ?>
+						<th  width="15%"style="color:#fff">区块链奖励</th>
+						<?php } ?>
+						<th width="15%"style="color:#fff">推广奖励</th>
+						
+					</thead>
+				 <tr>
+				 		<?php if($reward_data['is_team'] == 1){ ?>
+					     <td class="WSY_t7">
+					     	<input width="15%" height="24px" name="" id="team" class="not_agent_tip" value="<?php echo $reward_data['team']; ?>" placeHolder="区域奖励(0-1)" autocomplete="off"  disabled="disabled"/>
+					     </td>
+					    <?php } ?>
+						<?php if($reward_data['is_shareholder'] == 1){ ?>
+					     <td class="WSY_t7">
+					     	<input width="15%" name="" height="24px" id="shareholder" class="not_agent_tip" value="<?php echo $reward_data['shareholder']; ?>" placeHolder="店铺奖励(0-1)" autocomplete="off"  disabled="disabled"/>
+					     </td>
+						<?php } ?>
+						<?php if($reward_data['isOpenGlobal'] == 1){ ?>
+					     <td class="WSY_t7">
+					     	<input width="15%" name="globalbonus_pro" height="24px" id="globalbonus" class="not_agent_tip" value="<?php echo $reward_data['globalbonus']; ?>" placeHolder="绩效奖励(0-1)" autocomplete="off" disabled="disabled" />
+					     </td>
+					     <?php } ?>
+						<?php if($reward_data['isvalid'] == 1){ ?>
+					     <td class="WSY_t7">
+					     	<input width="15%" name="" height="24px" id="attrach_investment" class="not_agent_tip" value="<?php echo $reward_data['investmen']; ?>" placeHolder="招商(0-1)" autocomplete="off" disabled="disabled" />
+					     </td>
+					     <?php } ?>
+					     <?php if($yundian_onoff == 1){ ?>
+					     <td class="WSY_t7 yundian_jl">
+					     	<input width="15%" name="" height="24px" id="thisAll" class="not_agent_tip" value="<?php echo $yundian_reward?>" placeHolder="" autocomplete="off" disabled="disabled" />
+					     </td>
+					     <?php } ?>
+					     <?php if($reward_data['block_chain_on_off'] == 1){ ?>
+					     <td class="WSY_t7">
+					     	<input width="15%" name="" height="24px" id="block_chain_reward" class="not_agent_tip" value="<?php echo number_format($reward_data['block_chain_reward'],4);?>" placeHolder="" autocomplete="off" disabled="disabled" />
+					     </td>
+					     <?php } ?>
+					     <td class="WSY_t7">
+					     	<input width="15%" name="" height="24px" id="thisAll" class="not_agent_tip" value="<?php echo $tg_reward?>" placeHolder="" autocomplete="off" disabled="disabled" />
+					     </td>
+					     
+				 </tr>
+			</table>
+			&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red">“区域奖励”、“招商奖励”、“店铺奖励”、“绩效奖励”和“云店奖励”的分配比例之和为1，则推广员无推广奖励
+			</span>
+			<!-- 分佣奖励表 结束 -->
+
+            <table width="97%" class="WSY_table" id="WSY_t1">
+				<thead class="WSY_table_header">
+					<th width="200" nowrap="nowrap"align="center">是否开启</th>
+					<th width="20%" nowrap="nowrap"align="center">云店店主身份设置(降级排序)</th>
+					<th width="20%" nowrap="nowrap"align="center">身份奖励分配比例</th>
+					<th width="20%" nowrap="nowrap"align="center">申请条件</th>
+					<th width="20%" nowrap="nowrap"align="center">店主权限设置</th>
+					<th width="10%" nowrap="nowrap"align="center">店主特权描述</th>
+				</thead>
+				<tbody class="tbody-main">
+				<?php foreach($res as  $k=>$v){ 
+						$tequan = explode("_",$res[$k]['tequan']);
+				?>
+						<tr>
+							<td style="text-align:;">							
+								<dl class="WSY_remind_dl02"> 
+									<dd>
+										<?php if($res[$k]['is_identity']==1){ ?>
+											<ul style="background-color: rgb(255, 113, 112);display:inline-block;margin-right:10px;vertical-align:middle">
+												<p style="color: rgb(255, 255, 255); margin: 0px 0px 0px 22px; padding: 0;">开</p>
+												<li onclick="is_identity<?php echo $k ?>(0)" class="WSY_bot" style="left: 0px;"></li>
+												<span onclick="is_identity<?php echo $k ?>(1)" class="WSY_bot2" style="display: none; left: 0px;"></span>
+											</ul>
+										<?php }else{ ?>
+											<ul style="background-color: rgb(203, 210, 216);display:inline-block;margin-right:10px;vertical-align:middle">
+												<p style="color: rgb(127, 138, 151); margin: 0px 0px 0px 13px; padding-left: 0;">关</p>
+												<li onclick="is_identity<?php echo $k ?>(0)" class="WSY_bot" style="display: none; left: 30px;"></li>
+												<span onclick="is_identity<?php echo $k ?>(1)" class="WSY_bot2" style="display: block; left: 30px;"></span>
+											</ul>						
+										<?php } ?>
+										<?php if($k!=0){ ?>
+										<a class="WSY-skin-bg form-btn form-add-btn" onclick="identity_del('<?php echo $res[$k]['id']; ?>');">删除店主</a>
+										<?php } ?>
+										<input type="hidden" name="result[<?php echo $k ?>][id]" id="id" value="<?php echo $res[$k]['id']; ?>" />
+										<input type="hidden" name="result[<?php echo $k ?>][is_identity]" id="is_identity<?php echo $k ?>" value="<?php echo $res[$k]['is_identity']; ?>" />
+									</dd>
+								</dl>							
+							</td>
+							<td>
+								"云店店主"改
+								<input type="text" name="result[<?php echo $k ?>][name]" id="name" value="<?php echo $res[$k]['name'] ?>" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;display:inline;" onafterpaste="clearTSZF(this)"/>
+							</td>
+							<td>
+								奖励比例为:
+								<input type="text" class="reward_abc[]" name="result[<?php echo $k ?>][reward]" id="reward" value="<?php echo $res[$k]['reward'] ?> " style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;display:inline;" onkeyup="clearNoNum(this)" onafterpaste="clearNoNum(this)" />
+								(0-1)之间
+							</td>
+							<td>
+								申请需支付:
+								<input type="text" name="result[<?php echo $k ?>][apply_money]" id="apply_money" value="<?php echo $res[$k]['apply_money'] ?>" style="width: 60px;height: 24px;border: solid 1px #ccc;border-radius: 2px;padding-left: 5px;display:inline;" onkeyup="clearNoNum2(this)" onafterpaste="clearNoNum(this)" />
+								元;
+							</td>
+							<td style="text-align:center;">
+								<li><a class="WSY-skin-bg form-btn form-add-btn" onclick="auth_edit('<?php echo $res[$k]['id']; ?>');">编辑权限</a></li>
+<!-- 								<div>
+									<input type="checkbox" name="result[<?php echo $k ?>][tequan][1]" id="tequan[1]" value="1" style="width:auto;vertical-align: middle;display:inline;" <?php if( $tequan[0] == 1 ){echo "checked=checked";}?>/>
+									<span>店铺推广</span>
+								</div>
+								<div>
+									<input type="checkbox" name="result[<?php echo $k ?>][tequan][2]" id="tequan[2]" value="1" style="width:auto;vertical-align: middle;display:inline;" <?php if( $tequan[1] == 1 ){echo "checked=checked";}?>/>
+									<span>个性化店标(店标更换)</span>
+								</div>
+								<div>
+									<input type="checkbox" name="result[<?php echo $k ?>][tequan][3]" id="tequan[3]" value="1" style="width:auto;vertical-align: middle;display:inline;" <?php if( $tequan[2] == 1 ){echo "checked=checked";}?>/>
+									<span>收益实时查询</span>
+								</div>
+								<div>
+									<input type="checkbox" name="result[<?php echo $k ?>][tequan][4]" id="tequan[4]" value="1" style="width:auto;vertical-align: middle;display:inline;" <?php if( $tequan[3] == 1 ){echo "checked=checked";}?>/>
+									<span>店铺自营订单管理</span>
+								</div>
+								<div>
+									<input type="checkbox" name="result[<?php echo $k ?>][tequan][5]" id="tequan[5]" value="1" style="width:auto;vertical-align: middle;display:inline;" <?php if( $tequan[4] == 1 ){echo "checked=checked";}?>/>
+									<span>个性化产品管理</span>
+								</div> -->
+							</td>
+							<td style="text-align:center;">
+							<li><a class="WSY-skin-bg form-btn form-add-btn" onclick="identity_edit('<?php echo $res[$k]['id']; ?>');">编辑描述</a></li>
+							</td>
+						</tr>
+						<?php } ?>	
+						<tr><td colspan="6" width="50%" style="text-align:center;"><img style="width:30px;margin-top: 5px;" src="/mshop/admin/Common/images/Base/custom/add.png" id="add" /></td></tr>					
+				</tbody>
+			</table>
+
+				<div class="WSY_textboxF">
+					<h1>云店店主申请协议:</h1>
+					<div class="text_box">
+						<textarea cols="100" id="remark" name="remark" rows="10" style="border-style: groove"><?php echo stripslashes($remark); ?></textarea>
+					</div>
+				</div>
+					</div>
+					<div style="clear:both;float:left;"></div>
+		<div class="submit_div" style="float:left;padding-left:30px;margin-left:auto;margin-right:auto;margin: 20px 10px 20px 300px;">
+			<input type="submit" class="WSY_button" value="保存"  />
+		</div>	
+	</form>
+	</div>
+	</div>
+	<!--内容框架结束-->
+</body>
+<script type="text/javascript" src="/mshop/admin/static/js/jquery.form.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+<script type="text/javascript" src="/weixinpl/common/js_V6.0/content.js"></script>
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<!--配置ckeditor和ckfinder-->
+<!-- <script type="text/javascript" src="/weixin/plat/Public/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/weixin/plat/Public/ckfinder/ckfinder.js"></script> -->
+<!-- 编辑器多图片上传引入开始-->
+<!-- <script type="text/javascript" src="/weixin/plat/Public/js/jquery.dragsort-0.5.2.min.js"></script>
+<script type="text/javascript" src="/weixin/plat/Public/swfupload/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="/weixin/plat/Public/swfupload/js/swfupload.queue.js"></script>
+<script type="text/javascript" src="/weixin/plat/Public/swfupload/js/fileprogress.js"></script>
+<script type="text/javascript" src="/weixin/plat/Public/swfupload/js/handlers.js"></script> -->
+<!--编辑器多图片上传引入结束-->
+<script type="text/javascript">
+//表单提交-----start
+$('#saveFrom').ajaxForm({
+	beforeSubmit: checkForm, // 此方法主要是提交前执行的方法，根据需要设置
+	success: complete, // 这是提交后的方法
+	dataType: 'post',
+});
+
+function checkForm(){
+	var choucheng = $('#yundian_choucheng').val();
+	var cz_sum = 0.0;
+	var all_num=0;
+	var all = "<?php echo $all ?>";
+	var yundian_reward = $('#yundian_reward').val();
+	var is_keeper = "<?php echo $is_keeper ?>";
+	var yundian_onoff = $('#yundian_onoff').val();
+	var remark_num = $('#remark').val().length;
+	var shop_valid_time = $('#shop_valid_time').val();
+	var shop_notice_time = $('#shop_notice_time').val();
+	var receipt_time = $('#receipt_time').val();
+	var invalid_time = $('#invalid_time').val();
+	var yundian_apply_onoff = $('#yundian_apply_onoff').val();
+	<?php foreach($res as  $k=>$v){ ?>
+	if($("input[name='result[<?php echo $k ?>][reward]']").val() >1){
+		layer.alert('身份奖励比例分配不能大于1');
+		return false;
+	};
+	<?php } ?>
+	// <?php foreach($res as  $k=>$v){ ?>
+ //     console.log($("input[name='result[<?php echo $k ?>][apply_money]']").val().length);
+	// <?php } ?>
+	// console.log(yundian_apply_onoff);
+	// console.log(shop_valid_time);
+	// console.log($("input[class='reward_abc[]']").val());
+	$("input[class^='reward_abc[]']").each(function(){
+				var reward_num = Number($(this).val());
+                cz_sum += reward_num;
+                // console.log($(this).val());
+                if (reward_num > 1 || reward_num <0) {
+					layer.alert('云店身份奖励分配比例不能大于1或者小于0');
+					return false;
+                }
+            });
+	// console.log(cz_sum);
+	if (receipt_time <0 || receipt_time>15) {
+		layer.alert('默认收货时间不能大于15');
+		return false;
+	}
+	if (invalid_time<0 || invalid_time>30) {
+		layer.alert('订单失效时间不能大于30');
+		return false;
+	}
+	if (shop_valid_time < 1) {
+		layer.alert('店主初次有效时长必须大于等于1');
+		$('#shop_valid_time').val('365');
+		return false;
+	}
+	// if (shop_notice_time < 1 ) {
+	// 	layer.alert('过期提示时间必须大于1');
+	// 	return false;
+	// }
+	console.log(shop_valid_time);
+	console.log(shop_notice_time);
+	if(Number(shop_valid_time) < Number(shop_notice_time)){
+		layer.alert('提醒时间不能大于有效时长');
+		return false;
+	}
+	// if (cz_sum > 1) {
+	// 	layer.alert('身份奖励分配比例总值不能大于1');
+	// 	return false;
+	// }禅道26225
+	if (choucheng>1  || choucheng<0) {
+		layer.alert('自营产品总抽成不能大于1或者小于0');
+		return false;
+	}
+	all_num = Number(all)+Number(yundian_reward);
+	// console.log(all_num);
+	if (all_num >1) {
+		layer.alert('各级推广比例之和不得大于1');
+		return false;
+	}
+	if (is_keeper!=-1 && yundian_onoff==0) {
+		layer.alert('存在云店店主身份，无法关闭云店奖励');
+		return false;
+	}
+	if(remark_num >500){
+		layer.alert('申请协议不得超过500个字');
+		return false;
+	}
+	layer.alert('保存成功！');
+	setTimeout("location.reload()",2000);
+}
+function complete(){
+location.reload();
+}
+//表单提交-----end
+function yundian_onoff(obj){
+	$("#yundian_onoff").val(obj);
+}
+function yundian_apply_onoff(obj){
+	$("#yundian_apply_onoff").val(obj);
+	if (obj == 1 && $("#yundian_onoff").val()==0) {
+		yundian_onoff(1);
+		$('#kaiguan1').css("background-color","rgb(255, 113, 112)");
+		$('#kaiguan2').css("color","rgb(255, 255, 255)");
+		$('#kaiguan2').css("margin","0px 0px 0px 27px");
+		$('#kaiguan2').text("开");
+		$('#kaiguan3').css("left","0px");
+		$('#kaiguan3').css("display","list-item");
+		$('#kaiguan4').css("left","0px");
+	}
+}
+function receipt_onoff(obj){
+	$("#receipt_onoff").val(obj);
+	if(obj==0){
+		$("#receipt_time_div").hide();
+	}else{
+		$("#receipt_time_div").show();
+	}
+}
+function invalid_onoff(obj){
+	$("#invalid_onoff").val(obj);
+	if(obj==0){
+		$("#invalid_time_div").hide();
+	}else{
+		$("#invalid_time_div").show();
+	}
+}
+function clearing_onoff(obj){
+	$("#clearing_onoff").val(obj);
+}
+function playmoney_onoff(obj){
+	$("#playmoney_onoff").val(obj);
+}
+function complete_onoff(obj){
+	$("#complete_onoff").val(obj);
+}
+<?php foreach($res as  $k=>$v){ ?>
+function is_identity<?php echo $k ?>(obj){
+	$("#is_identity<?php echo $k ?>").val(obj);
+}
+<?php } ?>
+$('#hint').on('click', function(){
+	layer.tips('平台确认打款是按照店铺确定退款的金额进行打款的；如果关闭开关，那么只需要店铺确定退款后直接打款给客户','#hint');
+});
+function identity_edit(id){
+	var url = "";
+	url = "/mshop/admin/index.php?m=yundian&a=identity_edit&type=abc&id="+id;
+	location.href = url;
+}
+function auth_edit(id){
+	var url = "";
+	url = "/mshop/admin/index.php?m=yundian&a=auth_edit&id="+id;
+	location.href = url;
+}
+//删除店主
+function identity_del(id){
+
+	var news="删除店主身份后不可恢复，确认删除吗？";
+	layer.confirm(news, {
+		title:'警告',
+		btn: ['确认','取消']
+	}, function(confirm){
+		layer.close(confirm);
+
+	        $.ajax({
+            url: '/mshop/admin/index.php?m=yundian&a=identity_del',
+            dataType: 'json',
+            type: 'post',
+            data: {
+                id:id,
+                is_ajax:1,
+            },
+            success: function(res){
+                if( res.errcode == '1' ){
+                    layer.alert(res.errmsg);
+                    setTimeout("location.reload()",2000);
+                    
+                    // console.log(res.res);
+                    // console.log(res.sql);
+                }else{
+                    layer.alert(res.errmsg);
+                    // console.log(res.res);
+                    // console.log(res.sql);
+                }
+            }
+        });
+	});
+}
+//增加店主身份
+$('#add').on('click', function(){
+		   $.ajax({
+            url: '/mshop/admin/index.php?m=yundian&a=identity_add',	
+            dataType: 'json',
+            type: 'post',
+            data: {
+                is_ajax:1
+            },
+            success: function(res){
+            	console.log('1222');
+                if( res.errcode == '1' ){
+                    layer.alert(res.errmsg);
+                    setTimeout("location.reload()",2000);
+                }else{
+                    layer.alert(res.errmsg);
+                }
+            }
+        });
+});
+
+// CKEDITOR.replace( 'editor1',
+// 		{
+// 			extraAllowedContent: 'img iframe[*]',
+// 			filebrowserBrowseUrl : '/weixin/plat/Public/ckfinder/ckfinder.html',
+// 			filebrowserImageBrowseUrl : '/weixin/plat/Public/ckfinder/ckfinder.html?Type=Images',
+// 			filebrowserFlashBrowseUrl : '/weixin/plat/Public/ckfinder/ckfinder.html?Type=Flash',
+// 			filebrowserUploadUrl : '/weixin/plat/Public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+// 			filebrowserImageUploadUrl : '/weixin/plat/Public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+// 			filebrowserFlashUploadUrl : '/weixin/plat/Public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+// 		});
+var node = $("#name").get(0);
+var cpLock = false;
+node.addEventListener('compositionstart', function(){
+     cpLock = true;
+     console.log('中文输入开始');
+})
+node.addEventListener('compositionend', function(){
+    cpLock = false;
+     console.log('中文输入结束');
+     calNum(this);
+})
+node.addEventListener('input', function(){
+    console.log("触发input");
+    calNum(this);
+});
+//字符串截断函数            
+function calNum(domEle) {
+    if(!cpLock) { 
+		clearTSZF(domEle)
+    }
+}
+
+		
+function clearNoNum(obj)
+{
+//先把非数字的都替换掉，除了数字和.
+obj.value = obj.value.replace(/[^\d.]/g,"");
+//必须保证第一个为数字而不是.
+obj.value = obj.value.replace(/^\./g,"");
+//保证只有出现一个.而没有多个.
+obj.value = obj.value.replace(/\.{2,}/g,".");
+//保证.只出现一次，而不能出现两次以上
+obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+//只能输入两个小数
+obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d\d\d).*$/,'$1$2.$3');
+}
+
+function clearNoNum6(obj)
+{
+//先把非数字的都替换掉，除了数字和.
+obj.value = obj.value.replace(/[^\d.]/g,"");
+//必须保证第一个为数字而不是.
+obj.value = obj.value.replace(/^\./g,"");
+//保证只有出现一个.而没有多个.
+obj.value = obj.value.replace(/\.{2,}/g,".");
+//保证.只出现一次，而不能出现两次以上
+obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+//只能输入两个小数
+//obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
+//小数点后六位
+obj.value = obj.value.replace(/(\.\d{6})\d*$/g, "$1").replace(/(\.)(\d*)\1/g,"$1$2"); 
+}
+function zhengshu(obj)
+{
+//先把非数字的都替换掉，除了数字和.
+obj.value = obj.value.replace(/[^\d.]/g,"");
+//必须保证第一个为数字而不是.
+obj.value = obj.value.replace(/^\./g,"");
+//只能输入两个小数
+obj.value =obj.value.replace(/\D/g,'')
+}
+function clearNoNum2(obj)
+{
+//先把非数字的都替换掉，除了数字和.
+obj.value = obj.value.replace(/[^\d.]/g,"");
+//必须保证第一个为数字而不是.
+obj.value = obj.value.replace(/^\./g,"");
+//保证只有出现一个.而没有多个.
+obj.value = obj.value.replace(/\.{2,}/g,".");
+//保证.只出现一次，而不能出现两次以上
+obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+//只能输入两个小数
+obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
+}
+
+/* 过滤特殊字符 */
+function clearTSZF(obj){
+	obj.value = stripscript(obj.value);
+}
+function stripscript(s) 
+{ 
+	var pattern = new RegExp("[`~!%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+	var rs = ""; 
+	for (var i = 0; i < s.length; i++) { 
+		rs = rs+s.substr(i, 1).replace(pattern, ''); 
+	} 
+	return rs; 
+}
+</script>
+</html>

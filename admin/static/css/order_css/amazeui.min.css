@@ -1,0 +1,8 @@
+/*显示限购弹出框*/
+.tanc{width: 80%;margin: 0 auto;}
+.xgbz{height: .8rem;background: #fd7c24;text-align: center;border-radius: .1rem .1rem 0 0;font-size:0;}
+.xgbz img{width: .8rem;vertical-align: middle;margin-top:.1rem;}
+.xgbz i{height: 100%;vertical-align: middle;display: inline-block;}
+.neirong{background: #fff;border-radius: 0 0 .1rem .1rem;padding-bottom: .2rem;}
+.nr{font-size: .25rem;text-align: center;color:#fd7c24;margin:0 auto;padding: .3rem;line-height: .4rem; }
+.zdl{display: block; border-radius: .24rem;border:none;padding: .1rem .36rem;background:#fd7c24; color: #fff;margin: 0px auto;}

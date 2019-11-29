@@ -1,0 +1,17 @@
+.submit_div input {
+float: none;
+}
+.submit_div {
+text-align: center;
+margin-bottom: 20px;
+}
+.WSY_remind_dl02 dt{
+	width:180px;
+	height:24px;
+	text-align: right;
+	font-weight: normal;
+	font-size: 14px;
+}
+.WSY_remind_main dl{
+	margin-left:0px;
+}

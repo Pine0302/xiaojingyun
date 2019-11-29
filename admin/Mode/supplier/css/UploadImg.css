@@ -1,0 +1,13 @@
+/*图片上传*/
+.uploadimg-main:after{content:'';display:block;width:0;height:0;clear:both;}
+.uploadimg-box{border:solid 1px #ddd;background-color:#eee;position:relative;overflow:hidden;float:left;margin-right:15px;margin-top:15px;}
+.uploadimg-main .uploadimg-box:last-child{margin-right:0;}
+.uploadimg-box .img-default{position:absolute;width:100%;height:100%;top:0;left:0;}
+.uploadimg-box .img-default:before,.uploadimg-box .img-default:after{content:'';display:block;background-color:#bbb;position:absolute;border-radius:10px;}
+.uploadimg-box .img-default:before{width:6px;height:60px;top:50%;left:50%;margin-left:-3px;margin-top:-30px;}
+.uploadimg-box .img-default:after{width:60px;height:6px;left:50%;top:50%;margin-top:-3px;margin-left:-30px;}
+.uploadimg-box .file-main{position:absolute;width:100%;height:100%;top:0;left:0;z-index:9;opacity:0;}
+.uploadimg-box .img-show{width:100%;height:100%;opacity:0;}
+.uploadimg-box .del-upload{cursor:pointer;z-index:10;display:none;line-height:24px;position:absolute;background-color:rgba(0,0,0,.6);right:0;bottom:0;color:#fff;font-size:12px;width:100%;text-align:center;}
+.uploadimg-box .img-box{display:table-cell;text-align:center;vertical-align:middle;}
+

@@ -1,0 +1,162 @@
+<?php
+$head= 2 ;//头部文件
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>用户统计</title>
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content.css">
+        <link rel="stylesheet" type="text/css" href="/weixinpl/common/css_V6.0/content<?php echo $theme; ?>.css">
+        <link type="text/css" rel="stylesheet" rev="stylesheet" href="/weixinpl/css/inside.css" media="all">
+        <script type="text/javascript" src="/weixinpl/common/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/layer.js"></script>
+        <script type="text/javascript" src="/weixinpl/common/js/layer/V2_1/layer.js"></script>
+    </head>
+    <style type="text/css">
+    .table-btn{color:#fff;border:0;cursor:pointer;border-radius:3px;height:24px;padding:0 10px;font-size:12px;float:left;}
+    </style>
+    <body>
+        <!--内容框架开始-->
+        <div class="WSY_content">
+            <!--列表内容大框开始-->
+            <div class="WSY_columnbox">
+                <!--列表头部切换开始-->
+                <?php
+                    include($_SERVER['DOCUMENT_ROOT']."/mshop/admin/view/share_gifts/head.html"); 
+                ?>
+                <!--列表头部切换结束-->
+
+                <div class="WSY_data">
+                    <!--列表按钮开始-->
+                    <form action="/mshop/admin/index.php?m=share_gifts&a=activity_user_statistic" method="post">
+                    <div class="WSY_list" id="WSY_list">
+                        <div class="WSY_left" >
+                            <a>用户统计列表</a>
+                            <a class="WSY_input01">
+                                <span>用户名：<input type="text" name="user_name" id="user_name" value="<?php echo $data['user_name']; ?>"></span>
+                                <span>用户编号：<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="user_number" id="user_number" value="<?php echo $data['user_number']; ?>"></span>
+                                <!-- <span>
+                                    <select name="search_sign" id="search_sign">
+                                        <option value="-1">-- 状态 --</option>
+                                        <option value="状态" <?php if($search_sign==0){ ?>selected <?php } ?>>状态</option>
+                                        <option value="状态" <?php if($search_sign==1){ ?>selected <?php } ?>>状态</option>
+                                        <option value="状态" <?php if($search_sign==2){ ?>selected <?php } ?>>状态</option>
+                                    </select>
+                                </span> -->
+                            
+                                <span><button class="WSY_search_01" type="submit">搜索</button></span>
+                                <span id="result_num" style="color:red;">搜索结果：<?php echo $res['activity_count']; ?>条结果</span>
+                            </a>
+
+
+                        </div>
+                            <ul class="WSY_righticon">
+                                <li class="WSY_inputicon"><a href="javascript:void(1);" onClick="goExcel();">导出</a></li>
+                            </ul>
+                            <br class="WSY_clearfloat">
+
+                    </div>
+                    </form>
+                    <!--列表按钮结束-->
+                    <!--表格开始-->
+                    <table width="97%" class="WSY_table WSY_t2" id="WSY_t1">
+                        <thead class="WSY_table_header">
+                            <th width="10%">用户微信头像</th>
+                            <th width="10%">用户编号</th>
+                            <th width="10%">用户名</th>
+                            <!-- <th width="10%">用户角色</th> -->
+                            <th width="5%">关联活动数</th>
+                            <th width="5%">分享次数</th>
+                            <th width="5%">邀请人数</th>
+                            <th width="5%">活动所得优惠券数量</th>
+                            <th width="5%">活动所得红包总额</th>
+                            <th width="12%">操作</th>
+                        </thead>
+                        <?php foreach($data2 as $key=>$row){ ?>
+                            <tr class="WSY_q1">
+                                <td align="center"><img src="<?php echo $row['weixin_headimgurl']; ?>" alt="" width="50px" height="50px" style="margin-left:70px;"></td>
+                                <td align="center"><?php echo $row['user_id']; ?></td>
+                                <td align="center"><?php echo $row['weixin_name']; ?></td>
+                                <!-- <td align="center"><?php echo $fund_name; ?></td> -->
+                                <td align="center"><?php echo $row['relation_activity_num']; ?></td>
+                                <td align="center"><?php echo $row['user_total_share_total_num']; ?></td>
+                                <td align="center"><?php echo $row['user_new_fans_total_num']; ?></td>
+                                <td align="center"><?php echo $row['receive_coupon_total_num']; ?></td>
+                                <td align="center"><?php echo $row['receive_red_envelopes_total_value']; ?></td>
+                                <td class="WSY_t4">
+                                    <button class="table-btn WSY-skin-bg" onclick="jump_url('<?php echo $row['user_id']?>',1);">分享明细</button>
+                                    <button class="table-btn WSY-skin-bg" style="margin-left:10px;" onclick="jump_url('<?php echo $row['user_id']?>',2);">活动明细</button> 
+                                </td>
+
+                            </tr>
+                            <?php } ?>
+
+                    </table>
+                    <!--表格结束-->
+        
+                    <!--翻页开始-->
+                    <div class="WSY_page"></div>
+                    <!--翻页结束-->
+                </div>
+            </div>
+            <div style="width:100%;height:20px;"></div>
+        </div>
+
+<script src="/weixinpl/js/fenye/jquery.page1.js"></script>
+<script type="text/javascript">
+<!-- 分页 start -->
+var data = "";
+var pagenum = <?php echo $pageNum ?>;        //当前页
+var count =<?php echo $pageCount ?>;         //总页数
+var user_name = $("#user_name").val();       //用户名
+var user_number = $("#user_number").val();   //用户编号
+if(user_name!=""){   
+    data += "&user_name="+user_name;
+}
+if(user_number!=""){
+    data += "&user_number="+user_number; 
+}
+//pageCount：总页数
+//current：当前页
+$(".WSY_page").createPage({
+    pageCount:count,
+    current:pagenum,
+    backFn:function(p){
+    var url="/mshop/admin/index.php?m=share_gifts&a=activity_user_statistic&pagenum="+p+data; 
+
+    location.href = url;
+   }
+});
+
+function jumppage(){
+    var a=parseInt($("#WSY_jump_page").val());
+    if((a<1) || (a>count) || isNaN(a)){
+        layer.alert('没有下一页了');
+        return false;
+    }else{
+        var url="/mshop/admin/index.php?m=share_gifts&a=activity_user_statistic&pagenum="+a+data; 
+        location.href = url;
+    }
+}
+function goExcel(){
+    var user_name = $("#user_name").val();
+    var user_number = $("#user_number").val();
+    window.location.href='/mshop/admin/index.php?m=excel&a=activity_user_statistic&user_name='+user_name+'&user_number='+user_number;
+}
+<!-- 分页 end -->
+function jump_url(id,type){
+    //type : 1-分享明细  2-活动明细  
+    var url = "";
+    var activity_id = "";
+    if(type==1){
+        url = "/mshop/admin/index.php?m=share_gifts&a=user_infodetail&share_user_id="+id;
+    }else if(type==2){
+        user_id = id;
+        url = "/mshop/admin/index.php?m=share_gifts&a=activity&user_id="+user_id;
+    }
+    location.href = url;
+}
+</script>        
+</body>
+</html>
